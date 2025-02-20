@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tradiy-frontend/static/css/main.e615aea9.css",
-    "main.js": "/tradiy-frontend/static/js/main.07e18e71.js",
+    "main.js": "/tradiy-frontend/static/js/main.f9ae74da.js",
     "static/js/488.092deecc.chunk.js": "/tradiy-frontend/static/js/488.092deecc.chunk.js",
     "static/media/workerImage.png": "/tradiy-frontend/static/media/workerImage.b08de5f72eeaf0c4a53d.png",
     "static/media/tradiy-benefits-header.png": "/tradiy-frontend/static/media/tradiy-benefits-header.e08cbe1daf03b9812636.png",
@@ -69,11 +69,11 @@
     "static/media/slick.woff": "/tradiy-frontend/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/tradiy-frontend/index.html",
     "main.e615aea9.css.map": "/tradiy-frontend/static/css/main.e615aea9.css.map",
-    "main.07e18e71.js.map": "/tradiy-frontend/static/js/main.07e18e71.js.map",
+    "main.f9ae74da.js.map": "/tradiy-frontend/static/js/main.f9ae74da.js.map",
     "488.092deecc.chunk.js.map": "/tradiy-frontend/static/js/488.092deecc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e615aea9.css",
-    "static/js/main.07e18e71.js"
+    "static/js/main.f9ae74da.js"
   ]
 }
