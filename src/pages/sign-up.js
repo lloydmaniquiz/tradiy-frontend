@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import "../styles/SignUp.css";
 import Drilling from "../images/drilling.jpg";
@@ -203,9 +203,9 @@ export default function SignUp() {
 
             <p className="signup-login-text">
               Already have an account?{" "}
-              <a href="/login" className="signup-login-link">
+              <Link to="/login" className="signup-login-link">
                 Login here
-              </a>
+              </Link>
             </p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import "../App.css";
 import Footer from "../landing-page/footer";
+import { Link } from "react-router-dom";
 import StickyHeader from "../landing-page/sticky-header";
 import { useState } from "react";
 import workerImage from "../images/workerImage.png";
@@ -104,7 +105,7 @@ const NewsletterPage = () => {
                   />
                   <label htmlFor="agreedToTerms">
                     I have read and agree to the Tradiy{" "}
-                    <a href="/terms-and-conditions">Terms & Conditions</a>
+                    <Link to="/terms-and-conditions">Terms & Conditions</Link>
                   </label>
                 </div>
               </div>

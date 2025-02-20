@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../App.css"; // Import the CSS for styling
 
 const BurgerDropdown = () => {
@@ -7,12 +7,6 @@ const BurgerDropdown = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };
-
-  const navigate = useNavigate();
-
-  const handleNavigation = () => {
-    navigate("/how-tradiy-works");
   };
 
   return (
@@ -25,36 +19,58 @@ const BurgerDropdown = () => {
       {isOpen && (
         <div className="dropdown-menu">
           <ul>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/sign-up">Sign Up</a></li>
+            <li>
+              <Link to="/login" onClick={() => setIsOpen(false)}>
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link to="/sign-up" onClick={() => setIsOpen(false)}>
+                Sign Up
+              </Link>
+            </li>
             <div className="divider"></div>
             <li className="has-submenu">
               HOMEOWNERS
               <ul className="submenu">
-              <li>
-                <a 
-                  href="/how-tradiy-works" 
-                  onClick={(e) => { 
-                    e.preventDefault(); 
-                    handleNavigation();
-                  }}
-                >
-                  Are you a homeowner?
-                </a>
-              </li>
-                <li><a href="/directory">Find a Trade</a></li>
+                <li>
+                  <Link to="/how-tradiy-works" onClick={() => setIsOpen(false)}>
+                    Are you a homeowner?
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/directory" onClick={() => setIsOpen(false)}>
+                    Find a Trade
+                  </Link>
+                </li>
               </ul>
             </li>
             <li className="has-submenu">
               TRADESPEOPLE
               <ul className="submenu">
-                <li><a href="/tradiy-benefits">Tradiy Benefits</a></li>
-                <li><a href="/sign-up">Be a Tradiy Trader</a></li>
+                <li>
+                  <Link to="/tradiy-benefits" onClick={() => setIsOpen(false)}>
+                    Tradiy Benefits
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/sign-up" onClick={() => setIsOpen(false)}>
+                    Be a Tradiy Trader
+                  </Link>
+                </li>
               </ul>
             </li>
             <div className="divider"></div>
-            <li><a href="/blogs">Blog</a></li>
-            <li><a href="/newsletter">Join our Newsletter</a></li>
+            <li>
+              <Link to="/blogs" onClick={() => setIsOpen(false)}>
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link to="/newsletter" onClick={() => setIsOpen(false)}>
+                Join our Newsletter
+              </Link>
+            </li>
           </ul>
         </div>
       )}

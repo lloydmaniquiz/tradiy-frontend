@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaFacebookF, FaGoogle, FaApple } from 'react-icons/fa';
+import { FaFacebookF, FaGoogle, FaApple } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "../styles/Login.css";
 import Driller from "../images/driller.jpg";
 import TradiyLogo from "../images/tradiy-navy-seal.png";
@@ -43,7 +44,7 @@ function Login() {
       <div className="login-container">
         {/* Left Side: Login Form */}
         <div className="login-form-section">
-          <img className="brand-title" src={TradiyLogo} alt="Tradiy Logo"/>
+          <img className="brand-title" src={TradiyLogo} alt="Tradiy Logo" />
           <h2 className="tagline">
             Find and connect with only vetted and qualified local tradespeople.
           </h2>
@@ -53,7 +54,9 @@ function Login() {
             <h4 className="login-title">Login as:</h4>
             <div className="role-selection">
               <button
-                className={`role-button ${role === "Homeowner" ? "active" : ""}`}
+                className={`role-button ${
+                  role === "Homeowner" ? "active" : ""
+                }`}
                 onClick={() => setRole("Homeowner")}
                 type="button"
               >
@@ -68,7 +71,6 @@ function Login() {
               </button>
             </div>
           </div>
-
 
           {/* Login Form */}
           <form onSubmit={handleLogin} className="login-form">
@@ -107,9 +109,9 @@ function Login() {
                 />
                 <label htmlFor="rememberMe">Remember me</label>
               </div>
-              <a href="/forgot-password" className="forgot-password">
+              <Link to="/forgot-password" className="forgot-password">
                 Forgot Password
-              </a>
+              </Link>
             </div>
 
             {/* Error Message */}
@@ -124,9 +126,9 @@ function Login() {
           {/* Signup and Social Login */}
           <p className="signup-text">
             Don’t have an account?{" "}
-            <a href="/sign-up" className="signup-link">
+            <Link to="/sign-up" className="signup-link">
               Sign up here
-            </a>
+            </Link>
           </p>
           <Divider />
           <p className="or-text">or login using</p>
@@ -145,11 +147,7 @@ function Login() {
 
         {/* Right Side: Image Section */}
         <div className="login-image-section">
-          <img
-            src={Driller}
-            alt="Worker drilling"
-            className="login-image"
-          />
+          <img src={Driller} alt="Worker drilling" className="login-image" />
         </div>
       </div>
     </div>

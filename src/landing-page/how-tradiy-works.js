@@ -23,7 +23,8 @@ const HowTradiyWorks = () => {
   const navigate = useNavigate();
 
   const readyToJoin = () => {
-    window.open("/sign-up", "_blank");
+    const url = "#/sign-up";
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   const exploreMore = () => {

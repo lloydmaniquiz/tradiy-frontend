@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/ForgotPassword.css";
 import forgotPassword from "../images/reset-password/forgot-password.png";
 import TradiyLogo from "../images/tradiy-navy-seal.png";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isEmailSent, setIsEmailSent] = useState(false);
 
   const handleEmailChange = (e) => {
@@ -16,30 +17,25 @@ const ForgotPassword = () => {
       setIsEmailSent(true);
       console.log(`Sending reset password email to: ${email}`);
     } else {
-      alert('Please enter a valid email address.');
+      alert("Please enter a valid email address.");
     }
   };
 
   return (
     <div className="forgot-password-wrapper">
       <div className="container">
-        <img
-          src={TradiyLogo}
-          alt="Tradiy Logo"
-          className="formImage"
-        />
-        <img
-          src={forgotPassword}
-          alt="Forgot Password"
-          className="formImage"
-        />
+        <img src={TradiyLogo} alt="Tradiy Logo" className="formImage" />
+        <img src={forgotPassword} alt="Forgot Password" className="formImage" />
         <h2>Forgot your password?</h2>
         <p>
-          No worries! Enter your email address below, and we’ll help you reset your password in no time.
+          No worries! Enter your email address below, and we’ll help you reset
+          your password in no time.
         </p>
         {!isEmailSent ? (
           <div>
-            <label htmlFor="email" className="label">Email</label>
+            <label htmlFor="email" className="label">
+              Email
+            </label>
             <input
               id="email"
               type="email"
@@ -55,9 +51,9 @@ const ForgotPassword = () => {
         ) : (
           <p className="message">A reset password email has been sent!</p>
         )}
-        <a href="/reset-password" className="backButton">
+        <Link to="#/reset-password" className="backButton">
           Back to Login
-        </a>
+        </Link>
       </div>
     </div>
   );

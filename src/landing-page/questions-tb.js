@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 const TBQuestions = () => {
@@ -12,7 +13,6 @@ const TBQuestions = () => {
       question: "Why should I join Tradiy?",
       answer: [
         "By joining Tradiy, you gain access to:",
-
         "- Increased visibility among local homeowners.",
         "- A platform that verifies your credentials, boosting your credibility.",
         "- Exclusive promotions and competitions, like the current **DeWalt cordless drill raffle**.",
@@ -24,7 +24,6 @@ const TBQuestions = () => {
       question: "What do I need to sign up?",
       answer: [
         "To sign up and get verified on Tradiy, you’ll need to provide:",
-
         "- Proof of identity (valid ID).",
         "- Public liability insurance documentation.",
         "- Any relevant trade qualifications or certifications.",
@@ -46,17 +45,19 @@ const TBQuestions = () => {
   const [openIndexes, setOpenIndexes] = useState([]);
 
   const toggleDropdown = (index) => {
-    setOpenIndexes((prevIndexes) => {
-      if (prevIndexes.includes(index)) {
-        return prevIndexes.filter((i) => i !== index);
-      }
-      return [...prevIndexes, index];
-    });
+    setOpenIndexes((prevIndexes) =>
+      prevIndexes.includes(index)
+        ? prevIndexes.filter((i) => i !== index)
+        : [...prevIndexes, index]
+    );
   };
 
-  const makeBold = (text) => {
-    // Replace **text** with <strong>text</strong>
-    return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  const renderFormattedText = (text) => {
+    return text
+      .split("**")
+      .map((part, index) =>
+        index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+      );
   };
 
   return (
@@ -82,22 +83,17 @@ const TBQuestions = () => {
             <div className="faq-content">
               {Array.isArray(item.answer) ? (
                 item.answer.map((line, idx) => (
-                  <p
-                    key={idx}
-                    dangerouslySetInnerHTML={{ __html: makeBold(line) }}
-                  />
+                  <p key={idx}>{renderFormattedText(line)}</p>
                 ))
               ) : (
-                <p
-                  dangerouslySetInnerHTML={{ __html: makeBold(item.answer) }}
-                />
+                <p>{renderFormattedText(item.answer)}</p>
               )}
             </div>
           )}
         </div>
       ))}
       <div className="faqs-link-directory">
-        <a href="/faqs">More FAQs</a>
+        <Link to="/faqs">More FAQs</Link>
       </div>
     </div>
   );
