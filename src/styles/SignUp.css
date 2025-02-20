@@ -1,0 +1,366 @@
+.signup-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #eef2f6; /* Softer background for better contrast */
+  }
+
+/* Update .sign-up-container to .signup-container */
+.signup-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1440px;
+    height: auto;
+    min-height: 100vh;
+    background: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+    overflow: hidden;
+  }
+
+/* Wrapper */
+.signup-wrapper {
+    display: flex;
+    width: 1440px;
+    max-width: 100%;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.signup-image-section {
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+.signup-form-section img{
+    padding-top: -1.5rem;
+    width: 140px; 
+    display: block;
+    margin: 0 auto; /* Centers the image horizontally */
+  }
+
+/* Image Section */
+.signup-form-section {
+    flex: 1;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-image {
+  width: 674px;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the div */
+}
+
+/* Title */
+.signup-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Subtitle */
+.signup-subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 1rem;
+    max-width: 400px;
+    color: #2EC1C7;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Role selection header */
+.signup-role-header {
+    display: block; /* Makes it a block-level element */
+    font-family: "Hanken Grotesk", Arial;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000839; /* Label color */
+    margin-bottom: 8px; /* Space between header and buttons */
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Ensure it takes the full width of its container */
+}
+
+/* Role selection buttons */
+.signup-role-selection {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+    gap: 1rem;
+}
+
+.signup-role-selection button {
+    background: none;
+    font-family: "Hanken Grotesk", Arial;
+    border: 1px solid #BBBCC0;
+    color: #000839;
+    padding: 15px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+/* Active role button */
+.signup-role-selection button.signup-active {
+    background: #000839;
+    border: 1px solid #000839;
+    color: white;
+}
+
+/* Input fields */
+.signup-input-group {
+    width: 100%;
+    margin-bottom: 5px; /* Add space between input groups */
+    text-align: left; /* Align the label and input to the left */
+}
+
+.signup-input-group label {
+    display: block; /* Makes the label a block-level element */
+    font-size: 14px;
+    font-weight: 600;
+    color: #000839; /* Label color */
+    margin-bottom: 8px; /* Space between label and input */
+    font-family: "Hanken Grotesk", Arial;
+}
+
+.signup-input-field {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 50px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-family: "Hanken Grotesk", Arial;
+    font-weight: 500;
+    color: #000839;
+}
+
+/* Input group for password fields */
+.signup-input-group {
+    position: relative;
+    width: 100%;
+}
+
+.signup-icon-button {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #7f8c8d;
+}
+
+.signup-icon-button:hover {
+    color: #2c3e50;
+}
+
+/* Signup Button */
+.signup-button {
+    font-family: "Hanken Grotesk", Arial;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 15px;
+    background: #000839;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.signup-button:hover {
+    background: #2EC1C7;
+}
+
+/* Login text */
+.signup-login-text {
+    font-size: 14px;
+    margin-top: 15px;
+    color: #000839;
+    font-weight: 600;
+    font-family: "Hanken Grotesk", Arial;
+}
+
+.signup-login-link {
+    color: #2EC1C7;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Hanken Grotesk", Arial;
+}
+
+.signup-login-link:hover {
+    text-decoration: underline;
+}
+
+.signup-password-checker {
+    font-size: 0.8rem;
+    color: gray;
+    width: 100%; /* Ensure it takes the full width */
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    margin-top: -1.3rem;
+    text-align: left; /* Align items to the left */
+}
+
+.signup-password-checker ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.signup-password-checker li {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+  
+.signup-password-checker li.valid {
+    color: green;
+}
+  
+.signup-password-checker li.invalid {
+    color: gray;
+}
+  
+.signup-password-checker li svg {
+    margin-right: 10px;
+    color: inherit; /* Ensures color changes based on validity */
+}
+
+/* EMAIL VERIFICATION */
+
+.email-verification-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+    font-family: "Hanken Grotesk", Arial;
+  }
+  
+  .email-verification-header {
+    width: 100%;
+    background-color: #FFBC58;
+    color: #000839;
+    text-align: center;
+    font-weight: bold;
+    padding: 20px 0;
+    font-size: 16px;
+  }
+  
+  .email-verification-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 6rem;
+  }
+  
+  .email-verification-logo {
+    width: 200px;
+    margin-bottom: 20px; /* Reduce space for better stacking */
+  }
+  
+  .email-verification-image {
+    width: 250px;
+    margin-bottom: 10px;
+  }
+  
+  .email-verification-container h2 {
+    color: #000839;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .email-verification-container p {
+    color: #2EC1C7;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  strong {
+    color: #2EC1C7;
+  }
+
+/* EMAIL VERIFIED */
+
+.email-verified-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+    font-family: "Hanken Grotesk", Arial;
+  }
+
+  .email-verified-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 6rem;
+  }
+  
+  .email-verified-logo {
+    width: 200px;
+    margin-bottom: 20px; /* Reduce space for better stacking */
+  }
+  
+  .email-verified-image {
+    width: 250px;
+    margin-bottom: 10px;
+  }
+  
+  .email-verified-container h2 {
+    color: #2EC1C7;
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .email-verified-container p {
+    color: #000839;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  strong {
+    color: #2EC1C7;
+  }
+  
+  .continue-button {
+    background-color: #000839;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-top: 40px;
+    font-family: "Hanken Grotesk", Arial;
+    transition: all 0.3s ease;
+    width: 150px;
+  }
+  
+  .continue-button:hover {
+    background-color: #2EC1C7;
+  }

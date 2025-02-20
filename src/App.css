@@ -1,0 +1,2362 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: white;
+  font-weight: 700;
+  font-family: "Hanken Grotesk", Arial;
+  background-color: #000839;
+  position: relative; /* Keeps it in the document flow */
+  width: 100%; /* Ensure it spans the full width */
+}
+
+.htw-overlay h1 {
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for separation */
+}
+
+.logo-burger {
+  display: flex;
+  justify-content: space-between; /* Distribute items to the left and right */
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: -6rem;
+  padding: 0 5rem; /* Add 1rem padding on both sides of the container */
+}
+
+.logo-burger img {
+  width: 160px;
+  flex-shrink: 0; /* Prevent image from shrinking */
+  margin-right: 5rem; /* Optional: Add space between the logo and the burger */
+}
+
+.burger-dropdown {
+  position: relative; /* Needed to position the dropdown inside the parent */
+}
+
+/* Burger icon button */
+.burger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; /* Centers the burger lines */
+  width: 65px; /* Adjusted width */
+  height: 50px; /* Adjusted height */
+  padding: 1.05rem; /* Padding inside the container */
+  border: none;
+  cursor: pointer;
+  border-radius: 30px; /* Rounded corners for a modern look */
+  transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Smooth hover effect */
+  background-color: #ecedf2;
+}
+
+/* Lines in the burger icon */
+.burger-line {
+  width: 100%;
+  height: 3px;
+  background-color: #000839;
+  transition: 0.3s ease;
+}
+
+/* Transformations for the open state */
+.burger-line.open:nth-child(1) {
+  transform: rotate(28deg);
+  transform-origin: top left;
+  color: #000839;
+}
+
+.burger-line.open:nth-child(2) {
+  opacity: 0;
+  color: #000839;
+}
+
+.burger-line.open:nth-child(3) {
+  transform: rotate(-25deg);
+  transform-origin: bottom left;
+  color: #000839;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  position: absolute;
+  top: 55px; /* Adjust to space below the burger icon */
+  right: 0;
+  background-color: #fdfeff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 10;
+  min-width: 320px; /* Ensure a consistent width */
+  font-family: "Hanken Grotesk", Arial;
+  font-size: large;
+  font-weight: 600;
+}
+
+/* List inside the dropdown menu */
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.submenu li a {
+  text-decoration: none;
+  color: #000839; /* Set color here for submenu links */
+}
+
+.submenu li button {
+  text-decoration: none;
+  color: #000839; /* Set color here for submenu links */
+}
+
+/* Dropdown menu items */
+.dropdown-menu ul li {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.divider {
+  height: 2px;
+  background-color: #000839;
+  width: 80%; /* Set width to 80% */
+  margin: 5px auto; /* Center the divider and add space above and below */
+}
+
+.dropdown-menu ul li a {
+  text-decoration: none;
+  color: #000839;
+  font-size: 14px;
+  display: block;
+  padding: 0.8rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for menu items */
+.dropdown-menu ul li a:hover {
+  background-color: #f2f4fa;
+  border-radius: 10px;
+  color: #000;
+}
+
+.has-submenu {
+  color: #2ec1c7;
+  padding-top: 0.8rem;
+  margin: 15px;
+}
+
+.user-icon i {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero {
+  background-image: url("./images/landing.png"); /* Replace with your image path */
+  background-size: cover; /* Ensure the image covers the entire element */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  height: 900px; /* Ensure the background takes up the full height of the viewport */
+}
+
+.hero-content {
+  height: 863px;
+  width: 100%; /* Use 100% for full-width or adjust as needed */
+  text-align: center;
+  border-radius: 8px;
+  max-width: 1150px;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  margin: 0 auto; /* Center within the parent container if width is less than 100% */
+  padding-top: 3rem;
+}
+
+.hero-content h2 {
+  padding-top: 15%;
+  font-size: 6rem;
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+  line-height: 5rem;
+}
+
+.hero-content p {
+  font-size: 2rem;
+  padding-top: 2rem;
+  margin-bottom: 4rem;
+  font-weight: 700;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+}
+
+/* Search Bar */
+/* Centering the search bar */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-left: 50px;
+}
+
+/* Dropdown and input styling */
+.search-bar .input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.search-bar .input-wrapper .dropdown-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-bar .dropdown {
+  appearance: none; /* Remove default dropdown arrow */
+  padding: 1.5rem;
+  border-radius: 50px 0px 0px 50px;
+  border: none;
+  border-top: 2px solid #bbbcc0; /* Top border */
+  border-left: 2px solid #bbbcc0; /* Left border */
+  border-bottom: 2px solid #bbbcc0; /* Bottom border */
+  font-size: medium;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 600;
+  width: 100%;
+}
+
+.search-bar .dropdown-wrapper .custom-dropdown-icon {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  height: 10px;
+  pointer-events: none; /* Ensure the dropdown works despite the custom icon */
+}
+
+.search-bar .dropdown-wrapper .dropdown-divider {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  height: 45px;
+  width: 2px;
+  pointer-events: none; /* Ensure the dropdown works despite the custom icon */
+}
+
+.search-bar .divider {
+  height: 80%;
+  width: 3px;
+  background-color: #bbbcc0; /* Divider color */
+  margin: 0 10px; /* Adjust spacing between elements */
+}
+
+.search-bar input {
+  padding: 1.5rem;
+  border-radius: 0px 50px 50px 0px;
+  border: none;
+  border-top: 2px solid #bbbcc0; /* Top border */
+  border-right: 2px solid #bbbcc0; /* Left border */
+  border-bottom: 2px solid #bbbcc0; /* Bottom border */
+  font-size: medium;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 600;
+  width: 100%;
+}
+
+.search-bar button {
+  top: 50%;
+  transform: translateX(-120%);
+  background-color: #000839;
+  color: #fff;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 50%;
+  border: none;
+}
+
+.search-button img {
+  width: 19px;
+  height: 17px;
+}
+
+.recent-searches {
+  margin-top: 2rem;
+  position: relative;
+  font-size: small;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.dropdown-toggle {
+  display: flex;
+  justify-content: space-between; /* Align the text and arrow at both ends */
+  align-items: center;
+  background: #000839;
+  color: white;
+  border: none;
+  padding: 0.6rem 0.8rem;
+  font-size: large;
+  border-radius: 8px;
+  cursor: pointer;
+  max-width: 83%; /* Adjust width as per your design */
+  transform: translateX(10.4%); /* Shift left by half its own width */
+  transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+  background: #2ec1c7;
+}
+
+.arrow {
+  font-size: 1.5rem; /* Make the arrow larger */
+  margin-left: 0.5rem; /* Space between the text and arrow */
+}
+
+.dropdown-toggle img {
+  width: 15px;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-49.9%);
+  width: 83%; /* Adjust width as needed */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap into rows */
+  max-height: calc(
+    6 * 4rem
+  ); /* Approximate height for 6 items (adjust per item size) */
+  overflow: hidden; /* Hide extra content beyond 6 items */
+  text-align: left;
+}
+
+.dropdown-content::-webkit-scrollbar {
+  height: 8px; /* Set scrollbar height */
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background: #000839; /* Scrollbar color */
+  border-radius: 4px; /* Rounded edges */
+}
+
+.dropdown-content::-webkit-scrollbar-thumb:hover {
+  background: #03115f; /* Darker color on hover */
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  margin: 5px;
+}
+
+.dropdown-content .search-card {
+  display: flex; /* Use flexbox to align items horizontally */
+  justify-content: space-between; /* Align content between the left and right */
+  align-items: center; /* Vertically align items */
+  margin: 0.3rem; /* Add spacing between items */
+  background: #f2f4fa;
+  padding: 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 142px;
+}
+
+.search-card:hover {
+  background: #e9ecef;
+}
+
+.search-info {
+  font-family: "Hanken Grotesk", Arial;
+  display: flex; /* Align items horizontally */
+  flex-grow: 1; /* Allow this to take the remaining space */
+  justify-content: flex-start; /* Keep elements aligned to the left */
+}
+
+.search-info p {
+  font-weight: bold;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: large;
+  margin: 0;
+}
+
+.search-info span {
+  font-family: "Hanken Grotesk", Arial;
+  font-size: small;
+  color: #000839;
+  font-weight: 500;
+}
+
+.search-info small {
+  font-family: "Hanken Grotesk", Arial;
+  font-size: x-small;
+  color: #aaa;
+}
+
+.time-and-delete {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Full width for time and delete button */
+  align-items: center;
+}
+
+.time {
+  flex-grow: 1; /* Allow time to take remaining space */
+  text-align: left; /* Ensure the time is aligned to the left */
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #000839;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 35px; /* Space between time and delete button */
+  align-self: flex-start; /* Align the button at the top of the card */
+}
+
+.delete-btn:hover {
+  color: #000524;
+}
+
+.empty-message {
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9rem;
+  padding: 1rem;
+}
+
+/* Carousel Search */
+.carousel-combine {
+  text-align: center;
+  padding: 2rem;
+  background-color: #fff;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin-bottom: 80px;
+}
+
+.recent-searches-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 3rem 0;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-wrapper {
+  width: 80%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Smooth sliding */
+  width: calc(12 * 120px); /* Total width for all items */
+}
+
+.carousel-container {
+  display: flex;
+  gap: 2.5rem;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  position: relative;
+}
+
+.carousel-item-button {
+  flex: 0 0 auto;
+  width: 120px; /* Adjust based on spacing */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-item-button img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  color: #000839;
+  transition: transform 0.3s ease;
+}
+
+/* Scale effect on hover */
+.carousel-item-button img:hover {
+  transform: scale(1.1);
+}
+
+/* Scale effect for clicked item */
+.carousel-item-button.clicked {
+  transform: scale(1.2); /* Slightly bigger scale on click */
+  animation: bounce 0.3s ease-out; /* Add a bounce animation */
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.carousel-item-label {
+  font-size: 0.9rem;
+  color: #000839;
+  text-align: center;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 700;
+}
+
+.carousel-button img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 50px;
+}
+
+.carousel-button img:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Triple-Image */
+
+.triple-image {
+  display: flex;
+  justify-content: center;
+  gap: 7rem; /* Space between images */
+  margin-top: 3rem;
+  flex-wrap: wrap; /* Allows wrapping for smaller screens */
+}
+
+.image-item {
+  text-align: center;
+  max-width: 250px; /* Ensure uniform width */
+  padding: 1rem;
+}
+
+.image-item img {
+  width: 100%; /* Ensure images are responsive */
+  max-width: 180px; /* Adjust as needed */
+  margin-bottom: 1rem;
+}
+
+.image-text {
+  font-size: 1.5rem;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  font-weight: 800;
+  color: #2ec1c7;
+  margin-top: 1rem;
+}
+
+.triple-image p {
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+/* HOW IT WORKS */
+
+.how-it-works {
+  text-align: center;
+  padding: 5rem;
+  background-color: #f7f9fc;
+  color: #333;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+}
+
+.how-it-works h2 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #1f2a56;
+}
+
+.how-it-works p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  color: #000839;
+  font-weight: 500;
+}
+
+.how-it-works-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.how-it-works-content p {
+  margin-bottom: 10px;
+}
+
+.how-it-works-image {
+  border-radius: 8px;
+  height: 450px;
+}
+
+.step h3 {
+  font-size: 1.5rem;
+  color: #1f2a56;
+}
+
+.step p {
+  font-size: 1rem;
+  color: #000839;
+}
+
+.how-it-works-button {
+  margin-top: 2rem;
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #000839;
+  font-weight: 500;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
+}
+
+.how-it-works-button:hover {
+  background-color: #2ec1c7;
+  transform: scale(1.1); /* Makes the image 20% larger */
+  opacity: 0.8; /* Slightly reduces opacity */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between steps */
+}
+
+.step {
+  display: flex;
+  align-items: center; /* Vertically center-align the image and text */
+  gap: 20px; /* Space between the image and text */
+  text-align: left;
+}
+
+.step-image {
+  width: 60px;
+  height: 60px;
+}
+
+.step h3,
+.step p {
+  margin: 0; /* Remove default margins for h3 and p */
+}
+
+.step-text {
+  display: flex;
+  flex-direction: column; /* Keep h3 and p stacked vertically */
+}
+
+.step-text p {
+  max-width: 470px;
+}
+
+/* Benefits for Tradespeople */
+
+.benefits-tradespeople {
+  text-align: center;
+  background-color: #fff;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  color: #000839;
+  padding-top: 5rem;
+}
+
+.benefits-tradespeople h2 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #1f2a56;
+  padding-bottom: 1rem;
+}
+
+.shake-hands {
+  background-image: url("./images/benefits.png");
+  background-size: cover; /* Ensures the image covers the entire div */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  height: 200px; /* Ensure the background takes up the full height of the viewport */
+  display: flex; /* Enable flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.shake-hands h3 {
+  color: #fff;
+  background-color: #000839;
+  font-size: xx-large;
+  border-radius: 10px;
+  text-align: center;
+  padding: 3px 10px 3px 10px;
+}
+
+.benefits-list h4 {
+  padding-top: 3rem;
+  font-weight: 500;
+  padding-bottom: 1rem;
+  font-size: x-large;
+}
+
+.benefits-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.benefits-set {
+  background-color: #f2f4fa;
+  padding: 1.5rem;
+  border-radius: 20px;
+  max-width: 250px;
+  text-align: center; /* Center text inside each card */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+}
+
+.benefits-set img {
+  width: 110px;
+  padding-bottom: 10px;
+}
+
+.benefits-set h3 {
+  justify-content: center;
+  font-size: x-large;
+  margin: 0.5rem 0;
+  color: #000839;
+}
+
+.benefits-set p {
+  font-size: small;
+  color: #000839;
+  align-items: center;
+  font-weight: 500;
+}
+
+.diy-button {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  color: white;
+  background-color: #000839;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
+  font-weight: 520;
+  margin-bottom: 6rem;
+}
+
+.diy-button:hover {
+  transform: scale(1.1);
+  background-color: #2ec1c7;
+}
+
+/* Comin-Soon APP */
+.coming-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  margin-bottom: 5rem;
+}
+
+.overlay-container {
+  position: relative;
+  width: 100%;
+  max-width: 1100px; /* Adjust width as needed */
+  border-radius: 12px; /* Rounded corners */
+  overflow: hidden; /* Ensures rounded corners work with child elements */
+  margin-bottom: 5rem;
+}
+
+.overlay-container img {
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-text {
+  color: white;
+  text-align: start;
+  padding: 1rem;
+}
+
+.overlay-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.overlay-text p {
+  font-size: 1.35rem;
+  max-width: 1000px;
+}
+
+/* LANDING PAGE - REVIEWS */
+.reviews-wrapper h1 {
+  font-size: xxx-large;
+}
+
+.reviews-section {
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 1400px;
+}
+
+.review-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stars {
+  color: #1dbfcc; /* Adjust color for stars */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.review-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.review-author {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Swiper Pagination Styles */
+.review-slider-container {
+  max-width: 1250px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.slick-track {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-item {
+  position: relative;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  background-color: #fdfeff;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  height: 305px;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: small;
+  margin-bottom: 60px; /* Space between each review item */
+  max-width: 340px;
+  margin-top: 15px;
+}
+
+.review-item h3 {
+  font-size: medium;
+  font-weight: 400;
+  position: absolute; /* Position the h3 at the bottom */
+  bottom: 0; /* Align to the bottom of the container */
+  width: 100%; /* Make sure the h3 spans the full width of its parent */
+  padding-right: 4rem;
+  padding-bottom: 1.5rem;
+}
+
+.review-item p {
+  font-size: medium;
+  font-weight: 700;
+}
+
+.rating {
+  margin-bottom: 10px;
+  font-size: 25px; /* Adjust star size */
+}
+
+.review-slider-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.slick-dots {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+/* Custom Slick dot size */
+.slick-dots li button:before {
+  font-size: 20px !important; /* Increase dot size */
+  color: #e4e4e4 !important; /* Change dot color */
+  opacity: 1 !important; /* Ensure visibility */
+}
+
+/* Add margin between dots */
+.slick-dots li {
+  margin: 0 20px !important; /* Adjust the horizontal margin between the dots */
+}
+
+/* Active dot */
+.slick-dots li.slick-active button:before {
+  color: #000839 !important; /* Active dot color */
+}
+
+.prev-button,
+.next-button {
+  width: 50px !important;
+  height: 50px !important;
+  background-color: #e4e4e4;
+  border: none !important;
+  border-radius: 50px !important;
+  margin-left: 40px; /* 20px margin to the left */
+  margin-right: 40px; /* 30px margin to the right */
+  transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: #000839;
+}
+
+/* FAQS */
+
+.faqs {
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  display: flex; /* Use Flexbox for centering */
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Optional: Centers text inside h1 and h3 */
+  padding-top: 8rem;
+}
+
+.faqs h3 {
+  font-size: xx-large;
+  padding-top: 8rem;
+}
+
+.faqs h1 {
+  font-size: 400%;
+  padding-bottom: 2rem;
+}
+
+.faqs p {
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.faqs {
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem; /* Add padding for smaller screens */
+  max-width: 1200px; /* Restrict max width */
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+
+.faq-container {
+  max-width: 1000px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  width: 90%;
+  text-align: start;
+}
+
+.faqs-link-directory {
+  text-align: right; /* Aligns text to the right */
+  text-decoration: underline;
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-end; /* Aligns the content to the right */
+  cursor: pointer;
+  width: 85%; /* Ensures it takes up the full width of the parent container */
+}
+
+.faqs-link-directory a {
+  color: #000839;
+}
+
+/* FAQ Header */
+.faq-header {
+  background-color: #fff;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+  padding-left: 1.5rem; /* Adjust for smaller screens */
+  border: 3px solid #e4e4e4;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Make it adapt to screen width */
+}
+
+.faq-header.open {
+  background-color: #000839;
+  border: transparent;
+  color: white;
+}
+
+.faq-icon {
+  font-size: 1.5rem; /* Adjust icon size */
+  font-weight: bold;
+  color: inherit; /* Match the color of the header */
+  transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+.faq-content {
+  margin-top: 6px;
+  background-color: #ecedf2;
+  padding: 2rem;
+  transition: background-color 0.3s ease;
+  font-size: large;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+/* LOCAL TRADES */
+
+.local-trades-dropdown-container {
+  margin-bottom: 2rem;
+}
+
+.local-trades-dropdown {
+  background-color: #f2f4fa;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: x-large;
+  font-weight: 600;
+  color: #000839;
+  border: none;
+  padding: 10px 20px;
+  padding-left: 1.5rem; /* Adjust for smaller screens */
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%; /* Use percentage to make it responsive */
+  max-width: 1000px; /* Optional: Limit the maximum width */
+  margin: 0 auto; /* Center horizontally */
+  margin-bottom: 10px;
+  transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* When the dropdown is open, change the background color */
+.local-trades-dropdown.open {
+  background-color: #2ec1c7; /* New background color when open */
+  color: #fff;
+}
+
+.local-trades-dropdown li {
+  display: flex;
+}
+
+.local-trades-dropdown ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Display list items side by side */
+  gap: 5rem; /* Adjust the gap between items */
+}
+
+.local-trades-dropdown li {
+  padding: 8px 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.local-trades-dropdown li:hover {
+  background-color: #e1e3f1;
+  border-radius: 50px;
+}
+
+.local-trades-dropdown img {
+  width: 15px;
+}
+
+/* FOOTER */
+
+.footer {
+  margin-top: 5rem;
+  background-color: #000839;
+  color: #ecf0f1;
+  padding: 20px 0;
+  font-family: "Hanken Grotesk", Arial;
+  display: flex;
+  justify-content: center; /* Center the footer content horizontally */
+  align-items: center; /* Align items vertically if needed */
+  flex-direction: column; /* Stack footer sections vertically */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center; /* Center the footer sections horizontally */
+  padding: 0 20px;
+  flex-wrap: wrap;
+  max-width: 2500px;
+  width: 90%; /* Optional: Set a max-width to prevent it from stretching too wide */
+  gap: 10rem;
+}
+
+.footer-section {
+  padding-top: 4rem;
+  max-width: 900px;
+  width: 250px;
+  margin-bottom: 20px;
+  text-align: start; /* Center text inside each section */
+}
+
+.footer-section h4 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.footer-section img {
+  width: 8rem;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding-top: 0.5rem;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+  color: #f2f4fa; /* Light text color */
+  text-decoration: underline; /* Always underlined */
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline; /* Keep the underline on hover */
+}
+
+.social-links {
+  list-style-type: none;
+  padding: 0;
+  display: flex; /* Align items horizontally */
+  gap: 2rem; /* Add space between the social media links */
+  justify-content: start; /* Center the social links horizontally */
+  margin-top: 3rem;
+}
+
+.social-links li {
+  margin-bottom: 0;
+}
+
+.social-links li a {
+  color: #ecf0f1;
+  font-size: 1.5rem; /* Adjust size if needed */
+}
+
+.social-links li a:hover {
+  color: #2ec1c7; /* Optional: Change color on hover */
+}
+
+.contact-us ul {
+  padding-bottom: 3rem;
+}
+
+.contact-us li img {
+  width: 15px;
+}
+
+.footer-bottom {
+  text-align: start;
+  padding-top: 20px;
+  background-color: #34495e;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.sticky-header {
+  height: 80px;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: top 0.5s ease-in-out;
+}
+
+.sticky-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.sticky-header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.sticky-header nav ul li {
+  margin: 0;
+}
+
+.sticky-header nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.sticky-header .search-bar {
+  width: 100%;
+  justify-content: center;
+  transform: scale(0.8);
+  margin-left: 200px;
+}
+
+.sticky-header .tradiy-logo {
+  padding: 1rem;
+  width: 150px;
+  cursor: pointer;
+}
+
+.sticky-header p {
+  font-family: "Hanken Grotesk", Arial;
+  font-size: medium;
+  color: #000839;
+  font-weight: 600;
+  align-content: center;
+}
+
+.sticky-burger-wrapper {
+  display: flex;
+  width: 400px;
+  padding-right: 3rem;
+  gap: 1rem;
+}
+
+/* HOW TRADIY WORKS */
+
+.htw-how-tradiy-works {
+  margin-top: 4rem;
+  text-align: center;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.htw-hero {
+  background: url("./images/htw-header.png") center/cover no-repeat;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  font-size: x-large;
+}
+
+.htw-content {
+  padding: 50px 20px;
+}
+
+.htw-content h2 {
+  font-size: x-large;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.htw-subheading {
+  color: #2ec1c7;
+  font-size: 30px;
+  margin: 10px 0;
+}
+
+.htw-steps-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.htw-step {
+  width: 300px;
+  text-align: center;
+}
+
+.htw-step h3 {
+  font-size: 30px;
+  color: #000839;
+}
+
+.htw-step p {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #000839;
+  font-style: italic;
+}
+
+.htw-cta {
+  margin-top: 80px;
+}
+
+.htw-search-button {
+  background-color: #000839;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Hanken Grotesk", Arial;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Smooth hover effect */
+}
+
+.htw-search-button:hover {
+  background-color: #1dbfcc;
+}
+
+.htw-arrow {
+  width: 60px; /* Adjust the size as needed */
+  height: 10%;
+  margin: 0 20px; /* Adjust the spacing between steps */
+}
+
+.htw-personal-dashboard {
+  width: 1024px;
+  margin: 60px auto; /* Centering the dashboard */
+  display: flex;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  gap: 3rem;
+}
+
+.htw-dashboard-header {
+  text-align: left;
+  margin-left: 20px; /* Example for some left margin */
+  color: #000839;
+  font-size: x-large;
+}
+
+.htw-dashboard-header p {
+  margin-top: 20px;
+  font-size: large;
+}
+
+.htw-check-text-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 30px;
+  margin-left: 20px; /* Example for some left margin */
+}
+
+.htw-check-text-wrapper p {
+  font-size: large;
+}
+
+.htw-check {
+  width: 32px;
+}
+
+.htw-check-text-container {
+  color: #000839;
+  text-align: left;
+  max-width: 640px;
+}
+
+.htw-side-image {
+  width: 400px;
+  height: 400px;
+}
+
+.htw-divider {
+  width: 100%;
+  height: 80px;
+  background: url("./images/htw-divider.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000839;
+  position: relative;
+  font-size: x-large;
+  margin-bottom: 8rem;
+}
+
+.htw-overlay h2 {
+  font-size: 20px;
+}
+
+.htw-homeowner-header {
+  display: flex;
+  flex-direction: column; /* Stack the h1 and p vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+}
+
+.htw-homeowner-header h1 {
+  color: #000839;
+  padding: 20px;
+  background-color: #ffbc58;
+  width: 380px;
+  border-radius: 10px;
+  text-align: center; /* Center the text within h1 */
+  margin-bottom: 20px; /* Adds some space below the h1 */
+}
+
+.htw-homeowner-header p {
+  color: #000839;
+  font-size: 18px;
+  text-align: center;
+  max-width: 1000px;
+  margin-bottom: 30px;
+}
+
+.htw-link-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 50px;
+}
+
+.htw-choose-tradiy {
+  width: 100%;
+  height: 170px;
+  background: url("./images/htw-choose-tradiy.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000839;
+  position: relative;
+  font-size: x-large;
+  margin-bottom: 2rem;
+  margin-top: 100px;
+}
+
+.htw-choose-tradiy-overlay {
+  color: white;
+}
+
+.htw-choose-tradiy-container p {
+  color: #000839;
+  font-weight: 600;
+  font-size: large;
+  margin-bottom: 20px;
+}
+
+.htw-benefits-set {
+  background-color: #f2f4fa;
+  padding: 1.5rem;
+  border-radius: 20px;
+  max-width: 250px;
+  text-align: center; /* Center text inside each card */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+}
+
+.htw-benefits-set img {
+  width: 110px;
+  padding-bottom: 10px;
+}
+
+.htw-benefits-set h3 {
+  justify-content: center;
+  font-size: x-large;
+  margin: 0.5rem 0;
+  color: #000839;
+}
+
+.htw-benefits-set p {
+  font-size: medium;
+  color: #000839;
+  align-items: center;
+  font-weight: 500;
+}
+
+.htw-coming-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  margin-bottom: 5rem;
+}
+
+.htw-overlay-container {
+  position: relative;
+  width: 100%;
+  max-width: 1100px; /* Adjust width as needed */
+  border-radius: 12px; /* Rounded corners */
+  overflow: hidden; /* Ensures rounded corners work with child elements */
+  margin-bottom: 5rem;
+}
+
+.htw-overlay-container img {
+  width: 100%;
+  height: auto;
+}
+
+.htw-overlay-coming-soon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Ensure text is centered */
+  padding: 1rem; /* Add some padding */
+}
+
+.htw-overlay-text {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align items */
+  justify-content: center; /* Center content */
+  text-align: center; /* Ensure text is centered */
+  color: white;
+  max-width: 800px; /* Set a max-width for better readability */
+}
+
+.htw-overlay-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.htw-overlay-text p {
+  font-size: 1.35rem;
+  max-width: 1000px;
+  margin-bottom: 20px;
+}
+
+.htw-overlay-text button {
+  background-color: #2ec1c7;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Smooth hover effect */
+}
+
+/* FAQS */
+
+.faqs-hero {
+  background: url("./images/faqs-header.png") center/cover no-repeat;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  font-size: x-large;
+  margin-top: 60px;
+  font-family: "Hanken Grotesk", Arial;
+  text-align: center;
+}
+
+.faqs-overlay {
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for separation */
+  font-family: "Hanken Grotesk", Arial;
+  font-size: 36px;
+}
+
+.faqs-overlay p {
+  font-size: large;
+  margin-top: 8px;
+}
+
+.faqs-search-container {
+  width: 40%;
+  display: flex; /* Make the container a flex container */
+  justify-content: center; /* Centers content horizontally */
+  margin: 0 auto; /* Ensures the container itself is centered within the parent */
+  margin-top: 60px;
+}
+
+.faqs-search-input {
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.faq-list {
+  justify-content: center;
+}
+
+.faq-category {
+  color: #000839;
+  padding: 10px;
+  background-color: #00f2ea;
+  width: 250px;
+  font-family: "Hanken Grotesk", Arial;
+  border-radius: 10px;
+  text-align: center; /* Center the text within h1 */
+  margin-bottom: 30px; /* Adds some space below the h1 */
+  text-align: center;
+  margin-top: 60px;
+  font-size: 18px;
+  margin-left: 50px;
+}
+
+.faq-category-container {
+  max-width: 1042px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.faq-container {
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+}
+
+.faq-content {
+  font-family: "Hanken Grotesk", Arial;
+  line-height: 1.5;
+}
+
+.no-faqs-found {
+  text-align: center; /* Centers the text */
+  font-size: 1.2rem; /* Increases the font size */
+  color: #000839; /* Set the color of the text */
+  margin-top: 20px; /* Adds some space above */
+  font-weight: bold; /* Make the text bold */
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.faqs-search-container {
+  position: relative;
+}
+
+.faqs-search-input {
+  padding-left: 45px; /* Add some padding to the left so the icon doesn't overlap the text */
+  padding-right: 20px; /* Optional: space on the right side of the input */
+}
+
+.search-icon {
+  position: absolute;
+  left: 20px; /* Position the icon inside the input field */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px; /* Adjust the size of your icon */
+  height: 16px; /* Adjust the size of your icon */
+}
+
+/* CONTACT US */
+
+.contact-us-container {
+  margin-top: 120px;
+  text-align: center;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.contact-us-container h1 {
+  color: #2ec1c7;
+  font-size: 64px;
+  margin-bottom: 10px;
+}
+
+.contact-us-container p {
+  color: #000839;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: auto;
+  gap: 30px 100px; /* 30px for rows, 100px for columns */
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.contact-card {
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  border: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Push button to bottom */
+  min-height: 280px; /* Ensures uniform height */
+  margin-top: 50px;
+  width: 500px;
+}
+
+.contact-card h3 {
+  letter-spacing: 5px;
+  font-size: 32px;
+  color: #000839;
+  margin-bottom: 10px;
+}
+
+.contact-card p {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.contact-card .highlight {
+  color: #2ec1c7;
+  letter-spacing: 0px;
+  font-size: 28px;
+  font-weight: 700;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.contact-card .small-text {
+  font-weight: 800;
+}
+
+.icon-container {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -30px; /* Moves 50% outside the card */
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+}
+
+.icon-img {
+  width: 90px;
+  height: 90px;
+}
+
+.highlight {
+  font-size: 20px;
+  font-weight: bold;
+  color: #008cba;
+}
+
+.qr-code {
+  width: 150px;
+  margin: 0px auto;
+  display: block;
+}
+
+.contact-button {
+  background: #f2f4fa;
+  color: #000839;
+  border: none;
+  padding: 12px;
+  border-radius: 0 0 12px 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  width: 100%;
+  display: flex; /* Change to flex to align icon and text */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  margin-top: auto;
+  font-weight: 600;
+}
+
+.contact-button .arrow-icon {
+  margin-left: 8px; /* Space between text and the icon */
+  width: 12px; /* Adjust size of the icon */
+  height: 12px; /* Adjust size of the icon */
+}
+
+.contact-button.whatsapp {
+  background: #5fd669;
+  color: white;
+}
+
+.contact-button.whatsapp .arrow-icon {
+  margin-left: 8px;
+  width: 12px;
+  height: 12px;
+}
+
+.contact-button:hover {
+  opacity: 0.85;
+}
+
+.contact-card-content {
+  padding: 80px 35px 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* TRADIY BENEFITS */
+
+.tb-tradiy-benefits {
+  margin-top: 4rem;
+  text-align: center;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.tb-overlay h1 {
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for separation */
+}
+
+.tb-hero {
+  background: url("./images/tradiy-benefits-header.png") center/cover no-repeat;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  font-size: x-large;
+}
+
+.tb-content {
+  margin-top: 40px;
+}
+
+.tb-content h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #000839;
+}
+
+.tb-subheading {
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+  margin: 10px auto; /* Centers horizontally */
+  border-radius: 10px;
+  padding: 8px;
+  background-color: #2ec1c7;
+  width: 530px;
+  text-align: center;
+  display: block;
+  margin-bottom: 50px;
+}
+
+.tb-benefits-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.tb-benefits-set {
+  background-color: #f2f4fa;
+  padding: 1.5rem;
+  border-radius: 20px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  justify-content: flex-start; /* Ensure items start from the top */
+}
+
+.tb-benefits-set img {
+  width: 80px;
+  padding-bottom: 10px;
+}
+
+.tb-benefits-set h3 {
+  font-size: x-large;
+  margin: 0.5rem 0;
+  color: #000839;
+  text-align: left; /* Ensures the heading is aligned left */
+}
+
+.tb-benefits-set p {
+  font-size: medium;
+  color: #000839;
+  font-weight: 500;
+  text-align: left; /* Ensures the paragraph text is aligned left */
+}
+
+.tb-benefits-wrapper-2 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.tb-benefits-set-2 {
+  background-color: #f2f4fa;
+  padding: 1.5rem;
+  border-radius: 20px;
+  max-width: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  justify-content: flex-start; /* Ensure items start from the top */
+  margin-bottom: 100px;
+}
+
+.tb-benefits-set-2 img {
+  width: 80px;
+  padding-bottom: 10px;
+}
+
+.tb-benefits-set-2 h3 {
+  font-size: x-large;
+  margin: 0.5rem 0;
+  color: #000839;
+  text-align: left; /* Ensures the heading is aligned left */
+}
+
+.tb-benefits-set-2 p {
+  font-size: medium;
+  color: #000839;
+  font-weight: 500;
+  text-align: left; /* Ensures the paragraph text is aligned left */
+}
+
+.tb-personal-dashboard {
+  width: 1024px;
+  margin: 60px auto; /* Centering the dashboard */
+  display: flex;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  gap: 3rem;
+}
+
+.tb-dashboard-header {
+  text-align: left;
+  margin-left: 20px; /* Example for some left margin */
+  color: #000839;
+  font-size: x-large;
+}
+
+.tb-dashboard-header p {
+  margin-top: 20px;
+  font-size: large;
+}
+
+.tb-check-text-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 30px;
+  margin-left: 20px; /* Example for some left margin */
+}
+
+.tb-check-text-wrapper p {
+  font-size: large;
+}
+
+.tb-check {
+  width: 32px;
+}
+
+.tb-check-text-container {
+  color: #000839;
+  text-align: left;
+  max-width: 640px;
+}
+
+.tb-side-image {
+  width: 450px;
+  height: 450px;
+}
+
+.tb-bold {
+  font-weight: 800;
+}
+
+.tb-small {
+  font-size: 14px !important;
+}
+
+.tb-regular {
+  font-weight: 500;
+}
+
+.tb-divider {
+  width: 100%;
+  height: 80px;
+  background: url("./images/tb-divider.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000839;
+  position: relative;
+  font-size: x-large;
+  margin-bottom: 8rem;
+}
+
+.tb-overlay h2 {
+  font-size: 20px;
+}
+
+.tb-content-mid {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.tb-content-mid h2 {
+  font-size: 52px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #000839;
+}
+
+.tb-content-mid p {
+  color: #000839;
+  width: 620px;
+  text-align: left;
+  font-size: 20px;
+  line-height: 2;
+  font-weight: 500;
+}
+
+.tb-text-image-wrapper {
+  display: flex;
+  align-items: center; /* Centers items vertically */
+  justify-content: center; /* Centers the flex container itself */
+  gap: 2rem;
+}
+
+.tb-content-img {
+  width: 570px;
+}
+
+.tb-p {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Adjust as needed */
+}
+
+.feedback-parent {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+}
+
+.tb-feedback-container {
+  padding: 3rem;
+  display: flex; /* Allows content alignment */
+  flex-direction: column; /* Ensures text stays stacked */
+  align-items: center; /* Centers content horizontally */
+  justify-content: center; /* Centers content vertically */
+  gap: 20px;
+  background-color: #fdfeff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+
+  color: #000839;
+  width: 1000px;
+  font-weight: 700;
+  border-radius: 20px;
+  text-align: center; /* Ensures text is centered */
+}
+
+.tb-stars {
+  display: flex;
+  gap: 5px;
+}
+
+.star-icon {
+  color: #2ec1c7;
+  font-size: 30px;
+}
+
+.video-section {
+  display: flex;
+  gap: 20px; /* Adjust space between videos */
+  justify-content: center; /* Centers the videos horizontally */
+  margin-top: 40px; /* Space between feedback section and videos */
+  margin-bottom: 100px;
+}
+
+.video-placeholder {
+  width: 320px;
+  height: 200px;
+  background-color: #e0e0e0; /* Light gray for the placeholder */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000839;
+  font-weight: 700;
+  border-radius: 15px; /* Rounded corners for the container */
+  overflow: hidden; /* Ensures the iframe fits within the rounded corners */
+}
+
+.video-placeholder iframe {
+  border-radius: 15px; /* Rounded corners for the iframe */
+}
+
+/* NEWSLETTER */
+
+/* Container */
+.newsletter-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.newsletter-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1440px;
+  height: auto;
+  min-height: 100vh;
+  background: white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  overflow: hidden;
+  margin-bottom: -80px;
+}
+
+/* Right Side (Image) */
+
+.newsletter-form-section {
+  flex: 1;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.newsletter-form-section img {
+  padding-top: -1.5rem;
+  width: 12rem;
+  display: block;
+  width: 130px;
+}
+
+.newsletter-form-section h2 {
+  padding-top: 1rem;
+  font-family: "Hanken Grotesk", Arial;
+  color: #2ec1c7;
+  font-weight: 600;
+  font-size: 50px;
+  max-width: 550px;
+  text-align: left;
+  padding-bottom: 2rem;
+}
+
+.newsletter-title {
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  font-size: large;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.newsletter-image-section {
+  flex: 1;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.newsletter-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the div */
+  object-position: right; /* Focus on the right part of the image */
+}
+
+.newsletter-role-selection {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Added gap for better spacing */
+  margin-bottom: 20px;
+}
+
+.newsletter-role-selection-container {
+  margin-bottom: 2rem;
+}
+
+.newsletter-role-button {
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #bbbcc0;
+  border-radius: 20px;
+  background-color: #fdfeff;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+.newsletter-role-button h1 {
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+
+.newsletter-role-button p {
+  font-size: 12px;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.newsletter-role-button.active {
+  border-color: #000839;
+  background-color: #000839;
+  color: white;
+}
+
+.newsletter-role-button:hover {
+  background-color: #000839;
+  color: white;
+  border: 1px solid #000839;
+}
+
+.newsletter-button {
+  width: 100%;
+  padding: 12px;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: #000839;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.newsletter-button:hover {
+  background-color: #2ec1c7;
+}
+
+.disclaimer-header {
+  font-family: "Hanken Grotesk", Arial;
+  color: #2ec1c7;
+  font-size: 24px;
+}
+
+.disclaimer-content {
+  color: #000839;
+  font-weight: 500;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: 12px;
+}
+
+.newsletter-agreement {
+  display: flex;
+  align-items: center; /* Vertically align checkbox and label */
+  font-family: "Hanken Grotesk", Arial;
+  gap: 10px; /* Adds space between checkbox and label */
+}
+
+.newsletter-agreement input {
+  cursor: pointer;
+}
+
+.newsletter-agreement label {
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  white-space: nowrap; /* Prevent the text from wrapping onto two lines */
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.newsletter-agreement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.newsletter-input {
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 600;
+}

@@ -1,0 +1,259 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #eef2f6; /* Softer background for better contrast */
+}
+
+.login-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1440px;
+  height: auto;
+  min-height: 100vh;
+  background: white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  overflow: hidden;
+}
+
+.login-form-section {
+  flex: 1;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form-section img {
+  padding-top: -1.5rem;
+  width: 12rem;
+  display: block;
+  margin: 0 auto; /* Centers the image horizontally */
+}
+
+.login-form-section h2 {
+  padding-top: 1rem;
+  font-family: "Hanken Grotesk", Arial;
+  color: #2ec1c7;
+  font-weight: 600;
+  font-size: large;
+  max-width: 450px;
+  margin: 0 auto; /* Centers the image horizontally */
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.role-selection {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Added gap for better spacing */
+  margin-bottom: 20px;
+}
+
+.role-selection-container {
+  margin-bottom: 2rem;
+}
+
+.login-title {
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  font-size: small;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.role-button {
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #bbbcc0;
+  border-radius: 50px;
+  background-color: #fdfeff;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+.role-button.active {
+  border-color: #000839;
+  background-color: #000839;
+  color: white;
+}
+
+.role-button:hover {
+  background-color: #000839;
+  color: white;
+  border: 1px solid #000839;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: small;
+  font-weight: 700;
+  color: #000839;
+  margin-top: -0.5rem;
+}
+
+.form-group input {
+  margin-top: 0.2rem;
+}
+
+input {
+  width: 100%;
+  padding: 1rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  font-size: small;
+}
+
+input:focus {
+  outline: none;
+  border-color: #000839;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  margin-top: -1.5rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: start; /* Vertically align checkbox and label */
+}
+
+.remember-me input {
+  margin-right: 5px; /* Adds space between checkbox and label */
+  cursor: pointer;
+}
+
+.remember-me label {
+  display: inline; /* Prevents the label from becoming a block-level element */
+  white-space: nowrap; /* Prevent the text from wrapping onto two lines */
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-bottom: 15px;
+  text-align: center; /* Centering error message for better visibility */
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: #000839;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #2ec1c7;
+}
+
+.forgot-password {
+  font-size: 0.875rem;
+  color: #000839;
+  text-decoration: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-image-section {
+  flex: 1;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.login-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the div */
+  object-position: right; /* Focus on the right part of the image */
+}
+
+.signup-text {
+  color: #000839;
+  padding-top: 1rem;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: small;
+  font-weight: 500;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.signup-link {
+  color: #2ec1c7;
+}
+
+.or-text {
+  color: #000839;
+  margin-top: -1rem;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: small;
+  font-weight: 500;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center; /* Horizontally center the buttons */
+  gap: 10px; /* Space between buttons */
+  align-items: center; /* Vertically center the buttons */
+}
+
+.social-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px; /* Set a fixed size for the buttons */
+  height: 50px;
+  border: 1px solid #bbbcc0; /* Light border for buttons */
+  border-radius: 10px; /* Rounded corners */
+  background-color: white; /* White background for the box */
+  cursor: pointer;
+  font-size: 24px; /* Icon size */
+  padding: 10px; /* Padding around the icon */
+  transition: transform 0.2s ease; /* Smooth hover effect */
+}
+
+.social-button:hover {
+  transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+.social-button svg {
+  color: inherit; /* Use the inherited text color (to apply the icon's natural color) */
+}
+
+.social-button.facebook svg {
+  color: #3b5998; /* Facebook blue color */
+}
+
+.social-button.google svg {
+  color: #4285f4; /* Google blue color */
+}
+
+.social-button.apple svg {
+  color: #000000; /* Apple black color */
+}

@@ -1,0 +1,638 @@
+.regForm-step-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f4f4;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.regForm-content {
+  display: flex;
+  flex-direction: row; /* Form on the left, image on the right */
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background-color: white;
+  overflow: hidden;
+}
+
+.regForm-form-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 150px;
+  padding-right: 150px;
+  height: calc(100% - 420px); /* Adjusts height to account for footer */
+  position: relative;
+  overflow-y: auto; /* Enables scrolling when content overflows */
+  scrollbar-width: thick;
+  scrollbar-color: #000839;
+  margin-top: 250px;
+  padding-bottom: 0; /* Remove extra padding from the bottom */
+}
+
+/* Styling for the scrollbar (optional) */
+.regForm-form-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.regForm-form-container::-webkit-scrollbar-thumb {
+  background-color: #000839;
+  border-radius: 10px;
+}
+
+.regForm-form-container::-webkit-scrollbar-track {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+}
+
+.regForm-header {
+  position: fixed;
+  top: 5%;
+  left: 0;
+  width: 70%;
+  background: white;
+  padding: 10px 150px;
+  z-index: 10;
+}
+
+.regForm-logo {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.regForm-image-container {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0e0e0;
+  height: 100%;
+}
+
+.regForm-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.regForm-input-group img {
+  width: 150px;
+  margin-bottom: 30px;
+}
+
+.regForm-input-group {
+  margin-top:  15px;
+}
+
+.regForm-input-group-services {
+  margin-bottom: 15px;
+}
+
+.regForm-header h2 {
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 600;
+  color: #000839;
+  font-size: 3rem;
+}
+
+.regForm-label {
+  color: #000839;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.regForm-input,
+.regForm-select {
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  width: 100%;
+}
+
+.regForm-select {
+  width: 100%;
+}
+
+.regForm-button {
+  padding: 15px;
+  background-color: white;
+  color: #000839;
+  border: 1px solid #000839;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-family: "Hanken Grotesk", Arial;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.regForm-button:hover {
+  background-color: #000839;
+  color: white;
+}
+
+.regForm-radio-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.regForm-radio-label {
+  display: flex;
+  align-items: center;
+}
+
+.regForm-radio {
+  margin-right: 8px;
+}
+
+/* Keeps buttons at the bottom */
+.regForm-button-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  background: white;
+  padding: 50px 150px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+  z-index: 10;
+}
+
+.regForm-button-add-service {
+  padding: 15px;
+  background-color: white;
+  color: #000839;
+  border: 1px solid #000839;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-family: "Hanken Grotesk", Arial;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 15px;
+  background-color: white;
+  border: 1px solid #FFBC58;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #FFBC58;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.h2-skip-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.regForm-x-button {
+  position: absolute;
+  right: 15px; /* Move the regForm-x button 10px to the left */
+  top: 53%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: gray; /* Set the color to #000839 */
+  cursor: pointer;
+  font-size: 15px; /* Adjust the size of the X icon */
+  border-radius: 50%; /* Circular background around the icon */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.regForm-x-button:hover {
+  color: #000839; /* White color on hover */
+}
+
+.regForm-x-button:focus {
+  outline: none; /* Remove focus outline */
+}
+
+.regForm-x-button svg {
+  transition: transform 0.3s ease; /* Smooth rotation on hover */
+}
+
+.regForm-x-button:hover svg {
+  transform: rotate(90deg); /* Rotate the X icon on hover */
+}
+
+/* Modal overlay that covers the screen */
+.regForm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensures it sits on top */
+}
+
+/* Modal content box */
+.regForm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensures it sits on top */
+}
+
+/* Modal content box */
+.regForm-modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.regForm-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #000839;
+  font-size: 24px;
+}
+
+.regForm-close-button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: gray;
+  cursor: pointer;
+  padding: 6px 10px 6px 10px;
+  border-radius: 50px;
+  border: 1px solid gray;
+  transition: transform 0.3s ease; /* Smooth rotation on hover */
+}
+
+.regForm-close-button:hover {
+  color: #000839;
+  padding: 6px 10px 6px 10px;
+  border-radius: 50px;
+  border: 1px solid #000839;
+}
+
+.regForm-drag-and-drop-container {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  color: #000839;
+  text-align: left; /* Align the text to the left */
+}
+
+.regForm-file-input {
+  margin-top: 10px;
+  height: 7rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  color: #000839;
+}
+
+.regForm-file-upload-buttons {
+  background-color: white; /* For upload buttons */
+}
+
+.regForm-file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+}
+
+.regForm-delete-button {
+  color: red;
+  border: none;
+  font-size: 20px;
+  background-color: white;
+  padding: 8px 9px 4px 9px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.regForm-delete-button:hover {
+  cursor: pointer;
+  background: whitesmoke;
+  border-radius: 50px;
+  
+}
+
+.regForm-input-desc {
+  height: 7rem;
+  border-radius: 25px;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  max-width: 100%;
+  width: 100%;
+  font-size: 18px;
+  padding: 15px;
+  resize: none;
+  overflow: auto; /* Enable internal scrolling */
+}
+
+.regForm-input-desc::-webkit-scrollbar {
+  display: none;
+} 
+
+.regForm-description {
+  font-style: italic;
+  color: #666; /* Gray color for the description */
+  font-size: 0.875rem; /* Adjust font size as needed */
+  margin-top: 5px; /* Space between button and description */
+}
+
+.regForm-file-item {
+  display: flex; /* Aligns icon and text horizontally */
+  align-items: center; /* Vertically centers the icon and text */
+  justify-content: space-between; /* Space between file details and delete button */
+  margin-bottom: 15px; /* Adds space between file items */
+}
+
+.regForm-file-details {
+  display: flex;
+  flex-direction: column; /* Stacks the file name and size vertically */
+  align-items: flex-start; /* Aligns text to the left (start) */
+  justify-content: center; /* Vertically centers the file name and size */
+}
+
+.regForm-file-name {
+  font-size: 1rem; /* Equivalent to h2 size */
+  font-weight: bold;
+  margin: 0; /* Removes default margin */
+  margin-left: 8px; /* Adds space between the icon and file name */
+  color: #000839;
+  max-width: 330px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+
+.regForm-file-size {
+  font-size: 0.7rem; /* Smaller font size for the file size */
+  color: #000839; /* Lighter color for the file size text */
+  margin-left: 8px; /* Adds space between file name and size */
+}
+
+.icon-file {
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+}
+
+.regForm-custom-button {
+  display: flex;           /* Use flexbox for centering */
+  flex-direction: column;  /* Stack the text vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center;     /* Center horizontally */
+  padding: 10px 20px;
+  background-color: white;
+  color: #000839;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  height: 10rem;
+  border: 1px solid gray;
+  font-weight: 600;
+  text-align: center;      /* Center text horizontally */
+}
+
+.browse-text {
+  color: #FFBC58;           /* Set color to yellow */
+  font-weight: bold;       /* Optional: make it bold */
+  display: block;          /* Ensure "or browse" is on a new line */
+}
+
+.regForm-modal-description {
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.regForm-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.regForm-flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.regForm-time-inputs {
+  margin-left: auto; /* Push time inputs to the right */
+  display: flex;
+  gap: 2rem;
+  align-items: center; /* Ensure time inputs are aligned vertically */
+}
+
+.regForm-input-time{
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 600;
+  color: #000839;
+  border: 1px solid #000839;
+  height: 30px;
+}
+
+.regForm-input-time:disabled {
+  background-color: #f0f0f0;  /* Lighter background color for disabled state */
+  cursor: not-allowed;        /* Change cursor to indicate it's not clickable */
+  opacity: 0.5;               /* Reduce opacity for disabled inputs */
+  border: 1px solid gray;
+}
+
+.regForm-label {
+  flex-shrink: 0;  /* Prevent the label from shrinking */
+}
+
+.checkbox-input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 45%;
+  gap: 2rem;
+}
+
+.regForm-input-group-checkbox {
+  margin-top:  8px;
+}
+
+.header-close-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000839;
+}
+
+.header-close-wrapper h3{
+  font-size: 1.5rem;
+}
+
+.regForm-modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.holiday-item {
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+  align-items: center;
+  width: 100%; /* Make sure the holiday item takes the full width */
+  margin-bottom: 10px; /* Adjust spacing between items */
+  color: #000839;
+  font-size: 20px;
+}
+
+.holiday-item div {
+  flex: 1; /* Distribute available space equally between columns */
+  margin-right: 20px; /* Add space between columns */
+  text-align: left; /* Align text to the left */
+}
+
+.holidays-list .holiday-item:first-child {
+  font-weight: bold;
+  color: #000839; /* Apply bold and color to the header row */
+}
+
+.holidays-list {
+  width: 100%; /* Ensure the holidays list takes the full width */
+}
+
+.business-container {
+  background: white;
+  padding-left: 8rem;
+  padding-top: 3rem;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.edit-link {
+  color: #003366;
+  text-decoration: none;
+  font-size: 14px;
+  text-decoration: underline;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: 20px;
+  color: #000839;
+  font-weight: 500;
+}
+
+.details {
+  margin-top: 15px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.label {
+  font-weight: bold;
+  color: #000839;
+  min-width: 350px;  /* Controls the width of the label */
+  text-align: left;
+}
+
+.value {
+  color: #000839;
+  flex-grow: 1; /* Makes the value take the remaining space */
+  text-align: left;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: 20px;
+}
+
+.regForm-final-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 7rem;
+  padding-top: 2rem;
+}
+
+.regForm-header-p {
+  display: block;
+  margin-bottom: 10px; /* Optional, if you want space between the title and the paragraph */
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  padding-left: 6rem;
+  font-size: xx-large;
+  padding-top: 2rem;
+}
+
+.regForm-header-p p {
+  font-size: 20px;
+}
+
+.header-block {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.title{
+  padding: 1rem;
+  background-color: #FFBC58;
+  color: #000839;
+  font-weight: 700;
+  font-family: "Hanken Grotesk", Arial;
+  border-radius: 10px;
+  font-size: 24px;
+}
+
+.summary-label{
+  font-weight: 600;
+  color: #000839;
+  min-width: 450px;  /* Controls the width of the label */
+  text-align: left;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: 20px;
+  padding-bottom: 1rem;
+}
+
+.day-item {
+  padding-bottom: 10px;
+}
+
+.holiday-item span {
+  margin-right: 5px; /* Adjust the value as needed */
+}
+
+.holiday-date {
+  margin-right: 5px; /* Adjust the spacing between dates and times */
+}

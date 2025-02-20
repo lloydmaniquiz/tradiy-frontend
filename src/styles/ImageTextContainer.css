@@ -1,0 +1,54 @@
+.image-text-container {
+  display: flex;
+  flex-direction: column; /* Stack the image and text vertically */
+  width: 350px; /* Width of the container */
+  height: 350px; /* Height of the container */
+  border-radius: 10px; /* Border radius for the whole container */
+  overflow: hidden; /* Ensures the corners are rounded and content doesn't overflow */
+}
+
+.image-container {
+  width: 100%; /* Full width of the container */
+  height: 80%; /* 80% of the container's height */
+  position: relative;
+}
+
+.image {
+  width: 100%; /* Fill the entire width */
+  height: 100%; /* Fill the entire height of the container */
+  object-fit: cover; /* Ensures the image covers the container */
+}
+
+.text-container {
+  width: 100%; /* Full width of the container */
+  height: 20%; /* 20% of the container's height */
+  background-color: #ecedf2;
+  color: #000839;
+  display: flex;
+  flex-direction: column; /* Stack the header and description vertically */
+  justify-content: center; /* Center the content vertically */
+  align-items: flex-start; /* Align text to the left */
+  padding: 5px;
+  padding-left: 20px;
+}
+
+.image-header {
+  margin: 0;
+  font-size: 16px; /* Font size for header */
+  font-weight: bold; /* Makes the header bold */
+  text-align: left; /* Align header text to the left */
+  max-width: 310px; /* Limit the width of the header */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+  text-overflow: ellipsis; /* Show ellipsis when text overflows */
+}
+
+.image-description {
+  margin: 0;
+  font-size: 12px; /* Font size for description */
+  text-align: left; /* Align description text to the left */
+  max-width: 310px; /* Limit the width of the description */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+  text-overflow: ellipsis; /* Show ellipsis when text overflows */
+}
