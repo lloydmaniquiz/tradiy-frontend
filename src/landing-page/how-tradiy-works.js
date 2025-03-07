@@ -20,8 +20,6 @@ import Footer from "./footer";
 import Shakehands from "../images/shakehands.png";
 
 const HowTradiyWorks = () => {
-  const navigate = useNavigate();
-
   const readyToJoin = () => {
     const url = "#/sign-up";
     window.open(url, "_blank", "noopener,noreferrer");
@@ -35,9 +33,20 @@ const HowTradiyWorks = () => {
     navigate("/directory");
   };
 
+  const navigate = useNavigate();
+  const handleSearch = (searchTerm, label) => {
+    if (searchTerm) {
+      navigate(
+        `/search?query=${encodeURIComponent(
+          searchTerm
+        )}&label=${encodeURIComponent(label)}`
+      );
+    }
+  };
+
   return (
     <>
-      <StickyHeader />
+      <StickyHeader handleSearch={handleSearch} />
       <div className="htw-how-tradiy-works">
         {/* Hero Section */}
         <section className="htw-hero">
@@ -59,7 +68,7 @@ const HowTradiyWorks = () => {
           {/* Steps Section */}
           <div className="htw-steps-container">
             <div className="htw-step">
-              <h3>Sign Up and Verify Your Account</h3>
+              <h3>Find and Compare Tradespeople</h3>
               <p>
                 Create a free account, upload your ID for security, and unlock
                 features like requesting quotes.
@@ -69,7 +78,7 @@ const HowTradiyWorks = () => {
             <img src={Arrow} alt="arrow" className="htw-arrow" />
 
             <div className="htw-step">
-              <h3>Find and Compare Tradespeople</h3>
+              <h3>Book a Quote Estimate or Visit</h3>
               <p>
                 Search by trade, location, and reviews. Bookmark profiles,
                 compare quotes, and review qualifications and past work.
@@ -79,7 +88,7 @@ const HowTradiyWorks = () => {
             <img src={ArrowFlipped} alt="arrow" className="htw-arrow" />
 
             <div className="htw-step">
-              <h3>Submit Projects and Leave Reviews</h3>
+              <h3>Start Projects and Leave Reviews</h3>
               <p>
                 Post job details, receive quotes, and hire the best match. After
                 the job, leave a review to help others.
@@ -239,9 +248,11 @@ const HowTradiyWorks = () => {
                   next project to life.
                 </p>
                 <div>
-                  <button className="htw-search-button" onClick={readyToJoin}>
-                    Get Started Now
-                  </button>
+                  <div className="button-container">
+                    <button className="htw-search-button" onClick={readyToJoin}>
+                      Get Started Now
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

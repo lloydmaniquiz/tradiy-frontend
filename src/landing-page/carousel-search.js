@@ -14,11 +14,8 @@ import tilerIcon from "../images/carousel-search/tiler.png";
 import welderIcon from "../images/carousel-search/welder.png";
 import leftNext from "../images/carousel-search/left-next.png";
 import rightNext from "../images/carousel-search/right-next.png";
-import vettedPeople from "../images/three-images/verified.png";
-import fastAndEasy from "../images/three-images/fast-and-easy.png";
-import supportBusiness from "../images/three-images/support-business.png";
 
-const CarouselSearch = () => {
+const CarouselSearch = ({ handleSearch, label }) => {
   const searches = useMemo(
     () => [
       { label: "Builder", icon: builderIcon },
@@ -81,7 +78,11 @@ const CarouselSearch = () => {
               <button
                 className="carousel-item-button"
                 key={idx}
-                onClick={() => alert(`You clicked on ${search.label}`)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  console.log("Clicked on:", search.label); // Debugging
+                  handleSearch(search.label, search.label); // Pass only the trade name
+                }}
               >
                 <img
                   src={search.icon}
@@ -96,36 +97,6 @@ const CarouselSearch = () => {
         <button className="carousel-button" onClick={handleNext}>
           <img src={rightNext} alt="→" />
         </button>
-      </div>
-
-      {/* Additional Section */}
-      <div className="triple-image">
-        {[
-          {
-            img: vettedPeople,
-            alt: "Verified and Vetted Tradespeople",
-            text: "Verified and Vetted Tradespeople",
-            desc: "We verify every tradesperson for their qualifications, public liability insurance, and ID, so you can hire with confidence.",
-          },
-          {
-            img: fastAndEasy,
-            alt: "Fast and Easy Search",
-            text: "Fast and Easy Search",
-            desc: "With Tradiy, you can find the right tradesperson quickly, and it’s 100% free to browse.",
-          },
-          {
-            img: supportBusiness,
-            alt: "Support Local Business",
-            text: "Support Local Business",
-            desc: "When you hire through Tradiy, you’re helping local tradespeople in your area thrive. It’s a win-win for your project and the community.",
-          },
-        ].map((item, idx) => (
-          <div className="image-item" key={idx}>
-            <img src={item.img} alt={item.alt} />
-            <span className="image-text">{item.text}</span>
-            <p>{item.desc}</p>
-          </div>
-        ))}
       </div>
     </div>
   );

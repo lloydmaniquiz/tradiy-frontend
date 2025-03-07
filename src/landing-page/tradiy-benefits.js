@@ -26,12 +26,22 @@ const TradiyBenefits = () => {
   };
 
   const signUp = () => {
-    window.open("/sign-up", "_blank");
+    window.open("#/sign-up", "_blank");
+  };
+
+  const handleSearch = (searchTerm, label) => {
+    if (searchTerm) {
+      navigate(
+        `/search?query=${encodeURIComponent(
+          searchTerm
+        )}&label=${encodeURIComponent(label)}`
+      );
+    }
   };
 
   return (
     <>
-      <StickyHeader />
+      <StickyHeader handleSearch={handleSearch} />
       <div className="tb-tradiy-benefits">
         {/* Hero Section */}
         <section className="tb-hero">
@@ -211,8 +221,19 @@ const TradiyBenefits = () => {
             <div className="video-placeholder">
               <iframe
                 width="320"
-                height="200"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                height="400"
+                src="https://www.youtube.com/embed/OxH-CAUi9bU"
+                title="YouTube video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div className="video-placeholder">
+              <iframe
+                width="320"
+                height="400"
+                src="https://youtube.com/embed/E6wR_WdLpf4"
                 title="YouTube video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -222,19 +243,8 @@ const TradiyBenefits = () => {
             <div className="video-placeholder">
               <iframe
                 width="320"
-                height="200"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="YouTube video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="video-placeholder">
-              <iframe
-                width="320"
-                height="200"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                height="400"
+                src="https://youtube.com/embed/eii2lE9sHvg"
                 title="YouTube video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -292,7 +302,7 @@ const TradiyBenefits = () => {
                   local customers, grow your reputation, and take your business
                   to the next level.
                 </p>
-                <div>
+                <div className="button-container">
                   <button className="htw-search-button" onClick={signUp}>
                     Sign Up for Free
                   </button>

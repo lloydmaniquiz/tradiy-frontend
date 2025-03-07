@@ -2,6 +2,7 @@ import "../App.css";
 import Footer from "../landing-page/footer";
 import { Link } from "react-router-dom";
 import StickyHeader from "../landing-page/sticky-header";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import workerImage from "../images/workerImage.png";
 import TradiyLogo from "../images/tradiy-navy-seal.png";
@@ -32,9 +33,20 @@ const NewsletterPage = () => {
     }
   };
 
+  const navigate = useNavigate();
+  const handleSearch = (searchTerm, label) => {
+    if (searchTerm) {
+      navigate(
+        `/search?query=${encodeURIComponent(
+          searchTerm
+        )}&label=${encodeURIComponent(label)}`
+      );
+    }
+  };
+
   return (
     <>
-      <StickyHeader />
+      <StickyHeader handleSearch={handleSearch} />
       <div className="newsletter-page">
         <div className="newsletter-container">
           {/* Left Side - Form */}

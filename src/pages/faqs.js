@@ -1,10 +1,42 @@
 import "../App.css";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StickyHeader from "../landing-page/sticky-header";
 import Footer from "../landing-page/footer";
 import searchIcon from "../images/search-blue.png";
 
 const questionsData = [
+  {
+    category: "GENERAL FAQS",
+    question: "What is Tradiy?",
+    answer:
+      "Tradiy is an online directory connecting homeowners in Scotland with verified tradespeople. It’s designed to make finding trusted professionals for home projects quick, simple, and stress-free.",
+  },
+  {
+    category: "GENERAL FAQS",
+    question: "How does Tradiy ensure tradespeople are reliable?",
+    answer:
+      "All tradespeople listed on Tradiy are personally vetted by our team. They must provide valid ID, public liability insurance, and relevant certifications to be verified.",
+  },
+  {
+    category: "GENERAL FAQS",
+    question: "Is Tradiy free to use?",
+    answer:
+      "Yes, Tradiy is free for homeowners to browse and contact tradespeople. Tradespeople can currently sign up and get verified for free as well..",
+  },
+  {
+    category: "GENERAL FAQS",
+    question: "How do I search for tradespeople on Tradiy?",
+    answer:
+      "You can search the directory by trade and location. For example, enter “electrician in Glasgow” or “plumber in Ayrshire” to find professionals near you.",
+  },
+  {
+    category: "GENERAL FAQS",
+    question: "Can homeowners leave reviews?",
+    answer:
+      "Currently, our team personally vets all tradespeople. In the future, homeowners will be able to leave reviews to further help others make informed decisions.",
+  },
+
   {
     category: "FOR TRADESPEOPLE",
     question: "What is Tradiy?",
@@ -155,42 +187,22 @@ const questionsData = [
     answer:
       "Tradiy requires tradespeople to provide valid ID, insurance, and proof of qualifications. Additionally, you can check reviews from previous customers to confirm their reliability.",
   },
-
-  {
-    category: "GENERAL FAQS",
-    question: "What is Tradiy?",
-    answer:
-      "Tradiy is an online directory connecting homeowners in Scotland with verified tradespeople. It’s designed to make finding trusted professionals for home projects quick, simple, and stress-free.",
-  },
-  {
-    category: "GENERAL FAQS",
-    question: "How does Tradiy ensure tradespeople are reliable?",
-    answer:
-      "All tradespeople listed on Tradiy are personally vetted by our team. They must provide valid ID, public liability insurance, and relevant certifications to be verified.",
-  },
-  {
-    category: "GENERAL FAQS",
-    question: "Is Tradiy free to use?",
-    answer:
-      "Yes, Tradiy is free for homeowners to browse and contact tradespeople. Tradespeople can currently sign up and get verified for free as well..",
-  },
-  {
-    category: "GENERAL FAQS",
-    question: "How do I search for tradespeople on Tradiy?",
-    answer:
-      "You can search the directory by trade and location. For example, enter “electrician in Glasgow” or “plumber in Ayrshire” to find professionals near you.",
-  },
-  {
-    category: "GENERAL FAQS",
-    question: "Can homeowners leave reviews?",
-    answer:
-      "Currently, our team personally vets all tradespeople. In the future, homeowners will be able to leave reviews to further help others make informed decisions.",
-  },
 ];
 
 const FAQs = () => {
   const [search, setSearch] = useState("");
   const [openIndexes, setOpenIndexes] = useState({});
+
+  const navigate = useNavigate();
+  const handleSearch = (searchTerm, label) => {
+    if (searchTerm) {
+      navigate(
+        `/search?query=${encodeURIComponent(
+          searchTerm
+        )}&label=${encodeURIComponent(label)}`
+      );
+    }
+  };
 
   // Group FAQs by category
   const categories = [...new Set(questionsData.map((faq) => faq.category))];
@@ -244,7 +256,7 @@ const FAQs = () => {
 
   return (
     <>
-      <StickyHeader />
+      <StickyHeader handleSearch={handleSearch} />
       <div className="faqs-container">
         <div className="faqs-content">
           <section className="faqs-hero">

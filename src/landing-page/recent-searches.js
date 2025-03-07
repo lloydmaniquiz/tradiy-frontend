@@ -1,38 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import dropDownOpen from "../images/up-white.png";
 import dropDownClosed from "../images/down-white.png";
 
-const RecentSearches = () => {
-  const [searches, setSearches] = useState([
-    { service: "Service A", postcode: "KA22 7HF", time: "2 days ago" },
-    { service: "Service B", postcode: "KA22 7HF", time: "4 weeks ago" },
-    { service: "Service C", postcode: "KA22 7HF", time: "3 months ago" },
-    { service: "Service D", postcode: "KA22 7HF", time: "5 months ago" },
-    { service: "Service E", postcode: "KA22 7HF", time: "5 months ago" },
-    { service: "Service F", postcode: "KA22 7HF", time: "5 months ago" },
-    { service: "Service G", postcode: "KA22 7HF", time: "5 months ago" },
-  ]);
+// Utility function to format time in human-readable format
+const timeAgo = (time) => {
+  const now = new Date();
+  const searchTime = new Date(time);
+  const diffInSeconds = Math.floor((now - searchTime) / 1000);
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  const diffInHours = Math.floor(diffInMinutes / 60);
 
+  if (diffInSeconds < 60) return "Just now";
+  if (diffInMinutes < 60)
+    return `${diffInMinutes} minute${diffInMinutes > 1 ? "s" : ""} ago`;
+  if (diffInHours < 24)
+    return `${diffInHours} hour${diffInHours > 1 ? "s" : ""} ago`;
+  return searchTime.toLocaleString(); // Fallback to full date
+};
+
+const RecentSearches = ({ handleSearch }) => {
+  const [searches, setSearches] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+
+  // Load recent searches from localStorage
+  useEffect(() => {
+    const storedSearches =
+      JSON.parse(localStorage.getItem("recentSearches")) || [];
+    setSearches(storedSearches);
+  }, []);
 
   // Toggle dropdown visibility
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  // Handle clicking a search item
+  // Handle search click
   const handleSearchClick = (search) => {
-    alert(`You selected: ${search.service}, ${search.postcode}`);
+    handleSearch(search.service, search.postcode);
   };
 
-  // Handle deleting a search item
+  // Delete a search from recent searches
   const handleDelete = (index) => {
     const updatedSearches = searches.filter((_, i) => i !== index);
     setSearches(updatedSearches);
+    localStorage.setItem("recentSearches", JSON.stringify(updatedSearches)); // Save updated searches to localStorage
   };
 
-  // Limit visible items to the first 6
+  // Limit the visible recent searches to 6
   const visibleSearches = searches.slice(0, 6);
 
   return (
@@ -41,7 +56,7 @@ const RecentSearches = () => {
         <span>Recent searches:</span>
         <img
           className="dropdown-arrow"
-          src={isOpen ? dropDownOpen : dropDownClosed} // Use images for the open/closed state
+          src={isOpen ? dropDownOpen : dropDownClosed}
           alt="dropdown arrow"
         />
       </div>
@@ -55,14 +70,14 @@ const RecentSearches = () => {
                   onClick={() => handleSearchClick(search)}
                 >
                   <div className="info-left">
-                    <small>{search.time}</small>
+                    <small>{timeAgo(search.timestamp)}</small>
                     <p>{search.service}</p>
                     <span>{search.postcode}</span>
                   </div>
                   <button
                     className="delete-btn"
                     onClick={(e) => {
-                      e.stopPropagation();
+                      e.stopPropagation(); // Prevent triggering search click when deleting
                       handleDelete(index);
                     }}
                   >

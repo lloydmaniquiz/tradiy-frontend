@@ -1,23 +1,41 @@
-import React from 'react';
-import '../App.css';
+import React from "react";
+import "../App.css";
 import { useNavigate } from "react-router-dom";
-import SearchBar from './search-bar';
+import SearchBar from "./search-bar";
 import TradiyLogo from "../images/tradiy-navy-seal.png";
-import BurgerDropdown from './burger.js';
+import BurgerDropdown from "./burger.js";
+import CarouselSearch from "./carousel-search.js";
 
-function StickyHeader() {
+function StickyHeader({ handleSearch }) {
   const navigate = useNavigate();
   const home = () => {
     navigate("/");
-};
+  };
+
   return (
-    <header className="sticky-header visible"> {/* Always apply 'visible' when it is sticky */}
-        <img className="tradiy-logo" src={TradiyLogo} alt='Tradiy-Logo' onClick={home}/>
-        <SearchBar className="sticky-search-bar" />
-        <div className='sticky-burger-wrapper'>
+    <header className="sticky-header visible">
+      <div className="sticky-carousel-wrapper">
+        <div className="sticky-wrapper">
+          <img
+            className="tradiy-logo"
+            src={TradiyLogo}
+            alt="Tradiy-Logo"
+            onClick={home}
+          />
+          {/* Pass handleSearch to SearchBar */}
+          <SearchBar
+            className="sticky-search-bar"
+            handleSearch={handleSearch}
+          />
+          <div className="sticky-burger-wrapper">
             <p>Be a Tradiy Trader</p>
             <BurgerDropdown />
+          </div>
         </div>
+        <div className="sticky-carousel">
+          <CarouselSearch handleSearch={handleSearch} />
+        </div>
+      </div>
     </header>
   );
 }

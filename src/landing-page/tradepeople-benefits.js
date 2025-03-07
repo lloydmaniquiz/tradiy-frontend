@@ -59,7 +59,7 @@ const BenefitsTradespeople = () => {
           window.open("#/sign-up", "_blank", "noopener,noreferrer")
         }
       >
-        Be a Tradiy Trader
+        Be a Tradiy Trader!
       </button>
 
       <div className="coming-soon">

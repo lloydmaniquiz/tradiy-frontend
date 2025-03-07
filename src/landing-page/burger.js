@@ -20,12 +20,20 @@ const BurgerDropdown = () => {
         <div className="dropdown-menu">
           <ul>
             <li>
-              <Link to="/login" onClick={() => setIsOpen(false)}>
+              <Link
+                to="/login"
+                target="_blank"
+                onClick={() => setIsOpen(false)}
+              >
                 Login
               </Link>
             </li>
             <li>
-              <Link to="/sign-up" onClick={() => setIsOpen(false)}>
+              <Link
+                to="/sign-up"
+                target="_blank"
+                onClick={() => setIsOpen(false)}
+              >
                 Sign Up
               </Link>
             </li>
