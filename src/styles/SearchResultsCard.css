@@ -1,0 +1,110 @@
+.search-result-card {
+  background: #f2f4fa;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 350px;
+  padding: 15px;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.badge {
+  background: #eee;
+  color: #333;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.bookmark {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: gold;
+  cursor: pointer;
+}
+
+.results-image-container {
+  position: relative;
+}
+
+.results-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.logo-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: black;
+  color: white;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.business-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.business-address {
+  font-size: 14px;
+  color: gray;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.service {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.check-icon {
+  color: green;
+  margin-right: 5px;
+}
+
+.rating-reviews {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.star-icon {
+  color: gold;
+  margin-right: 5px;
+}
+
+.rating {
+  font-weight: bold;
+}
+
+.reviews {
+  color: gray;
+}

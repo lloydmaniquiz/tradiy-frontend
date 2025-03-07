@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Routes, Route, useLocation } from "react-router-dom"; // Removed HashRouter here
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom"; // Removed HashRouter here
 import ScrollToTop from "./components/ScrollToTop";
 import "./App.css";
 import Header from "./landing-page/header";
@@ -25,22 +25,38 @@ import FAQs from "./pages/faqs";
 import ContactUs from "./pages/contact-us";
 import TradiyBenefits from "./landing-page/tradiy-benefits";
 import NewsletterPage from "./pages/newsletter";
+import Directory from "./pages/directory";
+import SearchResults from "./pages/SearchResults";
+import TraderProfile from "./pages/traders-profile";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const searchBarRef = useRef(null);
   const location = useLocation();
 
+  const navigate = useNavigate();
+
+  const handleSearch = (searchTerm, label) => {
+    if (searchTerm) {
+      navigate(
+        `/search?query=${encodeURIComponent(
+          searchTerm
+        )}&label=${encodeURIComponent(label)}`
+      );
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (searchBarRef.current) {
         const rect = searchBarRef.current.getBoundingClientRect();
-        setShowStickyHeader(rect.top <= 0);
+        const offset = -120; // Adjust this value to control how much you need to scroll before the header appears
+        setShowStickyHeader(rect.top <= offset);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll();
+    handleScroll(); // Call the function initially to check the scroll position
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -49,7 +65,7 @@ function App() {
     <div className="landing-page">
       <ScrollToTop /> {/* Add ScrollToTop here */}
       {location.pathname === "/" && <Header />}
-      {showStickyHeader && <StickyHeader />}
+      {showStickyHeader && <StickyHeader handleSearch={handleSearch} />}
       <Routes>
         <Route
           path="/"
@@ -61,10 +77,10 @@ function App() {
                   Your directory for verified tradespeople in Ayrshire &
                   Glasgow.
                 </p>
-                <SearchBar ref={searchBarRef} />
-                <RecentSearches />
+                <SearchBar ref={searchBarRef} handleSearch={handleSearch} />
+                <RecentSearches handleSearch={handleSearch} />
               </div>
-              <CarouselSearch />
+              <CarouselSearch handleSearch={handleSearch} />
               <HowItWorks />
               <BenefitsTradespeople />
               <Questions />
@@ -90,6 +106,9 @@ function App() {
         <Route path="/faqs" element={<FAQs />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/newsletter" element={<NewsletterPage />} />
+        <Route path="/directory" element={<Directory />} />
+        <Route path="/search" element={<SearchResults />} />
+        <Route path="/trader/:profileId" element={<TraderProfile />} />
       </Routes>
     </div>
   );

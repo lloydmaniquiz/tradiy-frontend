@@ -169,11 +169,11 @@
   background-size: cover; /* Ensure the image covers the entire element */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
-  height: 900px; /* Ensure the background takes up the full height of the viewport */
+  height: 640px; /* Ensure the background takes up the full height of the viewport */
 }
 
 .hero-content {
-  height: 863px;
+  height: 640px;
   width: 100%; /* Use 100% for full-width or adjust as needed */
   text-align: center;
   border-radius: 8px;
@@ -182,11 +182,12 @@
   justify-content: center; /* Center horizontally */
   margin: 0 auto; /* Center within the parent container if width is less than 100% */
   padding-top: 3rem;
+  margin-bottom: 50px;
 }
 
 .hero-content h2 {
-  padding-top: 15%;
-  font-size: 6rem;
+  padding-top: 8%;
+  font-size: 5rem;
   color: #000839;
   font-family: "Hanken Grotesk", Arial;
   line-height: 5rem;
@@ -206,7 +207,8 @@
 .search-bar {
   display: flex;
   justify-content: center;
-  margin-left: 50px;
+  margin-left: 80px;
+  z-index: 1000;
 }
 
 /* Dropdown and input styling */
@@ -228,9 +230,9 @@
   padding: 1.5rem;
   border-radius: 50px 0px 0px 50px;
   border: none;
-  border-top: 2px solid #bbbcc0; /* Top border */
-  border-left: 2px solid #bbbcc0; /* Left border */
-  border-bottom: 2px solid #bbbcc0; /* Bottom border */
+  border-top: 1px solid #bbbcc0; /* Top border */
+  border-left: 1px solid #bbbcc0; /* Left border */
+  border-bottom: 1px solid #bbbcc0; /* Bottom border */
   font-size: medium;
   font-family: "Hanken Grotesk", Arial;
   font-weight: 600;
@@ -263,17 +265,30 @@
   margin: 0 10px; /* Adjust spacing between elements */
 }
 
+.search-bar .dropdown:focus {
+  border: none; /* Remove the border on focus */
+  outline: none; /* Optionally remove the outline */
+}
+
+.input-wrapper:focus {
+  border: none; /* Remove the border on focus */
+  outline: none; /* Optionally remove the outline */
+}
+
 .search-bar input {
   padding: 1.5rem;
   border-radius: 0px 50px 50px 0px;
   border: none;
-  border-top: 2px solid #bbbcc0; /* Top border */
-  border-right: 2px solid #bbbcc0; /* Left border */
-  border-bottom: 2px solid #bbbcc0; /* Bottom border */
+  border: 2px solid #bbbcc0; /* Top border */
+  border-left: 1px solid #bbbcc0;
   font-size: medium;
   font-family: "Hanken Grotesk", Arial;
   font-weight: 600;
   width: 100%;
+}
+
+.search-bar input:focus {
+  border: 1px solid #bbbcc0; /* Top border */
 }
 
 .search-bar button {
@@ -292,11 +307,96 @@
   height: 17px;
 }
 
+/* Custom Dropdown Style */
+.custom-dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 50px 0 0 50px;
+  border: 2px solid #bbbcc0; /* Top border */
+  border-right: none;
+  cursor: pointer;
+  width: 100%;
+  background-color: white;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  font-weight: 600;
+}
+
+.custom-dropdown-icon {
+  width: 15px;
+  height: 15px;
+}
+
+/* Dropdown Options */
+.dropdown-options {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #bbbcc0;
+  border-radius: 40px 10px 10px 40px;
+  width: 100%;
+  z-index: 2000;
+  max-height: 250px;
+  overflow-y: auto;
+  color: #000839;
+  margin-top: 4px;
+  padding: 20px;
+  padding-right: 12px !important; /* Adding space for the scrollbar */
+  z-index: 1000;
+}
+
+/* Custom scrollbar */
+.dropdown-options::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Scrollbar track */
+.dropdown-options::-webkit-scrollbar-track {
+  border-radius: 10px; /* Optional: round corners of the track */
+}
+
+/* Scrollbar thumb */
+.dropdown-options::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 10px; /* Keep the border radius on the thumb */
+  height: 40%; /* Make the thumb smaller than the container */
+}
+
+/* Option Style */
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 20px;
+  z-index: 1000;
+}
+
+.dropdown-option img {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+}
+
+.dropdown-option:hover {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+}
+
+.dropdown-option span {
+  font-size: medium;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 600;
+}
+
 .recent-searches {
   margin-top: 2rem;
   position: relative;
   font-size: small;
   font-family: "Hanken Grotesk", Arial;
+  z-index: 100;
 }
 
 .dropdown-toggle {
@@ -375,7 +475,8 @@
   padding: 0.6rem;
   border-radius: 4px;
   cursor: pointer;
-  width: 142px;
+  width: 212px;
+  overflow: hidden; /* Ensure overflowing content is clipped */
 }
 
 .search-card:hover {
@@ -389,11 +490,20 @@
   justify-content: flex-start; /* Keep elements aligned to the left */
 }
 
+.search-info p,
+.search-info span {
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Clip the text */
+  text-overflow: ellipsis; /* Display ellipsis (...) for overflowing text */
+}
+
 .search-info p {
   font-weight: bold;
   font-family: "Hanken Grotesk", Arial;
   font-size: large;
   margin: 0;
+  max-width: 150px;
+  min-width: 150px;
 }
 
 .search-info span {
@@ -401,6 +511,7 @@
   font-size: small;
   color: #000839;
   font-weight: 500;
+  max-width: 75px;
 }
 
 .search-info small {
@@ -445,11 +556,11 @@
 /* Carousel Search */
 .carousel-combine {
   text-align: center;
-  padding: 2rem;
   background-color: #fff;
   color: #333;
   font-family: Arial, sans-serif;
-  margin-bottom: 80px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .recent-searches-carousel {
@@ -457,10 +568,9 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin: 3rem 0;
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: 100%; /* Maximize the width of the carousel container */
 }
 
 .carousel-button {
@@ -470,7 +580,7 @@
 }
 
 .carousel-wrapper {
-  width: 80%;
+  width: 88%; /* Make the carousel wrapper fit 90% of the width */
   overflow: hidden;
   position: relative;
 }
@@ -478,7 +588,7 @@
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out; /* Smooth sliding */
-  width: calc(12 * 120px); /* Total width for all items */
+  width: calc(12 * 120px); /* Adjust total width based on the number of items */
 }
 
 .carousel-container {
@@ -790,6 +900,7 @@
   transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
   font-weight: 520;
   margin-bottom: 6rem;
+  font-family: "Hanken Grotesk", Arial;
 }
 
 .diy-button:hover {
@@ -1067,6 +1178,9 @@
   justify-content: space-between;
   align-items: center;
   width: 100%; /* Make it adapt to screen width */
+  font-size: 14px;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
 }
 
 .faq-header.open {
@@ -1090,6 +1204,10 @@
   font-size: large;
   font-weight: 600;
   border-radius: 10px;
+}
+
+.faq-content p {
+  font-size: 18px;
 }
 
 /* LOCAL TRADES */
@@ -1251,22 +1369,44 @@
   font-size: 0.9rem;
 }
 
+.sticky-wrapper {
+  display: flex; /* Changed back to flex for horizontal alignment */
+  justify-content: space-evenly; /* Space between the elements */
+  align-items: center; /* Align vertically */
+  width: 100%;
+  padding: 10px 40px;
+  border-bottom: 1px solid #bbbcc0;
+}
+
+.sticky-carousel-wrapper {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.sticky-carousel {
+  transform: scale(0.8);
+}
+
 .sticky-header {
-  height: 80px;
+  height: auto;
   display: flex;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 20px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: row; /* Arrange elements in a row */
+  justify-content: space-between; /* Distribute space between elements */
+  align-items: center; /* Align items vertically */
   transition: top 0.5s ease-in-out;
+}
+
+.sticky-search-bar {
+  position: relative; /* Ensure the search bar is positioned relative */
 }
 
 .sticky-header h1 {
@@ -1296,7 +1436,6 @@
   width: 100%;
   justify-content: center;
   transform: scale(0.8);
-  margin-left: 200px;
 }
 
 .sticky-header .tradiy-logo {
@@ -1315,9 +1454,10 @@
 
 .sticky-burger-wrapper {
   display: flex;
-  width: 400px;
-  padding-right: 3rem;
+  align-items: center;
   gap: 1rem;
+  min-width: 214px;
+  position: relative;
 }
 
 /* HOW TRADIY WORKS */
@@ -1337,6 +1477,7 @@
   color: white;
   position: relative;
   font-size: x-large;
+  margin-top: 190px;
 }
 
 .htw-content {
@@ -1358,14 +1499,15 @@
 .htw-steps-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: top;
+  text-align: top;
   gap: 40px;
   margin-top: 40px;
 }
 
 .htw-step {
   width: 300px;
-  text-align: center;
+  text-align: top;
 }
 
 .htw-step h3 {
@@ -1394,7 +1536,9 @@
   font-weight: 600;
   cursor: pointer;
   font-family: "Hanken Grotesk", Arial;
-  transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Smooth hover effect */
+  transition: background-color 0.5s ease, box-shadow 0.5s ease; /* S              <iframe
+  width="360"
+  height="640"mooth hover effect */
 }
 
 .htw-search-button:hover {
@@ -1405,6 +1549,7 @@
   width: 60px; /* Adjust the size as needed */
   height: 10%;
   margin: 0 20px; /* Adjust the spacing between steps */
+  margin-top: 40px;
 }
 
 .htw-personal-dashboard {
@@ -1481,12 +1626,13 @@
 
 .htw-homeowner-header h1 {
   color: #000839;
-  padding: 20px;
+  padding: 12px;
   background-color: #ffbc58;
-  width: 380px;
+  width: 340px;
   border-radius: 10px;
   text-align: center; /* Center the text within h1 */
   margin-bottom: 20px; /* Adds some space below the h1 */
+  font-size: 28px;
 }
 
 .htw-homeowner-header p {
@@ -1597,11 +1743,10 @@
 .htw-overlay-text {
   display: flex;
   flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center align items */
   justify-content: center; /* Center content */
-  text-align: center; /* Ensure text is centered */
+  text-align: left; /* Ensure text is left-aligned */
   color: white;
-  max-width: 800px; /* Set a max-width for better readability */
+  max-width: 980px; /* Set a max-width for better readability */
 }
 
 .htw-overlay-text h2 {
@@ -1615,6 +1760,11 @@
   font-size: 1.35rem;
   max-width: 1000px;
   margin-bottom: 20px;
+}
+
+.htw-overlay-text .button-container {
+  display: flex;
+  justify-content: flex-end; /* Align button to the right */
 }
 
 .htw-overlay-text button {
@@ -1897,6 +2047,7 @@
   color: white;
   position: relative;
   font-size: x-large;
+  margin-top: 190px;
 }
 
 .tb-content {
@@ -2095,7 +2246,7 @@
   width: 620px;
   text-align: left;
   font-size: 20px;
-  line-height: 2;
+  line-height: 2.1;
   font-weight: 500;
 }
 
@@ -2139,6 +2290,11 @@
   text-align: center; /* Ensures text is centered */
 }
 
+.tb-feedback-container p {
+  font-size: 18px;
+  font-family: "Hanken Grotesk", Arial;
+}
+
 .tb-stars {
   display: flex;
   gap: 5px;
@@ -2159,7 +2315,7 @@
 
 .video-placeholder {
   width: 320px;
-  height: 200px;
+  height: 400px;
   background-color: #e0e0e0; /* Light gray for the placeholder */
   display: flex;
   justify-content: center;
@@ -2182,6 +2338,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  margin-top: 190px;
 }
 
 .newsletter-container {

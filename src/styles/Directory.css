@@ -1,0 +1,72 @@
+.directory-container {
+  max-width: 1500px;
+  margin: 20px auto;
+  padding: 16px;
+  margin-top: 240px;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.directory-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #2ec1c7;
+  margin-bottom: 20px;
+}
+
+.directory-categories {
+  margin-top: 20px;
+}
+
+.directory-category {
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+/* Default category header */
+.directory-category-header {
+  background-color: #f2f4fa;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000839;
+}
+
+/* Active category header (when dropdown is opened) */
+.directory-category.open .directory-category-header {
+  background-color: #ffbc58;
+}
+
+/* Flex layout for services */
+.directory-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  background-color: #fff;
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.directory-service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 120px;
+  padding: 8px;
+}
+
+.directory-service-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+}
+
+.directory-service-item span {
+  font-size: 14px;
+  color: #000839;
+  margin-top: 6px;
+}
