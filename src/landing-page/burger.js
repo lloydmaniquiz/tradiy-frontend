@@ -62,7 +62,11 @@ const BurgerDropdown = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/sign-up" onClick={() => setIsOpen(false)}>
+                  <Link
+                    to="/sign-up"
+                    target="_blank"
+                    onClick={() => setIsOpen(false)}
+                  >
                     Be a Tradiy Trader
                   </Link>
                 </li>
