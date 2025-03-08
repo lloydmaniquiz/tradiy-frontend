@@ -50,7 +50,7 @@ function App() {
     const handleScroll = () => {
       if (searchBarRef.current) {
         const rect = searchBarRef.current.getBoundingClientRect();
-        const offset = -120; // Adjust this value to control how much you need to scroll before the header appears
+        const offset = -250; // Adjust this value to control how much you need to scroll before the header appears
         setShowStickyHeader(rect.top <= offset);
       }
     };

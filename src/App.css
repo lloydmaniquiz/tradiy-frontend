@@ -93,7 +93,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 10px 0;
-  z-index: 10;
+  z-index: 10000;
   min-width: 320px; /* Ensure a consistent width */
   font-family: "Hanken Grotesk", Arial;
   font-size: large;
@@ -169,11 +169,11 @@
   background-size: cover; /* Ensure the image covers the entire element */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
-  height: 640px; /* Ensure the background takes up the full height of the viewport */
+  height: 520px; /* Ensure the background takes up the full height of the viewport */
 }
 
 .hero-content {
-  height: 640px;
+  height: 520px;
   width: 100%; /* Use 100% for full-width or adjust as needed */
   text-align: center;
   border-radius: 8px;
@@ -187,7 +187,7 @@
 
 .hero-content h2 {
   padding-top: 8%;
-  font-size: 5rem;
+  font-size: 4rem;
   color: #000839;
   font-family: "Hanken Grotesk", Arial;
   line-height: 5rem;
@@ -195,7 +195,6 @@
 
 .hero-content p {
   font-size: 2rem;
-  padding-top: 2rem;
   margin-bottom: 4rem;
   font-weight: 700;
   font-family: "Hanken Grotesk", Arial;
@@ -218,11 +217,23 @@
   align-items: center;
   max-width: 1000px;
   width: 100%;
+  box-sizing: border-box; /* Ensures padding/border don't affect width */
 }
 
 .search-bar .input-wrapper .dropdown-wrapper {
   position: relative;
   width: 100%;
+  box-sizing: border-box; /* Ensures padding/border don't affect width */
+}
+
+@media (max-width: 768px) {
+  .search-bar .input-wrapper {
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .search-bar .input-wrapper .dropdown-wrapper {
+    font-size: 14px; /* Adjust font size for better readability */
+  }
 }
 
 .search-bar .dropdown {
@@ -263,11 +274,6 @@
   width: 3px;
   background-color: #bbbcc0; /* Divider color */
   margin: 0 10px; /* Adjust spacing between elements */
-}
-
-.search-bar .dropdown:focus {
-  border: none; /* Remove the border on focus */
-  outline: none; /* Optionally remove the outline */
 }
 
 .input-wrapper:focus {
@@ -322,6 +328,8 @@
   font-family: "Hanken Grotesk", Arial;
   color: #000839;
   font-weight: 600;
+  white-space: nowrap; /* Prevent text from breaking into a new line */
+  overflow: hidden; /* Hide text that exceeds the bounds */
 }
 
 .custom-dropdown-icon {
@@ -392,7 +400,7 @@
 }
 
 .recent-searches {
-  margin-top: 2rem;
+  margin-top: 1rem;
   position: relative;
   font-size: small;
   font-family: "Hanken Grotesk", Arial;
@@ -410,7 +418,7 @@
   font-size: large;
   border-radius: 8px;
   cursor: pointer;
-  max-width: 83%; /* Adjust width as per your design */
+  max-width: 85%; /* Adjust width as per your design */
   transform: translateX(10.4%); /* Shift left by half its own width */
   transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
 }
@@ -431,9 +439,9 @@
 .dropdown-content {
   position: absolute;
   top: 50px;
-  left: 50%;
+  left: 51.2%;
   transform: translateX(-49.9%);
-  width: 83%; /* Adjust width as needed */
+  width: 85%; /* Adjust width as needed */
   background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -765,6 +773,7 @@
   border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
 }
 
 .how-it-works-button:hover {
