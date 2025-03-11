@@ -1,16 +1,15 @@
 import React from "react";
 import "../App.css";
-import { useNavigate } from "react-router-dom";
 import SearchBar from "./search-bar";
 import TradiyLogo from "../images/tradiy-navy-seal.png";
 import BurgerDropdown from "./burger.js";
 import CarouselSearch from "./carousel-search.js";
 
 function StickyHeader({ handleSearch }) {
-  const navigate = useNavigate();
   const home = () => {
-    navigate("/");
+    window.location.href = "/";
   };
+  
 
   return (
     <header className="sticky-header visible">

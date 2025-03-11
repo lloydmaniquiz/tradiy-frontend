@@ -28,6 +28,7 @@ import NewsletterPage from "./pages/newsletter";
 import Directory from "./pages/directory";
 import SearchResults from "./pages/SearchResults";
 import TraderProfile from "./pages/traders-profile";
+import BlogsPage from "./pages/blogs";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -109,6 +110,7 @@ function App() {
         <Route path="/directory" element={<Directory />} />
         <Route path="/search" element={<SearchResults />} />
         <Route path="/trader/:profileId" element={<TraderProfile />} />
+        <Route path="/blogs" element={<BlogsPage />} />
       </Routes>
     </div>
   );
