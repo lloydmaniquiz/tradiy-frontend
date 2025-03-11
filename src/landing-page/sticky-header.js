@@ -7,9 +7,8 @@ import CarouselSearch from "./carousel-search.js";
 
 function StickyHeader({ handleSearch }) {
   const home = () => {
-    window.location.href = "/";
+    window.location.href = "#/";
   };
-  
 
   return (
     <header className="sticky-header visible">
