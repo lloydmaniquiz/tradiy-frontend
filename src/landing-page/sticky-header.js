@@ -7,7 +7,7 @@ import CarouselSearch from "./carousel-search.js";
 
 function StickyHeader({ handleSearch }) {
   const home = () => {
-    window.location.href = "#/";
+    window.location.href = process.env.PUBLIC_URL;
   };
 
   return (
