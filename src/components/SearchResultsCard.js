@@ -14,23 +14,35 @@ const SearchResultsCard = ({ result }) => {
 
       {/* Image Section */}
       <div className="results-image-container">
-        <img src={result.image} alt={result.name} className="results-image" />
+        <img
+          src={result.image}
+          alt={result.businessName}
+          className="results-image"
+        />
         <div className="logo-badge">LOGO</div>
       </div>
 
       {/* Business Info */}
       <div className="card-content">
-        <h3 className="business-name">{result.name}</h3>
-        <p className="business-address">{result.address}</p>
+        <h3 className="business-name">{result.businessName}</h3>
+        <p className="business-address">{result.businessAddress}</p>
 
         {/* Services */}
         <div className="services">
-          {result.services.map((service, index) => (
-            <div key={index} className="service">
-              <CheckCircle className="check-icon" size={16} />
-              {service}
-            </div>
-          ))}
+          {Array.isArray(result.services)
+            ? result.services.map((service, index) => (
+                <div key={index} className="service">
+                  <CheckCircle className="check-icon" size={16} />
+                  {service}
+                </div>
+              ))
+            : // If result.services is a string, parse it first
+              JSON.parse(result.services || "[]").map((service, index) => (
+                <div key={index} className="service">
+                  <CheckCircle className="check-icon" size={16} />
+                  {service}
+                </div>
+              ))}
         </div>
 
         {/* Rating and Reviews */}

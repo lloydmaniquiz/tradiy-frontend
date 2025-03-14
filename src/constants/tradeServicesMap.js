@@ -1,5 +1,6 @@
 export const tradeServicesMap = {
   Builder: [
+    "Builder",
     "Building Construction",
     "House Extension",
     "Loft Conversion",
@@ -7,6 +8,7 @@ export const tradeServicesMap = {
     "Structural Repairs",
   ],
   "Carpet Fitting": [
+    "Carpet Fitting",
     "Carpet Installation",
     "Carpet Removal",
     "Flooring",
@@ -14,6 +16,10 @@ export const tradeServicesMap = {
     "Rug Installation",
   ],
   "Driveways/Patios": [
+    "Driveway",
+    "Driveways",
+    "Patios",
+    "Driveways/Patios",
     "Driveway Paving",
     "Patio Installation",
     "Block Paving",
@@ -21,6 +27,7 @@ export const tradeServicesMap = {
     "Resin Driveways",
   ],
   Electrician: [
+    "Electrician",
     "Electrical Wiring",
     "Light Installation",
     "Socket Repair",
@@ -28,7 +35,9 @@ export const tradeServicesMap = {
     "Circuit Installation",
   ],
   Gardener: [
+    "Gardener",
     "Lawn Mowing",
+    "Gardening",
     "Garden Maintenance",
     "Hedge Trimming",
     "Planting",
@@ -36,6 +45,7 @@ export const tradeServicesMap = {
     "Landscaping",
   ],
   Joiner: [
+    "Joiner",
     "Woodworking",
     "Furniture Making",
     "Cabinet Installation",
@@ -43,6 +53,7 @@ export const tradeServicesMap = {
     "Staircase Installation",
   ],
   "Painter/Decorator": [
+    "Decorator",
     "Painter",
     "Paint",
     "Painting",
@@ -53,6 +64,7 @@ export const tradeServicesMap = {
     "Wallpaper Installation",
   ],
   Plasterer: [
+    "Plasterer",
     "Plastering",
     "Wall Smoothing",
     "Skim Coating",
@@ -60,6 +72,7 @@ export const tradeServicesMap = {
     "Plaster Repair",
   ],
   Plumber: [
+    "Plumber",
     "Plumbing",
     "Leak Repair",
     "Pipe Installation",
@@ -68,6 +81,8 @@ export const tradeServicesMap = {
     "Toilet Repair",
   ],
   Roofer: [
+    "Roofer",
+    "Roofing",
     "Roof Repairs",
     "Gutter Cleaning",
     "Flat Roofing",
@@ -75,6 +90,7 @@ export const tradeServicesMap = {
     "Slate Roof Installation",
   ],
   Tiler: [
+    "Tiler",
     "Tiling",
     "Tile Installation",
     "Floor Tiling",
@@ -83,6 +99,9 @@ export const tradeServicesMap = {
     "Bathroom Tiling",
   ],
   Welder: [
+    "Welding",
+    "Weld",
+    "Welder",
     "Metal Fabrication",
     "Gate Welding",
     "Fence Repair",

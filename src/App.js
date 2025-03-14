@@ -109,7 +109,7 @@ function App() {
         <Route path="/newsletter" element={<NewsletterPage />} />
         <Route path="/directory" element={<Directory />} />
         <Route path="/search" element={<SearchResults />} />
-        <Route path="/trader/:profileId" element={<TraderProfile />} />
+        <Route path="/trader/:id" element={<TraderProfile />} />
         <Route path="/blogs" element={<BlogsPage />} />
       </Routes>
     </div>
