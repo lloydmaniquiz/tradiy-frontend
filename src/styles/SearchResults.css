@@ -4,10 +4,16 @@
   color: #000839;
 }
 
+.search-results-container h1 {
+  font-size: 20px;
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+}
+
 .results-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px;
   justify-content: center;
 }
 
@@ -25,4 +31,35 @@
   .search-result-card {
     flex: 1 1 100%; /* 1 card per row on small screens */
   }
+}
+
+.sort-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-left: 3rem;
+}
+
+.sort-buttons span {
+  font-weight: bold;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.sort-buttons button {
+  border: 1px solid #000839;
+  background: transparent;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  font-weight: 600;
+}
+
+.sort-buttons button.active {
+  background: #000839;
+  color: white;
+  border-color: #000839;
 }

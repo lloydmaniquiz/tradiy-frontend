@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import SearchBar from "./search-bar";
 import TradiyLogo from "../images/tradiy-navy-seal.png";
 import BurgerDropdown from "./burger.js";
 import CarouselSearch from "./carousel-search.js";
+import FilterIcon from "../images/filter.png";
+import SearchIcon from "../images/search-navy-blue.png";
+import FilterModal from "../components/FilterModal"; // Import the modal
 
-function StickyHeader({ handleSearch }) {
-  const home = () => {
-    window.location.href = process.env.PUBLIC_URL;
+function StickyHeader({ handleSearch, disableAutoScroll, showFilterButton }) {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const handleFilter = () => {
+    setIsFilterOpen(true);
+  };
+
+  const closeFilterModal = () => {
+    setIsFilterOpen(false);
   };
 
   return (
@@ -18,9 +27,8 @@ function StickyHeader({ handleSearch }) {
             className="tradiy-logo"
             src={TradiyLogo}
             alt="Tradiy-Logo"
-            onClick={home}
+            onClick={() => (window.location.href = process.env.PUBLIC_URL)}
           />
-          {/* Pass handleSearch to SearchBar */}
           <SearchBar
             className="sticky-search-bar"
             handleSearch={handleSearch}
@@ -30,10 +38,58 @@ function StickyHeader({ handleSearch }) {
             <BurgerDropdown />
           </div>
         </div>
-        <div className="sticky-carousel">
-          <CarouselSearch handleSearch={handleSearch} />
+
+        {/* Conditionally apply class if showFilterButton is true */}
+        <div
+          className="sticky-carousel-container"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "15px",
+          }}
+        >
+          {showFilterButton && (
+            <>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "10px",
+                  marginRight: "20px",
+                }}
+              >
+                <img style={{ height: "44px" }} src={SearchIcon} alt="Search" />
+                <span className="your-search-text">Your Search</span>
+              </div>
+              <div className="vertical-divider"></div>
+            </>
+          )}
+
+          <CarouselSearch
+            handleSearch={handleSearch}
+            disableAutoScroll={disableAutoScroll}
+          />
+
+          {showFilterButton && (
+            <button
+              className="filter-button"
+              onClick={handleFilter}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "5px",
+              }}
+            >
+              <img style={{ height: "18px" }} src={FilterIcon} alt="filter" />
+              Filters
+            </button>
+          )}
         </div>
       </div>
+
+      {/* Render Filter Modal */}
+      <FilterModal isOpen={isFilterOpen} onClose={closeFilterModal} />
     </header>
   );
 }

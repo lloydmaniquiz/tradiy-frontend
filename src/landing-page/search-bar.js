@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useEffect } from "react";
+import React, { useState, forwardRef } from "react";
 import "../App.css";
 import SearchIcon from "../images/search-white.png";
 import SearchDropdown from "../images/search-dropdown.png";

@@ -8,6 +8,7 @@ export const tradeServicesMap = {
     "Structural Repairs",
   ],
   "Carpet Fitting": [
+    "Carpet",
     "Carpet Fitting",
     "Carpet Installation",
     "Carpet Removal",
@@ -16,6 +17,7 @@ export const tradeServicesMap = {
     "Rug Installation",
   ],
   "Driveways/Patios": [
+    "Patio",
     "Driveway",
     "Driveways",
     "Patios",
@@ -35,6 +37,7 @@ export const tradeServicesMap = {
     "Circuit Installation",
   ],
   Gardener: [
+    "Garden",
     "Gardener",
     "Lawn Mowing",
     "Gardening",

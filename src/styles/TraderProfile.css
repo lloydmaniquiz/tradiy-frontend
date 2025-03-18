@@ -1,124 +1,547 @@
+.trader-container {
+  max-width: 1024px;
+  margin: auto;
+}
+
 .trader-profile {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 230px;
+  max-width: 1024px;
+  margin: auto;
+  padding: 50px;
+  margin-top: 300px;
+  font-family: "Hanken Grotesk", Arial;
+  border: 1px solid #bbbcc0;
+  border-radius: 30px;
 }
 
-/* Hero Image & Gallery */
-.trader-gallery {
-  display: flex;
-  gap: 10px;
-}
-
-.main-image {
-  width: 65%;
-  position: relative;
-}
-
-.main-image img {
-  width: 100%;
+.trader-info {
   border-radius: 8px;
-}
-
-.trader-logo {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.trader-logo img {
-  width: 50px;
-  height: 50px;
-}
-
-.thumbnail-grid {
-  width: 35%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 5px;
-}
-
-.thumbnail-grid img {
-  width: 100%;
-  border-radius: 5px;
-}
-
-/* Trader Info */
-.trader-details {
   margin-top: 20px;
 }
 
-.trader-details h1 {
-  font-size: 24px;
+.trader-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000839;
 }
 
-.badge {
-  display: inline-block;
-  background-color: #ffcc00;
-  color: #333;
-  padding: 5px 10px;
-  border-radius: 5px;
+.trader-header h1 {
+  font-size: 30px;
   font-weight: bold;
-  margin-top: 5px;
+  margin: 0;
+}
+
+.quote-btn {
+  background: #000839;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 600;
+  width: 200px;
 }
 
 .trader-address {
-  font-size: 14px;
-  color: gray;
-}
-
-/* Features */
-.trader-features {
-  margin-top: 10px;
-}
-
-.trader-features span {
-  display: inline-block;
-  margin-right: 15px;
-  font-size: 14px;
-}
-
-/* Button */
-.quote-btn {
-  background-color: navy;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
   font-size: 16px;
+  color: #000839;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.trader-features {
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #000839;
+  font-weight: 500;
+}
+
+.trader-features div {
+  display: flex;
+  align-items: center; /* Centers items vertically */
+}
+
+.trader-features img {
+  height: 18px;
+  margin-right: 8px;
+}
+
+.trader-services {
+  margin-top: 30px;
+}
+
+.trader-services ul {
+  list-style: none;
+  padding: 0;
+}
+
+.trader-services li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.service {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trader-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.trader-details-box {
+  background: white;
+  border: 1px solid #bbbcc0;
+  padding: 30px 40px;
+  border-radius: 30px;
+  max-width: 600px;
+  text-align: left; /* Align text to the left */
+  font-size: 16px;
+  color: #333;
+  width: 600px;
+  margin-bottom: 10px;
+}
+
+.detail-icon {
+  height: 60px;
+}
+
+.badge-info-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  justify-content: space-between;
+}
+
+.member-operates-wrapper {
+  line-height: 1.8; /* Adjust this value as needed */
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.member-operates-wrapper p {
+  color: #000839;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.calendar-title {
+  text-align: left !important; /* Force left alignment */
+  color: #000839;
+}
+
+.calendar-container h3 {
+  margin-top: 0 !important;
+}
+
+.calendar-container {
+  margin-top: 0 !important;
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  display: block;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.calendar-note {
+  font-size: 12px;
+  text-align: left;
+  color: #000839;
+  margin-top: -10px;
+  font-style: italic;
+  line-height: 1.8;
+  padding: 20px;
+  font-weight: 500;
+}
+
+.calendar-today {
   cursor: pointer;
+  color: #000839; /* Change to your preferred color */
+  text-decoration: underline;
+}
+
+.calendar-today:hover {
+  color: #000839; /* Change to your preferred color */
+}
+
+.react-calendar {
+  border: none;
+  font-family: inherit;
+  width: 100%;
+}
+
+.react-calendar__tile--now {
+  background: #e0f7fa !important;
+}
+
+.react-calendar__tile--active {
+  background: #2ec1c7 !important;
+  color: #fff;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 20px;
+  color: #000839;
+}
+
+.calendar-header p {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.badge-info-wrapper {
+  display: flex;
+  align-items: center; /* Aligns everything in a row */
+  gap: 12px; /* Adjust spacing between elements */
+}
+
+.reviews-wrapper {
+  display: flex;
+  gap: 5px; /* Space between star, count, and text */
+  font-weight: bold;
+  color: #26c6da; /* Matches the blue color from your image */
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.reviews-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px; /* Reduce spacing between count and text */
+  line-height: 0.8; /* Reduce the line height */
+}
+
+.review-icon {
+  height: 40px; /* Adjust size of the star icon */
+}
+
+.review-count {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.review-text {
+  margin-bottom: 0;
+  font-size: 14px;
+  text-decoration: underline;
+  color: #091540; /* Darker text color */
+}
+
+.skills-list {
+  color: #000839;
+  font-weight: 500;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.skills-list img {
+  height: 16px;
+}
+
+.skills-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adjust spacing between image and text */
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.section-title {
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: 30px;
+  margin-bottom: 0;
+  margin-top: 30px;
+}
+
+.divider {
+  margin: 0 !important;
+  margin-bottom: 20px !important;
+  margin-top: 10px !important;
+}
+
+.profile-item img {
+  height: 20px;
+}
+
+.profile-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures spacing between the two columns */
+  gap: 10px;
+  width: 100%;
+  max-width: 500px; /* Adjust as needed */
+  margin-bottom: 8px;
+  line-height: 1.5;
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 500;
+}
+
+.profile-item span,
+.profile-item a {
+  flex: 1; /* Makes both spans take equal space */
+  white-space: nowrap; /* Prevents wrapping */
+}
+
+.profile-icon {
+  width: 20px; /* Adjust icon size */
+  height: 20px;
+}
+
+.about-company p {
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.company-profile {
+  margin-bottom: 40px;
+}
+
+.awards {
+  margin-bottom: 40px;
+}
+
+.award-icon {
+  height: 16px;
+}
+
+.award-item {
+  display: flex;
+  align-items: center;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  gap: 10px;
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: 16px;
+  font-weight: 500;
   margin-top: 10px;
 }
 
-.quote-btn:hover {
-  background-color: darkblue;
+/* General Styles */
+.profile-container {
+  max-width: 700px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
 }
 
-/* Services */
-.trader-services {
+/* Trader Rating Section */
+.trader-rating {
+  border-radius: 8px;
+  background: white;
+  margin-top: 40px;
+}
+
+/* Header */
+.rating-header {
   display: flex;
-  justify-content: start;
-  gap: 15px;
-  margin-top: 20px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-family: "Hanken Grotesk", Arial;
 }
 
-.service-card {
+.rating-header h2 {
+  font-size: 20px;
+  color: #333;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.btn {
+  padding: 8px 14px;
+  border: 1px solid #000839;
+  color: #000839;
+  border-radius: 50px;
+  cursor: pointer;
+  background: none;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #000839;
+  color: white;
+}
+
+/* Rating Breakdown */
+.rating-breakdown {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.rating-category {
   text-align: center;
+  flex: 1;
+  min-width: 120px;
+  margin-bottom: 10px;
+  font-family: "Hanken Grotesk", Arial;
 }
 
-.service-card img {
-  width: 40px;
-  height: 40px;
+.category-name {
+  font-weight: bold;
+  font-family: "Hanken Grotesk", Arial;
 }
 
-.service-card p {
-  font-size: 14px;
+.stars {
+  font-size: 18px;
+  color: #f39c12;
+}
+
+/* Reviews */
+.reviews {
+  margin-top: 20px;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.review {
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.review-name {
+  font-size: 16px;
+}
+
+.review-time {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Verified & Unverified Badges */
+.badge {
+  display: inline-block;
   margin-top: 5px;
+  padding: 3px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.verified {
+  background: #e0ffe0;
+  color: green;
+}
+
+.unverified {
+  background: #ffe0e0;
+  color: red;
+}
+
+/* Show all reviews button */
+.show-reviews {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+
+.trader-bio {
+  padding: 20px;
+  width: 400px;
+  border: 1px solid #bbbcc0;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  font-family: "Hanken Grotesk", Arial;
+  justify-content: space-around;
+}
+
+.trader-bio-content h3 {
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: 24px;
+  margin: 0;
+}
+
+.trader-bio .trader-profile-img {
+  height: 120px;
+  width: 120px; /* Ensure the image remains a perfect circle */
+  border-radius: 50%; /* Makes it circular */
+  border: 3px solid #000839; /* Adjust color as needed */
+  object-fit: cover; /* Ensures the image fills the space without distortion */
+}
+
+.confirmed-info span,
+li {
+  color: #000839;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.confirmed-info img {
+  height: 16px;
+}
+
+.confirmed-info {
+  align-items: center;
+}
+
+.verified-badge {
+  height: 20px;
+}
+
+.business-owner-verified-wrapper {
+  display: block;
+}
+
+.info-list li {
+  display: flex;
+  align-items: center; /* Aligns items vertically */
+  gap: 8px; /* Adds spacing between the check icon and text */
+  line-height: 1.5;
+}
+
+.info-list li img {
+  width: 16px; /* Adjust size of the check icon */
+  height: 16px;
+}
+
+.meet-the-trade-title {
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: 32px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.meet-the-trader-wrapper {
+  display: flex;
+  gap: 60px;
+}
+
+.is-verified-bio {
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.is-verified-content {
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+  margin-top: 14px;
 }

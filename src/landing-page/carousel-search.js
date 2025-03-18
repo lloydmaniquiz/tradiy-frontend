@@ -15,7 +15,7 @@ import welderIcon from "../images/carousel-search/welder.png";
 import leftNext from "../images/carousel-search/left-next.png";
 import rightNext from "../images/carousel-search/right-next.png";
 
-const CarouselSearch = ({ handleSearch, label }) => {
+const CarouselSearch = ({ handleSearch, label, disableAutoScroll }) => {
   const searches = useMemo(
     () => [
       { label: "Builder", icon: builderIcon },
@@ -53,12 +53,14 @@ const CarouselSearch = ({ handleSearch, label }) => {
   }, [totalItems]);
 
   useEffect(() => {
+    if (disableAutoScroll) return; // Skip setting interval if disabled
+
     const interval = setInterval(() => {
       handleNext();
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [handleNext]);
+  }, [handleNext, disableAutoScroll]);
 
   return (
     <div className="carousel-combine">

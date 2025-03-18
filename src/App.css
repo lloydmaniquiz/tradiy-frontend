@@ -1394,8 +1394,30 @@
   z-index: 1;
 }
 
-.sticky-carousel {
+.sticky-carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   transform: scale(0.8);
+}
+
+/* This will only apply when showFilterButton is true */
+.sticky-carousel-container.with-filter {
+}
+
+.filter-button {
+  background-color: white;
+  color: #000839;
+  border: 1px solid #000839;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-left: 20px;
+  font-family: "Hanken Grotesk", Arial;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Smooth hover effect */
 }
 
 .sticky-header {
@@ -2525,4 +2547,18 @@
   color: #000839;
   font-family: "Hanken Grotesk", Arial;
   font-weight: 600;
+}
+
+.your-search-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000839;
+  white-space: nowrap; /* Prevents wrapping */
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.vertical-divider {
+  width: 1px;
+  height: 64px; /* Adjust height to match nearby elements */
+  background-color: #ccc; /* Light gray color */
 }
