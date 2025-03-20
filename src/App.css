@@ -226,16 +226,6 @@
   box-sizing: border-box; /* Ensures padding/border don't affect width */
 }
 
-@media (max-width: 768px) {
-  .search-bar .input-wrapper {
-    padding: 1rem; /* Adjust padding for smaller screens */
-  }
-
-  .search-bar .input-wrapper .dropdown-wrapper {
-    font-size: 14px; /* Adjust font size for better readability */
-  }
-}
-
 .search-bar .dropdown {
   appearance: none; /* Remove default dropdown arrow */
   padding: 1.5rem;
@@ -2561,4 +2551,485 @@
   width: 1px;
   height: 64px; /* Adjust height to match nearby elements */
   background-color: #ccc; /* Light gray color */
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  /* Header */
+
+  .hero-content {
+    height: auto;
+    padding-top: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .hero-content h2 {
+    margin-top: 60px;
+    font-size: 1.3rem;
+    line-height: 3rem;
+    padding-top: 4%;
+    margin-bottom: 0;
+  }
+
+  .hero-content p {
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .burger-dropdown {
+    display: none;
+  }
+
+  .logo-burger img {
+    width: 100px;
+    display: block; /* Make the image a block element */
+    margin: 0 auto; /* Center the image horizontally */
+    margin-top: 40px;
+  }
+
+  .header {
+    display: none;
+  }
+
+  .hero {
+    background: none;
+  }
+
+  .custom-dropdown {
+    padding: 1rem; /* Adjust padding for mobile */
+    border-radius: 30px; /* Slightly rounded edges on mobile */
+    width: 100%;
+    font-size: 14px;
+    color: #000839;
+    border: 1px solid #bbbcc0;
+  }
+
+  /* Fix the custom dropdown icon position on mobile */
+  .search-bar .dropdown-wrapper .custom-dropdown-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 20px; /* Adjust icon size for mobile */
+    height: 20px;
+  }
+
+  /* Stack the dropdown options vertically on mobile */
+  .dropdown-options {
+    display: flex;
+    flex-direction: column; /* Stack options vertically */
+    padding: 1rem;
+    background-color: white;
+    border-radius: 10px;
+    width: 100%; /* Full width */
+  }
+
+  .dropdown-option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .dropdown-option img {
+    margin-right: 10px;
+  }
+
+  .sticky-header {
+    display: none;
+  }
+
+  .search-bar {
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+
+  .search-bar input {
+    border-radius: 50px;
+  }
+
+  .search-bar .input-wrapper {
+    display: block; /* Change display to block on mobile */
+  }
+
+  .search-bar .input-wrapper .dropdown-wrapper {
+    width: 90%; /* Ensure the dropdown wrapper takes full width */
+    margin-top: 10px; /* Optional: Adds spacing between stacked elements */
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .input-wrapper input {
+    padding: 1rem;
+    width: 90%;
+    margin-bottom: 10px;
+    border: 1px solid #bbbcc0;
+    font-size: 14px;
+  }
+
+  .search-bar button {
+    transform: translateX(0); /* Reset horizontal translation to center it */
+    width: 90%; /* Make button take the full width on mobile */
+    padding: 1rem; /* Adjust padding for better proportions */
+    border-radius: 50px; /* Adjust border radius for a slightly less rounded button */
+    background-color: #2ec1c7;
+  }
+
+  .search-bar .dropdown-wrapper .custom-dropdown-icon {
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    height: 10px;
+    pointer-events: none; /* Ensure the dropdown works despite the custom icon */
+  }
+
+  .recent-searches {
+    display: none;
+  }
+
+  .carousel-combine {
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin-top: 60px;
+    margin-bottom: 10px;
+  }
+
+  .recent-searches-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    width: 90%; /* Maximize the width of the carousel container */
+    margin: 0 auto;
+  }
+
+  .carousel-wrapper {
+    width: 100%;
+  }
+
+  .carousel-item-button {
+    width: 35%;
+    margin: 0 8px;
+  }
+
+  .carousel-item-image {
+    width: 30px !important; /* Adjust image size for mobile */
+    height: 30px !important;
+  }
+
+  .carousel-item-label {
+    font-size: 12px; /* Smaller label font for mobile */
+  }
+
+  /* Make sure the carousel items are scrollable */
+  .carousel-track {
+    width: 90%; /* Display 4 items at a time */
+  }
+
+  .carousel-button {
+    margin-top: -10px;
+  }
+
+  .carousel-button img {
+    height: 28px;
+    width: 28px;
+  }
+
+  .triple-image {
+    flex-direction: column;
+    align-items: center;
+    gap: 0rem; /* Reduce gap for mobile */
+    margin-bottom: 20px;
+  }
+
+  .image-item {
+    max-width: 95%; /* Ensure items fill the width on mobile */
+    padding: 1rem;
+    display: flex;
+    gap: 10px;
+  }
+
+  .image-item img {
+    width: 90px;
+    margin: 0;
+  }
+
+  .image-item {
+    text-align: left; /* Ensures all text in the image-item is aligned to the left */
+    display: flex;
+    align-items: center; /* Align children to the start of the flex container */
+    gap: 1rem; /* Add space between the image and the text */
+  }
+
+  .image-text {
+    font-size: 1.1rem; /* Smaller text on mobile */
+    margin-top: 1rem;
+    text-align: left !important; /* Ensure it's left-aligned */
+    margin: 0; /* Remove any unwanted margins */
+  }
+
+  .image-item p {
+    text-align: left; /* Make sure paragraph is aligned to the left */
+    font-size: 0.7rem;
+  }
+
+  .reversed {
+    flex-direction: column-reverse; /* Reverses the order (image at the bottom, text on top) */
+    text-align: right;
+  }
+
+  .reversed p {
+    text-align: right;
+  }
+
+  .span-p-wrapper {
+    text-align: rigt;
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .image-item.reversed {
+    display: flex; /* Make the container a flexbox */
+    flex-direction: row-reverse; /* Reverse the order so the image comes after the text */
+    text-align: right !important;
+    align-items: center; /* Vertically center the items */
+    gap: 1rem; /* Add some space between the image and text */
+  }
+
+  .how-it-works h2 {
+    font-size: 1.7rem;
+    margin-bottom: 0.5rem;
+    color: #1f2a56;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  .how-it-works p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #1f2a56;
+    margin: 0;
+    margin-bottom: 40px;
+    font-weight: 600;
+  }
+
+  .how-it-works {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f7f9fc;
+    color: #333;
+    font-family: "Hanken Grotesk", Arial, sans-serif;
+  }
+
+  .how-it-works-image {
+    border-radius: 8px;
+    height: auto;
+    width: 90%;
+  }
+
+  .step-text p {
+    margin-bottom: 0;
+  }
+
+  .how-it-works-button {
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .benefits-tradespeople h2 {
+    font-size: 1.5rem;
+    margin-top: 0px;
+    margin-bottom: 0.5rem;
+    color: #1f2a56;
+    padding-bottom: 1rem;
+  }
+
+  .benefits-tradespeople {
+    padding-top: 2rem;
+  }
+
+  .shake-hands h3 {
+    color: #fff;
+    background-color: #000839;
+    font-size: large;
+    border-radius: 10px;
+    text-align: center;
+    padding: 3px 10px 3px 10px;
+  }
+
+  .shake-hands {
+    height: 100px;
+  }
+
+  .benefits-set {
+    background-color: #f2f4fa;
+    padding: 1.5rem;
+    border-radius: 20px;
+    max-width: 320px;
+    text-align: left;
+    display: flex; /* Arrange the container in a row */
+    flex-direction: row; /* Align items in a row (image and text side by side) */
+    align-items: center; /* Vertically center align the items */
+    gap: 10px; /* Space between image and text */
+  }
+
+  .benefits-set img {
+    width: 50px;
+    padding-bottom: 0px;
+  }
+
+  .benefits-set div {
+    display: flex;
+    flex-direction: column; /* Stack the text (h3 and p) vertically */
+    justify-content: center; /* Center the text vertically */
+  }
+
+  .benefits-set h3 {
+    font-size: large;
+    margin: 0;
+    color: #000839;
+    text-align: left;
+  }
+
+  .benefits-set p {
+    font-size: small;
+    color: #000839;
+    font-weight: 500;
+    text-align: left;
+    margin: 0; /* Remove any extra margin */
+  }
+
+  .coming-soon {
+    display: none;
+  }
+
+  .reviews-wrapper h1 {
+    color: #000839;
+    font-size: xx-large;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .review-item {
+    position: relative;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    background-color: #fdfeff;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    height: 305px;
+    font-family: "Hanken Grotesk", Arial;
+    font-size: small;
+    margin-bottom: 60px; /* Space between each review item */
+    max-width: 300px;
+    margin-top: 15px;
+  }
+
+  .slick-dots {
+    display: none !important;
+  }
+
+  .faqs {
+    font-family: "Hanken Grotesk", Arial;
+    color: #000839;
+    display: flex; /* Use Flexbox for centering */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Optional: Centers text inside h1 and h3 */
+    padding-top: 1rem !important;
+    margin: 0;
+  }
+
+  .faqs h3 {
+    margin-top: -150px;
+    font-size: 15px;
+  }
+
+  .faqs h1 {
+    font-size: 28px;
+  }
+
+  .faq-container {
+    max-width: 1000px;
+    margin-bottom: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 90%;
+    text-align: start;
+  }
+
+  .faq-header {
+    display: flex;
+    justify-content: space-between; /* Centers the h2 horizontally */
+    align-items: center !important; /* Centers the h2 vertically */
+  }
+
+  .faq-header h2 {
+    font-size: 14px;
+    text-align: left; /* This will center the text horizontally */
+    margin: 0;
+  }
+
+  .faqs-link-directory {
+    margin-top: 10px;
+    text-align: right; /* Aligns text to the right */
+    text-decoration: underline;
+    font-size: 15px;
+    display: flex;
+    justify-content: flex-end; /* Aligns the content to the right */
+    cursor: pointer;
+    width: 85%; /* Ensures it takes up the full width of the parent container */
+  }
+
+  .faq-content {
+    margin-top: 6px;
+    background-color: #ecedf2;
+    padding: 1.2rem;
+    transition: background-color 0.3s ease;
+    font-size: large;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+
+  .faq-content p {
+    font-size: 12px;
+  }
+
+  .local-trades-dropdown {
+    background-color: #f2f4fa;
+    font-family: "Hanken Grotesk", Arial;
+    font-size: medium;
+    font-weight: 600;
+    color: #000839;
+    border: none;
+    padding: 10px 20px;
+    padding-left: 1.5rem; /* Adjust for smaller screens */
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%; /* Use percentage to make it responsive */
+    max-width: 1000px; /* Optional: Limit the maximum width */
+    margin: 0 auto; /* Center horizontally */
+    margin-bottom: 10px;
+    transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .local-trades-dropdown li {
+    display: flex;
+    gap: 10px;
+  }
 }

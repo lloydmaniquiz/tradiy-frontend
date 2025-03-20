@@ -22,35 +22,43 @@ const BenefitsTradespeople = () => {
       <div className="benefits-wrapper">
         <div className="benefits-set">
           <img src={free} alt="free" />
-          <h3>Free to Join</h3>
-          <p>
-            Create a profile and list your services for free. There are no
-            hidden fees or commissions.
-          </p>
+          <div>
+            <h3>Free to Join</h3>
+            <p>
+              Create a profile and list your services for free. There are no
+              hidden fees or commissions.
+            </p>
+          </div>
         </div>
         <div className="benefits-set">
           <img src={trust} alt="trust" />
-          <h3>Build Trust with Verification</h3>
-          <p>
-            Upload your qualifications, insurance, and ID to get verified and
-            stand out as a trusted professional.
-          </p>
+          <div>
+            <h3>Build Trust with Verification</h3>
+            <p>
+              Upload your qualifications, insurance, and ID to get verified and
+              stand out as a trusted professional.
+            </p>
+          </div>
         </div>
         <div className="benefits-set">
           <img src={expert} alt="expert" />
-          <h3>Showcase Your Expertise</h3>
-          <p>
-            Add photos of your work, share customer testimonials, and highlight
-            your skills to attract more clients.
-          </p>
+          <div>
+            <h3>Showcase Your Expertise</h3>
+            <p>
+              Add photos of your work, share customer testimonials, and
+              highlight your skills to attract more clients.
+            </p>
+          </div>
         </div>
         <div className="benefits-set">
           <img src={connect} alt="connect" />
-          <h3>Connect with Local Customers</h3>
-          <p>
-            Homeowners in your area can find your profile, contact you directly,
-            and request quotes for their projects.
-          </p>
+          <div>
+            <h3>Connect with Local Customers</h3>
+            <p>
+              Homeowners in your area can find your profile, contact you
+              directly, and request quotes for their projects.
+            </p>
+          </div>
         </div>
       </div>
       <button

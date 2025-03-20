@@ -40,13 +40,19 @@ const HowItWorks = () => {
             desc: "When you hire through Tradiy, you’re helping local tradespeople in your area thrive. It’s a win-win for your project and the community.",
           },
         ].map((item, idx) => (
-          <div className="image-item" key={idx}>
+          <div
+            className={`image-item ${idx === 1 ? "reversed" : ""}`} // Add "reversed" class for the second item
+            key={idx}
+          >
             <img src={item.img} alt={item.alt} />
-            <span className="image-text">{item.text}</span>
-            <p>{item.desc}</p>
+            <div className="span-p-wrapper">
+              <span className="image-text">{item.text}</span>
+              <p>{item.desc}</p>
+            </div>
           </div>
         ))}
       </div>
+
       <div className="how-it-works">
         <h2>How It Works for Homeowners</h2>
         <p>
