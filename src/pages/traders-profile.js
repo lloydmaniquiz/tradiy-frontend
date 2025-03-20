@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import StickyHeader from "../landing-page/sticky-header";
 import Footer from "../landing-page/footer";
 import "../styles/TraderProfile.css";
@@ -19,6 +19,7 @@ import WebsiteURL from "../images/websiteURL.png";
 import TraderRating from "../components/TraderRating";
 import VerifiedTraderBadge from "../images/verified-trader.png";
 import profilePlaceholder from "../images/profile-placeholder.jpg";
+import Map from "../components/BusinessMap";
 
 const TraderProfile = () => {
   const { id } = useParams();
@@ -28,25 +29,30 @@ const TraderProfile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [date, setDate] = useState(new Date());
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const searchQuery = queryParams.get("query");
 
   useEffect(() => {
     const fetchTraderData = async () => {
       try {
         const response = await fetch("http://127.0.0.1:8000/tradespeople");
         const data = await response.json();
-        console.log("Fetched Trader Data:", data);
-
         const foundTrader = data.find((t) => t.id === traderId);
-        console.log("Found Trader:", foundTrader);
 
         if (foundTrader) {
-          setTrader(foundTrader);
+          // Parse the weeklySchedule string into an object if it's a string
+          const parsedSchedule =
+            typeof foundTrader.weeklySchedule === "string"
+              ? JSON.parse(foundTrader.weeklySchedule)
+              : foundTrader.weeklySchedule;
+
+          setTrader({ ...foundTrader, weeklySchedule: parsedSchedule });
         } else {
           setError("Trader not found");
         }
       } catch (err) {
         setError("Failed to fetch trader data");
-        console.error("Error fetching data:", err);
       } finally {
         setLoading(false);
       }
@@ -54,6 +60,80 @@ const TraderProfile = () => {
 
     fetchTraderData();
   }, [traderId]);
+
+  // Check if trader data is available before rendering schedule
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!trader || !trader.weeklySchedule) {
+    return <div>No schedule available</div>;
+  }
+
+  const parsedSchedule =
+    typeof trader.weeklySchedule === "string"
+      ? JSON.parse(trader.weeklySchedule)
+      : trader.weeklySchedule;
+
+  const getScheduleStatus = (schedule) => {
+    if (!schedule.available) {
+      return "Closed";
+    }
+
+    const currentTime = new Date();
+    const startTime = new Date();
+    const [startHour, startMinute] = schedule.startTime.split(":");
+    startTime.setHours(startHour, startMinute, 0, 0);
+
+    const endTime = new Date();
+    const [endHour, endMinute] = schedule.endTime.split(":");
+    endTime.setHours(endHour, endMinute, 0, 0);
+
+    if (currentTime < startTime) {
+      return "Closed";
+    } else if (currentTime >= startTime && currentTime <= endTime) {
+      return "Open";
+    } else {
+      return "Closed";
+    }
+  };
+
+  const getTodayScheduleStatus = () => {
+    const currentDay = new Date()
+      .toLocaleString("en-US", { weekday: "long" })
+      .toLowerCase(); // Get today's day name, e.g., "monday", "wednesday"
+
+    // Normalize the day to ensure it matches the keys in parsedSchedule
+    const todaySchedule =
+      parsedSchedule[currentDay.charAt(0).toUpperCase() + currentDay.slice(1)];
+
+    return todaySchedule ? getScheduleStatus(todaySchedule) : "Closed";
+  };
+
+  // Helper function to convert 24-hour time to 12-hour time with AM/PM
+  const formatTimeWithAMPM = (time) => {
+    const [hour, minute] = time.split(":");
+    let formattedHour = parseInt(hour, 10);
+    const formattedMinute = minute;
+
+    const period = formattedHour >= 12 ? "pm" : "am"; // Determine AM or PM
+    if (formattedHour > 12) {
+      formattedHour -= 12; // Convert 24-hour format to 12-hour format
+    } else if (formattedHour === 0) {
+      formattedHour = 12; // Handle midnight case
+    }
+
+    return `${formattedHour}:${formattedMinute} ${period}`;
+  };
+
+  // Get today's day name
+  const today = new Date()
+    .toLocaleString("en-US", { weekday: "long" })
+    .toLowerCase();
 
   const handleSearch = (searchTerm, label) => {
     if (searchTerm) {
@@ -65,19 +145,18 @@ const TraderProfile = () => {
     }
   };
 
+  // Wait for the trader data to be available before trying to parse the schedule
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <h2>{error}</h2>;
+    return <div>{error}</div>;
   }
 
   if (!trader) {
     return <h2 className="text-center">Trader Not Found</h2>;
   }
-
-  console.log("Trader Object:", trader);
 
   // Fetch work images from trader instead of result
   const workImages = trader?.workImages
@@ -104,10 +183,30 @@ const TraderProfile = () => {
           .map((service) => service.trim()) // Trim spaces
       : [];
 
+  const handleSearchClick = () => {
+    // Check if the searchQuery exists and navigate back to the previous page
+    if (searchQuery) {
+      // You can use the `window.history` API to go back
+      navigate(-1); // This will go back to the previous page
+    }
+  };
+
   return (
     <>
       <StickyHeader handleSearch={handleSearch} />
       <div className="trader-container">
+        <div className="trader-top-header">
+          {searchQuery ? (
+            <>
+              <p onClick={handleSearchClick} style={{ cursor: "pointer" }}>
+                {searchQuery}
+              </p>
+              <p>&gt;</p>
+              <h3>{trader.businessName}</h3>
+            </>
+          ) : null}
+        </div>
+
         <div className="trader-profile">
           {/* Gallery at the top */}
           <Gallery workImages={workImages} />
@@ -181,7 +280,6 @@ const TraderProfile = () => {
 
           {/* Services Section */}
           <div className="trader-services">
-            <h2>Services Offered</h2>
             {traderCategory.length > 0 ? (
               <ul>
                 {traderCategory.map((service, index) => (
@@ -228,7 +326,6 @@ const TraderProfile = () => {
                 </div>
               </div>
             </div>
-
             {/* Force Services & Skills Section Below */}
             <div className="services-container">
               <div className="services-skills">
@@ -252,7 +349,6 @@ const TraderProfile = () => {
                 </ul>
               </div>
             </div>
-
             <div className="company-profile">
               <h3 className="section-title">Company Profile</h3>
               <hr className="divider" />
@@ -315,12 +411,58 @@ const TraderProfile = () => {
                 )}
               </div>
             </div>
-
             <hr className="divider" />
             {/* INSERT THE MAPS AND SCHEDULE */}
+            <div className="map-container">
+              <div className="map-schedule-wrapper">
+                <Map businessAddress={trader.businessAddress} />
+                <ul>
+                  <h3
+                    className={
+                      getTodayScheduleStatus() === "Open"
+                        ? "open-schedule"
+                        : "closed-schedule"
+                    }
+                  >
+                    Currently {getTodayScheduleStatus()}
+                  </h3>
 
+                  {/* Display all days' schedules */}
+                  {Object.entries(parsedSchedule).map(([day, schedule]) => {
+                    const isToday = day.toLowerCase() === today; // Check if today is the current day
+                    const scheduleStatus = schedule.available
+                      ? `${formatTimeWithAMPM(
+                          schedule.startTime
+                        )} to ${formatTimeWithAMPM(schedule.endTime)}`
+                      : "CLOSED";
+
+                    return (
+                      <li key={day} style={{ listStyle: "none" }}>
+                        <div className="profile-item">
+                          <span
+                            className="day"
+                            style={isToday ? { color: "#FFBC58" } : {}}
+                          >
+                            {day}
+                          </span>
+                          <span
+                            className={`time ${
+                              scheduleStatus === "CLOSED"
+                                ? "closed-time"
+                                : "time-unique"
+                            }`} // Apply different classes based on status
+                            style={isToday ? { color: "#FFBC58" } : {}}
+                          >
+                            {scheduleStatus}
+                          </span>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
             <hr className="divider" />
-
             <div className="about-company">
               <h3 className="section-title">About the Company</h3>
               {trader.businessDescription ? (
@@ -364,7 +506,7 @@ const TraderProfile = () => {
 
         <hr className="divider" />
 
-        <TraderRating />
+        <TraderRating traderId={trader.id} />
 
         <hr className="divider" />
 

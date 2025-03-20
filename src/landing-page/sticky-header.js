@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom"; // Importing React Router's useLocation
 import "../App.css";
 import SearchBar from "./search-bar";
 import TradiyLogo from "../images/tradiy-navy-seal.png";
@@ -10,6 +11,7 @@ import FilterModal from "../components/FilterModal"; // Import the modal
 
 function StickyHeader({ handleSearch, disableAutoScroll, showFilterButton }) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const location = useLocation(); // Getting the current route location
 
   const handleFilter = () => {
     setIsFilterOpen(true);
@@ -18,6 +20,9 @@ function StickyHeader({ handleSearch, disableAutoScroll, showFilterButton }) {
   const closeFilterModal = () => {
     setIsFilterOpen(false);
   };
+
+  // Check if the current pathname contains '/trader/' to detect trader profile pages
+  const isTraderProfilePage = location.pathname.includes("/trader/");
 
   return (
     <header className="sticky-header visible">
@@ -66,10 +71,13 @@ function StickyHeader({ handleSearch, disableAutoScroll, showFilterButton }) {
             </>
           )}
 
-          <CarouselSearch
-            handleSearch={handleSearch}
-            disableAutoScroll={disableAutoScroll}
-          />
+          {/* Only render CarouselSearch if not on a Trader Profile page */}
+          {!isTraderProfilePage && (
+            <CarouselSearch
+              handleSearch={handleSearch}
+              disableAutoScroll={disableAutoScroll}
+            />
+          )}
 
           {showFilterButton && (
             <button

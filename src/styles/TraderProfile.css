@@ -3,11 +3,32 @@
   margin: auto;
 }
 
+.trader-top-header {
+  margin-top: 120px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  font-size: 40px;
+}
+
+.trader-top-header h3,
+p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.trader-top-header p {
+  color: rgba(0, 8, 57, 0.5); /* #000839 with 50% opacity */
+}
+
 .trader-profile {
   max-width: 1024px;
   margin: auto;
-  padding: 50px;
-  margin-top: 300px;
+  padding: 30px;
+
   font-family: "Hanken Grotesk", Arial;
   border: 1px solid #bbbcc0;
   border-radius: 30px;
@@ -236,7 +257,6 @@
 .review-text {
   margin-bottom: 0;
   font-size: 14px;
-  text-decoration: underline;
   color: #091540; /* Darker text color */
 }
 
@@ -353,14 +373,35 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
   font-family: "Hanken Grotesk", Arial;
+  margin-bottom: 30px;
 }
 
 .rating-header h2 {
-  font-size: 20px;
-  color: #333;
+  font-size: 40px;
+  margin: 0;
+  font-weight: 500;
+  color: #000839;
   font-family: "Hanken Grotesk", Arial;
+}
+
+.rating-header p {
+  font-size: 40px;
+  font-weight: 800;
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.review-btn {
+  padding: 12px 24px;
+  border: 1px solid #000839;
+  color: #000839;
+  border-radius: 50px;
+  cursor: pointer;
+  background: none;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 600;
+  transition: all 0.3s ease; /* Smooth hover transition */
 }
 
 .btn {
@@ -372,6 +413,7 @@
   background: none;
   font-family: "Hanken Grotesk", Arial;
   font-weight: 600;
+  transition: all 0.3s ease; /* Smooth hover transition */
 }
 
 .btn:hover {
@@ -410,11 +452,15 @@
 .reviews {
   margin-top: 20px;
   font-family: "Hanken Grotesk", Arial;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-gap: 20px; /* Adjust spacing */
 }
 
 .review {
   padding: 15px 0;
-  border-bottom: 1px solid #ddd;
+  background: white; /* Optional */
+  padding: 15px;
 }
 
 .review-header {
@@ -430,31 +476,31 @@
 .review-time {
   font-size: 12px;
   color: #888;
+  justify-content: flex-end;
 }
 
 /* Verified & Unverified Badges */
 .badge {
   display: inline-block;
-  margin-top: 5px;
   padding: 3px 8px;
   font-size: 12px;
   border-radius: 5px;
 }
 
 .verified {
-  background: #e0ffe0;
-  color: green;
+  background: #fff8ef;
+  color: #d88715;
 }
 
 .unverified {
-  background: #ffe0e0;
-  color: red;
+  background: #f2f4fa;
+  color: #000839;
 }
 
 /* Show all reviews button */
 .show-reviews {
   display: block;
-  width: 100%;
+  width: 20%;
   margin-top: 15px;
   margin-bottom: 40px;
 }
@@ -544,4 +590,185 @@ li {
   color: #000839;
   font-family: "Hanken Grotesk", Arial;
   margin-top: 14px;
+}
+
+.map-container {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.map-schedule-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.open-schedule {
+  margin-top: 0;
+  padding: 10px 30px;
+  border-radius: 8px;
+  background-color: #319f43; /* Green for open schedule */
+  color: white;
+  font-family: "Hanken Grotesk", Arial;
+  width: 250px;
+  text-align: center;
+}
+
+.closed-schedule {
+  margin-top: 0;
+  padding: 10px 30px;
+  border-radius: 8px;
+  background-color: #e33629; /* Red for closed schedule */
+  color: white;
+  font-family: "Hanken Grotesk", Arial;
+  width: 250px;
+  text-align: center;
+}
+
+.map-schedule-wrapper li {
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.profile-item .day {
+  white-space: nowrap; /* Prevents wrapping */
+  font-weight: 600;
+}
+
+.profile-item .time {
+  flex: 1.2; /* Makes the time span take the remaining space */
+  text-align: left; /* Aligns the time to the left */
+  white-space: nowrap; /* Prevents wrapping */
+}
+
+/* Unique class for time element */
+.profile-item .time-unique {
+  color: #000839; /* Or any other color you'd prefer */
+  font-weight: 600; /* Standard weight for unique time */
+  text-align: left; /* Aligns time to the left */
+  display: block; /* Makes time take full width */
+}
+
+/* Style for the Closed status */
+.profile-item .closed-time {
+  color: #e33629; /* Red color for closed schedule */
+  font-weight: bold; /* Make closed time bold */
+  text-align: left; /* Aligns the time to the left */
+  display: block; /* Makes time take full width */
+}
+
+.ratings-summary {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.overall-rating {
+  flex: 1;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+}
+
+.overall-rating h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+}
+
+.rating-row span {
+  font-size: 14px;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.rating-bar {
+  width: 150px;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.filled-bar {
+  height: 100%;
+  background-color: #000839;
+}
+
+.category-ratings {
+  display: flex;
+  gap: 10px;
+}
+
+.category {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: block;
+}
+
+.vertical-divider {
+  width: 1px;
+  height: 120px;
+  background-color: #ccc;
+}
+
+.category h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 14px;
+  margin-top: 0;
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.category p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000839;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.category-icon {
+  width: 40px; /* Adjust as needed */
+  height: 40px;
+  margin-top: 10px;
+  object-fit: contain;
+}
+
+.text-review-header {
+  display: flex;
+  align-items: center;
+}
+
+.name-time-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-name,
+.review-time {
+  display: block;
+}
+
+.verified-stars-wrapper {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.stars-container {
+  align-items: center;
+  margin: 0;
+}
+
+.star {
+  margin: 0;
+  align-items: center;
 }

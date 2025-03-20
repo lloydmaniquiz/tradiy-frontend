@@ -1,0 +1,137 @@
+/* Overlay Background */
+.review-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+/* Modal Content */
+.review-overlay-content {
+  background: white;
+  width: 100%;
+  max-width: 1024px;
+  max-height: 100vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  padding: 30px;
+  position: relative;
+  transform: scale(0.8);
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px !important;
+  right: 10px !;
+  border: none;
+  margin-right: 20px;
+  margin-top: 20px;
+  background: none !important;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000839 !important;
+}
+
+.star-icon {
+  height: 60px;
+}
+
+.rating-header {
+  margin: 0;
+}
+
+.rating-header p {
+  color: #2ec1c7;
+  margin-left: 10px;
+  font-size: 70px;
+}
+
+.header-wrapper {
+  display: block;
+}
+
+/* Header */
+.review-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #000839;
+}
+
+.modal-header h2 {
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  font-size: 24px;
+}
+
+/* Scrollable Reviews */
+.overlay-reviews {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Customize or hide scrollbar */
+.overlay-reviews::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width */
+}
+
+.overlay-reviews::-webkit-scrollbar-thumb {
+  background: #ccc; /* Scrollbar color */
+  border-radius: 4px;
+}
+
+.overlay-reviews::-webkit-scrollbar-track {
+  background: transparent; /* Make track transparent */
+}
+
+/* Filter Dropdown */
+.filter-dropdown {
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  padding: 12px 24px;
+  border-radius: 20px;
+  border: 1px solid #000839;
+  font-size: 14px;
+  appearance: none; /* Removes default styles */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='' height='24' fill='%23000000'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E"); /* Custom dropdown arrow */
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) center; /* Moves arrow 5px left from the right edge */
+  background-size: 16px;
+  padding-right: 35px; /* Ensures text doesn't overlap with the arrow */
+}
+
+.filter-dropdown option {
+  font-size: 12px;
+  display: flex;
+}
+
+.dropdown-number-wrapper {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.dropdown-number-wrapper span {
+  font-family: "Hanken Grotesk", Arial;
+  margin: 0;
+  font-size: 30px;
+  color: #000839;
+  font-weight: 600;
+}
+
+.review-name {
+  color: #000839;
+  font-weight: 600;
+}

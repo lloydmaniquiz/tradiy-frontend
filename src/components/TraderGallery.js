@@ -79,13 +79,15 @@ const Gallery = ({ workImages }) => {
             gap: 10px;
           }
 
+          /* Smaller Gallery Item */
           .gallery-item {
             width: 100%;
-            height: 100%;
+            height: 400px; /* Reduce the height */
             cursor: pointer;
             overflow: hidden;
           }
 
+          /* Image styling */
           .gallery-item img {
             width: 100%;
             height: 100%;
@@ -112,6 +114,7 @@ const Gallery = ({ workImages }) => {
             grid-template-columns: 1fr 1fr;
           }
 
+          /* Overlay for the more images button */
           .more-overlay {
             position: absolute;
             bottom: 0;
@@ -129,6 +132,7 @@ const Gallery = ({ workImages }) => {
             border-radius: 8px;
           }
 
+          /* Modal Image Styling */
           .modal-container {
             display: flex;
             align-items: center;
@@ -145,6 +149,7 @@ const Gallery = ({ workImages }) => {
             object-fit: contain;
           }
 
+          /* Close, Previous and Next Buttons */
           .close-btn {
             position: absolute;
             top: 10px;
@@ -153,7 +158,8 @@ const Gallery = ({ workImages }) => {
             color: white;
           }
 
-          .prev-btn, .next-btn {
+          .prev-btn,
+          .next-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);

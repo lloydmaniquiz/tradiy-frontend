@@ -129,7 +129,11 @@ const SearchResults = ({ handleFilter }) => {
                   className="search-result-card"
                   onClick={(e) => {
                     if (e.target.tagName !== "BUTTON") {
-                      navigate(`/trader/${result.id}`);
+                      navigate(
+                        `/trader/${result.id}?query=${encodeURIComponent(
+                          searchQuery
+                        )}`
+                      );
                     }
                   }}
                 >
