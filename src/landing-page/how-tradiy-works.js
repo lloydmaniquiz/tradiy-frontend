@@ -1,8 +1,12 @@
 import "../App.css";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import StickyHeader from "./sticky-header";
+import MobileHeader from "./mobile-header";
 import Arrow from "../images/arrow-right.png";
 import ArrowFlipped from "../images/arrow-right-flipped.png";
+import MobileArrowRight from "../images/mobile-arrow-right.png";
+import MobileArrowLeft from "../images/mobile-arrow-left.png";
 import BlueCheck from "../images/bluecheck.png";
 import CoffeeLaptop from "../images/coffee-laptop.png";
 import ImageTextContainer from "../components/ImageTextContainer";
@@ -20,6 +24,7 @@ import Footer from "./footer";
 import Shakehands from "../images/shakehands.png";
 
 const HowTradiyWorks = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const readyToJoin = () => {
     const url = "#/sign-up";
     window.open(url, "_blank", "noopener,noreferrer");
@@ -34,6 +39,16 @@ const HowTradiyWorks = () => {
   };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleSearch = (searchTerm, label) => {
     if (searchTerm) {
       navigate(
@@ -46,7 +61,11 @@ const HowTradiyWorks = () => {
 
   return (
     <>
-      <StickyHeader handleSearch={handleSearch} />
+      {isMobile ? (
+        <MobileHeader handleSearch={handleSearch} />
+      ) : (
+        <StickyHeader handleSearch={handleSearch} />
+      )}
       <div className="htw-how-tradiy-works">
         {/* Hero Section */}
         <section className="htw-hero">
@@ -75,7 +94,11 @@ const HowTradiyWorks = () => {
               </p>
             </div>
 
-            <img src={Arrow} alt="arrow" className="htw-arrow" />
+            <img
+              src={isMobile ? MobileArrowLeft : Arrow}
+              alt="arrow"
+              className="htw-arrow"
+            />
 
             <div className="htw-step">
               <h3>Book a Quote Estimate or Visit</h3>
@@ -85,7 +108,11 @@ const HowTradiyWorks = () => {
               </p>
             </div>
 
-            <img src={ArrowFlipped} alt="arrow" className="htw-arrow" />
+            <img
+              src={isMobile ? MobileArrowRight : ArrowFlipped}
+              alt="arrow"
+              className="htw-arrow"
+            />
 
             <div className="htw-step">
               <h3>Start Projects and Leave Reviews</h3>
