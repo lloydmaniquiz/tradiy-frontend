@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom"; // Importing React Router's useLocation
-import "../App.css";
+import "../styles/StickyHeader.css";
 import SearchBar from "./search-bar";
 import TradiyLogo from "../images/tradiy-navy-seal.png";
 import BurgerDropdown from "./burger.js";
@@ -38,6 +38,7 @@ function StickyHeader({ handleSearch, disableAutoScroll, showFilterButton }) {
             className="sticky-search-bar"
             handleSearch={handleSearch}
           />
+
           <div className="sticky-burger-wrapper">
             <p>Be a Tradiy Trader</p>
             <BurgerDropdown />
