@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom"; // Removed HashRouter here
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import "./App.css";
 import Header from "./landing-page/header";
 import StickyHeader from "./landing-page/sticky-header";
+import MobileHeader from "./landing-page/mobile-header"; // Import MobileHeader
 import SearchBar from "./landing-page/search-bar";
 import RecentSearches from "./landing-page/recent-searches";
 import CarouselSearch from "./landing-page/carousel-search";
@@ -29,12 +30,13 @@ import Directory from "./pages/directory";
 import SearchResults from "./pages/SearchResults";
 import TraderProfile from "./pages/traders-profile";
 import BlogsPage from "./pages/blogs";
+import SearchPage from "./landing-page/mobile-header-searchpage";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024); // Detect mobile view
   const searchBarRef = useRef(null);
   const location = useLocation();
-
   const navigate = useNavigate();
 
   const handleSearch = (searchTerm, label) => {
@@ -48,25 +50,41 @@ function App() {
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
     const handleScroll = () => {
       if (searchBarRef.current) {
         const rect = searchBarRef.current.getBoundingClientRect();
-        const offset = -250; // Adjust this value to control how much you need to scroll before the header appears
+        const offset = -250;
         setShowStickyHeader(rect.top <= offset);
       }
     };
 
+    window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Call the function initially to check the scroll position
+    handleResize();
+    handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
     <div className="landing-page">
-      <ScrollToTop /> {/* Add ScrollToTop here */}
+      <ScrollToTop />
       {location.pathname === "/" && <Header />}
-      {showStickyHeader && <StickyHeader handleSearch={handleSearch} />}
+      {showStickyHeader &&
+        location.pathname !== "/mobile-search" &&
+        (isMobile ? (
+          <MobileHeader handleSearch={handleSearch} />
+        ) : (
+          <StickyHeader handleSearch={handleSearch} />
+        ))}
+
       <Routes>
         <Route
           path="/"
@@ -79,7 +97,10 @@ function App() {
                   Glasgow.
                 </p>
                 <SearchBar ref={searchBarRef} handleSearch={handleSearch} />
-                <RecentSearches handleSearch={handleSearch} />
+                {!isMobile && (
+                  <RecentSearches handleSearch={handleSearch} />
+                )}{" "}
+                {/* Hide in mobile */}
               </div>
               <CarouselSearch handleSearch={handleSearch} />
               <HowItWorks />
@@ -111,6 +132,11 @@ function App() {
         <Route path="/search" element={<SearchResults />} />
         <Route path="/trader/:id" element={<TraderProfile />} />
         <Route path="/blogs" element={<BlogsPage />} />
+        <Route path="/" element={<MobileHeader />} />
+        <Route
+          path="/mobile-search"
+          element={<SearchPage handleSearch={handleSearch} />}
+        />
       </Routes>
     </div>
   );
