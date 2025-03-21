@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Directory.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import StickyHeader from "../landing-page/sticky-header";
+import MobileHeader from "../landing-page/mobile-header";
 import Footer from "../landing-page/footer";
 
 const Directory = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const categories = [
     {
       name: "Building and Construction",
@@ -104,6 +106,15 @@ const Directory = () => {
     },
   ];
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const [openCategories, setOpenCategories] = useState({});
 
   const navigate = useNavigate();
@@ -119,9 +130,23 @@ const Directory = () => {
     }));
   };
 
+  const handleSearch = (searchTerm, label) => {
+    if (searchTerm) {
+      navigate(
+        `/search?query=${encodeURIComponent(
+          searchTerm
+        )}&label=${encodeURIComponent(label)}`
+      );
+    }
+  };
+
   return (
     <>
-      <StickyHeader handleSearch={handleServiceClick} />
+      {isMobile ? (
+        <MobileHeader handleSearch={handleServiceClick} />
+      ) : (
+        <StickyHeader handleSearch={handleSearch} />
+      )}
       <div className="directory-container">
         <h1 className="directory-title">Directory</h1>
         <div className="directory-categories">
