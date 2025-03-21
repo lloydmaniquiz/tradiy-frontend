@@ -52,3 +52,59 @@
   overflow: hidden; /* Hide overflowed text */
   text-overflow: ellipsis; /* Show ellipsis when text overflows */
 }
+
+@media (max-width: 1024px) {
+  .image-text-container {
+    display: flex; /* Ensures image and text are in a row */
+    flex-direction: row; /* Keep items side by side */
+    align-items: center; /* Center image and text vertically */
+    width: 100%;
+    height: fit-content;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #ecedf2; /* Light background */
+    text-overflow: ellipsis; /* Show ellipsis when text overflows */
+  }
+
+  .image-container {
+    flex: 0 0 80px; /* Fixed width for the image */
+    height: 80px; /* Fixed height */
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents distortion */
+  }
+
+  .text-container {
+    flex: 1; /* Takes remaining space */
+    min-width: 0; /* Prevents text from expanding beyond container */
+    padding: 10px;
+    overflow: hidden; /* Ensures content doesn’t overflow */
+    white-space: nowrap; /* Keeps text in a single line */
+    text-overflow: ellipsis; /* Adds '...' when text is too long */
+  }
+
+  .image-header {
+    font-size: 16px;
+    max-width: 95%;
+    font-weight: bold;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .image-description {
+    max-width: 95%;
+    font-size: 12px;
+    margin: 5px 0 0;
+    color: #555;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

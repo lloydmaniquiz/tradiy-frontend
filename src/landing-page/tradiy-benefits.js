@@ -1,6 +1,8 @@
 import "../App.css";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import StickyHeader from "./sticky-header";
+import MobileHeader from "./mobile-header";
 import BlueCheck from "../images/bluecheck.png";
 import Construction from "../images/construction.png";
 import ImageTextContainer from "../components/ImageTextContainer";
@@ -19,6 +21,7 @@ import TBQuestions from "./questions-tb";
 import { FaStar } from "react-icons/fa";
 
 const TradiyBenefits = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const navigate = useNavigate();
 
   const exploreMore = () => {
@@ -28,6 +31,15 @@ const TradiyBenefits = () => {
   const signUp = () => {
     window.open("#/sign-up", "_blank");
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleSearch = (searchTerm, label) => {
     if (searchTerm) {
@@ -41,7 +53,11 @@ const TradiyBenefits = () => {
 
   return (
     <>
-      <StickyHeader handleSearch={handleSearch} />
+      {isMobile ? (
+        <MobileHeader handleSearch={handleSearch} />
+      ) : (
+        <StickyHeader handleSearch={handleSearch} />
+      )}
       <div className="tb-tradiy-benefits">
         {/* Hero Section */}
         <section className="tb-hero">
@@ -57,25 +73,31 @@ const TradiyBenefits = () => {
         </section>
 
         <div className="tb-benefits-wrapper">
-          <div className="tb-benefits-set">
-            <img src={Free} alt="free" />
-            <h3>Free to Join</h3>
+          <div className="tb-benefits-set-2">
+            <div className="tb-benefits-icon-header">
+              <img src={Free} alt="free" />
+              <h3>Free to Join</h3>
+            </div>
             <p>
               Create a profile and list your services for free. There are no
               hidden fees or commissions.
             </p>
           </div>
-          <div className="tb-benefits-set">
-            <img src={Trust} alt="trust" />
-            <h3>Build Trust with Verification</h3>
+          <div className="tb-benefits-set-2">
+            <div className="tb-benefits-icon-header">
+              <img src={Trust} alt="trust" />
+              <h3>Build Trust with Verification</h3>
+            </div>
             <p>
               Upload your qualifications, insurance, and ID to get verified and
               stand out as a trusted professional.
             </p>
           </div>
-          <div className="tb-benefits-set">
-            <img src={Expert} alt="expert" />
-            <h3>Showcase Your Expertise</h3>
+          <div className="tb-benefits-set-2">
+            <div className="tb-benefits-icon-header">
+              <img src={Expert} alt="expert" />
+              <h3>Showcase Your Expertise</h3>
+            </div>
             <p>
               Add photos of your work, share customer testimonials, and
               highlight your skills to attract more clients.
@@ -84,16 +106,20 @@ const TradiyBenefits = () => {
         </div>
         <div className="tb-benefits-wrapper-2">
           <div className="tb-benefits-set-2">
-            <img src={Connect} alt="connect" />
-            <h3>Connect with Local Customers</h3>
+            <div className="tb-benefits-icon-header">
+              <img src={Connect} alt="connect" />
+              <h3>Connect with Local Customers</h3>
+            </div>
             <p>
               Homeowners in your area can find your profile, contact you
               directly, and request quotes for their projects.
             </p>
           </div>
           <div className="tb-benefits-set-2">
-            <img src={Grow} alt="grow" />
-            <h3>Grow Your Reputation</h3>
+            <div className="tb-benefits-icon-header">
+              <img src={Grow} alt="grow" />
+              <h3>Grow Your Reputation</h3>
+            </div>
             <p>
               Deliver quality work to earn great reviews and grow your
               visibility on Tradiy. The better your profile, the more customers
@@ -195,7 +221,7 @@ const TradiyBenefits = () => {
         </section>
 
         {/* TRADESPEOPLE FEEDBACK */}
-        <div>
+        <div className="feedback">
           <h1 style={{ marginBottom: "30px", color: "#000839" }}>
             Hear from Tradespeople Like You
           </h1>
@@ -220,8 +246,8 @@ const TradiyBenefits = () => {
           <div className="video-section">
             <div className="video-placeholder">
               <iframe
-                width="320"
-                height="400"
+                width="120"
+                height="280"
                 src="https://www.youtube.com/embed/OxH-CAUi9bU"
                 title="YouTube video"
                 frameborder="0"
@@ -231,8 +257,8 @@ const TradiyBenefits = () => {
             </div>
             <div className="video-placeholder">
               <iframe
-                width="320"
-                height="400"
+                width="120"
+                height="280"
                 src="https://youtube.com/embed/E6wR_WdLpf4"
                 title="YouTube video"
                 frameBorder="0"
@@ -242,8 +268,8 @@ const TradiyBenefits = () => {
             </div>
             <div className="video-placeholder">
               <iframe
-                width="320"
-                height="400"
+                width="120"
+                height="280"
                 src="https://youtube.com/embed/eii2lE9sHvg"
                 title="YouTube video"
                 frameBorder="0"

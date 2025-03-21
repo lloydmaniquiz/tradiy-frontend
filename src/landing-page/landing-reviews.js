@@ -60,7 +60,7 @@ const ReviewSlider = () => {
     ),
     responsive: [
       {
-        breakpoint: 1024, // Tablet and above (e.g., for 1024px wide screens and up)
+        breakpoint: 1025, // Tablet and above (e.g., for 1024px wide screens and up)
         settings: {
           slidesToShow: 3, // Show 3 slides
           slidesToScroll: 1,
@@ -70,6 +70,14 @@ const ReviewSlider = () => {
         breakpoint: 768, // Mobile screens (below 768px)
         settings: {
           slidesToShow: 1, // Show 1 slide on mobile
+          slidesToScroll: 1,
+        },
+      },
+
+      {
+        breakpoint: 1024, // Mobile screens (below 768px)
+        settings: {
+          slidesToShow: 2, // Show 1 slide on mobile
           slidesToScroll: 1,
         },
       },
