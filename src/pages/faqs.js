@@ -1,7 +1,9 @@
 import "../App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import { useNavigate } from "react-router-dom";
 import StickyHeader from "../landing-page/sticky-header";
+import MobileHeader from "../landing-page/mobile-header";
 import Footer from "../landing-page/footer";
 import searchIcon from "../images/search-blue.png";
 
@@ -192,6 +194,7 @@ const questionsData = [
 const FAQs = () => {
   const [search, setSearch] = useState("");
   const [openIndexes, setOpenIndexes] = useState({});
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
   const navigate = useNavigate();
   const handleSearch = (searchTerm, label) => {
@@ -203,6 +206,15 @@ const FAQs = () => {
       );
     }
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Group FAQs by category
   const categories = [...new Set(questionsData.map((faq) => faq.category))];
@@ -256,7 +268,11 @@ const FAQs = () => {
 
   return (
     <>
-      <StickyHeader handleSearch={handleSearch} />
+      {isMobile ? (
+        <MobileHeader handleSearch={handleSearch} />
+      ) : (
+        <StickyHeader handleSearch={handleSearch} />
+      )}
       <div className="faqs-container">
         <div className="faqs-content">
           <section className="faqs-hero">
