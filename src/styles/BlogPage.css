@@ -150,3 +150,27 @@
   color: #ccc;
   cursor: not-allowed;
 }
+
+@media (max-width: 1024px) {
+  .blogs-title {
+    text-align: left;
+  }
+
+  .blogs-subtitle {
+    text-align: left;
+  }
+
+  .blogs-container {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 90px;
+  }
+
+  .switch-container {
+    padding: 0px;
+  }
+
+  .search-container {
+    padding: 4px;
+  }
+}

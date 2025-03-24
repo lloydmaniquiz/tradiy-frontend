@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BlogCard from "../components/BlogCard.js";
 import "../styles/BlogPage.css";
 import StickyHeader from "../landing-page/sticky-header.js";
+import MobileHeader from "../landing-page/mobile-header.js";
 import Footer from "../landing-page/footer.js";
 
 const BlogsPage = () => {
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleSearch = (searchTerm, label) => {
     if (searchTerm) {
@@ -116,7 +127,11 @@ const BlogsPage = () => {
 
   return (
     <>
-      <StickyHeader handleSearch={handleSearch} />
+      {isMobile ? (
+        <MobileHeader handleSearch={handleSearch} />
+      ) : (
+        <StickyHeader handleSearch={handleSearch} />
+      )}
       <div className="blogs-container">
         <h1 className="blogs-title">Blogs</h1>
         <p className="blogs-subtitle">
