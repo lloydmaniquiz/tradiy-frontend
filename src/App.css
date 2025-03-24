@@ -963,13 +963,13 @@
 }
 
 /* LANDING PAGE - REVIEWS */
-.reviews-wrapper {
+.landing-reviews-wrapper {
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically (optional) */
   flex-direction: column; /* Stack items vertically */
-  width: 100%;
   font-size: xx-large;
+  text-align: center;
 }
 
 .reviews-section {
@@ -3810,5 +3810,67 @@
     padding: 80px 35px 20px;
     align-items: center;
     justify-content: center;
+  }
+
+  .newsletter-container {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    max-width: 1440px;
+    height: auto;
+    min-height: 100vh;
+    background: white;
+    box-shadow: none; /* Enhanced shadow */
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: 80px;
+  }
+
+  .newsletter-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 90px;
+  }
+
+  .newsletter-form-section {
+    flex: 1;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+
+  .newsletter-form-section img {
+    padding-top: -1.5rem;
+    width: 10rem;
+    display: block;
+    width: 80px;
+  }
+
+  .newsletter-form-section h2 {
+    padding-top: 6px;
+    font-family: "Hanken Grotesk", Arial;
+    color: #2ec1c7;
+    font-weight: 600;
+    font-size: 40px;
+    max-width: 550px;
+    text-align: left;
+    padding-bottom: 2rem;
+  }
+
+  .newsletter-agreement .newsletter-agreement {
+    transform: scale(0.8);
+    transform-origin: left;
+  }
+
+  .landing-reviews-wrapper {
+    width: 90%;
+    font-size: 18px;
+    margin: 0 auto;
   }
 }

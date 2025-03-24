@@ -2,13 +2,25 @@ import "../App.css";
 import Footer from "../landing-page/footer";
 import { Link } from "react-router-dom";
 import StickyHeader from "../landing-page/sticky-header";
+import MobileHeader from "../landing-page/mobile-header";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import workerImage from "../images/workerImage.png";
+import workerImageMobile from "../images/newsletter-mobile.png";
 import TradiyLogo from "../images/tradiy-navy-seal.png";
 
 const NewsletterPage = () => {
   const [selectedRole, setSelectedRole] = useState(null); // or any initial value like 'Homeowner' or 'Trader'
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const [formData, setFormData] = useState({
     forename: "",
@@ -46,7 +58,11 @@ const NewsletterPage = () => {
 
   return (
     <>
-      <StickyHeader handleSearch={handleSearch} />
+      {isMobile ? (
+        <MobileHeader handleSearch={handleSearch} />
+      ) : (
+        <StickyHeader handleSearch={handleSearch} />
+      )}
       <div className="newsletter-page">
         <div className="newsletter-container">
           {/* Left Side - Form */}
@@ -138,9 +154,11 @@ const NewsletterPage = () => {
           </div>
 
           {/* Right Side - Image */}
-          <div className="newsletter-image-section">
-            <img src={workerImage} alt="Worker" className="login-image" />
-          </div>
+          <img
+            src={isMobile ? workerImageMobile : workerImage}
+            alt="Worker"
+            className="newsletter-image"
+          />
         </div>
       </div>
       <Footer />

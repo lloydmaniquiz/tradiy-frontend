@@ -85,7 +85,7 @@ const BenefitsTradespeople = () => {
           </div>
         </div>
       </div>
-      <div className="reviews-wrapper">
+      <div className="landing-reviews-wrapper">
         <h1>Don’t Just Take our Word for It</h1>
       </div>
       <ReviewSlider />
