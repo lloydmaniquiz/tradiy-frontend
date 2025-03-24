@@ -32,6 +32,7 @@ const TraderProfile = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get("query");
+  const [reviewsCount, setReviewsCount] = useState(0);
 
   useEffect(() => {
     const fetchTraderData = async () => {
@@ -60,6 +61,21 @@ const TraderProfile = () => {
 
     fetchTraderData();
   }, [traderId]);
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (!isMobile) {
+    return null; // Hide the component if the screen is wider than 1024px
+  }
 
   // Check if trader data is available before rendering schedule
   if (loading) {
@@ -317,12 +333,21 @@ const TraderProfile = () => {
                 </div>
 
                 {/* Reviews Section */}
-                <div className="reviews-wrapper">
-                  <img src={StarIcon} alt="Star" className="review-icon" />
-                  <div className="reviews-block">
-                    <span className="review-count">{trader.reviews || 0}</span>
-                    <span className="review-text">reviews</span>
+              </div>
+              <div className="star-review-wrapper">
+                <div className="badge-info-wrapper">
+                  <img
+                    src={StarIcon}
+                    alt="Badge"
+                    className="star-icon"
+                    style={{ height: "40px" }}
+                  />
+                  <div className="member-review-wrapper">
+                    <p>{reviewsCount || 0}</p>
                   </div>
+                </div>
+                <div className="review-text-container">
+                  <p>reviews</p>
                 </div>
               </div>
             </div>
@@ -412,6 +437,7 @@ const TraderProfile = () => {
               </div>
             </div>
             <hr className="divider" />
+
             {/* INSERT THE MAPS AND SCHEDULE */}
             <div className="map-container">
               <div className="map-schedule-wrapper">
@@ -506,7 +532,7 @@ const TraderProfile = () => {
 
         <hr className="divider" />
 
-        <TraderRating traderId={trader.id} />
+        <TraderRating traderId={traderId} setReviewsCount={setReviewsCount} />
 
         <hr className="divider" />
 

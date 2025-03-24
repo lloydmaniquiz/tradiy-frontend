@@ -7,7 +7,7 @@ import emptyStar from "../images/outline-star.png";
 import defaultAvatar from "../images/profile-placeholder.jpg"; // Add a default avatar
 import ReviewContentModal from "./ReviewContentModal";
 
-const TraderRating = ({ traderId }) => {
+const TraderRating = ({ traderId, setReviewsCount }) => {
   const [trader, setTrader] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -28,6 +28,7 @@ const TraderRating = ({ traderId }) => {
 
         const data = await response.json();
         setTrader(data);
+        setReviewsCount(data.reviews.length);
       } catch (err) {
         console.error("Fetch error:", err);
         setError(err.message);
@@ -37,7 +38,7 @@ const TraderRating = ({ traderId }) => {
     };
 
     fetchTraderData();
-  }, [traderId]);
+  }, [traderId, setReviewsCount]);
 
   if (loading) return <p>Loading trader data...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -80,13 +81,18 @@ const TraderRating = ({ traderId }) => {
   return (
     <section className="trader-rating">
       <div className="rating-header">
-        <div style={{ display: "flex", gap: "14px", alignItems: "center" }}>
-          <img
-            src={filledStar}
-            alt="star"
-            style={{ height: "40px", width: "40px" }}
-          />
-          <p>{averageTraderService}</p>
+        <div
+          style={{ display: "flex", gap: "14px", alignItems: "center" }}
+          className="rating-header-design"
+        >
+          <div className="star-review-header">
+            <img
+              src={filledStar}
+              alt="star"
+              style={{ height: "40px", width: "40px" }}
+            />
+            <p>{averageTraderService}</p>
+          </div>
           <h2>Tradiy Trader Rating</h2>
         </div>
         <button className="review-btn" onClick={() => setIsModalOpen(true)}>
@@ -147,6 +153,7 @@ const TraderRating = ({ traderId }) => {
             reviews={trader.reviews}
             onClose={() => setIsReviewModalOpen(false)}
             trader={trader}
+            setReviewsCount={setReviewsCount}
           />
         )}
       </div>

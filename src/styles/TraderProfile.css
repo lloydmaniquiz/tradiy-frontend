@@ -1,8 +1,9 @@
 .trader-container {
   max-width: 1024px;
+  width: 100%; /* Default width for responsiveness */
   margin: auto;
+  padding: 20px; /* Adds spacing */
 }
-
 .trader-top-header {
   margin-top: 120px;
   margin-bottom: 20px;
@@ -122,29 +123,36 @@ p {
 .trader-details-box {
   background: white;
   border: 1px solid #bbbcc0;
-  padding: 30px 40px;
-  border-radius: 30px;
+  padding: 20px;
+  border-radius: 20px;
   max-width: 600px;
-  text-align: left; /* Align text to the left */
+  width: 100%; /* Make it responsive */
+  text-align: left;
+  align-items: center;
+  margin: 0 auto;
   font-size: 16px;
   color: #333;
-  width: 600px;
-  margin-bottom: 10px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap; /* Allows content to wrap */
 }
 
 .detail-icon {
-  height: 60px;
+  height: 50px;
+}
+
+.star-icon {
+  height: 50px;
 }
 
 .badge-info-wrapper {
   display: flex;
   align-items: center;
-  gap: 50px;
-  justify-content: space-between;
+  height: fit-content;
 }
 
 .member-operates-wrapper {
-  line-height: 1.8; /* Adjust this value as needed */
+  line-height: 1.5; /* Adjust this value as needed */
   font-family: "Hanken Grotesk", Arial;
 }
 
@@ -152,6 +160,28 @@ p {
   color: #000839;
   font-weight: 500;
   font-size: 18px;
+}
+
+.member-review-wrapper {
+  font-family: "Hanken Grotesk", Arial;
+  color: #2ec1c7;
+}
+
+.member-review-wrapper p {
+  font-family: "Hanken Grotesk", Arial;
+  color: #2ec1c7;
+  font-weight: 600;
+  font-size: 60px;
+  height: fit-content;
+}
+
+.review-text-container p {
+  text-decoration: underline;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+  font-weight: 600;
+  text-align: right;
+  margin-top: -10px;
 }
 
 .calendar-title {
@@ -231,27 +261,22 @@ p {
 
 .reviews-wrapper {
   display: flex;
-  gap: 5px; /* Space between star, count, and text */
-  font-weight: bold;
-  color: #26c6da; /* Matches the blue color from your image */
-  font-family: "Hanken Grotesk", Arial;
+  align-items: center; /* Ensures everything is centered vertically */
+  gap: 5px; /* Controls spacing between the star and the text */
+  width: fit-content;
 }
 
 .reviews-block {
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Makes "7" and "reviews" stay in a row */
   align-items: center;
-  gap: 2px; /* Reduce spacing between count and text */
-  line-height: 0.8; /* Reduce the line height */
+  flex-direction: column;
+  gap: 2px; /* Adjusts spacing */
 }
 
-.review-icon {
-  height: 40px; /* Adjust size of the star icon */
-}
-
-.review-count {
-  font-size: 50px;
-  font-weight: bold;
+.reviews-wrapper img {
+  width: 18px; /* Adjust based on your design */
+  height: 18px;
+  display: inline-block;
 }
 
 .review-text {
@@ -448,19 +473,23 @@ p {
   color: #f39c12;
 }
 
+.star-review-header {
+  display: flex;
+  align-items: center;
+}
+
 /* Reviews */
 .reviews {
   margin-top: 20px;
   font-family: "Hanken Grotesk", Arial;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-columns: repeat(2, 1fr); /* Default: 2 columns */
   grid-gap: 20px; /* Adjust spacing */
 }
 
 .review {
-  padding: 15px 0;
-  background: white; /* Optional */
   padding: 15px;
+  background: white;
 }
 
 .review-header {
@@ -771,4 +800,204 @@ li {
 .star {
   margin: 0;
   align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .trader-container {
+    width: 95%;
+    padding: 0px;
+  }
+  .sticky-wrapper {
+    display: none;
+  }
+
+  .quote-btn {
+    display: none;
+  }
+
+  .trader-top-header {
+    display: none;
+  }
+
+  .trader-profile {
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
+    font-family: "Hanken Grotesk", Arial;
+    border: none;
+    border-radius: 30px;
+  }
+
+  .trader-features {
+    width: 90%;
+  }
+
+  .trader-details-container {
+    max-width: 90%;
+    width: 90%;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .calendar-container {
+    display: none;
+  }
+
+  .trader-block {
+    width: 98%;
+    margin: 0 auto;
+    padding: 0px;
+  }
+
+  .profile-item span,
+  a {
+    font-size: 12px;
+  }
+
+  .skills-list li {
+    font-size: 12px;
+  }
+
+  .detail-icon {
+    height: 22px;
+  }
+
+  .star-icon {
+    height: 22px !important;
+  }
+
+  .member-operates-wrapper p {
+    color: #000839;
+    font-weight: 500;
+    font-size: 10px;
+  }
+
+  .member-review-wrapper p {
+    font-size: 24px;
+    margin-left: -10px;
+  }
+
+  .review-text-container p {
+    margin-top: -4px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .trader-details-box {
+    gap: 15px;
+    justify-content: space-around;
+  }
+
+  .map-schedule-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
+  .trader-rating {
+    border-radius: 8px;
+    background: white;
+    margin-top: 40px;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .closed-schedule,
+  .open-schedule,
+  .gmaps-button {
+    width: 100% !important;
+  }
+
+  .review-btn {
+    display: none;
+  }
+
+  .ratings-summary {
+    display: none;
+  }
+
+  .meet-the-trader-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  .divider {
+    margin: 0 auto !important;
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+  }
+
+  .rating-header h2 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 500;
+    color: #000839;
+    font-family: "Hanken Grotesk", Arial;
+  }
+
+  .star-review-header img {
+    height: 40px !important;
+    width: 40px !important;
+  }
+
+  .star-review-header p {
+    font-size: 50px !important;
+    color: #000839 !important;
+  }
+
+  .rating-header-design {
+    display: flex;
+    flex-direction: column-reverse !important;
+    align-items: flex-start !important;
+  }
+
+  .reviews {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    padding-bottom: 10px;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+
+  .reviews::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+  }
+
+  .review {
+    flex: 0 0 85%; /* Set review width */
+    max-width: 300px; /* Optional: Adjust for readability */
+    scroll-snap-align: start;
+  }
+
+  .show-reviews {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 40px;
+  }
+
+  .trader-bio {
+    padding: 20px;
+    width: 100%;
+    border: 1px solid #bbbcc0;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    font-family: "Hanken Grotesk", Arial;
+    justify-content: space-around;
+  }
+
+  .meet-the-trader h3 {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    font-size: 20px;
+    width: 95%;
+  }
 }

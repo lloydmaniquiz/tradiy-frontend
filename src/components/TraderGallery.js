@@ -1,10 +1,20 @@
 import { useState } from "react";
-import { Dialog, DialogContent, IconButton } from "@mui/material";
+import {
+  Dialog,
+  DialogContent,
+  IconButton,
+  useMediaQuery,
+} from "@mui/material";
 import { Close, ArrowBack, ArrowForward } from "@mui/icons-material";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import Carousel CSS
 
 const Gallery = ({ workImages }) => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [open, setOpen] = useState(false);
+
+  // Detect screen width
+  const isMobile = useMediaQuery("(max-width:1024px)");
 
   const handleOpen = (index) => {
     setSelectedIndex(index);
@@ -25,24 +35,42 @@ const Gallery = ({ workImages }) => {
   };
 
   return (
-    <div className={`gallery-container images-${workImages.length}`}>
+    <div className="gallery-container">
       {workImages.length > 0 && (
         <>
-          {workImages
-            .slice(0, Math.min(workImages.length, 5))
-            .map((img, index) => (
-              <div
-                key={index}
-                className="gallery-item"
-                onClick={() => handleOpen(index)}
-              >
-                <img src={img} alt={`Work-${index}`} />
-              </div>
-            ))}
+          {isMobile ? (
+            // Use Carousel on Mobile
+            <Carousel showThumbs={false} infiniteLoop useKeyboardArrows>
+              {workImages.map((img, index) => (
+                <div key={index}>
+                  <img
+                    src={img}
+                    alt={`Work-${index}`}
+                    className="carousel-image"
+                  />
+                </div>
+              ))}
+            </Carousel>
+          ) : (
+            // Default Grid Layout for Larger Screens
+            <div className={`grid-layout images-${workImages.length}`}>
+              {workImages
+                .slice(0, Math.min(workImages.length, 5))
+                .map((img, index) => (
+                  <div
+                    key={index}
+                    className="gallery-item"
+                    onClick={() => handleOpen(index)}
+                  >
+                    <img src={img} alt={`Work-${index}`} />
+                  </div>
+                ))}
 
-          {workImages.length > 5 && (
-            <div className="more-overlay" onClick={() => handleOpen(5)}>
-              <span>+{workImages.length - 5}</span>
+              {workImages.length > 5 && (
+                <div className="more-overlay" onClick={() => handleOpen(5)}>
+                  <span>+{workImages.length - 5}</span>
+                </div>
+              )}
             </div>
           )}
         </>
@@ -75,19 +103,43 @@ const Gallery = ({ workImages }) => {
       <style>
         {`
           .gallery-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+          }
+
+          /* Grid Layout for Desktop */
+          .grid-layout {
             display: grid;
             gap: 10px;
           }
 
-          /* Smaller Gallery Item */
+          .grid-layout.images-1,
+          .grid-layout.images-2 {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .grid-layout.images-3 {
+            grid-template-columns: repeat(3, 1fr);
+          }
+
+          .grid-layout.images-4 {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+          }
+
+          .grid-layout.images-5 {
+            grid-template-columns: 1fr 1fr;
+          }
+
           .gallery-item {
             width: 100%;
-            height: 400px; /* Reduce the height */
+            height: 300px;
             cursor: pointer;
             overflow: hidden;
           }
 
-          /* Image styling */
           .gallery-item img {
             width: 100%;
             height: 100%;
@@ -95,26 +147,6 @@ const Gallery = ({ workImages }) => {
             border-radius: 8px;
           }
 
-          /* Dynamic Layouts */
-          .gallery-container.images-1,
-          .gallery-container.images-2 {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .gallery-container.images-3 {
-            grid-template-columns: repeat(3, 1fr);
-          }
-
-          .gallery-container.images-4 {
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-          }
-
-          .gallery-container.images-5 {
-            grid-template-columns: 1fr 1fr;
-          }
-
-          /* Overlay for the more images button */
           .more-overlay {
             position: absolute;
             bottom: 0;
@@ -132,7 +164,6 @@ const Gallery = ({ workImages }) => {
             border-radius: 8px;
           }
 
-          /* Modal Image Styling */
           .modal-container {
             display: flex;
             align-items: center;
@@ -149,7 +180,6 @@ const Gallery = ({ workImages }) => {
             object-fit: contain;
           }
 
-          /* Close, Previous and Next Buttons */
           .close-btn {
             position: absolute;
             top: 10px;
@@ -173,6 +203,14 @@ const Gallery = ({ workImages }) => {
 
           .next-btn {
             right: 10px;
+          }
+
+          /* Mobile Carousel Styles */
+          .carousel-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
           }
         `}
       </style>

@@ -81,9 +81,14 @@ function Map({ businessAddress }) {
     <div>
       <div
         id="map"
-        style={{ height: "300px", minWidth: "50%", borderRadius: "8px" }}
+        style={{
+          height: "300px",
+          minWidth: "50%",
+          borderRadius: "8px",
+        }}
       />
       <button
+        className="gmaps-button"
         onClick={openInGoogleMaps}
         style={{
           marginTop: "10px",
