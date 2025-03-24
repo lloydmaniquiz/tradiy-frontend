@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import filledStar from "../images/filled-star.png";
 import emptyStar from "../images/outline-star.png";
 import defaultAvatar from "../images/profile-placeholder.jpg"; // Add a default avatar
 import "../styles/ReviewContentModal.css";
 
-const ReviewModal = ({ reviews, onClose, trader }) => {
+const ReviewModal = ({ reviews, onClose, trader, setReviewsCount  }) => {
   const [sortOption, setSortOption] = useState("recent");
+
+  useEffect(() => {
+    setReviewsCount(reviews.length); // Update count when reviews change
+  }, [reviews, setReviewsCount]);
 
   // Function to sort reviews based on selected filter
   const sortedReviews = [...reviews].sort((a, b) => {
