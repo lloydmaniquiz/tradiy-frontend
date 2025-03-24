@@ -5,13 +5,24 @@ import Footer from "../landing-page/footer";
 import { tradeServicesMap } from "../constants/tradeServicesMap";
 import "../styles/SearchResults.css";
 import SearchResultCard from "../components/SearchResultsCard";
+import MobileHeader from "../landing-page/mobile-header";
 
 const SearchResults = ({ handleFilter }) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const [searchResults, setSearchResults] = useState([]);
   const [selectedSort, setSelectedSort] = useState("relevance"); // Default sorting
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get("query");
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const navigate = useNavigate();
 
@@ -80,13 +91,16 @@ const SearchResults = ({ handleFilter }) => {
 
   return (
     <>
-      <StickyHeader
-        handleSearch={handleSearch}
-        disableAutoScroll={true}
-        showFilterButton={true} // Enables filter button only in SearchResults
-        handleFilter={handleFilter}
-      />
-
+      {isMobile ? (
+        <MobileHeader handleSearch={handleSearch} />
+      ) : (
+        <StickyHeader
+          handleSearch={handleSearch}
+          disableAutoScroll={true}
+          showFilterButton={true} // Enables filter button only in SearchResults
+          handleFilter={handleFilter}
+        />
+      )}
       <div className="search-results-container">
         <h1>Search Results for: {searchQuery}</h1>
 
