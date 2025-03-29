@@ -31,6 +31,9 @@ import SearchResults from "./pages/SearchResults";
 import TraderProfile from "./pages/traders-profile";
 import BlogsPage from "./pages/blogs";
 import SearchPage from "./landing-page/mobile-header-searchpage";
+import BlogDetail from "./pages/BlogDetail";
+import { HelmetProvider } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -74,71 +77,96 @@ function App() {
   }, []);
 
   return (
-    <div className="landing-page">
-      <ScrollToTop />
-      {location.pathname === "/" && <Header />}
-      {showStickyHeader &&
-        location.pathname !== "/mobile-search" &&
-        (isMobile ? (
-          <MobileHeader handleSearch={handleSearch} />
-        ) : (
-          <StickyHeader handleSearch={handleSearch} />
-        ))}
+    <HelmetProvider>
+      <div className="landing-page">
+        <ScrollToTop />
+        {location.pathname === "/" && <Header />}
+        {showStickyHeader &&
+          location.pathname !== "/mobile-search" &&
+          (isMobile ? (
+            <MobileHeader handleSearch={handleSearch} />
+          ) : (
+            <StickyHeader handleSearch={handleSearch} />
+          ))}
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <main className="hero">
-              <div className="hero-content">
-                <h2>Find trusted local trades in seconds</h2>
-                <p>
-                  Your directory for verified tradespeople in Ayrshire &
-                  Glasgow.
-                </p>
-                <SearchBar ref={searchBarRef} handleSearch={handleSearch} />
-                {!isMobile && (
-                  <RecentSearches handleSearch={handleSearch} />
-                )}{" "}
-                {/* Hide in mobile */}
-              </div>
-              <CarouselSearch handleSearch={handleSearch} />
-              <HowItWorks />
-              <BenefitsTradespeople />
-              <Questions />
-              <Divider />
-              <LocalTrades />
-              <Divider />
-              <Footer />
-            </main>
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/email-verification" element={<EmailVerification />} />
-        <Route path="/email-verified" element={<EmailVerified />} />
-        <Route
-          path="/tradiy-registration-form"
-          element={<RegistrationForm />}
-        />
-        <Route path="/how-tradiy-works" element={<HowTradiyWorks />} />
-        <Route path="/tradiy-benefits" element={<TradiyBenefits />} />
-        <Route path="/faqs" element={<FAQs />} />
-        <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/newsletter" element={<NewsletterPage />} />
-        <Route path="/directory" element={<Directory />} />
-        <Route path="/search" element={<SearchResults />} />
-        <Route path="/trader/:id" element={<TraderProfile />} />
-        <Route path="/blogs" element={<BlogsPage />} />
-        <Route path="/" element={<MobileHeader />} />
-        <Route
-          path="/mobile-search"
-          element={<SearchPage handleSearch={handleSearch} />}
-        />
-      </Routes>
-    </div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Helmet>
+                  <title>Tradiy | Find Trusted Local Trades</title>
+                  <meta
+                    name="description"
+                    content="Find trusted and verified tradespeople in Ayrshire & Glasgow."
+                  />
+                  <meta
+                    property="og:title"
+                    content="Tradiy | Find Trusted Local Trades"
+                  />
+                  <meta
+                    property="og:description"
+                    content="Find verified tradespeople quickly."
+                  />
+                  <meta
+                    property="og:image"
+                    content="/tradify-frontend/default-image.jpg"
+                  />
+                </Helmet>
+
+                <main className="hero">
+                  <div className="hero-content">
+                    <h1>Find trusted local trades in seconds</h1>
+                    <p>
+                      Your directory for verified tradespeople in Ayrshire &
+                      Glasgow.
+                    </p>
+                    <SearchBar ref={searchBarRef} handleSearch={handleSearch} />
+                    {!isMobile && (
+                      <RecentSearches handleSearch={handleSearch} />
+                    )}{" "}
+                    {/* Hide in mobile */}
+                  </div>
+                  <CarouselSearch handleSearch={handleSearch} />
+                  <HowItWorks />
+                  <BenefitsTradespeople />
+                  <Questions />
+                  <Divider />
+                  <LocalTrades />
+                  <Divider />
+                  <Footer />
+                </main>
+              </>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/email-verification" element={<EmailVerification />} />
+          <Route path="/email-verified" element={<EmailVerified />} />
+          <Route
+            path="/tradiy-registration-form"
+            element={<RegistrationForm />}
+          />
+          <Route path="/how-tradiy-works" element={<HowTradiyWorks />} />
+          <Route path="/tradiy-benefits" element={<TradiyBenefits />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/newsletter" element={<NewsletterPage />} />
+          <Route path="/directory" element={<Directory />} />
+          <Route path="/search" element={<SearchResults />} />
+          <Route path="/trader/:id" element={<TraderProfile />} />
+          <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/" element={<MobileHeader />} />
+          <Route
+            path="/mobile-search"
+            element={<SearchPage handleSearch={handleSearch} />}
+          />
+          <Route path="/blog/:id" element={<BlogDetail />} />
+        </Routes>
+      </div>
+    </HelmetProvider>
   );
 }
 

@@ -1,0 +1,61 @@
+.blog-content-container {
+  width: 90%; /* Set width to 90% */
+  max-width: 1200px; /* Optional: Limit max width for better readability */
+  margin: 250px auto 0 auto; /* Center the container */
+  font-family: "Hanken Grotesk", Arial;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the left */
+}
+
+.blog-content-container img {
+  border-radius: 20px;
+  max-width: 100%; /* Ensure images are responsive */
+}
+
+.blog-content-container h1 {
+  color: #000839;
+  font-size: 40px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.blog-content-container h2 {
+  color: #000839 !important;
+  font-size: 24px;
+  text-align: left;
+}
+
+.blog-content-container p {
+  color: #000839 !important;
+  font-size: 16px;
+  text-align: left;
+}
+
+.author-content {
+  color: #9f9f9f;
+  margin-bottom: 40px;
+}
+
+.blog-card-container .blog-card {
+  flex: 1 1 calc(33.333% - 20px); /* Adjusts width to fit 3 in a row */
+  max-width: 32%; /* Prevents them from being too wide */
+  min-width: 250px; /* Ensures minimum width */
+}
+
+.read-more-section h2 {
+  font-size: 24px;
+}
+
+.blog-card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.blogs-divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #ccc; /* Light gray divider */
+  margin: 20px 0;
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import BlogCard from "../components/BlogCard.js";
 import "../styles/BlogPage.css";
 import StickyHeader from "../landing-page/sticky-header.js";
@@ -9,6 +10,9 @@ import Footer from "../landing-page/footer.js";
 const BlogsPage = () => {
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,97 +33,39 @@ const BlogsPage = () => {
     }
   };
 
-  const [activeTab, setActiveTab] = useState("tradespeople"); // Default active tab
+  const [activeTab, setActiveTab] = useState("tradespeople");
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const blogsPerPage = 6; // Number of blogs per page
+  const blogsPerPage = 6;
 
-  const blogs = [
-    {
-      id: 1,
-      title: "5 Tips to Build a Strong Trades Profile",
-      description: "Learn how to stand out and attract more customers.",
-      image: "https://placehold.co/600x400",
-      category: "tradespeople",
-    },
-    {
-      id: 2,
-      title: "What Homeowners Look for in a Tradesperson",
-      description: "Insights straight from the people hiring you.",
-      image: "https://placehold.co/600x400",
-      category: "homeowners",
-    },
-    {
-      id: 3,
-      title: "Why Verified Tradespeople Get Hired More",
-      description:
-        "Why verified profiles get more leads and build stronger trust.",
-      image: "https://placehold.co/600x400",
-      category: "tradespeople",
-    },
-    {
-      id: 4,
-      title: "How to Price Your Services Competitively",
-      description: "Find out the best pricing strategies for tradespeople.",
-      image: "https://placehold.co/600x400",
-      category: "tradespeople",
-    },
-    {
-      id: 5,
-      title: "Top Marketing Strategies for Tradespeople",
-      description: "Grow your business with smart marketing strategies.",
-      image: "https://placehold.co/600x400",
-      category: "tradespeople",
-    },
-    {
-      id: 6,
-      title: "Avoiding Common Mistakes as a Tradesperson",
-      description: "Tips to ensure customer satisfaction and build trust.",
-      image: "https://placehold.co/600x400",
-      category: "tradespeople",
-    },
-    {
-      id: 7,
-      title: "How to Improve Customer Communication",
-      description: "Better communication means better business.",
-      image: "https://placehold.co/600x400",
-      category: "homeowners",
-    },
-    {
-      id: 8,
-      title: "Best Tools for Tradespeople in 2024",
-      description: "Stay ahead with the latest tools and technologies.",
-      image: "https://placehold.co/600x400",
-      category: "tradespeople",
-    },
-    {
-      id: 9,
-      title: "Why Building a Portfolio is Important",
-      description: "A strong portfolio attracts more clients.",
-      image: "https://placehold.co/600x400",
-      category: "homeowners",
-    },
-    {
-      id: 10,
-      title: "Best Tools for Tradespeople in 2024",
-      description: "Stay ahead with the latest tools and technologies.",
-      image: "https://placehold.co/600x400",
-      category: "tradespeople",
-    },
-  ];
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/blogs/");
+        console.log("Response status:", response.status);
+        const data = await response.json();
+        console.log("Fetched Blogs:", data);
+        setBlogs(data);
+      } catch (error) {
+        console.error("Fetch error:", error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // Filter blogs based on active tab and search term
+    fetchBlogs();
+  }, []);
+
   const filteredBlogs = blogs.filter(
     (blog) =>
-      blog.category === activeTab &&
+      blog.categories.toLowerCase().includes(activeTab.toLowerCase()) &&
       (blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        blog.description.toLowerCase().includes(searchTerm.toLowerCase()))
+        blog.content.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
-  // Calculate total pages
   const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
 
-  // Get blogs for the current page
   const displayedBlogs = filteredBlogs.slice(
     (currentPage - 1) * blogsPerPage,
     currentPage * blogsPerPage
@@ -127,6 +73,19 @@ const BlogsPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Blogs | Tradiy</title>
+        <meta name="description" content="Read insightful blogs on Tradify." />
+        <meta property="og:title" content="Blogs | Tradify" />
+        <meta
+          property="og:description"
+          content="Read insightful blogs on Tradify."
+        />
+        <meta
+          property="og:image"
+          content="/tradify-frontend/blog-thumbnail.jpg"
+        />
+      </Helmet>
       {isMobile ? (
         <MobileHeader handleSearch={handleSearch} />
       ) : (
@@ -138,8 +97,6 @@ const BlogsPage = () => {
           Discover tools, guides, and materials to support your growth and
           journey—all in one place.
         </p>
-
-        {/* Switch Button */}
         <div className="switch-container">
           <button
             className={`switch-btn ${
@@ -147,7 +104,7 @@ const BlogsPage = () => {
             }`}
             onClick={() => {
               setActiveTab("homeowners");
-              setCurrentPage(1); // Reset to first page
+              setCurrentPage(1);
             }}
           >
             For Homeowners
@@ -158,17 +115,13 @@ const BlogsPage = () => {
             }`}
             onClick={() => {
               setActiveTab("tradespeople");
-              setCurrentPage(1); // Reset to first page
+              setCurrentPage(1);
             }}
           >
             For Tradespeople
           </button>
         </div>
-
-        {/* Divider */}
         <hr className="divider" />
-
-        {/* Search Bar */}
         <div className="search-container">
           <input
             type="text"
@@ -176,13 +129,11 @@ const BlogsPage = () => {
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
-              setCurrentPage(1); // Reset to first page when searching
+              setCurrentPage(1);
             }}
             className="search-input"
           />
         </div>
-
-        {/* Blog Cards */}
         <div className="blogs-grid">
           {displayedBlogs.length > 0 ? (
             displayedBlogs.map((blog) => <BlogCard key={blog.id} blog={blog} />)
@@ -190,8 +141,6 @@ const BlogsPage = () => {
             <p className="no-results">No blogs found.</p>
           )}
         </div>
-
-        {/* Pagination */}
         {totalPages > 1 && (
           <div className="pagination">
             <button

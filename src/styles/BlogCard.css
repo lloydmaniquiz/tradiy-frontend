@@ -43,11 +43,14 @@
 }
 
 .blog-description {
-  color: #666;
+  color: #000839;
   font-size: 14px;
   flex-grow: 1; /* Expands to push the button down */
   text-align: left;
-  color: #000839;
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides overflow text */
+  text-overflow: ellipsis; /* Adds an ellipsis (...) when text overflows */
+  max-width: 100%; /* Ensures it does not exceed the container */
 }
 
 .read-more {
@@ -62,6 +65,8 @@
   width: 100%; /* Full width button */
   margin-top: auto; /* Ensures button stays at the bottom */
   font-family: "Hanken Grotesk", Arial;
+  text-decoration: none; /* Removes underline */
+  display: inline-block; /* Ensures it behaves like a button */
 }
 
 .read-more:hover {

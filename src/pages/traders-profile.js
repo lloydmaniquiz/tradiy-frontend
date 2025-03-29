@@ -33,6 +33,7 @@ const TraderProfile = () => {
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get("query");
   const [reviewsCount, setReviewsCount] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
   useEffect(() => {
     const fetchTraderData = async () => {
@@ -62,8 +63,6 @@ const TraderProfile = () => {
     fetchTraderData();
   }, [traderId]);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
-
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1024);
@@ -72,10 +71,6 @@ const TraderProfile = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  if (!isMobile) {
-    return null; // Hide the component if the screen is wider than 1024px
-  }
 
   // Check if trader data is available before rendering schedule
   if (loading) {
