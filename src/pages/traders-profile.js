@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import StickyHeader from "../landing-page/sticky-header";
+import MobileHeader from "../landing-page/mobile-header";
 import Footer from "../landing-page/footer";
 import "../styles/TraderProfile.css";
 import peacockCheck from "../images/peacock-check.png";
@@ -20,6 +21,8 @@ import TraderRating from "../components/TraderRating";
 import VerifiedTraderBadge from "../images/verified-trader.png";
 import profilePlaceholder from "../images/profile-placeholder.jpg";
 import Map from "../components/BusinessMap";
+import QuickEstimateForm from "../components/QuickEstimateForm";
+import BookAVisitForm from "../components/BookAVisitForm";
 
 const TraderProfile = () => {
   const { id } = useParams();
@@ -34,6 +37,11 @@ const TraderProfile = () => {
   const searchQuery = queryParams.get("query");
   const [reviewsCount, setReviewsCount] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const [isMainModalOpen, setIsMainModalOpen] = useState(false);
+  const [sideModalType, setSideModalType] = useState(null); // 'estimate' or 'visit'
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [showTimeSlots, setShowTimeSlots] = useState(false); // Control view state
+  const [modalData, setModalData] = useState({});
 
   useEffect(() => {
     const fetchTraderData = async () => {
@@ -85,10 +93,61 @@ const TraderProfile = () => {
     return <div>No schedule available</div>;
   }
 
+  // Parse weekly schedule
   const parsedSchedule =
-    typeof trader.weeklySchedule === "string"
+    typeof trader?.weeklySchedule === "string"
       ? JSON.parse(trader.weeklySchedule)
-      : trader.weeklySchedule;
+      : trader?.weeklySchedule;
+
+  // Handle date selection
+  const handleDateChange = (newDate) => {
+    setDate(newDate);
+    setShowTimeSlots(true); // Switch view to time slots
+  };
+
+  // Function to generate time slots
+  const generateTimeSlots = (startTime, endTime) => {
+    const times = [];
+    let currentTime = new Date(`1970-01-01T${startTime}`);
+    const end = new Date(`1970-01-01T${endTime}`);
+
+    while (currentTime < end) {
+      times.push(
+        currentTime.toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+      );
+      currentTime.setMinutes(currentTime.getMinutes() + 60); // 60-min intervals
+    }
+
+    return times;
+  };
+
+  // Get selected day name
+  const selectedDay = date
+    ? date.toLocaleDateString("en-US", { weekday: "long" })
+    : null;
+
+  // Get schedule for selected day
+  const schedule = parsedSchedule?.[selectedDay];
+
+  // Generate available time slots
+  const availableTimes =
+    schedule && schedule.available
+      ? generateTimeSlots(schedule.startTime, schedule.endTime)
+      : [];
+
+  // Handle time selection
+  const handleTimeClick = (time) => {
+    setSelectedTime(time);
+  };
+
+  // Handle back to calendar view
+  const handleBackToCalendar = () => {
+    setShowTimeSlots(false);
+    setDate(null);
+  };
 
   const getScheduleStatus = (schedule) => {
     if (!schedule.available) {
@@ -202,9 +261,27 @@ const TraderProfile = () => {
     }
   };
 
+  // Highlight only available days in the calendar
+  const tileDisabled = ({ date }) => {
+    if (!trader || !trader.weeklySchedule) return true;
+
+    const parsedSchedule =
+      typeof trader.weeklySchedule === "string"
+        ? JSON.parse(trader.weeklySchedule)
+        : trader.weeklySchedule;
+
+    const day = date.toLocaleDateString("en-US", { weekday: "long" }).trim(); // Get the day name
+
+    return !(parsedSchedule[day] && parsedSchedule[day].available);
+  };
+
   return (
     <>
-      <StickyHeader handleSearch={handleSearch} />
+      {isMobile ? (
+        <MobileHeader handleSearch={handleSearch} />
+      ) : (
+        <StickyHeader handleSearch={handleSearch} />
+      )}
       <div className="trader-container">
         <div className="trader-top-header">
           {searchQuery ? (
@@ -226,8 +303,74 @@ const TraderProfile = () => {
           <div className="trader-info">
             <div className="trader-header">
               <h1>{trader.businessName}</h1>
-              <button className="quote-btn">Request a Quote</button>
+              <button
+                className="quote-btn"
+                onClick={() => setIsMainModalOpen(true)}
+              >
+                Request a Quote
+              </button>
             </div>
+
+            {/* Main Modal */}
+            {isMainModalOpen && (
+              <div className="modal-overlay">
+                <div className="modal">
+                  <div className="close-request-wrapper">
+                    <span
+                      className="close"
+                      onClick={() => setIsMainModalOpen(false)}
+                    >
+                      &times;
+                    </span>
+                    <span className="modal-title">Request a Quote</span>
+                  </div>
+                  <p>Kindly select your preferred service.</p>
+                  <button
+                    className="btn primary"
+                    onClick={() => {
+                      setIsMainModalOpen(false);
+                      setSideModalType("estimate");
+                    }}
+                  >
+                    Quick Estimate
+                  </button>
+                  <p>or</p>
+                  <button
+                    className="btn outline"
+                    onClick={() => {
+                      setIsMainModalOpen(false);
+                      setSideModalType("visit");
+                    }}
+                  >
+                    Book a Visit
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Side Modal for Quick Estimate */}
+            {sideModalType === "estimate" && (
+              <div className="side-modal-overlay">
+                <div className="side-modal">
+                  <QuickEstimateForm
+                    closeModal={() => setSideModalType(null)}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Side Modal for Book a Visit */}
+            {sideModalType === "visit" && (
+              <div className="side-modal-overlay">
+                <div className="side-modal">
+                  <BookAVisitForm
+                    traderId={traderId}
+                    closeModal={() => setSideModalType(null)}
+                    modalData={modalData} // Pass selected data
+                  />
+                </div>
+              </div>
+            )}
             <p className="trader-address">
               {trader.businessAddress || "Address not available"}
             </p>
@@ -502,21 +645,72 @@ const TraderProfile = () => {
             </div>
           </div>
 
-          {/* Calendar Section */}
           <div className="calendar-container">
             <div className="calendar-header">
               <h3 className="calendar-title">Request a Quote Visit</h3>
-              <p className="calendar-today" onClick={() => setDate(new Date())}>
-                Today
-              </p>
+              {!showTimeSlots && (
+                <p
+                  className="calendar-today"
+                  onClick={() => setDate(new Date())}
+                >
+                  Today
+                </p>
+              )}
             </div>
-            <Calendar
-              onChange={setDate}
-              value={date}
-              minDate={new Date()}
-              next2Label={null} // Hide double navigation arrows
-              prev2Label={null}
-            />
+
+            {!showTimeSlots ? (
+              // Calendar View
+              <Calendar
+                onChange={handleDateChange} // Ensure this updates state
+                value={date}
+                minDate={new Date()}
+                next2Label={null}
+                prev2Label={null}
+                tileDisabled={tileDisabled}
+              />
+            ) : (
+              // Time Slots View
+              <div className="time-selection">
+                <button className="back-button" onClick={handleBackToCalendar}>
+                  &lt; Back
+                </button>
+                <span>
+                  {date?.toLocaleDateString("en-US", {
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </span>
+                {availableTimes.length > 0 ? (
+                  availableTimes.map((time) => (
+                    <button
+                      key={time}
+                      className={selectedTime === time ? "selected" : ""}
+                      onClick={() => handleTimeClick(time)}
+                    >
+                      {time}
+                    </button>
+                  ))
+                ) : (
+                  <p>No available times for this day</p>
+                )}
+
+                {/* Book a Quote Visit Button */}
+                {selectedTime && (
+                  <button
+                    className="book-button"
+                    onClick={() => {
+                      setModalData({ selectedDate: date, selectedTime }); // Save the selected values
+                      setIsMainModalOpen(false); // Close main modal if needed
+                      setSideModalType("visit"); // Open the side modal
+                    }}
+                  >
+                    Book a Quote Visit
+                  </button>
+                )}
+              </div>
+            )}
+
             <p className="calendar-note">
               This booking is only for quote visits and does not indicate the
               actual acceptance of the job. It is solely for assessing the scope
