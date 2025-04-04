@@ -125,16 +125,15 @@ p {
   border: 1px solid #bbbcc0;
   padding: 20px;
   border-radius: 20px;
-  max-width: 600px;
-  width: 100%; /* Make it responsive */
+  width: 95%; /* Make it responsive */
   text-align: left;
   align-items: center;
-  margin: 0 auto;
   font-size: 16px;
   color: #333;
   display: flex;
-  gap: 30px;
-  flex-wrap: wrap; /* Allows content to wrap */
+  gap: 50px;
+  margin: 0 auto;
+  margin-left: 0px;
 }
 
 .detail-icon {
@@ -146,6 +145,7 @@ p {
 }
 
 .badge-info-wrapper {
+  margin-left: 10px;
   display: flex;
   align-items: center;
   height: fit-content;
@@ -200,6 +200,7 @@ p {
   border-radius: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   max-width: 400px;
+  width: 100%;
   display: block;
   font-family: "Hanken Grotesk", Arial;
 }
@@ -352,6 +353,7 @@ p {
   margin-top: 10px;
   font-size: 16px;
   font-weight: 500;
+  width: 80%;
 }
 
 .company-profile {
@@ -536,7 +538,7 @@ p {
 
 .trader-bio {
   padding: 20px;
-  width: 400px;
+  width: 500px;
   border: 1px solid #bbbcc0;
   border-radius: 20px;
   display: flex;
@@ -613,6 +615,7 @@ li {
   font-family: "Hanken Grotesk", Arial;
   font-size: 24px;
   font-weight: 600;
+  width: 70%;
 }
 
 .is-verified-content {
@@ -802,6 +805,10 @@ li {
   align-items: center;
 }
 
+.trader-block {
+  width: 80%;
+}
+
 @media (max-width: 1024px) {
   .trader-container {
     width: 95%;
@@ -812,8 +819,36 @@ li {
     display: none;
   }
 
-  .quote-btn {
+  .trader-header .quote-btn {
     display: none;
+  }
+
+  .side-modal {
+    background: white;
+    width: 100% !important;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding: 20px;
+    transform: translateX(100%);
+    animation: slideIn 0.3s forwards;
+  }
+
+  .sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    text-align: right;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensures it stays above other content */
+  }
+
+  .sticky-footer {
+    display: block;
   }
 
   .trader-top-header {
@@ -923,7 +958,7 @@ li {
     gap: 20px;
     width: 95%;
     margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 130px;
   }
 
   .divider {
@@ -1001,6 +1036,23 @@ li {
     font-size: 20px;
     width: 95%;
   }
+
+  .about-company p {
+    color: #000839;
+    font-family: "Hanken Grotesk", Arial;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+  }
+
+  .is-verified-bio {
+    color: #000839;
+    font-family: "Hanken Grotesk", Arial;
+    font-size: 24px;
+    font-weight: 600;
+    width: 100%;
+  }
 }
 
 /* Modal Overlay */
@@ -1046,7 +1098,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 1100;
 }
 
 /* Close Button */

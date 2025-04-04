@@ -338,13 +338,13 @@
   border: 1px solid #bbbcc0;
   border-radius: 40px 10px 10px 40px;
   width: 100%;
-  z-index: 2000;
   max-height: 250px;
   overflow-y: auto;
   color: #000839;
   margin-top: 4px;
   padding: 20px;
   padding-right: 12px !important; /* Adding space for the scrollbar */
+  z-index: 10000000000;
 }
 
 /* Custom scrollbar */
@@ -1190,9 +1190,23 @@
   color: #000839;
 }
 
+.faq-header h3 {
+  align-items: center;
+  margin: 0;
+}
+
 .faq-header.open {
   background-color: #000839;
   border: transparent;
+  color: white;
+}
+
+.faq-header h2 {
+  align-items: center;
+  margin: 0;
+}
+
+.faq-header.open h2 {
   color: white;
 }
 
@@ -1749,6 +1763,7 @@
 
 .faq-list {
   justify-content: center;
+  margin-bottom: 150px;
 }
 
 .faq-category {
@@ -2279,7 +2294,7 @@
   flex-direction: row;
   width: 100%;
   max-width: 1440px;
-  height: auto;
+  height: fit-content !important;
   min-height: 100vh;
   background: white;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
@@ -2291,7 +2306,7 @@
 
 .newsletter-form-section {
   flex: 1;
-  padding: 100px;
+  padding: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2427,6 +2442,7 @@
 
 .newsletter-agreement input {
   cursor: pointer;
+  margin-bottom: 6px;
 }
 
 .newsletter-agreement label {
@@ -2465,7 +2481,36 @@
   background-color: #ccc; /* Light gray color */
 }
 
+/* Back Button (Mobile Only) */
+.back-btn {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  background: none;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  margin-top: 100px;
+}
+
+.back-btn img {
+  height: 40px;
+}
+
+.back-btn:hover {
+  background: #0056b3;
+}
+
 @media (min-width: 1025px) {
+  .search-button p {
+    display: none;
+  }
+
+  .back-btn {
+    display: none;
+  }
   .mobile-search-page {
     display: none;
   }
@@ -2478,7 +2523,7 @@
     transform: scale(0.8) !important;
   }
 
-  .hero-content h2 {
+  .hero-content h1 {
     font-size: 60px;
     margin-bottom: -10px;
   }
@@ -2542,9 +2587,9 @@
     text-align: center;
   }
 
-  .hero-content h2 {
+  .hero-content h1 {
     margin: 60px auto 0; /* Centers horizontally */
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     line-height: 3rem;
     padding-top: 4%;
     max-width: 95%;
@@ -2553,7 +2598,7 @@
   }
 
   .hero-content p {
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-bottom: 2rem;
     padding-left: 15px;
     padding-right: 15px;
@@ -2561,6 +2606,11 @@
 
   .burger-dropdown {
     display: none;
+  }
+
+  .logo-burger {
+    margin: 0;
+    margin-bottom: -100px;
   }
 
   .logo-burger img {
@@ -2598,12 +2648,15 @@
 
   /* Stack the dropdown options vertically on mobile */
   .dropdown-options {
+    position: absolute;
     display: flex;
     flex-direction: column; /* Stack options vertically */
     padding: 1rem;
     background-color: white;
     border-radius: 10px;
     width: 100%; /* Full width */
+    max-height: 160px;
+    z-index: 1000 !important;
   }
 
   .dropdown-option {
@@ -2672,11 +2725,12 @@
   }
 
   .carousel-combine {
+    position: relative;
     text-align: center;
     background-color: #fff;
     color: #333;
     font-family: Arial, sans-serif;
-    margin-top: 60px;
+    margin-top: 30px;
     margin-bottom: 10px;
   }
 
@@ -2984,6 +3038,7 @@
   .faq-header h3 {
     font-size: 14px;
     text-align: left; /* This will center the text horizontally */
+    align-items: center;
     margin: 0;
   }
 
@@ -3295,12 +3350,29 @@
     margin-bottom: 100px;
   }
 
+  .search-button {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .search-button img {
+    width: 19px;
+    height: 19px;
+  }
+
+  .search-button p {
+    margin: 0;
+    color: white;
+    font-weight: 500;
+  }
+
   .htw-coming-soon {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    margin-bottom: 0px;
+    margin-bottom: 120px;
   }
 
   .htw-overlay-container {
@@ -3670,6 +3742,7 @@
     margin-top: 120px;
     text-align: center;
     font-family: "Hanken Grotesk", Arial;
+    margin-bottom: 150px;
   }
 
   .contact-us-container h1 {
@@ -3693,6 +3766,8 @@
     display: flex;
     flex-direction: column;
     width: 90%;
+    margin-top: -30px;
+    margin-bottom: 50px;
   }
 
   .contact-card {
@@ -3705,8 +3780,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Push button to bottom */
-    min-height: 280px; /* Ensures uniform height */
-    margin-top: 50px;
+    min-height: 100px; /* Ensures uniform height */
+    margin-top: 80px;
     width: 100%;
     margin-bottom: -40px;
   }
@@ -3722,6 +3797,7 @@
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 10px;
+    width: 100%;
   }
 
   .contact-card .highlight {
@@ -3737,22 +3813,12 @@
   }
 
   .icon-container {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: -30px; /* Moves 50% outside the card */
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
+    height: 60px;
   }
 
   .icon-img {
-    width: 90px;
-    height: 90px;
+    height: 60px;
+    width: 60px;
   }
 
   .highlight {
@@ -3807,7 +3873,7 @@
   }
 
   .contact-card-content {
-    padding: 80px 35px 20px;
+    padding: 20px 35px 20px;
     align-items: center;
     justify-content: center;
   }
@@ -3823,7 +3889,7 @@
     box-shadow: none; /* Enhanced shadow */
     overflow: hidden;
     margin: 0 auto;
-    margin-bottom: 80px;
+    margin-bottom: 120px;
   }
 
   .newsletter-page {
@@ -3872,5 +3938,43 @@
     width: 90%;
     font-size: 18px;
     margin: 0 auto;
+  }
+
+  .local-trades-dropdown-container {
+    margin-bottom: 120px;
+  }
+
+  .video-placeholder iframe {
+    width: 100%; /* Make it responsive */
+    height: 160px; /* Adjust height for smaller screens */
+  }
+
+  .social-media-container {
+    text-align: start;
+    padding: 15px 0;
+    margin-left: 50px;
+  }
+
+  .social-media-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #2ec1c7;
+  }
+
+  .social-media-icons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 35px;
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .social-icon:hover {
+    transform: scale(1.1);
   }
 }

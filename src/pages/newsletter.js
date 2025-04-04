@@ -154,11 +154,13 @@ const NewsletterPage = () => {
           </div>
 
           {/* Right Side - Image */}
-          <img
-            src={isMobile ? workerImageMobile : workerImage}
-            alt="Worker"
-            className="newsletter-image"
-          />
+          <div className="newsletter-image-section">
+            <img
+              src={isMobile ? workerImageMobile : workerImage}
+              alt="Worker"
+              className="newsletter-image"
+            />
+          </div>
         </div>
       </div>
       <Footer />

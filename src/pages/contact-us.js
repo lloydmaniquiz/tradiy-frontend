@@ -1,7 +1,9 @@
 import "../App.css";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../landing-page/footer";
 import StickyHeader from "../landing-page/sticky-header";
+import MobileHeader from "../landing-page/mobile-header";
 import CallNow from "../images/contact-us/call.png";
 import EmailNow from "../images/contact-us/email.png";
 import WhatsAppNow from "../images/contact-us/whatsapp.png";
@@ -10,8 +12,25 @@ import QR from "../images/contact-us/qr.png";
 import ArrowBlue from "../images/contact-us/arrow-blue.png";
 import ArrowWhite from "../images/contact-us/arrow-white.png";
 
+// Import social media icons
+import FacebookIcon from "../images/facebook.png";
+import InstagramIcon from "../images/instagram.png";
+import TiktokIcon from "../images/tiktok.png";
+import LinkedinIcon from "../images/linkedin.png";
+
 const ContactUs = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleSearch = (searchTerm, label) => {
     if (searchTerm) {
       navigate(
@@ -21,9 +40,14 @@ const ContactUs = () => {
       );
     }
   };
+
   return (
     <>
-      <StickyHeader handleSearch={handleSearch} />
+      {isMobile ? (
+        <MobileHeader handleSearch={handleSearch} />
+      ) : (
+        <StickyHeader handleSearch={handleSearch} />
+      )}
       <div className="contact-us-container">
         <h1>Get in Touch!</h1>
         <p>
@@ -66,7 +90,7 @@ const ContactUs = () => {
               <p className="highlight">support@email.com</p>
               <p>
                 Feel free to share your inquiries, feedback, or concerns, and
-                we’ll respond as soon as possible..
+                we’ll respond as soon as possible.
               </p>
             </div>
             <a href="mailto:support@email.com" className="contact-button">
@@ -121,7 +145,58 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
+
+        {/* Social Media Links - Mobile Only */}
+        {/* Social Media Links - Mobile Only */}
+        {isMobile && (
+          <div className="social-media-container">
+            <h3 className="social-media-title">Social Media</h3>
+            <div className="social-media-icons">
+              <a
+                href="https://www.facebook.com/Tradiyuk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={FacebookIcon}
+                  alt="Facebook"
+                  className="social-icon"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/tradiyuk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={InstagramIcon}
+                  alt="Instagram"
+                  className="social-icon"
+                />
+              </a>
+              <a
+                href="https://www.tiktok.com/@tradiy.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={TiktokIcon} alt="Tiktok" className="social-icon" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/tradiy-app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={LinkedinIcon}
+                  alt="LinkedIn"
+                  className="social-icon"
+                />
+              </a>
+            </div>
+          </div>
+        )}
       </div>
+
       <Footer />
     </>
   );

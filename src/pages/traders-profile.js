@@ -93,6 +93,10 @@ const TraderProfile = () => {
     return <div>No schedule available</div>;
   }
 
+  const traderEmail = trader.email;
+  const businessOwner = trader.businessOwner;
+  const businessName = trader.businessName;
+
   // Parse weekly schedule
   const parsedSchedule =
     typeof trader?.weeklySchedule === "string"
@@ -303,12 +307,14 @@ const TraderProfile = () => {
           <div className="trader-info">
             <div className="trader-header">
               <h1>{trader.businessName}</h1>
-              <button
-                className="quote-btn"
-                onClick={() => setIsMainModalOpen(true)}
-              >
-                Request a Quote
-              </button>
+              {!isMobile && (
+                <button
+                  className="quote-btn"
+                  onClick={() => setIsMainModalOpen(true)}
+                >
+                  Request a Quote
+                </button>
+              )}
             </div>
 
             {/* Main Modal */}
@@ -354,6 +360,10 @@ const TraderProfile = () => {
                 <div className="side-modal">
                   <QuickEstimateForm
                     closeModal={() => setSideModalType(null)}
+                    traderId={traderId}
+                    traderEmail={traderEmail}
+                    businessOwner={businessOwner}
+                    businessName={businessName}
                   />
                 </div>
               </div>
@@ -367,6 +377,9 @@ const TraderProfile = () => {
                     traderId={traderId}
                     closeModal={() => setSideModalType(null)}
                     modalData={modalData} // Pass selected data
+                    traderEmail={traderEmail}
+                    businessOwner={businessOwner}
+                    businessName={businessName}
                   />
                 </div>
               </div>
@@ -796,6 +809,18 @@ const TraderProfile = () => {
               <div className="is-verified-content">
                 <p>{trader.shortBio}</p>
               </div>
+
+              {/* Sticky Footer (Only visible on mobile) */}
+              {isMobile && !isMainModalOpen && (
+                <footer className="sticky-footer">
+                  <button
+                    className="quote-btn"
+                    onClick={() => setIsMainModalOpen(true)}
+                  >
+                    Request a Quote
+                  </button>
+                </footer>
+              )}
             </div>
           </div>
         </div>

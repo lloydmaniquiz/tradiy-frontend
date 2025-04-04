@@ -163,7 +163,8 @@
   .blogs-container {
     width: 90%;
     margin: 0 auto;
-    margin-top: 90px;
+    margin-top: 140px;
+    margin-bottom: 100px;
   }
 
   .switch-container {

@@ -163,7 +163,6 @@ textarea {
   padding: 20px;
   border-radius: 10px;
   width: 100%;
-  max-width: 400px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -191,9 +190,36 @@ input[type="file"] {
   display: none; /* Hide default file input */
 }
 
-#file-name {
-  display: block;
+.file-name {
+  display: block; /* Ensures each file name is rendered on a new line */
   margin-top: 10px;
   font-size: 14px;
   color: #555;
+  white-space: normal; /* Allow text to wrap onto new lines */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis when text overflows */
+  max-width: 100%; /* Ensure it uses available width */
+}
+
+.file-name span {
+  display: block; /* Make each file name a block-level element, forcing a new line */
+}
+
+.regForm-input,
+.regForm-select {
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  width: 100%;
+}
+
+.regForm-select {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .form-title {
+    margin-top: 20px;
+  }
 }

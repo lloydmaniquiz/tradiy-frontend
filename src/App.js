@@ -4,7 +4,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import "./App.css";
 import Header from "./landing-page/header";
 import StickyHeader from "./landing-page/sticky-header";
-import MobileHeader from "./landing-page/mobile-header"; // Import MobileHeader
+import MobileHeader from "./landing-page/mobile-header";
+import BottomNavBar from "./components/BottomNavBar"; // Import BottomNavBar
 import SearchBar from "./landing-page/search-bar";
 import RecentSearches from "./landing-page/recent-searches";
 import CarouselSearch from "./landing-page/carousel-search";
@@ -34,10 +35,12 @@ import SearchPage from "./landing-page/mobile-header-searchpage";
 import BlogDetail from "./pages/BlogDetail";
 import { HelmetProvider } from "react-helmet-async";
 import { Helmet } from "react-helmet-async";
+import MenuPage from "./components/MenuPage";
+import BackButton from "./images/back-button.png";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024); // Detect mobile view
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
   const searchBarRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -76,10 +79,43 @@ function App() {
     };
   }, []);
 
+  // Hide bottom navigation on certain pages
+  const hideBottomNavPages = [
+    "/login",
+    "/sign-up",
+    "/forgot-password",
+    "/reset-password",
+    "/trader",
+  ];
+  const shouldShowBottomNav =
+    isMobile &&
+    !hideBottomNavPages.some((path) => location.pathname.startsWith(path));
+
+  const pagesWithBackButton = [
+    "/trader",
+    "/blogs",
+    "/newsletter",
+    "/faqs",
+    "/privacy",
+    "/terms",
+    "/trader-coc",
+    "/directory",
+  ];
+
   return (
     <HelmetProvider>
       <div className="landing-page">
         <ScrollToTop />
+
+        {/* Back Button (only for mobile on specific pages) */}
+        {isMobile &&
+          pagesWithBackButton.some((path) =>
+            location.pathname.startsWith(path)
+          ) && (
+            <button className="back-btn" onClick={() => window.history.back()}>
+              <img src={BackButton} alt="Back" />
+            </button>
+          )}
         {location.pathname === "/" && <Header />}
         {showStickyHeader &&
           location.pathname !== "/mobile-search" &&
@@ -124,8 +160,7 @@ function App() {
                     <SearchBar ref={searchBarRef} handleSearch={handleSearch} />
                     {!isMobile && (
                       <RecentSearches handleSearch={handleSearch} />
-                    )}{" "}
-                    {/* Hide in mobile */}
+                    )}
                   </div>
                   <CarouselSearch handleSearch={handleSearch} />
                   <HowItWorks />
@@ -164,7 +199,11 @@ function App() {
             element={<SearchPage handleSearch={handleSearch} />}
           />
           <Route path="/blog/:id" element={<BlogDetail />} />
+          <Route path="/menu-page" element={<MenuPage />} />
         </Routes>
+
+        {/* Show bottom navigation only on mobile except in login/signup pages */}
+        {shouldShowBottomNav && <BottomNavBar />}
       </div>
     </HelmetProvider>
   );

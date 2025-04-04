@@ -7,13 +7,12 @@ import {
 } from "@mui/material";
 import { Close, ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import Carousel CSS
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Gallery = ({ workImages }) => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [open, setOpen] = useState(false);
 
-  // Detect screen width
   const isMobile = useMediaQuery("(max-width:1024px)");
 
   const handleOpen = (index) => {
@@ -39,7 +38,6 @@ const Gallery = ({ workImages }) => {
       {workImages.length > 0 && (
         <>
           {isMobile ? (
-            // Use Carousel on Mobile
             <Carousel showThumbs={false} infiniteLoop useKeyboardArrows>
               {workImages.map((img, index) => (
                 <div key={index}>
@@ -52,25 +50,34 @@ const Gallery = ({ workImages }) => {
               ))}
             </Carousel>
           ) : (
-            // Default Grid Layout for Larger Screens
             <div className={`grid-layout images-${workImages.length}`}>
-              {workImages
-                .slice(0, Math.min(workImages.length, 5))
-                .map((img, index) => (
+              {/* Large Image */}
+              <div className="main-image" onClick={() => handleOpen(0)}>
+                <img src={workImages[0]} alt="Main Work" />
+              </div>
+
+              {/* 2x2 Grid */}
+              <div className="grid-images">
+                {workImages.slice(1, 5).map((img, index) => (
                   <div
-                    key={index}
+                    key={index + 1}
                     className="gallery-item"
-                    onClick={() => handleOpen(index)}
+                    onClick={() => handleOpen(index + 1)}
                   >
-                    <img src={img} alt={`Work-${index}`} />
+                    <img src={img} alt={`Work-${index + 1}`} />
+
+                    {/* Overlay on the 4th image */}
+                    {index === 3 && workImages.length > 5 && (
+                      <div
+                        className="more-overlay"
+                        onClick={() => handleOpen(4)}
+                      >
+                        <span>+{workImages.length - 4}</span>
+                      </div>
+                    )}
                   </div>
                 ))}
-
-              {workImages.length > 5 && (
-                <div className="more-overlay" onClick={() => handleOpen(5)}>
-                  <span>+{workImages.length - 5}</span>
-                </div>
-              )}
+              </div>
             </div>
           )}
         </>
@@ -109,38 +116,39 @@ const Gallery = ({ workImages }) => {
             width: 100%;
           }
 
-          /* Grid Layout for Desktop */
           .grid-layout {
             display: grid;
             gap: 10px;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 100%;
           }
 
-          .grid-layout.images-1,
-          .grid-layout.images-2 {
+          .main-image {
+            grid-column: span 2;
+            width: 100%;
+            height: 310px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+          }
+
+          .grid-images {
+            display: grid;
             grid-template-columns: repeat(2, 1fr);
-          }
-
-          .grid-layout.images-3 {
-            grid-template-columns: repeat(3, 1fr);
-          }
-
-          .grid-layout.images-4 {
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-          }
-
-          .grid-layout.images-5 {
-            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 100%;
           }
 
           .gallery-item {
             width: 100%;
-            height: 300px;
+            height: 150px;
             cursor: pointer;
             overflow: hidden;
+            position: relative;
           }
 
-          .gallery-item img {
+          .gallery-item img,
+          .main-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -149,8 +157,8 @@ const Gallery = ({ workImages }) => {
 
           .more-overlay {
             position: absolute;
-            bottom: 0;
-            right: 0;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
@@ -205,7 +213,6 @@ const Gallery = ({ workImages }) => {
             right: 10px;
           }
 
-          /* Mobile Carousel Styles */
           .carousel-image {
             width: 100%;
             height: 300px;

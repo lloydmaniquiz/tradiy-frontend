@@ -59,3 +59,48 @@
   border-top: 1px solid #ccc; /* Light gray divider */
   margin: 20px 0;
 }
+
+.blog-content img {
+  max-width: 100% !important;
+  width: 100% !important; /* Ensures images don't overflow */
+  height: auto !important; /* Keeps aspect ratio */
+  display: block;
+  object-fit: contain;
+  margin: 0 auto; /* Centers the image */
+}
+
+.blog-content {
+  max-width: 100%;
+  overflow: hidden; /* Prevents horizontal overflow */
+  word-wrap: break-word; /* Ensures long text breaks */
+}
+
+@media (max-width: 1024px) {
+  .blog-detail {
+    margin-bottom: 120px;
+    font-family: "Hanken Grotesk", Arial;
+  }
+
+  .blog-content-container {
+    width: 80%; /* Set width to 90% */
+    margin: 150px auto 0 auto; /* Center the container */
+    font-family: "Hanken Grotesk", Arial;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+  }
+
+  .blog-content-container h1 {
+    width: 90%;
+  }
+
+  .blog-card-container .blog-card {
+    max-width: 350px; /* Prevents them from being too wide */
+    min-width: 250px; /* Ensures minimum width */
+    margin: 0 auto;
+  }
+
+  .blog-content img {
+    max-width: 90%; /* Limits image width on smaller screens */
+  }
+}

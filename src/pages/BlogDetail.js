@@ -109,7 +109,10 @@ const BlogDetail = () => {
           Posted by: {blog.author} · Published: {formatDate(blog.created_at)}
         </div>
 
-        <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+        <div
+          className="blog-content"
+          dangerouslySetInnerHTML={{ __html: blog.content }}
+        />
 
         <hr className="blogs-divider" />
 

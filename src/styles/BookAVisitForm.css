@@ -82,8 +82,45 @@ textarea {
 
 .custom-divider {
   margin-top: 40px;
-  margin-bottom: 15px;
+  margin-bottom: 40px;
   border: none;
   height: 1px;
   background-color: #ccc; /* Adjust color as needed */
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column; /* Keeps items stacked */
+  gap: 10px; /* Space between checkbox items */
+  margin-bottom: 20px;
+}
+
+.checkbox-group label {
+  display: flex;
+  gap: 8px; /* Space between checkbox and text */
+  width: fit-content; /* Prevents full width */
+  max-width: 100%; /* Ensures responsiveness */
+  font-size: 12px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto; /* Prevents checkbox from stretching */
+  flex-shrink: 0; /* Prevents resizing */
+}
+
+.info-text {
+  font-size: 12px;
+  margin-top: 30px;
+}
+
+.quote-book-btn {
+  padding: 10px 28px;
+  width: 100%;
+  border-radius: 50px;
+  background-color: #000839;
+  border: none;
+  color: white;
+  font-family: "Hanken Grotesk", Arial;
+  cursor: pointer;
+  font-weight: 600;
 }

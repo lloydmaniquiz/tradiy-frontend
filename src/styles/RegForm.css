@@ -82,7 +82,7 @@
 }
 
 .regForm-input-group {
-  margin-top:  15px;
+  margin-top: 15px;
 }
 
 .regForm-input-group-services {
@@ -102,17 +102,13 @@
   font-size: 18px;
 }
 
-.regForm-input,
-.regForm-select {
-  padding: 15px;
+.quote-react-select {
+  padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 50px;
+  border-radius: 10px;
   width: 100%;
-}
-
-.regForm-select {
-  width: 100%;
+  margin-bottom: 10px;
 }
 
 .regForm-button {
@@ -181,7 +177,7 @@
   width: 100%;
   height: 15px;
   background-color: white;
-  border: 1px solid #FFBC58;
+  border: 1px solid #ffbc58;
   border-radius: 50px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -189,7 +185,7 @@
 
 .progress-bar {
   height: 100%;
-  background-color: #FFBC58;
+  background-color: #ffbc58;
   width: 0%;
   transition: width 0.5s ease-in-out;
   border-top-right-radius: 50px;
@@ -339,7 +335,6 @@
   cursor: pointer;
   background: whitesmoke;
   border-radius: 50px;
-  
 }
 
 .regForm-input-desc {
@@ -357,7 +352,7 @@
 
 .regForm-input-desc::-webkit-scrollbar {
   display: none;
-} 
+}
 
 .regForm-description {
   font-style: italic;
@@ -393,7 +388,6 @@
   display: block;
 }
 
-
 .regForm-file-size {
   font-size: 0.7rem; /* Smaller font size for the file size */
   color: #000839; /* Lighter color for the file size text */
@@ -407,10 +401,10 @@
 }
 
 .regForm-custom-button {
-  display: flex;           /* Use flexbox for centering */
-  flex-direction: column;  /* Stack the text vertically */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Stack the text vertically */
   justify-content: center; /* Center vertically */
-  align-items: center;     /* Center horizontally */
+  align-items: center; /* Center horizontally */
   padding: 10px 20px;
   background-color: white;
   color: #000839;
@@ -421,13 +415,13 @@
   height: 10rem;
   border: 1px solid gray;
   font-weight: 600;
-  text-align: center;      /* Center text horizontally */
+  text-align: center; /* Center text horizontally */
 }
 
 .browse-text {
-  color: #FFBC58;           /* Set color to yellow */
-  font-weight: bold;       /* Optional: make it bold */
-  display: block;          /* Ensure "or browse" is on a new line */
+  color: #ffbc58; /* Set color to yellow */
+  font-weight: bold; /* Optional: make it bold */
+  display: block; /* Ensure "or browse" is on a new line */
 }
 
 .regForm-modal-description {
@@ -456,7 +450,7 @@
   align-items: center; /* Ensure time inputs are aligned vertically */
 }
 
-.regForm-input-time{
+.regForm-input-time {
   font-family: "Hanken Grotesk", Arial;
   font-weight: 600;
   color: #000839;
@@ -465,14 +459,14 @@
 }
 
 .regForm-input-time:disabled {
-  background-color: #f0f0f0;  /* Lighter background color for disabled state */
-  cursor: not-allowed;        /* Change cursor to indicate it's not clickable */
-  opacity: 0.5;               /* Reduce opacity for disabled inputs */
+  background-color: #f0f0f0; /* Lighter background color for disabled state */
+  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+  opacity: 0.5; /* Reduce opacity for disabled inputs */
   border: 1px solid gray;
 }
 
 .regForm-label {
-  flex-shrink: 0;  /* Prevent the label from shrinking */
+  flex-shrink: 0; /* Prevent the label from shrinking */
 }
 
 .checkbox-input-wrapper {
@@ -483,7 +477,7 @@
 }
 
 .regForm-input-group-checkbox {
-  margin-top:  8px;
+  margin-top: 8px;
 }
 
 .header-close-wrapper {
@@ -493,7 +487,7 @@
   color: #000839;
 }
 
-.header-close-wrapper h3{
+.header-close-wrapper h3 {
   font-size: 1.5rem;
 }
 
@@ -562,7 +556,7 @@
 .label {
   font-weight: bold;
   color: #000839;
-  min-width: 350px;  /* Controls the width of the label */
+  min-width: 350px; /* Controls the width of the label */
   text-align: left;
 }
 
@@ -605,9 +599,9 @@
   gap: 2rem;
 }
 
-.title{
+.title {
   padding: 1rem;
-  background-color: #FFBC58;
+  background-color: #ffbc58;
   color: #000839;
   font-weight: 700;
   font-family: "Hanken Grotesk", Arial;
@@ -615,10 +609,10 @@
   font-size: 24px;
 }
 
-.summary-label{
+.summary-label {
   font-weight: 600;
   color: #000839;
-  min-width: 450px;  /* Controls the width of the label */
+  min-width: 450px; /* Controls the width of the label */
   text-align: left;
   font-family: "Hanken Grotesk", Arial;
   font-size: 20px;

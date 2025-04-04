@@ -136,6 +136,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
         />
         <button className="search-button" type="submit">
           <img src={SearchIcon} alt="🔍" />
+          <p>Search</p>
         </button>
       </form>
     </div>

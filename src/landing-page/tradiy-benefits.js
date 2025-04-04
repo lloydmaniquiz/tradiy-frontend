@@ -246,8 +246,8 @@ const TradiyBenefits = () => {
           <div className="video-section">
             <div className="video-placeholder">
               <iframe
-                width="120"
-                height="280"
+                width="440"
+                height="400"
                 src="https://www.youtube.com/embed/OxH-CAUi9bU"
                 title="YouTube video"
                 frameborder="0"
@@ -257,8 +257,8 @@ const TradiyBenefits = () => {
             </div>
             <div className="video-placeholder">
               <iframe
-                width="120"
-                height="280"
+                width="440"
+                height="400"
                 src="https://youtube.com/embed/E6wR_WdLpf4"
                 title="YouTube video"
                 frameBorder="0"
@@ -268,8 +268,8 @@ const TradiyBenefits = () => {
             </div>
             <div className="video-placeholder">
               <iframe
-                width="120"
-                height="280"
+                width="440"
+                height="400"
                 src="https://youtube.com/embed/eii2lE9sHvg"
                 title="YouTube video"
                 frameBorder="0"
