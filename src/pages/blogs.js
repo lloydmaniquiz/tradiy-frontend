@@ -135,7 +135,11 @@ const BlogsPage = () => {
           />
         </div>
         <div className="blogs-grid">
-          {displayedBlogs.length > 0 ? (
+          {loading ? (
+            <p className="loading">Loading blogs...</p>
+          ) : error ? (
+            <p className="error">Error: {error}</p>
+          ) : displayedBlogs.length > 0 ? (
             displayedBlogs.map((blog) => <BlogCard key={blog.id} blog={blog} />)
           ) : (
             <p className="no-results">No blogs found.</p>
