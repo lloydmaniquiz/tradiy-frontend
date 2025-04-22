@@ -55,7 +55,8 @@
   },
   "devDependencies": {
     "@testing-library/react": "^16.3.0",
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "matchmedia-polyfill": "^0.3.2"
   },
   "homepage": "https://lloydmaniquiz.github.io/tradiy-frontend/"
 }
