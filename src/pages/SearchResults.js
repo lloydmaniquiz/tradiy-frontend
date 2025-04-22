@@ -46,6 +46,8 @@ const SearchResults = ({ handleFilter }) => {
     }
   };
 
+  console.log("Test Variable:", process.env.REACT_APP_TEST_VARIABLE);
+
   // Fetch data from the API endpoint
 
   useEffect(() => {
