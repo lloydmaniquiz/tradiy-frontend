@@ -29,7 +29,7 @@ jobs:
           npm run build
 
       - name: Zip build output
-        run: zip -r release.zip dist  # or 'build'
+        run: zip -r release.zip build  # or 'build'
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
