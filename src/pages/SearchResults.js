@@ -54,7 +54,7 @@ const SearchResults = ({ handleFilter }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/tradespeople`
+          `${process.env.REACT_APP_API_URL}/tradespeople/`
         );
         const data = await response.json();
         setSearchResults(Array.isArray(data) ? data : []); // Ensure it's an array
