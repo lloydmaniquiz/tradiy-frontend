@@ -4,10 +4,11 @@ import "react-calendar/dist/Calendar.css"; // Default styles
 import "../styles/FilterModal.css";
 import { FaStar } from "react-icons/fa";
 
-const FilterModal = ({ isOpen, onClose }) => {
+const FilterModal = ({ isOpen, onClose, onApplyFilter }) => {
   const [date, setDate] = useState(new Date());
   const [distance, setDistance] = useState(12);
   const [verified, setVerified] = useState(false);
+  const [selectedMinRating, setSelectedMinRating] = useState(null);
 
   if (!isOpen) return null;
 
@@ -35,7 +36,11 @@ const FilterModal = ({ isOpen, onClose }) => {
         <div className="star-rating">
           {[5, 4, 3, 2, 1].map((stars) => (
             <label key={stars} className="star-option">
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => setSelectedMinRating(stars)}
+                checked={selectedMinRating === stars}
+              />
               {Array.from({ length: 5 }, (_, i) => (
                 <FaStar
                   key={i}
@@ -74,7 +79,19 @@ const FilterModal = ({ isOpen, onClose }) => {
         {/* Buttons */}
         <div className="modal-actions">
           <button className="clear-button">Clear All</button>
-          <button className="apply-button">Apply Filter</button>
+          <button
+            className="apply-button"
+            onClick={() =>
+              onApplyFilter({
+                date,
+                distance,
+                verified,
+                minRating: selectedMinRating,
+              })
+            }
+          >
+            Apply Filter
+          </button>
         </div>
       </div>
     </div>

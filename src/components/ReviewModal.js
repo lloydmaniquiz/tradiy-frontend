@@ -72,13 +72,16 @@ const ReviewModal = ({ traderId, isOpen, onClose }) => {
     console.log("Submitting review data:", Object.fromEntries(formData));
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/submit-review/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: formData.toString(),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/submit-review/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: formData.toString(),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

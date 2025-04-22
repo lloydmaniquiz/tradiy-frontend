@@ -40,7 +40,9 @@ const BookAVisitForm = ({
     const fetchTraderData = async () => {
       try {
         console.log("Fetching trader data for ID:", traderId);
-        const response = await fetch("http://127.0.0.1:8000/tradespeople");
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/tradespeople`
+        );
         const data = await response.json();
         console.log("Fetched traders:", data);
 
@@ -241,10 +243,13 @@ const BookAVisitForm = ({
 
     try {
       // Make the API request
-      const response = await fetch("http://127.0.0.1:8000/submit-book-visit/", {
-        method: "POST",
-        body: formDataObj,
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/submit-book-visit/`,
+        {
+          method: "POST",
+          body: formDataObj,
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to submit form");

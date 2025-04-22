@@ -41,7 +41,7 @@ const BlogsPage = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/blogs/");
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/blogs/`);
         console.log("Response status:", response.status);
         const data = await response.json();
         console.log("Fetched Blogs:", data);

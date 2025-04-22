@@ -14,6 +14,16 @@ const SearchResults = ({ handleFilter }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get("query");
+  const [filters, setFilters] = useState({
+    date: null,
+    distance: null,
+    minRating: null,
+    verified: null,
+  });
+
+  const handleApplyFilter = (newFilters) => {
+    setFilters(newFilters);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,7 +51,9 @@ const SearchResults = ({ handleFilter }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/tradespeople");
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/tradespeople`
+        );
         const data = await response.json();
         setSearchResults(Array.isArray(data) ? data : []); // Ensure it's an array
       } catch (error) {
@@ -60,18 +72,26 @@ const SearchResults = ({ handleFilter }) => {
   // Filter results to match search query
   const filteredResults = searchResults.filter((result) => {
     const relatedServices = tradeServicesMap[searchQuery] || [];
-    const services = JSON.parse(result.services || "[]");
     const traderCategory = JSON.parse(result.traderCategory || "[]");
 
-    return (
-      services.some((service) =>
+    const matchesService =
+      traderCategory.some((service) =>
         relatedServices.some((relatedService) =>
           service.toLowerCase().includes(relatedService.toLowerCase())
         )
       ) ||
       traderCategory.some((category) =>
         category.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      );
+
+    const matchesVerified = filters.verified ? result.isVerified : true;
+    const matchesRating =
+      filters.minRating != null ? result.rating >= filters.minRating : true;
+    const matchesDistance =
+      filters.distance != null ? result.distance <= filters.distance : true;
+
+    return (
+      matchesService && matchesVerified && matchesRating && matchesDistance
     );
   });
 
@@ -97,8 +117,8 @@ const SearchResults = ({ handleFilter }) => {
         <StickyHeader
           handleSearch={handleSearch}
           disableAutoScroll={true}
-          showFilterButton={true} // Enables filter button only in SearchResults
-          handleFilter={handleFilter}
+          showFilterButton={true}
+          handleModalFilter={handleApplyFilter}
         />
       )}
       <div className="search-results-container">

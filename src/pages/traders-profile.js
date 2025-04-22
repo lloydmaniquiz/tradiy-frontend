@@ -16,7 +16,6 @@ import NavyBlueCheck from "../images/navyBlue-check.png";
 import InsuranceIcon from "../images/PLI-icon.png";
 import VatRegistered from "../images/vat-registered.png";
 import CompanyType from "../images/company-type.png";
-import WebsiteURL from "../images/websiteURL.png";
 import TraderRating from "../components/TraderRating";
 import VerifiedTraderBadge from "../images/verified-trader.png";
 import profilePlaceholder from "../images/profile-placeholder.jpg";
@@ -46,7 +45,9 @@ const TraderProfile = () => {
   useEffect(() => {
     const fetchTraderData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/tradespeople");
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/tradespeople`
+        );
         const data = await response.json();
         const foundTrader = data.find((t) => t.id === traderId);
 
@@ -564,25 +565,6 @@ const TraderProfile = () => {
                     />
                     <span>Company Type</span>
                     <span className="profile-value">{trader.companyType}</span>
-                  </div>
-                )}
-
-                {trader.websiteURL && (
-                  <div className="profile-item">
-                    <img
-                      src={WebsiteURL}
-                      alt="Website"
-                      className="profile-icon"
-                    />
-                    <span>Company Website</span>
-                    <a
-                      href={trader.websiteURL}
-                      className="profile-value"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {trader.websiteURL}
-                    </a>
                   </div>
                 )}
               </div>

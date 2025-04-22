@@ -9,7 +9,12 @@ import FilterIcon from "../images/filter.png";
 import SearchIcon from "../images/search-navy-blue.png";
 import FilterModal from "../components/FilterModal"; // Import the modal
 
-function StickyHeader({ handleSearch, disableAutoScroll, showFilterButton }) {
+function StickyHeader({
+  handleSearch,
+  disableAutoScroll,
+  showFilterButton,
+  handleModalFilter,
+}) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const location = useLocation(); // Getting the current route location
 
@@ -98,7 +103,14 @@ function StickyHeader({ handleSearch, disableAutoScroll, showFilterButton }) {
       </div>
 
       {/* Render Filter Modal */}
-      <FilterModal isOpen={isFilterOpen} onClose={closeFilterModal} />
+      <FilterModal
+        isOpen={isFilterOpen}
+        onClose={closeFilterModal}
+        onApplyFilter={(filters) => {
+          handleFilter(filters); // Send to SearchResults
+          closeFilterModal(); // Close modal after applying
+        }}
+      />
     </header>
   );
 }

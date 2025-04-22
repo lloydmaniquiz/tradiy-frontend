@@ -82,7 +82,6 @@ const CarouselSearch = ({ handleSearch, label, disableAutoScroll }) => {
                 key={idx}
                 onClick={(e) => {
                   e.preventDefault();
-                  console.log("Clicked on:", search.label); // Debugging
                   handleSearch(search.label, search.label); // Pass only the trade name
                 }}
               >

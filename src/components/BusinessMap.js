@@ -10,10 +10,10 @@ function Map({ businessAddress }) {
         setIsMapLoaded(true); // Google Maps already loaded
       } else {
         const script = document.createElement("script");
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBk3TC_8V5SJhUBBGepol_99wi48h7JaPE`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
         script.async = true; // Ensures the script is loaded asynchronously
         script.defer = true; // Ensures the script is executed after the document is parsed
-        script.onload = () => setIsMapLoaded(true); // When script loads, set state to true
+        script.onload = () => setIsMapLoaded(true);
         script.onerror = () =>
           console.error("Google Maps script failed to load.");
         document.head.appendChild(script); // Append the script tag to load the Google Maps API

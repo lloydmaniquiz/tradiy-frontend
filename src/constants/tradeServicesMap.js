@@ -1,4 +1,5 @@
 export const tradeServicesMap = {
+  "Alarm / Security Services": ["Alarm / Security Services", "Alarm"],
   Builder: [
     "Builder",
     "Building Construction",
@@ -6,6 +7,7 @@ export const tradeServicesMap = {
     "Loft Conversion",
     "Bricklaying",
     "Structural Repairs",
+    "Building / Home Improvement Services",
   ],
   "Carpet Fitting": [
     "Carpet",
@@ -15,13 +17,16 @@ export const tradeServicesMap = {
     "Flooring",
     "Vinyl Flooring",
     "Rug Installation",
+    "Carpets / Flooring",
   ],
+  "Carpets / Flooring": ["Carpets / Flooring"],
   "Driveways/Patios": [
     "Patio",
     "Driveway",
     "Driveways",
     "Patios",
     "Driveways/Patios",
+    "Driveways / Patios",
     "Driveway Paving",
     "Patio Installation",
     "Block Paving",
@@ -35,6 +40,7 @@ export const tradeServicesMap = {
     "Socket Repair",
     "Fuse Box Upgrade",
     "Circuit Installation",
+    "Electrical",
   ],
   Gardener: [
     "Garden",

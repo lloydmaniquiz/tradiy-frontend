@@ -19,7 +19,7 @@ const TraderRating = ({ traderId, setReviewsCount }) => {
     const fetchTraderData = async () => {
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/reviews/?tradesperson_id=${traderId}`
+          `${process.env.REACT_APP_API_URL}/reviews/?tradesperson_id=${traderId}`
         );
 
         if (!response.ok) {

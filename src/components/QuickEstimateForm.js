@@ -32,7 +32,9 @@ const QuickEstimateForm = ({
   useEffect(() => {
     const fetchTraderData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/tradespeople");
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/tradespeople`
+        );
         const data = await response.json();
 
         const foundTrader = data.find((t) => t.id === traderId);
@@ -149,10 +151,13 @@ const QuickEstimateForm = ({
 
     try {
       // Make the API request
-      const response = await fetch("http://127.0.0.1:8000/submit-quote/", {
-        method: "POST",
-        body: formDataObj,
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/submit-quote/`,
+        {
+          method: "POST",
+          body: formDataObj,
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to submit form");
