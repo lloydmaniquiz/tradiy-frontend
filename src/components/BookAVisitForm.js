@@ -41,7 +41,7 @@ const BookAVisitForm = ({
       try {
         console.log("Fetching trader data for ID:", traderId);
         const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/tradespeople`
+          `${process.env.REACT_APP_API_URL}/tradespeople/`
         );
         const data = await response.json();
         console.log("Fetched traders:", data);
