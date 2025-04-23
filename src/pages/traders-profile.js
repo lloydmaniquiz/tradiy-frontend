@@ -46,7 +46,7 @@ const TraderProfile = () => {
     const fetchTraderData = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/tradespeople`
+          `${process.env.REACT_APP_API_URL}tradespeople`
         );
         const data = await response.json();
         const foundTrader = data.find((t) => t.id === traderId);
