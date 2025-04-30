@@ -59,7 +59,7 @@ const BlogsPage = () => {
 
   const filteredBlogs = blogs.filter(
     (blog) =>
-      blog.categories.toLowerCase().includes(activeTab.toLowerCase()) &&
+      blog.categories?.toLowerCase().includes(activeTab.toLowerCase()) &&
       (blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         blog.content.toLowerCase().includes(searchTerm.toLowerCase()))
   );
