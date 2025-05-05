@@ -23,6 +23,12 @@ jobs:
         with:
           node-version: '20.x'
 
+      - name: Set environment variables
+        run: |
+          echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" >> $GITHUB_ENV
+          echo "REACT_APP_GOOGLE_API_KEY=${{ secrets.REACT_APP_GOOGLE_API_KEY }}" >> $GITHUB_ENV
+          echo "REACT_APP_GOOGLE_API_KEY=${{ secrets.REACT_APP_GOOGLE_API_KEY }}" >> $GITHUB_ENV
+
       - name: npm install and build
         run: |
           npm ci
