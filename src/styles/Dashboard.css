@@ -1,0 +1,269 @@
+/* Dashboard.css */
+.dashboard {
+  display: flex;
+  height: 100vh;
+  font-family: "Hanken Grotesk", Arial;
+  flex-direction: column;
+}
+
+.sidebar {
+  width: 270px;
+  background-color: #fdfeff;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-right: 1px solid #bbbcc0;
+  min-height: calc(100vh - 60px); /* Adjust height under header */
+}
+
+.sidebar-header img {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.sidebar-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+  color: #2f2f2f;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-icon {
+  width: 14px;
+  height: 14px;
+  margin: 0 !important;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* This already vertically centers children */
+  padding: 0.75rem 1rem;
+  background-color: #fdfeff;
+}
+
+.sidebar-nav .nav-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.2rem;
+  color: #423e3e;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-left: 20px;
+}
+
+.sidebar-nav .nav-item.disabled {
+  color: #423e3e;
+  cursor: default;
+}
+
+.sidebar-nav .nav-item.active {
+  background-color: #ecedf2;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.submenu {
+  margin-left: 1rem;
+}
+
+.submenu-item {
+  background: none;
+  border: none;
+  color: #423e3e;
+  cursor: pointer;
+  display: block;
+  margin-top: 0.25rem;
+  text-align: left;
+  width: 100%;
+  text-decoration: none;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 20px;
+}
+
+.header-left {
+  margin-left: 20px;
+}
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: #fdfeff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03); /* subtle shadow */
+}
+
+.layout-below-header {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+  background-color: #fdfeff;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: red;
+  border-radius: 9999px;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  gap: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  padding: 0.25rem 0.5rem;
+  border-radius: 30px;
+  background-color: white;
+}
+
+.search-form input {
+  border: none;
+  outline: none;
+  font-family: "Hanken Grotesk", Arial;
+  color: #423e3e;
+  font-weight: 600;
+}
+
+.greeting {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #423e3e;
+}
+
+.profile-completion {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.progress-ring {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin-right: 2rem;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.progress-text .percentage {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #14b8d6;
+}
+
+.progress-text .label {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.profile-info h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #423e3e;
+}
+
+.nav-item .label {
+  margin-left: 0; /* ensures no added spacing */
+  color: #423e3e;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.nav-item.active .label {
+  font-weight: 600; /* or bold */
+  color: #423e3e;
+}
+
+.time-display {
+  font-weight: 500;
+  color: #423e3e;
+}
+
+.nav-item {
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.helpdesk-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.helpdesk-arrow {
+  width: 12px; /* control icon size */
+  height: 100%;
+}
+
+.text-button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%; /* make it expand the full width of the button */
+}

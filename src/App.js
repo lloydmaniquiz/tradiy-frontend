@@ -37,6 +37,22 @@ import { HelmetProvider } from "react-helmet-async";
 import { Helmet } from "react-helmet-async";
 import MenuPage from "./components/MenuPage";
 import BackButton from "./images/back-button.png";
+import Dashboard from "./pages/dashboards";
+import QuickAction from "./pages/DashboardQuickActions";
+import DashboardHome from "./pages/DashboardHome";
+import DashboardCalendar from "./pages/DashboardCalendar";
+import DashboardChat from "./pages/DashboardChat";
+import DashboardEnquiries from "./pages/DashboardEnquiries";
+import DashboardQuotes from "./pages/DashboardQuotes";
+import DashboardJobs from "./pages/DashboardJobs";
+import DashboardClients from "./pages/DashboardClients";
+import DashboardPayments from "./pages/DashboardPayments";
+import DashboardReviews from "./pages/DashboardReviews";
+import DashboardReports from "./pages/DashboardReports";
+import DashboardProfile from "./pages/DashboardProfile";
+import DashboardBusiness from "./pages/DashboardBusiness";
+import DashboardTickets from "./pages/DashboardTickets";
+import DashboardResources from "./pages/DashboardResources";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -200,6 +216,23 @@ function App() {
           />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/menu-page" element={<MenuPage />} />
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="quick-actions" element={<QuickAction />} />
+            <Route path="dashboard-home" element={<DashboardHome />} />
+            <Route path="calendar" element={<DashboardCalendar />} />
+            <Route path="chat" element={<DashboardChat />} />
+            <Route path="enquiries" element={<DashboardEnquiries />} />
+            <Route path="quotes" element={<DashboardQuotes />} />
+            <Route path="jobs" element={<DashboardJobs />} />
+            <Route path="clients" element={<DashboardClients />} />
+            <Route path="payments" element={<DashboardPayments />} />
+            <Route path="reviews" element={<DashboardReviews />} />
+            <Route path="reports" element={<DashboardReports />} />
+            <Route path="workbench/profile" element={<DashboardProfile />} />
+            <Route path="workbench/business" element={<DashboardBusiness />} />
+            <Route path="helpdesk/tickets" element={<DashboardTickets />} />
+            <Route path="helpdesk/resources" element={<DashboardResources />} />
+          </Route>
         </Routes>
 
         {/* Show bottom navigation only on mobile except in login/signup pages */}
