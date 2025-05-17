@@ -258,10 +258,15 @@ export default function Dashboard() {
               </div>
             )}
 
-            <button className="nav-item">
-              <i className="fas fa-user-friends"></i>
-              Referrals
-            </button>
+            <NavLink
+              to="referrals"
+              className={({ isActive }) =>
+                isActive ? "nav-item active" : "nav-item"
+              }
+            >
+              <i className="fas fa-question-circle"></i>
+              <span className="label">Referrals</span>
+            </NavLink>
           </nav>
         </aside>
 
