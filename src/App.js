@@ -53,6 +53,7 @@ import DashboardProfile from "./pages/DashboardProfile";
 import DashboardBusiness from "./pages/DashboardBusiness";
 import DashboardTickets from "./pages/DashboardTickets";
 import DashboardResources from "./pages/DashboardResources";
+import DashboardReferrals from "./pages/DashboardReferrals";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -232,6 +233,7 @@ function App() {
             <Route path="workbench/business" element={<DashboardBusiness />} />
             <Route path="helpdesk/tickets" element={<DashboardTickets />} />
             <Route path="helpdesk/resources" element={<DashboardResources />} />
+            <Route path="referrals" element={<DashboardReferrals />} />
           </Route>
         </Routes>
 
