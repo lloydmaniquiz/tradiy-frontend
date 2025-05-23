@@ -59,6 +59,46 @@ function App() {
   const searchBarRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const [recentSearches, setRecentSearches] = useState([]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    const handleScroll = () => {
+      if (searchBarRef.current) {
+        const rect = searchBarRef.current.getBoundingClientRect();
+        const offset = -250;
+        setShowStickyHeader(rect.top <= offset);
+      }
+    };
+
+    const loadRecentSearches = () => {
+      const storedSearches = localStorage.getItem("recentSearches");
+      if (storedSearches) {
+        try {
+          const parsed = JSON.parse(storedSearches);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setRecentSearches(parsed);
+          }
+        } catch (e) {
+          console.error("Error parsing recentSearches from localStorage:", e);
+        }
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
+    handleResize();
+    handleScroll();
+    loadRecentSearches();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleSearch = (searchTerm, label) => {
     if (searchTerm) {
@@ -173,7 +213,7 @@ function App() {
                       Glasgow.
                     </p>
                     <SearchBar ref={searchBarRef} handleSearch={handleSearch} />
-                    {!isMobile && (
+                    {!isMobile && recentSearches.length > 0 && (
                       <RecentSearches handleSearch={handleSearch} />
                     )}
                   </div>
