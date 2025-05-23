@@ -1,5 +1,5 @@
 .search-results-container {
-  margin-top: 250px;
+  margin-top: 200px;
   font-family: "Hanken Grotesk", Arial;
   color: #000839;
 }
@@ -8,6 +8,7 @@
   font-size: 20px;
   margin-left: 3rem;
   margin-bottom: 1rem;
+  color: #423e3e;
 }
 
 .results-grid {
@@ -39,10 +40,14 @@
   gap: 10px;
   margin-bottom: 20px;
   margin-left: 3rem;
+  background-color: #fafafa;
+  padding: 10px 20px;
+  margin-right: 3rem;
+  border-radius: 20px;
 }
 
 .sort-buttons span {
-  font-weight: bold;
+  font-weight: medium;
   font-family: "Hanken Grotesk", Arial;
 }
 

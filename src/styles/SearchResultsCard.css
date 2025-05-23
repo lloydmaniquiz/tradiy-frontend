@@ -1,5 +1,5 @@
 .search-result-card {
-  background: #f2f4fa;
+  background: #fdfeff;
   border-radius: 15px;
   overflow: hidden;
   width: 100%;
@@ -7,8 +7,10 @@
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
   font-family: "Hanken Grotesk", Arial;
-  color: #000839;
+  color: #423e3e;
   max-height: 623px;
+  position: relative; /* Needed for pseudo-element */
+  border: 1px solid #bbbcc0;
 }
 
 .card-header {

@@ -194,6 +194,7 @@ const SearchResults = ({ handleFilter }) => {
                 width: "200px",
                 borderRadius: "10px",
                 fontWeight: "600",
+                color: "#423e3e",
               }}
             >
               No results found for "{searchQuery}".

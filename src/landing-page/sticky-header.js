@@ -32,7 +32,9 @@ function StickyHeader({
   return (
     <header className="sticky-header visible">
       <div className="sticky-carousel-wrapper">
-        <div className="sticky-wrapper">
+        <div
+          className={`sticky-wrapper ${isTraderProfilePage ? "no-border" : ""}`}
+        >
           <img
             className="tradiy-logo"
             src={TradiyLogo}
@@ -54,9 +56,10 @@ function StickyHeader({
         <div
           className="sticky-carousel-container"
           style={{
-            display: "flex",
+            display: isTraderProfilePage ? "none" : "flex",
             alignItems: "center",
             gap: "15px",
+            border: "none",
           }}
         >
           {showFilterButton && (

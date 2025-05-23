@@ -7,6 +7,10 @@
   border-bottom: 1px solid #bbbcc0;
 }
 
+.sticky-wrapper.no-border {
+  border-bottom: none;
+}
+
 .sticky-carousel-wrapper {
   display: block;
   width: 100%;

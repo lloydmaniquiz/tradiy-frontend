@@ -68,7 +68,7 @@ const RatingsSummary = ({ reviews }) => {
                     style={{
                       width: `${percentage}%`,
                       minWidth: count > 0 ? "5px" : "0",
-                      backgroundColor: count > 0 ? "#000839" : "transparent",
+                      backgroundColor: count > 0 ? "#423e3e" : "transparent",
                     }}
                   ></div>
                 </div>

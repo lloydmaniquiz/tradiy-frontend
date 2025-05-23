@@ -5,12 +5,12 @@
   padding: 20px; /* Adds spacing */
 }
 .trader-top-header {
-  margin-top: 120px;
+  margin-top: 80px;
   margin-bottom: 20px;
   display: flex;
   gap: 20px;
   font-family: "Hanken Grotesk", Arial;
-  color: #000839;
+  color: #423e3e;
   font-size: 40px;
 }
 
@@ -22,7 +22,7 @@ p {
 }
 
 .trader-top-header p {
-  color: rgba(0, 8, 57, 0.5); /* #000839 with 50% opacity */
+  color: rgba(66, 62, 62, 0.5); /* #423e3e with 50% opacity */
 }
 
 .trader-profile {
@@ -44,7 +44,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #000839;
+  color: #423e3e;
 }
 
 .trader-header h1 {
@@ -66,11 +66,17 @@ p {
   width: 200px;
 }
 
+.trader-review-count {
+  color: #423e3e;
+  font-family: "Hanken Grotesk", Arial;
+  margin-top: 10px;
+}
+
 .trader-address {
   font-size: 16px;
-  color: #000839;
+  color: #9f9f9f;
   margin-top: 5px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .trader-features {
@@ -78,7 +84,7 @@ p {
   gap: 25px;
   margin-top: 20px;
   font-size: 14px;
-  color: #000839;
+  color: #423e3e;
   font-weight: 500;
 }
 
@@ -105,10 +111,11 @@ p {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  color: #423e3e;
+  font-weight: 400;
 }
 
 .service {
-  display: flex;
   align-items: center;
   gap: 8px;
 }
@@ -157,7 +164,7 @@ p {
 }
 
 .member-operates-wrapper p {
-  color: #000839;
+  color: #423e3e;
   font-weight: 500;
   font-size: 18px;
 }
@@ -178,7 +185,7 @@ p {
 .review-text-container p {
   text-decoration: underline;
   font-family: "Hanken Grotesk", Arial;
-  color: #000839;
+  color: #423e3e;
   font-weight: 600;
   text-align: right;
   margin-top: -10px;
@@ -186,7 +193,7 @@ p {
 
 .calendar-title {
   text-align: left !important; /* Force left alignment */
-  color: #000839;
+  color: #423e3e;
 }
 
 .calendar-container h3 {
@@ -208,7 +215,7 @@ p {
 .calendar-note {
   font-size: 12px;
   text-align: left;
-  color: #000839;
+  color: #423e3e;
   margin-top: -10px;
   font-style: italic;
   line-height: 1.8;
@@ -218,12 +225,12 @@ p {
 
 .calendar-today {
   cursor: pointer;
-  color: #000839; /* Change to your preferred color */
+  color: #423e3e; /* Change to your preferred color */
   text-decoration: underline;
 }
 
 .calendar-today:hover {
-  color: #000839; /* Change to your preferred color */
+  color: #423e3e; /* Change to your preferred color */
 }
 
 .react-calendar {
@@ -237,7 +244,7 @@ p {
 }
 
 .react-calendar__tile--active {
-  background: #2ec1c7 !important;
+  background: #000839 !important;
   color: #fff;
 }
 
@@ -246,11 +253,14 @@ p {
   justify-content: space-between;
   padding-left: 10px;
   padding-right: 20px;
-  color: #000839;
+  color: #423e3e;
+}
+
+.gmaps-button {
+  color: #423e3e;
 }
 
 .calendar-header p {
-  text-decoration: underline;
   font-weight: 600;
 }
 
@@ -287,7 +297,7 @@ p {
 }
 
 .skills-list {
-  color: #000839;
+  color: #423e3e;
   font-weight: 500;
   font-family: "Hanken Grotesk", Arial;
 }
@@ -302,14 +312,20 @@ p {
   gap: 8px; /* Adjust spacing between image and text */
   margin-bottom: 8px;
   line-height: 1.5;
+  color: #423e3e;
 }
 
 .section-title {
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
   font-size: 30px;
   margin-bottom: 0;
   margin-top: 30px;
+}
+
+.star-review-header img {
+  height: 24px !important;
+  width: 24px !important;
 }
 
 .divider {
@@ -331,7 +347,7 @@ p {
   max-width: 500px; /* Adjust as needed */
   margin-bottom: 8px;
   line-height: 1.5;
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
   font-weight: 500;
 }
@@ -348,7 +364,7 @@ p {
 }
 
 .about-company p {
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
   margin-top: 10px;
   font-size: 16px;
@@ -374,7 +390,7 @@ p {
   line-height: 1.5;
   margin-bottom: 8px;
   gap: 10px;
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
   font-size: 16px;
   font-weight: 500;
@@ -405,24 +421,24 @@ p {
 }
 
 .rating-header h2 {
-  font-size: 40px;
+  font-size: 28px;
   margin: 0;
   font-weight: 500;
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
 }
 
 .rating-header p {
   font-size: 40px;
   font-weight: 800;
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
 }
 
 .review-btn {
   padding: 12px 24px;
-  border: 1px solid #000839;
-  color: #000839;
+  border: 1px solid #423e3e;
+  color: #423e3e;
   border-radius: 50px;
   cursor: pointer;
   background: none;
@@ -502,6 +518,7 @@ p {
 
 .review-name {
   font-size: 16px;
+  color: #423e3e !important;
 }
 
 .review-time {
@@ -516,6 +533,7 @@ p {
   padding: 3px 8px;
   font-size: 12px;
   border-radius: 5px;
+  color: #423e3e;
 }
 
 .verified {
@@ -534,6 +552,7 @@ p {
   width: 20%;
   margin-top: 15px;
   margin-bottom: 40px;
+  color: #423e3e;
 }
 
 .trader-bio {
@@ -548,7 +567,7 @@ p {
 }
 
 .trader-bio-content h3 {
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
   font-size: 24px;
   margin: 0;
@@ -558,13 +577,13 @@ p {
   height: 120px;
   width: 120px; /* Ensure the image remains a perfect circle */
   border-radius: 50%; /* Makes it circular */
-  border: 3px solid #000839; /* Adjust color as needed */
+  border: 3px solid #423e3e; /* Adjust color as needed */
   object-fit: cover; /* Ensures the image fills the space without distortion */
 }
 
 .confirmed-info span,
 li {
-  color: #000839;
+  color: #423e3e;
   font-weight: 600;
   font-size: 14px;
 }
@@ -598,7 +617,7 @@ li {
 }
 
 .meet-the-trade-title {
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
   font-size: 32px;
   margin-top: 30px;
@@ -611,7 +630,7 @@ li {
 }
 
 .is-verified-bio {
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
   font-size: 24px;
   font-weight: 600;
@@ -619,7 +638,7 @@ li {
 }
 
 .is-verified-content {
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
   margin-top: 14px;
 }
@@ -627,6 +646,7 @@ li {
 .map-container {
   margin-top: 40px;
   margin-bottom: 40px;
+  color: #423e3e;
 }
 
 .map-schedule-wrapper {
@@ -673,7 +693,7 @@ li {
 
 /* Unique class for time element */
 .profile-item .time-unique {
-  color: #000839; /* Or any other color you'd prefer */
+  color: #423e3e; /* Or any other color you'd prefer */
   font-weight: 600; /* Standard weight for unique time */
   text-align: left; /* Aligns time to the left */
   display: block; /* Makes time take full width */
@@ -696,7 +716,7 @@ li {
 .overall-rating {
   flex: 1;
   font-family: "Hanken Grotesk", Arial;
-  color: #000839;
+  color: #423e3e;
 }
 
 .overall-rating h3 {
@@ -711,7 +731,7 @@ li {
   align-items: center;
   gap: 20px;
   font-family: "Hanken Grotesk", Arial;
-  color: #000839;
+  color: #423e3e;
 }
 
 .rating-row span {
@@ -729,7 +749,7 @@ li {
 
 .filled-bar {
   height: 100%;
-  background-color: #000839;
+  background-color: #423e3e;
 }
 
 .category-ratings {
@@ -754,14 +774,14 @@ li {
   font-weight: bold;
   margin-bottom: 14px;
   margin-top: 0;
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
 }
 
 .category p {
   font-size: 16px;
   font-weight: bold;
-  color: #000839;
+  color: #423e3e;
   font-family: "Hanken Grotesk", Arial;
 }
 
@@ -793,6 +813,13 @@ li {
   align-items: center;
   gap: 10px;
   margin-bottom: 10px;
+  color: #423e3e;
+}
+
+.verified-stars-wrapper span {
+  color: #423e3e !important;
+  font-weight: 500;
+  font-size: 8px;
 }
 
 .stars-container {

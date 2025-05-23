@@ -7,13 +7,18 @@ import emptyStar from "../images/outline-star.png";
 import defaultAvatar from "../images/profile-placeholder.jpg"; // Add a default avatar
 import ReviewContentModal from "./ReviewContentModal";
 
-const TraderRating = ({ traderId, setReviewsCount }) => {
+const TraderRating = ({
+  traderId,
+  setReviewsCount,
+  average,
+  isReviewModalOpen,
+  setIsReviewModalOpen,
+}) => {
   const [trader, setTrader] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showAll] = useState(false);
-  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchTraderData = async () => {

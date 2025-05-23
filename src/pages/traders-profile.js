@@ -1,27 +1,65 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
+import starIcon from "../images/gray-star.png";
 import StickyHeader from "../landing-page/sticky-header";
 import MobileHeader from "../landing-page/mobile-header";
 import Footer from "../landing-page/footer";
 import "../styles/TraderProfile.css";
-import peacockCheck from "../images/peacock-check.png";
 import Gallery from "../components/TraderGallery";
 import ServiceAvailable from "../images/available-service.png";
 import ServiceUnavailable from "../images/unavailable-service.png";
 import Badge from "../images/badge.png";
 import Calendar from "react-calendar"; // Import Calendar
 import "react-calendar/dist/Calendar.css"; // Default styles
-import StarIcon from "../images/cyan-star.png";
-import NavyBlueCheck from "../images/navyBlue-check.png";
-import InsuranceIcon from "../images/PLI-icon.png";
-import VatRegistered from "../images/vat-registered.png";
-import CompanyType from "../images/company-type.png";
+import NavyBlueCheck from "../images/gray-check.png";
+import InsuranceIcon from "../images/insurance-gray.png";
+import VatRegistered from "../images/registered-gray.png";
+import CompanyType from "../images/company-gray.png";
 import TraderRating from "../components/TraderRating";
 import VerifiedTraderBadge from "../images/verified-trader.png";
 import profilePlaceholder from "../images/profile-placeholder.jpg";
 import Map from "../components/BusinessMap";
 import QuickEstimateForm from "../components/QuickEstimateForm";
 import BookAVisitForm from "../components/BookAVisitForm";
+
+import alarmsIcon from "../images/directory-carousel/Alarms  Security.png";
+import bathroomsIcon from "../images/directory-carousel/Bathrooms.png";
+import builderIcon from "../images/directory-carousel/Builder.png";
+import carpetFittingIcon from "../images/directory-carousel/carpet.png";
+import centralHeatingIcon from "../images/directory-carousel/Central Heating.png";
+import cleanerIcon from "../images/directory-carousel/Cleaner.png";
+import conservatoriesIcon from "../images/directory-carousel/Conservatories & Garden Rooms.png";
+import curtainblindIcon from "../images/directory-carousel/Curtain  Blind Fitters.png";
+import dampProoferIcon from "../images/directory-carousel/Damp Proofer.png";
+import drainageIcon from "../images/directory-carousel/Drainage.png";
+import drivewaysIcon from "../images/directory-carousel/Driveways  Patios.png";
+import electricianIcon from "../images/directory-carousel/electrician.png";
+import exteriorCleaningIcon from "../images/directory-carousel/Exterior Cleaning.png";
+import fasciaIcon from "../images/directory-carousel/Fascia  Soffits.png";
+import fencingIcon from "../images/directory-carousel/Fencing  Gates.png";
+import gardenerIcon from "../images/directory-carousel/Gardener.png";
+import glassIcon from "../images/directory-carousel/glass.png";
+import ITIcon from "../images/directory-carousel/IT Systems & Telecommunications.png";
+import joinerIcon from "../images/directory-carousel/Joiner.png";
+import kitchenIcon from "../images/directory-carousel/kitchen.png";
+import landscapingIcon from "../images/directory-carousel/Landscaping.png";
+import painterIcon from "../images/directory-carousel/Painter  Decorator.png";
+import pestcontrolIcon from "../images/directory-carousel/pest-control.png";
+import plastererIcon from "../images/directory-carousel/Plasterer.png";
+import plumberIcon from "../images/directory-carousel/Plumber.png";
+import poweredaccessIcon from "../images/directory-carousel/Powered Access.png";
+import renewableEnergyIcon from "../images/directory-carousel/Renewable Energy.png";
+import rooferIcon from "../images/directory-carousel/Roofer.png";
+import roughcasterIcon from "../images/directory-carousel/Roughcaster & Renderer.png";
+import scaffoldingIcon from "../images/directory-carousel/scaffolding.png";
+import stoneWorkIcon from "../images/directory-carousel/Stone Work.png";
+import stovesLogIcon from "../images/directory-carousel/Stoves  Log Burners.png";
+import tilerIcon from "../images/directory-carousel/Tiler.png";
+import treeSurgeonIcon from "../images/directory-carousel/Tree Surgeon.png";
+import tvAerialsIcon from "../images/directory-carousel/TV Aerials  Satellite Services.png";
+import upvcWindowsIcon from "../images/directory-carousel/UPVC Windows.png";
+import wasteClearanceIcon from "../images/directory-carousel/Waste  Clearance.png";
+import weatherCoatingsIcon from "../images/directory-carousel/Weather Coatings.png";
 
 const TraderProfile = () => {
   const { id } = useParams();
@@ -41,6 +79,50 @@ const TraderProfile = () => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [showTimeSlots, setShowTimeSlots] = useState(false); // Control view state
   const [modalData, setModalData] = useState({});
+  const [averageRating, setAverageRating] = useState(null);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+
+  const serviceIcons = {
+    "Alarms / Security Services": alarmsIcon,
+    "Bathroom Services": bathroomsIcon,
+    "Building / Home Improvement Services": builderIcon,
+    "Carpets / Flooring": carpetFittingIcon,
+    "Central Heating": centralHeatingIcon,
+    "Cleaning Services": cleanerIcon,
+    Cleaner: cleanerIcon,
+    "Conservatories & Garden Rooms": conservatoriesIcon,
+    "Curtain / Blind Fitters": curtainblindIcon,
+    "Damp Proofer": dampProoferIcon,
+    Drainage: drainageIcon,
+    "Driveways / Patios": drivewaysIcon,
+    Electrician: electricianIcon,
+    "Exterior Cleaning": exteriorCleaningIcon,
+    "Fascia / Soffits": fasciaIcon,
+    "Fencing / Gates": fencingIcon,
+    Gardener: gardenerIcon,
+    Glass: glassIcon,
+    "IT Systems & Telecommunications": ITIcon,
+    Joiner: joinerIcon,
+    Kitchens: kitchenIcon,
+    Landscaping: landscapingIcon,
+    "Painter / Decorator": painterIcon,
+    Plasterer: plastererIcon,
+    Plumber: plumberIcon,
+    "Pest Control": pestcontrolIcon,
+    "Powered Access": poweredaccessIcon,
+    "Renewable Energy": renewableEnergyIcon,
+    Roofer: rooferIcon,
+    "Roughcaster & Renderer": roughcasterIcon,
+    Scaffolding: scaffoldingIcon,
+    "Stone Work": stoneWorkIcon,
+    "Stoves / Log Burners": stovesLogIcon,
+    Tiler: tilerIcon,
+    "Tree Surgeon": treeSurgeonIcon,
+    "UPVC Windows": upvcWindowsIcon,
+    "Waste / Clearance": wasteClearanceIcon,
+    "Weather Coatings": weatherCoatingsIcon,
+    "TV Aerials": tvAerialsIcon,
+  };
 
   useEffect(() => {
     const fetchTraderData = async () => {
@@ -70,6 +152,36 @@ const TraderProfile = () => {
     };
 
     fetchTraderData();
+  }, [traderId]);
+
+  useEffect(() => {
+    const fetchAverageRating = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/reviews/?tradesperson_id=${traderId}`
+        );
+        if (!response.ok) throw new Error("Failed to fetch");
+
+        const data = await response.json();
+
+        const validRatings = data.reviews
+          .map((review) => review.trader_service)
+          .filter((rating) => rating !== null && rating !== undefined);
+
+        if (validRatings.length === 0) {
+          setAverageRating("N/A");
+          return;
+        }
+
+        const sum = validRatings.reduce((acc, val) => acc + val, 0);
+        const average = (sum / validRatings.length).toFixed(2);
+        setAverageRating(average);
+      } catch (err) {
+        console.error("Error fetching average rating:", err);
+      }
+    };
+
+    fetchAverageRating();
   }, [traderId]);
 
   useEffect(() => {
@@ -280,6 +392,16 @@ const TraderProfile = () => {
     return !(parsedSchedule[day] && parsedSchedule[day].available);
   };
 
+  function isValidTime(value) {
+    // Basic fallback check: avoid 'NaN', 'undefined', or empty string
+    return (
+      value &&
+      typeof value === "string" &&
+      !value.includes("NaN") &&
+      !value.includes("undefined")
+    );
+  }
+
   return (
     <>
       {isMobile ? (
@@ -388,6 +510,28 @@ const TraderProfile = () => {
             <p className="trader-address">
               {trader.businessAddress || "Address not available"}
             </p>
+            <p
+              className="trader-review-count"
+              style={{
+                cursor: "default",
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
+              <img
+                src={starIcon}
+                alt="star"
+                style={{ height: "16px", width: "16px" }}
+              />
+              {averageRating} • {reviewsCount || 0}{" "}
+              <span
+                style={{ cursor: "pointer", textDecoration: "underline" }}
+                onClick={() => setIsReviewModalOpen(true)}
+              >
+                reviews
+              </span>
+            </p>
 
             <div className="trader-features">
               <div>
@@ -450,14 +594,23 @@ const TraderProfile = () => {
           <div className="trader-services">
             {traderCategory.length > 0 ? (
               <ul>
-                {traderCategory.map((service, index) => (
-                  <li key={index}>
-                    <div className="service">
-                      <img src={peacockCheck} alt="check" />
-                      {service}
-                    </div>
-                  </li>
-                ))}
+                {traderCategory.map((service, index) => {
+                  const icon = serviceIcons[service]; // Lookup the icon
+                  return (
+                    <li key={index}>
+                      <div className="service">
+                        {icon && (
+                          <img
+                            src={icon}
+                            alt={`${service} icon`}
+                            className="service-icon"
+                          />
+                        )}
+                        {service}
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             ) : (
               <p>No services available</p>
@@ -486,22 +639,7 @@ const TraderProfile = () => {
 
                 {/* Reviews Section */}
               </div>
-              <div className="star-review-wrapper">
-                <div className="badge-info-wrapper">
-                  <img
-                    src={StarIcon}
-                    alt="Badge"
-                    className="star-icon"
-                    style={{ height: "40px" }}
-                  />
-                  <div className="member-review-wrapper">
-                    <p>{reviewsCount || 0}</p>
-                  </div>
-                </div>
-                <div className="review-text-container">
-                  <p>reviews</p>
-                </div>
-              </div>
+              <div className="star-review-wrapper"></div>
             </div>
             {/* Force Services & Skills Section Below */}
             <div className="services-container">
@@ -609,10 +747,12 @@ const TraderProfile = () => {
                               scheduleStatus === "CLOSED"
                                 ? "closed-time"
                                 : "time-unique"
-                            }`} // Apply different classes based on status
+                            }`}
                             style={isToday ? { color: "#FFBC58" } : {}}
                           >
-                            {scheduleStatus}
+                            {isValidTime(scheduleStatus)
+                              ? scheduleStatus
+                              : "No schedule available"}
                           </span>
                         </div>
                       </li>
@@ -716,7 +856,12 @@ const TraderProfile = () => {
 
         <hr className="divider" />
 
-        <TraderRating traderId={traderId} setReviewsCount={setReviewsCount} />
+        <TraderRating
+          traderId={traderId}
+          setReviewsCount={setReviewsCount}
+          isReviewModalOpen={isReviewModalOpen}
+          setIsReviewModalOpen={setIsReviewModalOpen}
+        />
 
         <hr className="divider" />
 
