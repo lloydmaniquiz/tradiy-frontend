@@ -2,46 +2,44 @@ import React, { useState, forwardRef } from "react";
 import "../App.css";
 import SearchIcon from "../images/search-white.png";
 import SearchDropdown from "../images/search-dropdown.png";
-import BuildierIcon from "../images/constructor.png"; // Builder icon
-import ElectricalIcon from "../images/electrician.png"; // Electrical icon
-import CarpetIcon from "../images/carpet.png"; // Carpet fitting icon
-import DrivewayIcon from "../images/road.png"; // Driveway icon
-import GardenerIcon from "../images/trimming.png"; // Gardener icon
-
-// Add the rest of the service icons
-import CentralHeatingIcon from "../images/central-heating.png"; // Central Heating icon
-import ITSystemsIcon from "../images/it-systems.png"; // IT Systems icon
-import PlumberIcon from "../images/plumber.png"; // Plumber icon
-import BathroomsIcon from "../images/bathrooms.png"; // Bathrooms icon
-import CurtainIcon from "../images/curtain.png"; // Curtain / Blind Fitters icon
-import GlassIcon from "../images/glass.png"; // Glass icon
-import JoinerIcon from "../images/joiner.png"; // Joiner icon
-import KitchensIcon from "../images/kitchens.png"; // Kitchens icon
-import PainterIcon from "../images/painter.png"; // Painter / Decorator icon
-import PlastererIcon from "../images/plasterer.png"; // Plasterer icon
-import TilerIcon from "../images/tiler.png"; // Tiler icon
-import DampProoferIcon from "../images/damp-proofer.png"; // Damp Proofer icon
-import DrainageIcon from "../images/drainage.png"; // Drainage icon
-import FasciaIcon from "../images/fascia.png"; // Fascia / Soffits icon
-import UPVCIcon from "../images/upvc.png"; // UPVC Windows icon
-import RooferIcon from "../images/roofer.png"; // Roofer icon
-import ScaffoldingIcon from "../images/scaffolding.png"; // Scaffolding icon
-import RoughcasterRendererIcon from "../images/roughcaster-renderer.png"; // Roughcaster & Renderer icon
-import StoneWorkIcon from "../images/stonework.png"; // Stone Work icon
-import WeatherCoatingsIcon from "../images/weather-coatings.png"; // Weather Coatings icon
-import ConservatoriesIcon from "../images/conservatories.png"; // Conservatories icon
-import FencingIcon from "../images/fencing.png"; // Fencing / Gates icon
-import LandscapingIcon from "../images/landscaping.png"; // Landscaping icon
-import TreeSurgeonIcon from "../images/tree-surgeon.png"; // Tree Surgeon icon
-import CleanerIcon from "../images/cleaner.png"; // Cleaner icon
-import ExteriorCleaningIcon from "../images/exterior-cleaning.png"; // Exterior Cleaning icon
-import WasteIcon from "../images/waste.png"; // Waste / Clearance icon
-import PestControlIcon from "../images/pest-control.png"; // Pest Control icon
-import PoweredAccessIcon from "../images/powered-access.png"; // Powered Access icon
-import RenewableEnergyIcon from "../images/renewable-energy.png"; // Renewable Energy icon
-import StovesIcon from "../images/stoves.png"; // Stoves / Log Burners icon
-import TVAerialIcon from "../images/tv-aerial.png"; // TV Aerials icon
-import AlarmsSecurityIcon from "../images/alarms-security.png"; // Alarms / Security icon
+import alarmsIcon from "../images/directory-carousel/Alarms  Security.png";
+import bathroomsIcon from "../images/directory-carousel/Bathrooms.png";
+import builderIcon from "../images/directory-carousel/Builder.png";
+import carpetFittingIcon from "../images/directory-carousel/carpet.png";
+import centralHeatingIcon from "../images/directory-carousel/Central Heating.png";
+import cleanerIcon from "../images/directory-carousel/Cleaner.png";
+import conservatoriesIcon from "../images/directory-carousel/Conservatories & Garden Rooms.png";
+import curtainblindIcon from "../images/directory-carousel/Curtain  Blind Fitters.png";
+import dampProoferIcon from "../images/directory-carousel/Damp Proofer.png";
+import drainageIcon from "../images/directory-carousel/Drainage.png";
+import drivewaysIcon from "../images/directory-carousel/Driveways  Patios.png";
+import electricianIcon from "../images/directory-carousel/electrician.png";
+import exteriorCleaningIcon from "../images/directory-carousel/Exterior Cleaning.png";
+import fasciaIcon from "../images/directory-carousel/Fascia  Soffits.png";
+import fencingIcon from "../images/directory-carousel/Fencing  Gates.png";
+import gardenerIcon from "../images/directory-carousel/Gardener.png";
+import glassIcon from "../images/directory-carousel/glass.png";
+import ITIcon from "../images/directory-carousel/IT Systems & Telecommunications.png";
+import joinerIcon from "../images/directory-carousel/Joiner.png";
+import kitchenIcon from "../images/directory-carousel/kitchen.png";
+import landscapingIcon from "../images/directory-carousel/Landscaping.png";
+import painterIcon from "../images/directory-carousel/Painter  Decorator.png";
+import pestcontrolIcon from "../images/directory-carousel/pest-control.png";
+import plastererIcon from "../images/directory-carousel/Plasterer.png";
+import plumberIcon from "../images/directory-carousel/Plumber.png";
+import poweredaccessIcon from "../images/directory-carousel/Powered Access.png";
+import renewableEnergyIcon from "../images/directory-carousel/Renewable Energy.png";
+import rooferIcon from "../images/directory-carousel/Roofer.png";
+import roughcasterIcon from "../images/directory-carousel/Roughcaster & Renderer.png";
+import scaffoldingIcon from "../images/directory-carousel/scaffolding.png";
+import stoneWorkIcon from "../images/directory-carousel/Stone Work.png";
+import stovesLogIcon from "../images/directory-carousel/Stoves  Log Burners.png";
+import tilerIcon from "../images/directory-carousel/Tiler.png";
+import treeSurgeonIcon from "../images/directory-carousel/Tree Surgeon.png";
+import tvAerialsIcon from "../images/directory-carousel/TV Aerials  Satellite Services.png";
+import upvcWindowsIcon from "../images/directory-carousel/UPVC Windows.png";
+import wasteClearanceIcon from "../images/directory-carousel/Waste  Clearance.png";
+import weatherCoatingsIcon from "../images/directory-carousel/Weather Coatings.png";
 
 // Forward ref to root div
 const SearchBar = forwardRef(({ handleSearch }, ref) => {
@@ -118,7 +116,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={AlarmsSecurityIcon} alt="Alarm / Security Services" />
+                <img src={alarmsIcon} alt="Alarm / Security Services" />
                 <span>Alarm / Security Services</span>
               </div>
               <div
@@ -128,7 +126,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={BathroomsIcon} alt="Bathroom Services" />
+                <img src={bathroomsIcon} alt="Bathroom Services" />
                 <span>Bathroom Services</span>
               </div>
               <div
@@ -138,7 +136,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={BuildierIcon} alt="Builder" />
+                <img src={builderIcon} alt="Builder" />
                 <span>Builder</span>
               </div>
               <div
@@ -148,7 +146,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={CarpetIcon} alt="Carpet Fitting" />
+                <img src={carpetFittingIcon} alt="Carpet Fitting" />
                 <span>Carpet Fitting</span>
               </div>
               <div
@@ -158,7 +156,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={CentralHeatingIcon} alt="Central Heating" />
+                <img src={centralHeatingIcon} alt="Central Heating" />
                 <span>Central Heating</span>
               </div>
               <div
@@ -168,7 +166,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={CleanerIcon} alt="Cleaning Services" />
+                <img src={cleanerIcon} alt="Cleaning Services" />
                 <span>Cleaning Services</span>
               </div>
               <div
@@ -179,7 +177,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                 }}
               >
                 <img
-                  src={ConservatoriesIcon}
+                  src={conservatoriesIcon}
                   alt="Conservatories & Garden Rooms"
                 />
                 <span>Conservatories & Garden Rooms</span>
@@ -191,7 +189,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={CurtainIcon} alt="Curtain / Blind Fitters" />
+                <img src={curtainblindIcon} alt="Curtain / Blind Fitters" />
                 <span>Curtain / Blind Fitters</span>
               </div>
               <div
@@ -201,7 +199,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={DampProoferIcon} alt="Damp Proofer" />
+                <img src={dampProoferIcon} alt="Damp Proofer" />
                 <span>Damp Proofer</span>
               </div>
               <div
@@ -211,7 +209,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={DrainageIcon} alt="Drainage" />
+                <img src={drainageIcon} alt="Drainage" />
                 <span>Drainage</span>
               </div>
               <div
@@ -221,7 +219,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={DrivewayIcon} alt="Driveways/Patios" />
+                <img src={drivewaysIcon} alt="Driveways/Patios" />
                 <span>Driveways/Patios</span>
               </div>
               <div
@@ -231,7 +229,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={ElectricalIcon} alt="Electrician" />
+                <img src={electricianIcon} alt="Electrician" />
                 <span>Electrician</span>
               </div>
               <div
@@ -241,7 +239,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={ExteriorCleaningIcon} alt="Exterior Cleaning" />
+                <img src={exteriorCleaningIcon} alt="Exterior Cleaning" />
                 <span>Exterior Cleaning</span>
               </div>
               <div
@@ -251,7 +249,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={FasciaIcon} alt="Fascia / Soffits" />
+                <img src={fasciaIcon} alt="Fascia / Soffits" />
                 <span>Fascia / Soffits</span>
               </div>
               <div
@@ -261,7 +259,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={FencingIcon} alt="Fencing / Gates" />
+                <img src={fencingIcon} alt="Fencing / Gates" />
                 <span>Fencing / Gates</span>
               </div>
               <div
@@ -271,7 +269,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={GardenerIcon} alt="Gardener" />
+                <img src={gardenerIcon} alt="Gardener" />
                 <span>Gardener</span>
               </div>
               <div
@@ -281,7 +279,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={GlassIcon} alt="Glass" />
+                <img src={glassIcon} alt="Glass" />
                 <span>Glass</span>
               </div>
               <div
@@ -291,7 +289,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={ITSystemsIcon} alt="IT Systems" />
+                <img src={ITIcon} alt="IT Systems" />
                 <span>IT Systems & Telecommunications</span>
               </div>
               <div
@@ -301,7 +299,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={JoinerIcon} alt="Joiner" />
+                <img src={joinerIcon} alt="Joiner" />
                 <span>Joiner</span>
               </div>
               <div
@@ -311,7 +309,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={KitchensIcon} alt="Kitchens" />
+                <img src={kitchenIcon} alt="Kitchens" />
                 <span>Kitchens</span>
               </div>
               <div
@@ -321,7 +319,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={LandscapingIcon} alt="Landscaping" />
+                <img src={landscapingIcon} alt="Landscaping" />
                 <span>Landscaping</span>
               </div>
               <div
@@ -331,7 +329,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={PainterIcon} alt="Painter / Decorator" />
+                <img src={painterIcon} alt="Painter / Decorator" />
                 <span>Painter / Decorator</span>
               </div>
               <div
@@ -341,7 +339,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={PlastererIcon} alt="Plasterer" />
+                <img src={plastererIcon} alt="Plasterer" />
                 <span>Plasterer</span>
               </div>
               <div
@@ -351,7 +349,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={PlumberIcon} alt="Plumber" />
+                <img src={plumberIcon} alt="Plumber" />
                 <span>Plumber</span>
               </div>
               <div
@@ -361,7 +359,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={PestControlIcon} alt="Pest Control" />
+                <img src={pestcontrolIcon} alt="Pest Control" />
                 <span>Pest Control</span>
               </div>
               <div
@@ -371,7 +369,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={PoweredAccessIcon} alt="Powered Access" />
+                <img src={poweredaccessIcon} alt="Powered Access" />
                 <span>Powered Access</span>
               </div>
               <div
@@ -381,7 +379,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={RenewableEnergyIcon} alt="Renewable Energy" />
+                <img src={renewableEnergyIcon} alt="Renewable Energy" />
                 <span>Renewable Energy</span>
               </div>
               <div
@@ -391,7 +389,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={RooferIcon} alt="Roofer" />
+                <img src={rooferIcon} alt="Roofer" />
                 <span>Roofer</span>
               </div>
               <div
@@ -401,10 +399,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img
-                  src={RoughcasterRendererIcon}
-                  alt="Roughcaster & Renderer"
-                />
+                <img src={roughcasterIcon} alt="Roughcaster & Renderer" />
                 <span>Roughcaster & Renderer</span>
               </div>
               <div
@@ -414,7 +409,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={ScaffoldingIcon} alt="Scaffolding" />
+                <img src={scaffoldingIcon} alt="Scaffolding" />
                 <span>Scaffolding</span>
               </div>
               <div
@@ -424,7 +419,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={StoneWorkIcon} alt="Stone Work" />
+                <img src={stoneWorkIcon} alt="Stone Work" />
                 <span>Stone Work</span>
               </div>
               <div
@@ -434,7 +429,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={StovesIcon} alt="Stoves / Log Burners" />
+                <img src={stovesLogIcon} alt="Stoves / Log Burners" />
                 <span>Stoves / Log Burners</span>
               </div>
               <div
@@ -444,7 +439,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={TilerIcon} alt="Tiler" />
+                <img src={tilerIcon} alt="Tiler" />
                 <span>Tiler</span>
               </div>
               <div
@@ -454,7 +449,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={TreeSurgeonIcon} alt="Tree Surgeon" />
+                <img src={treeSurgeonIcon} alt="Tree Surgeon" />
                 <span>Tree Surgeon</span>
               </div>
               <div
@@ -464,7 +459,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={UPVCIcon} alt="UPVC Windows" />
+                <img src={upvcWindowsIcon} alt="UPVC Windows" />
                 <span>UPVC Windows</span>
               </div>
               <div
@@ -474,7 +469,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={WasteIcon} alt="Waste / Clearance" />
+                <img src={wasteClearanceIcon} alt="Waste / Clearance" />
                 <span>Waste / Clearance</span>
               </div>
               <div
@@ -484,7 +479,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={WeatherCoatingsIcon} alt="Weather Coatings" />
+                <img src={weatherCoatingsIcon} alt="Weather Coatings" />
                 <span>Weather Coatings</span>
               </div>
               <div
@@ -494,7 +489,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   setDropdownOpen(false);
                 }}
               >
-                <img src={TVAerialIcon} alt="TV Aerials" />
+                <img src={tvAerialsIcon} alt="TV Aerials" />
                 <span>TV Aerials</span>
               </div>
             </div>
@@ -505,6 +500,7 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
           placeholder="What is your postcode?"
           value={postcode}
           onChange={(e) => setPostcode(e.target.value)}
+          style={{ color: "#423e3e", fontWeight: "400" }}
         />
         <button className="search-button" type="submit">
           <img src={SearchIcon} alt="🔍" />

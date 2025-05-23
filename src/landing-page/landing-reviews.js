@@ -12,7 +12,7 @@ const ReviewSlider = () => {
     {
       name: "William W",
       review:
-        "“I recently used Tradiy to find a trusted tradesman for some home repairs, and I couldn’t be more impressed! The entire process was seamless from start to finish. The platform is user-friendly and quickly connected me with reliable and professional tradesmen in my area.”",
+        "“I recently used Tradiy to find a trusted tradesman for some home repairs, and I couldn’t be more impressed! The entire process was seamless from start to finish.”",
       rating: 5,
     },
     {
@@ -27,16 +27,10 @@ const ReviewSlider = () => {
         "“Since meeting Edd and joining tradiy we have seen massive amounts of improvements in our business, more Customers and the help and support has been amazing, definitely worth joining Tradiy.”",
       rating: 5,
     },
-    {
-      name: "Yvonne C",
-      review:
-        "“Brilliant list of reliable trustworthy services. Wouldnt hesitate to recommend them.”",
-      rating: 5,
-    },
   ];
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 3, // Default for desktop

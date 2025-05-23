@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
-import dropDownOpen from "../images/up-white.png";
-import dropDownClosed from "../images/down-blue.png";
+import dropDownOpen from "../images/up-gray.png";
+import dropDownClosed from "../images/down-gray.png";
 
 const LocalTrades = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +20,7 @@ const LocalTrades = () => {
         className={`local-trades-dropdown ${isOpen ? "open" : ""}`}
         onClick={toggleDropdown}
       >
-        View Local Trades in your Area
+        <p>View Local Trades in your Area</p>
         <img
           src={isOpen ? dropDownOpen : dropDownClosed} // Toggle image based on isOpen state
           alt="Dropdown indicator"
@@ -30,8 +30,20 @@ const LocalTrades = () => {
       {isOpen && (
         <div className="local-trades-dropdown">
           <ul>
-            <li onClick={() => { handleItemClick("Ayrshire"); }}>Ayrshire</li>
-            <li onClick={() => { handleItemClick("Glasgow"); }}>Glasgow</li>
+            <li
+              onClick={() => {
+                handleItemClick("Ayrshire");
+              }}
+            >
+              Ayrshire
+            </li>
+            <li
+              onClick={() => {
+                handleItemClick("Glasgow");
+              }}
+            >
+              Glasgow
+            </li>
           </ul>
         </div>
       )}

@@ -12,8 +12,6 @@ import CarouselSearch from "./landing-page/carousel-search";
 import HowItWorks from "./landing-page/homeowners-lookup";
 import BenefitsTradespeople from "./landing-page/tradepeople-benefits";
 import Questions from "./landing-page/questions";
-import Divider from "./landing-page/divider";
-import LocalTrades from "./landing-page/local-trades";
 import Footer from "./landing-page/footer";
 import Login from "./pages/login";
 import SignUp from "./pages/sign-up";
@@ -183,9 +181,6 @@ function App() {
                   <HowItWorks />
                   <BenefitsTradespeople />
                   <Questions />
-                  <Divider />
-                  <LocalTrades />
-                  <Divider />
                   <Footer />
                 </main>
               </>

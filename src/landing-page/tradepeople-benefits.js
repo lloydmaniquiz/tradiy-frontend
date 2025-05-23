@@ -9,11 +9,11 @@ import ReviewSlider from "./landing-reviews";
 const BenefitsTradespeople = () => {
   return (
     <div className="benefits-tradespeople">
-      <h2>Benefits for Tradespeople</h2>
       <div className="shake-hands">
         <h3>Get Listed. Get Found. Get Hired</h3>
       </div>
       <div className="benefits-list">
+        <h2>Benefits for Tradespeople</h2>
         <h4>
           At Tradiy, we’re here to help you grow your business and reach more
           customers.
@@ -23,7 +23,7 @@ const BenefitsTradespeople = () => {
         <div className="benefits-set">
           <img src={free} alt="free" />
           <div>
-            <h3>Free to Join</h3>
+            <h3>100% Free to Join</h3>
             <p>
               Create a profile and list your services for free. There are no
               hidden fees or commissions.

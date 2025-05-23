@@ -3,7 +3,7 @@
   justify-content: space-evenly; /* Space between the elements */
   align-items: center; /* Align vertically */
   width: 100%;
-  padding: 10px 40px;
+  padding: 0px 40px; /* Reduced vertical padding */
   border-bottom: 1px solid #bbbcc0;
 }
 
@@ -19,7 +19,9 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  transform: scale(0.8);
+  transform: scale(0.6);
+  height: 80px; /* Or any value you prefer */
+  margin-top: 6px;
 }
 
 .sticky-header {
@@ -68,12 +70,12 @@
 .sticky-header .search-bar {
   width: 100%;
   justify-content: center;
-  transform: scale(0.8);
+  transform: scale(0.6);
+  margin-left: 160px;
 }
 
 .sticky-header .tradiy-logo {
-  padding: 1rem;
-  width: 150px;
+  width: 60px;
   cursor: pointer;
 }
 
@@ -91,6 +93,15 @@
   gap: 1rem;
   min-width: 214px;
   position: relative;
+}
+
+.sticky-burger-wrapper p {
+  font-size: medium;
+  color: #423e3e;
+}
+
+.burger-dropdown {
+  transform: scale(0.8);
 }
 
 @media (max-width: 1024px) {

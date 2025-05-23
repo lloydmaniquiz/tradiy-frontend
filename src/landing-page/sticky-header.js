@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom"; // Importing React Router's useLocation
 import "../styles/StickyHeader.css";
 import SearchBar from "./search-bar";
-import TradiyLogo from "../images/tradiy-navy-seal.png";
+import TradiyLogo from "../images/Tradiy-Hero-NewLogo.png";
 import BurgerDropdown from "./burger.js";
 import CarouselSearch from "./carousel-search.js";
 import FilterIcon from "../images/filter.png";

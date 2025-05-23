@@ -5,9 +5,8 @@ const Divider = () => {
     <hr
       style={{
         border: "1px solid #ccc",
-        width: "90%",
+        width: "1100px",
         margin: "0 auto",
-        marginBottom: "2rem",
       }}
     />
   );

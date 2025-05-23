@@ -1,14 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
-import tradiyCYAN from "../images/footer/tradiy-cyan.png";
+import tradiyCYAN from "../images/footer/Tradiy-Hero-NewLogo.png";
 import telephone from "../images/footer/telephone.png";
 import mail from "../images/footer/mail.png";
 import "../App.css";
+import Divider from "./divider";
+import LocalTrades from "./local-trades";
 
 const Footer = () => {
   return (
     <footer className="footer">
+      <div className="footer-local">
+        <Divider />
+        <LocalTrades />
+        <Divider />
+      </div>
       <div className="footer-container">
         <div className="footer-section">
           <img src={tradiyCYAN} alt="tradiy-cyan" />
@@ -31,7 +38,7 @@ const Footer = () => {
           <ul className="social-links">
             <li>
               <a
-                href="https://www.facebook.com"
+                href="https://www.facebook.com/Tradiyuk"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -40,7 +47,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="https://www.twitter.com"
+                href="https://x.com/Tradiyuk"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -49,7 +56,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/tradiyuk"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -58,7 +65,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/company/tradiy-app"
                 target="_blank"
                 rel="noopener noreferrer"
               >

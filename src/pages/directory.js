@@ -7,101 +7,162 @@ import StickyHeader from "../landing-page/sticky-header";
 import MobileHeader from "../landing-page/mobile-header";
 import Footer from "../landing-page/footer";
 
+import alarmsIcon from "../images/directory-carousel/Alarms  Security.png";
+import bathroomsIcon from "../images/directory-carousel/Bathrooms.png";
+import builderIcon from "../images/directory-carousel/Builder.png";
+import carpetFittingIcon from "../images/directory-carousel/carpet.png";
+import centralHeatingIcon from "../images/directory-carousel/Central Heating.png";
+import cleanerIcon from "../images/directory-carousel/Cleaner.png";
+import conservatoriesIcon from "../images/directory-carousel/Conservatories & Garden Rooms.png";
+import curtainblindIcon from "../images/directory-carousel/Curtain  Blind Fitters.png";
+import dampProoferIcon from "../images/directory-carousel/Damp Proofer.png";
+import drainageIcon from "../images/directory-carousel/Drainage.png";
+import drivewaysIcon from "../images/directory-carousel/Driveways  Patios.png";
+import electricianIcon from "../images/directory-carousel/electrician.png";
+import exteriorCleaningIcon from "../images/directory-carousel/Exterior Cleaning.png";
+import fasciaIcon from "../images/directory-carousel/Fascia  Soffits.png";
+import fencingIcon from "../images/directory-carousel/Fencing  Gates.png";
+import gardenerIcon from "../images/directory-carousel/Gardener.png";
+import glassIcon from "../images/directory-carousel/glass.png";
+import ITIcon from "../images/directory-carousel/IT Systems & Telecommunications.png";
+import joinerIcon from "../images/directory-carousel/Joiner.png";
+import kitchenIcon from "../images/directory-carousel/kitchen.png";
+import landscapingIcon from "../images/directory-carousel/Landscaping.png";
+import painterIcon from "../images/directory-carousel/Painter  Decorator.png";
+import pestcontrolIcon from "../images/directory-carousel/pest-control.png";
+import plastererIcon from "../images/directory-carousel/Plasterer.png";
+import plumberIcon from "../images/directory-carousel/Plumber.png";
+import poweredaccessIcon from "../images/directory-carousel/Powered Access.png";
+import renewableEnergyIcon from "../images/directory-carousel/Renewable Energy.png";
+import rooferIcon from "../images/directory-carousel/Roofer.png";
+import roughcasterIcon from "../images/directory-carousel/Roughcaster & Renderer.png";
+import scaffoldingIcon from "../images/directory-carousel/scaffolding.png";
+import stoneWorkIcon from "../images/directory-carousel/Stone Work.png";
+import stovesLogIcon from "../images/directory-carousel/Stoves  Log Burners.png";
+import tilerIcon from "../images/directory-carousel/Tiler.png";
+import treeSurgeonIcon from "../images/directory-carousel/Tree Surgeon.png";
+import tvAerialsIcon from "../images/directory-carousel/TV Aerials  Satellite Services.png";
+import upvcWindowsIcon from "../images/directory-carousel/UPVC Windows.png";
+import wasteClearanceIcon from "../images/directory-carousel/Waste  Clearance.png";
+import weatherCoatingsIcon from "../images/directory-carousel/Weather Coatings.png";
+
+const serviceIcons = {
+  "Alarms / Security": alarmsIcon,
+  Bathrooms: bathroomsIcon,
+  Builder: builderIcon,
+  "Carpet Fitting": carpetFittingIcon,
+  "Central Heating": centralHeatingIcon,
+  Cleaner: cleanerIcon,
+  "Conservatories & Garden Rooms": conservatoriesIcon,
+  "Curtain / Blind Fitters": curtainblindIcon,
+  "Damp Proofer": dampProoferIcon,
+  Drainage: drainageIcon,
+  "Driveways/Patios": drivewaysIcon,
+  Electrician: electricianIcon,
+  "Exterior Cleaning": exteriorCleaningIcon,
+  "Fascia / Soffits": fasciaIcon,
+  "Fencing / Gates": fencingIcon,
+  Gardener: gardenerIcon,
+  Glass: glassIcon,
+  "IT Systems & Telecommunications": ITIcon,
+  Joiner: joinerIcon,
+  Kitchens: kitchenIcon,
+  Landscaping: landscapingIcon,
+  "Painter / Decorator": painterIcon,
+  "Pest Control": pestcontrolIcon,
+  Plasterer: plastererIcon,
+  Plumber: plumberIcon,
+  "Powered Access": poweredaccessIcon,
+  "Renewable Energy": renewableEnergyIcon,
+  Roofer: rooferIcon,
+  "Roughcaster & Renderer": roughcasterIcon,
+  Scaffolding: scaffoldingIcon,
+  "Stone Work": stoneWorkIcon,
+  "Stoves / Log Burners": stovesLogIcon,
+  Tiler: tilerIcon,
+  "Tree Surgeon": treeSurgeonIcon,
+  "TV Aerials / Satellite Services": tvAerialsIcon,
+  "UPVC Windows": upvcWindowsIcon,
+  "Waste / Clearance": wasteClearanceIcon,
+  "Weather Coatings": weatherCoatingsIcon,
+};
+
 const Directory = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+
   const categories = [
     {
-      name: "Building and Construction",
+      name: "Home Infrastructure & Security",
       services: [
-        "Architectural Services",
-        "Builder/Home Improvements",
+        "Alarms / Security",
+        "Central Heating",
+        "Electrician",
+        "IT Systems & Telecommunications",
+        "Plumber",
+      ],
+    },
+    {
+      name: "Interior Improvements",
+      services: [
         "Bathrooms",
-        "Bedrooms",
-        "Blacksmith/Ironwork",
-        "Carpentry & Joinery",
-        "Extensions & Conversions",
-        "Garage & Outbuilding Construction",
-        "Roofing & Guttering",
-        "Tiling",
-        "Window & Door Fitting",
-      ],
-    },
-    {
-      name: "Electrical and Technical Services",
-      services: [
-        "Electrical Installations",
-        "Lighting Installation",
-        "Wiring & Rewiring",
-        "Fuse Box Replacement",
-        "CCTV & Security Systems",
-        "Smart Home Automation",
-        "Solar Panel Installation",
-        "Fire Alarm Systems",
-        "Electric Car Charging Points",
-      ],
-    },
-    {
-      name: "Heating, Cooling and Ventilation",
-      services: [
-        "Boiler Installation & Repair",
-        "Central Heating Installation",
-        "Underfloor Heating",
-        "Air Conditioning Services",
-        "Heat Pump Installation",
-        "Radiator Installation",
-        "Ductwork & Ventilation Systems",
-        "Gas Safety Inspections",
-      ],
-    },
-    {
-      name: "Flooring and Interior Design",
-      services: [
-        "Internal Painting",
-        "Hardwood Flooring",
         "Carpet Fitting",
-        "Laminate & Vinyl Flooring",
-        "Wallpapering",
-        "Plastering",
-        "Home Staging",
-        "Colour Consultation",
+        "Curtain / Blind Fitters",
+        "Glass",
+        "Joiner",
       ],
     },
     {
-      name: "Maintenance and Repair",
+      name: "Major Home Renovations",
       services: [
-        "Plumbing Repairs",
-        "Electrical Repairs",
-        "Gutter Cleaning",
-        "Locksmith Services",
-        "General Handyman Services",
-        "Furniture Assembly",
-        "Drain Unblocking",
-        "Window & Door Repairs",
+        "Builder",
+        "Kitchens",
+        "Painter / Decorator",
+        "Plasterer",
+        "Tiler",
       ],
     },
     {
-      name: "Outdoor and Garden Services",
+      name: "Exterior Surfaces",
       services: [
-        "Landscaping & Garden Design",
-        "Lawn Care & Maintenance",
-        "Tree Surgery & Pruning",
-        "Decking & Patio Installation",
-        "Fencing & Gates",
-        "Garden Shed Construction",
-        "Paving & Driveways",
-        "Pressure Washing Services",
+        "Damp Proofer",
+        "Drainage",
+        "Driveways/Patios",
+        "Fascia / Soffits",
+        "UPVC Windows",
       ],
     },
     {
-      name: "Specialised Services",
+      name: "Roofing & Outdoor Structures",
       services: [
-        "Swimming Pool Installation & Maintenance",
-        "Home Cinema Installation",
-        "Bespoke Furniture Design",
-        "Acoustic Soundproofing",
-        "Stained Glass Window Repair",
-        "Heritage & Conservation Work",
-        "Luxury Home Automation",
+        "Roofer",
+        "Roughcaster & Renderer",
+        "Scaffolding",
+        "Stone Work",
+        "Weather Coatings",
+      ],
+    },
+    {
+      name: "Garden Services",
+      services: [
+        "Conservatories & Garden Rooms",
+        "Fencing / Gates",
+        "Gardener",
+        "Landscaping",
+        "Tree Surgeon",
+      ],
+    },
+    {
+      name: "Cleaning & Waste Management",
+      services: ["Cleaner", "Exterior Cleaning", "Waste / Clearance"],
+    },
+    {
+      name: "Specialised Home Services",
+      services: [
+        "Pest Control",
+        "Powered Access",
+        "Renewable Energy",
+        "Stoves / Log Burners",
+        "TV Aerials / Satellite Services",
       ],
     },
   ];
@@ -110,13 +171,11 @@ const Directory = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1024);
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const [openCategories, setOpenCategories] = useState({});
-
   const navigate = useNavigate();
 
   const handleServiceClick = (serviceName) => {
@@ -176,9 +235,18 @@ const Directory = () => {
                       style={{
                         cursor: "pointer",
                         color: "#14b8a6",
-                        textDecoration: "underline",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.5rem",
                       }}
                     >
+                      {serviceIcons[service] && (
+                        <img
+                          src={serviceIcons[service]}
+                          alt={service}
+                          style={{ width: "40px", height: "40px" }}
+                        />
+                      )}
                       <span>{service}</span>
                     </div>
                   ))}
