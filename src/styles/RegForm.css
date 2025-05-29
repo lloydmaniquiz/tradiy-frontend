@@ -27,7 +27,7 @@
   overflow-y: auto; /* Enables scrolling when content overflows */
   scrollbar-width: thick;
   scrollbar-color: #000839;
-  margin-top: 250px;
+  margin-top: 220px;
   padding-bottom: 0; /* Remove extra padding from the bottom */
 }
 
@@ -46,6 +46,12 @@
   border-radius: 10px;
 }
 
+.regForm-select {
+  padding: 10px 10px !important;
+  font-size: 14px !important;
+  color: #423e3e !important;
+}
+
 .regForm-header {
   position: fixed;
   top: 5%;
@@ -57,7 +63,7 @@
 }
 
 .regForm-logo {
-  width: 150px;
+  width: 80px;
   margin-bottom: 10px;
 }
 
@@ -66,14 +72,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e0e0e0;
+  background-color: none;
   height: 100%;
 }
 
 .regForm-image-container img {
   width: 100%;
-  height: 100%;
+  height: 50%;
   object-fit: cover;
+}
+
+.regForm-input {
+  padding: 10px 15px !important;
+  font-size: 14px !important;
 }
 
 .regForm-input-group img {
@@ -83,6 +94,7 @@
 
 .regForm-input-group {
   margin-top: 15px;
+  color: #423e3e;
 }
 
 .regForm-input-group-services {
@@ -93,13 +105,13 @@
   font-family: "Hanken Grotesk", Arial;
   font-weight: 600;
   color: #000839;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .regForm-label {
-  color: #000839;
+  color: #423e3e;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .quote-react-select {
@@ -112,17 +124,27 @@
 }
 
 .regForm-button {
-  padding: 15px;
+  padding: 8px;
   background-color: white;
-  color: #000839;
-  border: 1px solid #000839;
+  color: #423e3e;
+  border: 1px solid #423e3e;
   border-radius: 50px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
   font-family: "Hanken Grotesk", Arial;
-  padding-right: 50px;
-  padding-left: 50px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.number-input-container {
+  border-radius: 50px !important;
+}
+
+.businessYearsInput {
+  border-radius: 50px !important;
+  font-family: "Hanken Grotesk", Arial;
+  padding: 10px 10px !important;
 }
 
 .regForm-button:hover {
@@ -177,7 +199,7 @@
   width: 100%;
   height: 15px;
   background-color: white;
-  border: 1px solid #ffbc58;
+  border: 1px solid #2ec1c7;
   border-radius: 50px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -185,7 +207,7 @@
 
 .progress-bar {
   height: 100%;
-  background-color: #ffbc58;
+  background-color: #2ec1c7;
   width: 0%;
   transition: width 0.5s ease-in-out;
   border-top-right-radius: 50px;

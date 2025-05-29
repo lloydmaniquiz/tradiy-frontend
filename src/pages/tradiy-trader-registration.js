@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/RegForm.css";
-import TradiyLogo from "../images/tradiy-navy-seal.png";
-import Drilling from "../images/drilling.jpg";
+import TradiyLogo from "../images/Tradiy-Hero-NewLogo.png";
+import Drilling from "../images/sign-up-img.png";
 import { FaTimes } from "react-icons/fa"; // Import the FaTimes icon
 import UploadModal from "../components/UploadModal";
 import workerSignup from "../images/worker-signup.png";
@@ -33,13 +33,6 @@ const RegistrationForm = () => {
   const saveForLater = () => {
     sessionStorage.setItem("registrationForm", JSON.stringify(formData));
     alert("Your progress has been saved!");
-  };
-
-  // Clear form data and reset sessionStorage
-  const clearData = () => {
-    sessionStorage.removeItem("registrationForm"); // Remove saved data
-    setFormData({}); // Clear form data in state
-    alert("Form data has been cleared.");
   };
 
   // Navigate to the next step
@@ -165,10 +158,6 @@ const RegistrationForm = () => {
           onEdit={goToStep}
         />
       )}
-
-      <button onClick={clearData} className="clear-button">
-        Clear Form Data
-      </button>
     </div>
   );
 };
@@ -183,6 +172,187 @@ const Step1 = ({
   totalSteps,
 }) => {
   const progress = (currentStep / totalSteps) * 100;
+
+  return (
+    <div className="regForm-step-container">
+      <div className="regForm-content">
+        {/* Left Side - Form */}
+        <div className="regForm-form-container">
+          {/* Fixed Header */}
+          <div className="regForm-header">
+            <img className="regForm-logo" src={TradiyLogo} alt="Tradiy Logo" />
+            <div className="progress-bar-container">
+              <div
+                className="progress-bar"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+            <h2>Business Basics</h2>
+          </div>
+
+          {/* Scrollable Form Content */}
+          <div className="regForm-input-wrapper">
+            <div className="regForm-input-group">
+              <label htmlFor="businessName" className="regForm-label">
+                Business Name <span style={{ color: "red" }}>*</span>
+              </label>
+              <input
+                id="businessName"
+                type="text"
+                placeholder="Your business name as registered with HMRC or Companies House."
+                value={formData.businessName || ""}
+                onChange={(e) => onSave("businessName", e.target.value)}
+                className="regForm-input"
+                style={{
+                  fontFamily: '"Hanken Grotesk", "Arial"',
+                  color: "#000839",
+                }}
+              />
+            </div>
+
+            <div className="regForm-input-group">
+              <label htmlFor="businessOwner" className="regForm-label">
+                Owner Name <span style={{ color: "red" }}>*</span>
+              </label>
+              <input
+                id="businessOwner"
+                type="text"
+                placeholder="Enter the business owner's name."
+                value={formData.businessOwner || ""}
+                onChange={(e) => onSave("businessOwner", e.target.value)}
+                className="regForm-input"
+                style={{
+                  fontFamily: '"Hanken Grotesk", "Arial"',
+                  color: "#000839",
+                }}
+              />
+            </div>
+
+            <div className="regForm-input-group">
+              <label htmlFor="businessAddress" className="regForm-label">
+                Business Address <span style={{ color: "red" }}>*</span>
+              </label>
+              <div
+                style={{
+                  color: "#BBBCC0",
+                  fontStyle: "italic",
+                  marginBottom: "10px",
+                  marginTop: "-5px",
+                }}
+              >
+                <small>Enter your full registered business address.</small>
+              </div>
+
+              {/* Full address input */}
+              <input
+                id="businessAddress"
+                type="text"
+                placeholder="House Number, Street Name, Locality Name"
+                value={formData.businessAddress || ""}
+                onChange={(e) => onSave("businessAddress", e.target.value)}
+                className="regForm-input"
+                style={{
+                  fontFamily: '"Hanken Grotesk", "Arial"',
+                  color: "#000839",
+                }}
+              />
+
+              {/* Grid layout for city, region, state, postcode */}
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                  marginTop: "10px",
+                }}
+              >
+                <input
+                  type="text"
+                  placeholder="City"
+                  value={formData.city || ""}
+                  onChange={(e) => onSave("city", e.target.value)}
+                  className="regForm-input"
+                  style={{ flex: "1 1 45%" }}
+                />
+                <input
+                  type="text"
+                  placeholder="Region"
+                  value={formData.region || ""}
+                  onChange={(e) => onSave("region", e.target.value)}
+                  className="regForm-input"
+                  style={{ flex: "1 1 45%" }}
+                />
+                <input
+                  type="text"
+                  placeholder="State"
+                  value={formData.state || ""}
+                  onChange={(e) => onSave("state", e.target.value)}
+                  className="regForm-input"
+                  style={{ flex: "1 1 45%" }}
+                />
+                <input
+                  type="text"
+                  placeholder="Postcode"
+                  value={formData.postcode || ""}
+                  onChange={(e) => onSave("postcode", e.target.value)}
+                  className="regForm-input"
+                  style={{ flex: "1 1 45%" }}
+                />
+              </div>
+            </div>
+
+            <div className="regForm-input-group">
+              <label htmlFor="businessNumber" className="regForm-label">
+                Phone Number <span style={{ color: "red" }}>*</span>
+              </label>
+              <input
+                id="businessNumber"
+                type="text"
+                placeholder="Enter the business' phone number."
+                value={formData.businessNumber || ""}
+                onChange={(e) => onSave("businessNumber", e.target.value)}
+                className="regForm-input"
+                style={{
+                  fontFamily: '"Hanken Grotesk", "Arial"',
+                  color: "#000839",
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Fixed Footer Buttons */}
+          <div className="regForm-button-container">
+            <button onClick={saveForLater} className="regForm-button">
+              Save and Continue for Later
+            </button>
+            <button onClick={onNext} className="regForm-button">
+              Next
+            </button>
+          </div>
+        </div>
+
+        {/* Right side - Image */}
+        <div className="regForm-image-container">
+          <img src={Drilling} alt="Business Registration Illustration" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Step 2 Business Information
+const Step2 = ({
+  onNext,
+  onBack,
+  formData,
+  onSave,
+  saveForLater,
+  currentStep,
+  totalSteps,
+}) => {
+  const progress = (currentStep / totalSteps) * 100;
+
+  const [errors, setErrors] = useState({});
 
   const options = [
     { value: "Option 1", label: "Alarm / Security Services" },
@@ -200,6 +370,107 @@ const Step1 = ({
     onSave("traderCategory", selectedValues);
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    // Save to parent form data
+    onSave(name, value);
+
+    // Basic inline validation
+    if (name === "businessYears") {
+      if (!value) {
+        setErrors((prev) => ({
+          ...prev,
+          businessYears: "This field is required.",
+        }));
+      } else if (isNaN(value) || Number(value) < 0) {
+        setErrors((prev) => ({
+          ...prev,
+          businessYears: "Please enter a valid non-negative number.",
+        }));
+      } else {
+        setErrors((prev) => ({
+          ...prev,
+          businessYears: "",
+        }));
+      }
+    }
+  };
+
+  const [modalType, setModalType] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(""); // State for error messages
+  const [uploadedFiles, setUploadedFiles] = useState({
+    "Business Logo": [],
+  });
+  const [workRadius, setWorkRadius] = useState(formData.workRadius || 0);
+
+  const handleWorkRadiusChange = (e) => {
+    const value = Number(e.target.value);
+    setWorkRadius(value);
+    onSave("workRadius", value);
+  };
+
+  // Load files from localStorage on initial load
+  useEffect(() => {
+    const savedFiles = localStorage.getItem("uploadedFiles");
+    console.log("Loaded files from localStorage:", savedFiles);
+    if (savedFiles) {
+      setUploadedFiles(JSON.parse(savedFiles));
+    }
+  }, []); // Only run on initial load when component is mounted
+
+  // Save files to localStorage whenever uploadedFiles changes
+  useEffect(() => {
+    console.log("Saving uploaded files to localStorage:", uploadedFiles);
+    localStorage.setItem("uploadedFiles", JSON.stringify(uploadedFiles));
+  }, [uploadedFiles]); // This ensures it triggers every time uploadedFiles changes
+
+  const handleDrop = (event, type) => {
+    event.preventDefault();
+    const files = Array.from(event.dataTransfer.files);
+    handleFileUploadLogic(files, type);
+  };
+
+  const handleFileUpload = (event) => {
+    const files = Array.from(event.target.files);
+    handleFileUploadLogic(files, modalType);
+  };
+
+  const handleFileUploadLogic = (files, type) => {
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    let validFiles = [];
+    let hasLargeFile = false;
+
+    validFiles = files.filter((file) => {
+      if (file.size > maxSize) {
+        hasLargeFile = true;
+        return false;
+      }
+      return true;
+    });
+
+    if (hasLargeFile) {
+      setErrorMessage("File size must not exceed 5MB.");
+      return;
+    } else {
+      setErrorMessage("");
+    }
+
+    if (type === "Business Logo") {
+      validFiles = validFiles.filter((file) => file.type.startsWith("image/"));
+      const updatedFiles = validFiles.slice(0, 1); // Only 1 logo allowed
+      setUploadedFiles({ "Business Logo": updatedFiles });
+      onSave("businessLogo", updatedFiles[0] || null);
+    }
+  };
+
+  const handleDelete = (fileIndex) => {
+    setUploadedFiles((prev) => ({
+      ...prev,
+      [modalType]: prev[modalType].filter((_, index) => index !== fileIndex),
+    }));
+  };
+
   return (
     <div className="regForm-step-container">
       <div className="regForm-content">
@@ -214,86 +485,14 @@ const Step1 = ({
                 style={{ width: `${progress}%` }}
               ></div>
             </div>
-            <h2>Business Details</h2>
+            <h2>Business Basics</h2>
           </div>
 
           {/* Scrollable Form Content */}
           <div className="regForm-input-wrapper">
             <div className="regForm-input-group">
-              <label htmlFor="businessName" className="regForm-label">
-                Business Name
-              </label>
-              <input
-                id="businessName"
-                type="text"
-                placeholder="e.g., Fisher’s Plumbing Services Ltd"
-                value={formData.businessName || ""}
-                onChange={(e) => onSave("businessName", e.target.value)}
-                className="regForm-input"
-                style={{
-                  fontFamily: '"Hanken Grotesk", "Arial"',
-                  color: "#000839",
-                }}
-              />
-            </div>
-
-            <div className="regForm-input-group">
-              <label htmlFor="businessOwner" className="regForm-label">
-                Business Owner
-              </label>
-              <input
-                id="businessOwner"
-                type="text"
-                placeholder="(matching Photo ID) e.g., Edward Fisher"
-                value={formData.businessOwner || ""}
-                onChange={(e) => onSave("businessOwner", e.target.value)}
-                className="regForm-input"
-                style={{
-                  fontFamily: '"Hanken Grotesk", "Arial"',
-                  color: "#000839",
-                }}
-              />
-            </div>
-
-            <div className="regForm-input-group">
-              <label htmlFor="businessAddress" className="regForm-label">
-                Business Address
-              </label>
-              <input
-                id="businessAddress"
-                type="text"
-                placeholder="House Number, Street Name, Locality Name, Town, Postcode"
-                value={formData.businessAddress || ""}
-                onChange={(e) => onSave("businessAddress", e.target.value)}
-                className="regForm-input"
-                style={{
-                  fontFamily: '"Hanken Grotesk", "Arial"',
-                  color: "#000839",
-                }}
-              />
-            </div>
-
-            <div className="regForm-input-group">
-              <label htmlFor="businessNumber" className="regForm-label">
-                Business Phone Number
-              </label>
-              <input
-                id="businessNumber"
-                type="text"
-                placeholder="Business Phone Number *"
-                value={formData.businessNumber || ""}
-                onChange={(e) => onSave("businessNumber", e.target.value)}
-                className="regForm-input"
-                style={{
-                  fontFamily: '"Hanken Grotesk", "Arial"',
-                  color: "#000839",
-                }}
-              />
-            </div>
-
-            <div className="regForm-input-group">
               <label htmlFor="traderCategory" className="regForm-label">
-                Trader Category
+                Trader Categories <span style={{ color: "red" }}>*</span>
               </label>
               <div className="regForm-select-wrapper">
                 <Select
@@ -332,14 +531,101 @@ const Step1 = ({
                       },
                     }),
                   }}
-                  placeholder="Choose the main trade your business covers"
+                  placeholder="Pick all the types of work you offer."
                 />
+              </div>
+              <div className="regForm-input-group">
+                <label>
+                  Years in Business <span style={{ color: "red" }}>*</span>
+                </label>
+                <div className="number-input-container">
+                  <input
+                    type="number"
+                    name="businessYears"
+                    className="businessYearsInput"
+                    value={formData.businessYears || ""}
+                    onChange={handleInputChange}
+                    placeholder="Let customers know how experienced they are."
+                    min="0"
+                  />
+                </div>
+                {errors.businessYears && (
+                  <p className="error-message">{errors.businessYears}</p>
+                )}
               </div>
             </div>
           </div>
+          <div className="regForm-file-upload-buttons">
+            <div className="regForm-input-group">
+              <p className="regForm-label">Business Logo</p>
+              <div
+                style={{
+                  color: "#BBBCC0",
+                  fontStyle: "italic",
+                  marginBottom: "10px",
+                  marginTop: "-5px",
+                }}
+              >
+                <small>Trades with logos get 24% more profile views.</small>
+              </div>
+              <button
+                onClick={() => setModalType("Business Logo")}
+                className="regForm-button"
+              >
+                + Upload
+              </button>
+              <p className="regForm-description">
+                Upload your business logo (only 1 image, max 5MB).
+              </p>
+            </div>
+          </div>
+
+          <div className="regForm-input-group" style={{ marginTop: "20px" }}>
+            <label htmlFor="workRadius" className="regForm-label">
+              Work Radius <span style={{ color: "red" }}>*</span>
+            </label>
+            <div
+              style={{
+                color: "#BBBCC0",
+                fontStyle: "italic",
+                marginBottom: "10px",
+                marginTop: "-5px",
+              }}
+            >
+              <p style={{ fontSize: "0.85rem", color: "#888" }}>
+                How far (in miles) are you willing to travel for jobs?
+              </p>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <input
+                type="range"
+                id="workRadius"
+                min="0"
+                max="50"
+                step="1"
+                value={workRadius}
+                onChange={handleWorkRadiusChange}
+                style={{ flex: 1 }}
+              />
+              <span>{workRadius} mi</span>
+            </div>
+          </div>
+
+          <UploadModal
+            modalType={modalType}
+            setModalType={setModalType}
+            uploadedFiles={uploadedFiles}
+            handleFileUpload={handleFileUpload}
+            handleDrop={handleDrop}
+            handleDelete={handleDelete}
+            errorMessage={errorMessage} // Pass error message
+          />
 
           {/* Fixed Footer Buttons */}
           <div className="regForm-button-container">
+            <button onClick={onBack} className="regForm-button">
+              Back
+            </button>
             <button onClick={saveForLater} className="regForm-button">
               Save and Continue for Later
             </button>
@@ -349,17 +635,17 @@ const Step1 = ({
           </div>
         </div>
 
-        {/* Right side - Image */}
+        {/* Right Side - Image */}
         <div className="regForm-image-container">
-          <img src={Drilling} alt="Business Registration Illustration" />
+          <img src={Drilling} alt="Business Information Illustration" />
         </div>
       </div>
     </div>
   );
 };
 
-// Step 2 Business Information
-const Step2 = ({
+// Step 3 Business Information
+const Step3 = ({
   onNext,
   onBack,
   formData,
@@ -368,7 +654,10 @@ const Step2 = ({
   currentStep,
   totalSteps,
 }) => {
-  const progress = (currentStep / totalSteps) * 100;
+  // Ensure formData.services is initialized with one empty string if it's empty
+  const [services, setServices] = useState(
+    formData?.services?.length > 0 ? formData.services : [""]
+  );
   const [isVatRegistered, setIsVatRegistered] = useState(
     formData.isVatRegistered || false
   );
@@ -377,6 +666,28 @@ const Step2 = ({
     const value = e.target.value === "yes";
     setIsVatRegistered(value);
     onSave("isVatRegistered", value);
+  };
+  const maxServices = 10; // Define the maximum limit for services
+
+  const progress = (currentStep / totalSteps) * 100;
+
+  const handleAddService = () => {
+    if (services.length < maxServices) {
+      setServices([...services, ""]); // Add a new empty input field
+    }
+  };
+
+  const handleChangeService = (index, value) => {
+    const updatedServices = [...services];
+    updatedServices[index] = value;
+    setServices(updatedServices);
+    onSave("services", updatedServices); // Save updated services data
+  };
+
+  const handleDeleteService = (index) => {
+    const updatedServices = services.filter((_, idx) => idx !== index); // Remove the selected input field
+    setServices(updatedServices);
+    onSave("services", updatedServices); // Save updated services data after deletion
   };
 
   return (
@@ -393,7 +704,20 @@ const Step2 = ({
                 style={{ width: `${progress}%` }}
               ></div>
             </div>
-            <h2>Business Information</h2>
+            <div className="h2-skip-wrapper">
+              <h2>Business Information</h2>
+              <p
+                className="skip-text"
+                onClick={onNext}
+                style={{
+                  cursor: "pointer",
+                  color: "#000839",
+                  textDecoration: "underline",
+                }}
+              >
+                Skip for now
+              </p>
+            </div>
           </div>
 
           {/* Scrollable Form Content */}
@@ -419,7 +743,6 @@ const Step2 = ({
                 </select>
               </div>
             </div>
-
             <div className="regForm-input-group">
               <label htmlFor="websiteURL" className="regForm-label">
                 Website
@@ -439,21 +762,39 @@ const Step2 = ({
             </div>
 
             <div className="regForm-input-group">
-              <label htmlFor="calloutCharge" className="regForm-label">
-                Callout Charge
-              </label>
-              <input
-                id="calloutCharge"
-                type="text"
-                placeholder="e.g., £50"
-                value={formData.calloutCharge || ""}
-                onChange={(e) => onSave("calloutCharge", e.target.value)}
-                className="regForm-input"
-                style={{
-                  fontFamily: '"Hanken Grotesk", "Arial"',
-                  color: "#000839",
-                }}
-              />
+              <p className="regForm-label">Call-Out Fee</p>
+              <div className="regForm-radio-group">
+                <label className="regForm-radio-label">
+                  <input
+                    type="radio"
+                    name="vatRegistered"
+                    value="yes"
+                    checked={isVatRegistered === true}
+                    onChange={handleVatChange}
+                    className="regForm-radio"
+                    style={{
+                      fontFamily: '"Hanken Grotesk", "Arial"',
+                      color: "#000839",
+                    }}
+                  />
+                  Yes
+                </label>
+                <label className="regForm-radio-label">
+                  <input
+                    type="radio"
+                    name="vatRegistered"
+                    value="no"
+                    checked={isVatRegistered === false}
+                    onChange={handleVatChange}
+                    className="regForm-radio"
+                    style={{
+                      fontFamily: '"Hanken Grotesk", "Arial"',
+                      color: "#000839",
+                    }}
+                  />
+                  No
+                </label>
+              </div>
             </div>
 
             <div className="regForm-input-group">
@@ -511,100 +852,6 @@ const Step2 = ({
                 />
               </div>
             )}
-          </div>
-
-          {/* Fixed Footer Buttons */}
-          <div className="regForm-button-container">
-            <button onClick={onBack} className="regForm-button">
-              Back
-            </button>
-            <button onClick={saveForLater} className="regForm-button">
-              Save and Continue for Later
-            </button>
-            <button onClick={onNext} className="regForm-button">
-              Next
-            </button>
-          </div>
-        </div>
-
-        {/* Right Side - Image */}
-        <div className="regForm-image-container">
-          <img src={Drilling} alt="Business Information Illustration" />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Step 3 Business Information
-const Step3 = ({
-  onNext,
-  onBack,
-  formData,
-  onSave,
-  saveForLater,
-  currentStep,
-  totalSteps,
-}) => {
-  // Ensure formData.services is initialized with one empty string if it's empty
-  const [services, setServices] = useState(
-    formData?.services?.length > 0 ? formData.services : [""]
-  );
-  const maxServices = 10; // Define the maximum limit for services
-
-  const progress = (currentStep / totalSteps) * 100;
-
-  const handleAddService = () => {
-    if (services.length < maxServices) {
-      setServices([...services, ""]); // Add a new empty input field
-    }
-  };
-
-  const handleChangeService = (index, value) => {
-    const updatedServices = [...services];
-    updatedServices[index] = value;
-    setServices(updatedServices);
-    onSave("services", updatedServices); // Save updated services data
-  };
-
-  const handleDeleteService = (index) => {
-    const updatedServices = services.filter((_, idx) => idx !== index); // Remove the selected input field
-    setServices(updatedServices);
-    onSave("services", updatedServices); // Save updated services data after deletion
-  };
-
-  return (
-    <div className="regForm-step-container">
-      <div className="regForm-content">
-        {/* Left Side - Form */}
-        <div className="regForm-form-container">
-          {/* Fixed Header */}
-          <div className="regForm-header">
-            <img className="regForm-logo" src={TradiyLogo} alt="Tradiy Logo" />
-            <div className="progress-bar-container">
-              <div
-                className="progress-bar"
-                style={{ width: `${progress}%` }}
-              ></div>
-            </div>
-            <div className="h2-skip-wrapper">
-              <h2>Business Information</h2>
-              <p
-                className="skip-text"
-                onClick={onNext}
-                style={{
-                  cursor: "pointer",
-                  color: "#000839",
-                  textDecoration: "underline",
-                }}
-              >
-                Skip for now
-              </p>
-            </div>
-          </div>
-
-          {/* Scrollable Form Content */}
-          <div className="regForm-input-wrapper">
             <div className="regForm-input-group">
               <p className="regForm-label">Services Provided</p>
               {services.map((service, index) => (
@@ -688,7 +935,6 @@ const Step4 = ({
   const [modalType, setModalType] = useState(null);
   const [errorMessage, setErrorMessage] = useState(""); // State for error messages
   const [uploadedFiles, setUploadedFiles] = useState({
-    "Business Logo": [],
     "Work Images": [],
     Certifications: [],
   });
@@ -742,10 +988,7 @@ const Step4 = ({
     setUploadedFiles((prev) => {
       let updatedFiles = [];
 
-      if (type === "Business Logo") {
-        updatedFiles = validFiles.slice(0, 1);
-        onSave("businessLogo", updatedFiles[0]); // Ensure onSave updates formData
-      } else if (type === "Work Images") {
+      if (type === "Work Images") {
         validFiles = validFiles.filter((file) =>
           file.type.startsWith("image/")
         );
@@ -805,11 +1048,6 @@ const Step4 = ({
                 >
                   + Upload
                 </button>
-                {type === "Business Logo" && (
-                  <p className="regForm-description">
-                    High-quality image of your logo.
-                  </p>
-                )}
                 {type === "Work Images" && (
                   <p className="regForm-description">
                     Showcase past work. (Up to 10 images, max 5MB each)
@@ -2031,7 +2269,7 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
             </div>
           </div>
           <div className="detail-item">
-            <div className="summary-label">Trade Category</div>
+            <div className="summary-label">Trade Category </div>
             <div className="value">
               {formData.traderCategory || "No trade category provided"}
             </div>

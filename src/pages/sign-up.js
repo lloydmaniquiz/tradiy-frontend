@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import "../styles/SignUp.css";
-import Drilling from "../images/drilling.jpg";
-import TradiyLogo from "../images/tradiy-navy-seal.png";
+import SignUpImg from "../images/sign-up-img.png";
+import TradiyLogo from "../images/Tradiy-Hero-NewLogo.png";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -70,8 +70,8 @@ export default function SignUp() {
         <div className="signup-wrapper">
           <div className="signup-image-section">
             <img
-              src={Drilling}
-              alt="Worker with drill"
+              src={SignUpImg}
+              alt="work-in-progress"
               className="signup-image"
             />
           </div>
