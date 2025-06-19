@@ -644,7 +644,7 @@ const TraderProfile = () => {
             {/* Force Services & Skills Section Below */}
             <div className="services-container">
               <div className="services-skills">
-                <h3 className="section-title">Services & Skills</h3>
+                <h3 className="section-title-profile">Services & Skills</h3>
                 <hr className="divider" />
                 <ul className="skills-list" style={{ listStyle: "none" }}>
                   {Array.isArray(services) && services.length > 0 ? (
@@ -665,7 +665,7 @@ const TraderProfile = () => {
               </div>
             </div>
             <div className="company-profile">
-              <h3 className="section-title">Company Profile</h3>
+              <h3 className="section-title-profile">Company Profile</h3>
               <hr className="divider" />
               <div className="profile-details">
                 {trader.insuranceCertificate && (
@@ -763,7 +763,7 @@ const TraderProfile = () => {
             </div>
             <hr className="divider" />
             <div className="about-company">
-              <h3 className="section-title">About the Company</h3>
+              <h3 className="section-title-profile">About the Company</h3>
               {trader.businessDescription ? (
                 <p>{trader.businessDescription}</p>
               ) : (
@@ -771,7 +771,9 @@ const TraderProfile = () => {
               )}
 
               <div className="awards">
-                <h3 className="section-title">Awards & Accreditations</h3>
+                <h3 className="section-title-profile">
+                  Awards & Accreditations
+                </h3>
                 <div className="award-item">
                   <img src={NavyBlueCheck} alt="Check" className="award-icon" />
                   <span>NCQ level 3 painting and decorating</span>
