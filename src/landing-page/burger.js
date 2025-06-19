@@ -83,6 +83,16 @@ const BurgerDropdown = () => {
                 Join our Newsletter
               </Link>
             </li>
+            <li>
+              <Link to="/contact-us" onClick={() => setIsOpen(false)}>
+                Contact Us
+              </Link>
+            </li>
+            <li>
+              <Link to="/refer-a-trader" onClick={() => setIsOpen(false)}>
+                Refer a Trader
+              </Link>
+            </li>
           </ul>
         </div>
       )}

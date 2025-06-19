@@ -5,8 +5,11 @@ const Divider = () => {
     <hr
       style={{
         border: "1px solid #ccc",
-        width: "1100px",
+        width: "100%",
         margin: "0 auto",
+        marginTop: "10px",
+        marginBottom: "10px",
+        marginRight: "150px",
       }}
     />
   );

@@ -10,7 +10,7 @@ import searchIcon from "../images/search-blue.png";
 const questionsData = [
   {
     category: "GENERAL FAQS",
-    question: "What is Tradiy?",
+    question: "What is Tradiy in general?",
     answer:
       "Tradiy is an online directory connecting homeowners in Scotland with verified tradespeople. It’s designed to make finding trusted professionals for home projects quick, simple, and stress-free.",
   },

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/ForgotPassword.css";
 import forgotPassword from "../images/reset-password/forgot-password.png";
-import TradiyLogo from "../images/tradiy-navy-seal.png";
+import TradiyLogo from "../images/tradiy-hero-logo.png";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -25,7 +25,11 @@ const ForgotPassword = () => {
     <div className="forgot-password-wrapper">
       <div className="container">
         <img src={TradiyLogo} alt="Tradiy Logo" className="formImage" />
-        <img src={forgotPassword} alt="Forgot Password" className="formImage" />
+        <img
+          src={forgotPassword}
+          alt="Forgot Password"
+          className="formImage-1"
+        />
         <h2>Forgot your password?</h2>
         <p>
           No worries! Enter your email address below, and we’ll help you reset

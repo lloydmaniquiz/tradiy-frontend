@@ -52,6 +52,7 @@ import DashboardBusiness from "./pages/DashboardBusiness";
 import DashboardTickets from "./pages/DashboardTickets";
 import DashboardResources from "./pages/DashboardResources";
 import DashboardReferrals from "./pages/DashboardReferrals";
+import ThankYouForm from "./pages/ThankYouForm";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -232,6 +233,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/email-verification" element={<EmailVerification />} />
           <Route path="/email-verified" element={<EmailVerified />} />
+          <Route path="/thank-you" element={<ThankYouForm />} />
           <Route
             path="/tradiy-registration-form"
             element={<RegistrationForm />}

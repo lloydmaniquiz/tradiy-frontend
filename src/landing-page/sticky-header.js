@@ -27,7 +27,18 @@ function StickyHeader({
   };
 
   // Check if the current pathname contains '/trader/' to detect trader profile pages
-  const isTraderProfilePage = location.pathname.includes("/trader/");
+  const isTraderProfilePage = [
+    "/trader/",
+    "/directory",
+    "/tradiy-benefits",
+    "/how-tradiy-works",
+    "/contact-us",
+    "/newsletter",
+    "/faqs",
+    "/refer-a-trade",
+    "/blogs",
+    "/bookmarks",
+  ].some((path) => location.pathname.includes(path));
 
   return (
     <header className="sticky-header visible">

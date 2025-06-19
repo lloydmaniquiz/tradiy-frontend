@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import StickyHeader from "./sticky-header";
 import MobileHeader from "./mobile-header";
 import BlueCheck from "../images/bluecheck.png";
-import Construction from "../images/construction.png";
+import Construction from "../images/phone-image.png";
 import ImageTextContainer from "../components/ImageTextContainer";
 import Confused from "../images/confused.png";
 import Tips from "../images/tips.png";
@@ -222,7 +222,7 @@ const TradiyBenefits = () => {
 
         {/* TRADESPEOPLE FEEDBACK */}
         <div className="feedback">
-          <h1 style={{ marginBottom: "30px", color: "#000839" }}>
+          <h1 style={{ marginBottom: "30px", color: "#423e3e" }}>
             Hear from Tradespeople Like You
           </h1>
           <div className="feedback-parent">
@@ -328,11 +328,11 @@ const TradiyBenefits = () => {
                   local customers, grow your reputation, and take your business
                   to the next level.
                 </p>
-                <div className="button-container">
-                  <button className="htw-search-button" onClick={signUp}>
-                    Sign Up for Free
-                  </button>
-                </div>
+              </div>
+              <div className="button-container">
+                <button className="htw-search-button" onClick={signUp}>
+                  Sign Up for Free
+                </button>
               </div>
             </div>
           </div>

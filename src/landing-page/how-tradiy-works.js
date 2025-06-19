@@ -18,8 +18,6 @@ import Free from "../images/benefits-set/free.png";
 import Professionals from "../images/benefits-set/professionals.png";
 import Support from "../images/benefits-set/support.png";
 import HTWQuestions from "./questions-htw";
-import Divider from "./divider";
-import LocalTrades from "./local-trades";
 import Footer from "./footer";
 import Shakehands from "../images/shakehands.png";
 
@@ -76,7 +74,6 @@ const HowTradiyWorks = () => {
 
         {/* Main Content */}
         <section className="htw-content">
-          <h2>How Tradiy Works</h2>
           <p className="htw-subheading">
             <strong>
               Discover how Tradiy makes hiring trusted professionals in your
@@ -88,10 +85,6 @@ const HowTradiyWorks = () => {
           <div className="htw-steps-container">
             <div className="htw-step">
               <h3>Find and Compare Tradespeople</h3>
-              <p>
-                Create a free account, upload your ID for security, and unlock
-                features like requesting quotes.
-              </p>
             </div>
 
             <img
@@ -102,10 +95,6 @@ const HowTradiyWorks = () => {
 
             <div className="htw-step">
               <h3>Book a Quote Estimate or Visit</h3>
-              <p>
-                Search by trade, location, and reviews. Bookmark profiles,
-                compare quotes, and review qualifications and past work.
-              </p>
             </div>
 
             <img
@@ -116,10 +105,6 @@ const HowTradiyWorks = () => {
 
             <div className="htw-step">
               <h3>Start Projects and Leave Reviews</h3>
-              <p>
-                Post job details, receive quotes, and hire the best match. After
-                the job, leave a review to help others.
-              </p>
             </div>
           </div>
 
@@ -274,20 +259,17 @@ const HowTradiyWorks = () => {
                   Find and connect with verified professionals to bring your
                   next project to life.
                 </p>
-                <div>
-                  <div className="button-container">
-                    <button className="htw-search-button" onClick={readyToJoin}>
-                      Get Started Now
-                    </button>
-                  </div>
+              </div>
+              <div>
+                <div className="button-container">
+                  <button className="htw-search-button" onClick={readyToJoin}>
+                    Get Started Now
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <Divider />
-        <LocalTrades />
-        <Divider />
         <Footer />
       </div>
     </>

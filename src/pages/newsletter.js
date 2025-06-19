@@ -5,9 +5,8 @@ import StickyHeader from "../landing-page/sticky-header";
 import MobileHeader from "../landing-page/mobile-header";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import workerImage from "../images/workerImage.png";
+import workerImage from "../images/Newsletter-cuate.png";
 import workerImageMobile from "../images/newsletter-mobile.png";
-import TradiyLogo from "../images/tradiy-navy-seal.png";
 
 const NewsletterPage = () => {
   const [selectedRole, setSelectedRole] = useState(null); // or any initial value like 'Homeowner' or 'Trader'
@@ -67,7 +66,6 @@ const NewsletterPage = () => {
         <div className="newsletter-container">
           {/* Left Side - Form */}
           <div className="newsletter-form-section">
-            <img className="brand-title" src={TradiyLogo} alt="Tradiy Logo" />
             <h2 className="tagline">Join Our Newsletter</h2>
 
             {/* Role Selection */}

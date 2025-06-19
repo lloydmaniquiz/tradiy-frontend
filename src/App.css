@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Header */
 .header {
   display: flex;
@@ -138,11 +142,12 @@
 
 .dropdown-menu ul li a {
   text-decoration: none;
-  color: #000839;
+  color: #423e3e;
   font-size: 14px;
   display: block;
   padding: 0.8rem;
   transition: background-color 0.3s ease;
+  font-weight: 500;
 }
 
 /* Hover effect for menu items */
@@ -345,7 +350,7 @@
   border: 1px solid #bbbcc0;
   border-radius: 40px 10px 10px 40px;
   width: 100%;
-  max-height: 250px;
+  max-height: 350px;
   overflow-y: auto;
   color: #423e3e;
   margin-top: 4px;
@@ -580,6 +585,7 @@
   position: relative;
   overflow: hidden;
   width: 100%; /* Maximize the width of the carousel container */
+  z-index: 1;
 }
 
 .carousel-button {
@@ -1149,6 +1155,7 @@
 .faqs h1 {
   font-size: 300%;
   padding-bottom: 2rem;
+  color: #423e3e;
 }
 
 .faqs p {
@@ -1251,7 +1258,7 @@
 }
 
 .faq-content p {
-  font-size: 18px;
+  font-size: 16px;
   color: #423e3e;
 }
 
@@ -1430,7 +1437,7 @@
 /* HOW TRADIY WORKS */
 
 .htw-how-tradiy-works {
-  margin-top: 4rem;
+  margin-top: 3rem;
   text-align: center;
   font-family: "Hanken Grotesk", Arial;
 }
@@ -1444,7 +1451,7 @@
   color: white;
   position: relative;
   font-size: x-large;
-  margin-top: 190px;
+  margin-top: 70px;
 }
 
 .htw-content {
@@ -1479,14 +1486,8 @@
 
 .htw-step h3 {
   font-size: 30px;
-  color: #000839;
-}
-
-.htw-step p {
-  font-size: 16px;
-  margin-top: 10px;
-  color: #000839;
-  font-style: italic;
+  color: #423e3e;
+  font-weight: 500;
 }
 
 .htw-cta {
@@ -1531,13 +1532,18 @@
 .htw-dashboard-header {
   text-align: left;
   margin-left: 20px; /* Example for some left margin */
-  color: #000839;
+  color: #423e3e;
   font-size: x-large;
+}
+
+.htw-dashboard-header h2 {
+  color: #423e3e;
 }
 
 .htw-dashboard-header p {
   margin-top: 20px;
   font-size: large;
+  color: #423e3e;
 }
 
 .htw-check-text-wrapper {
@@ -1554,10 +1560,11 @@
 
 .htw-check {
   width: 32px;
+  border-radius: 50px;
 }
 
 .htw-check-text-container {
-  color: #000839;
+  color: #423e3e;
   text-align: left;
   max-width: 640px;
 }
@@ -1570,11 +1577,11 @@
 .htw-divider {
   width: 100%;
   height: 80px;
-  background: url("./images/htw-divider.png") center/cover no-repeat;
+  background-color: #f2f4fa;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #000839;
+  color: #423e3e;
   position: relative;
   font-size: x-large;
   margin-bottom: 8rem;
@@ -1582,6 +1589,8 @@
 
 .htw-overlay h2 {
   font-size: 20px;
+  color: #423e3e;
+  margin: 0 !important;
 }
 
 .htw-homeowner-header {
@@ -1592,18 +1601,17 @@
 }
 
 .htw-homeowner-header h1 {
-  color: #000839;
+  color: #423e3e;
   padding: 12px;
-  background-color: #ffbc58;
-  width: 340px;
+  width: 440px;
   border-radius: 10px;
   text-align: center; /* Center the text within h1 */
-  margin-bottom: 20px; /* Adds some space below the h1 */
-  font-size: 28px;
+  margin-bottom: 10px; /* Adds some space below the h1 */
+  font-size: 36px;
 }
 
 .htw-homeowner-header p {
-  color: #000839;
+  color: #423e3e;
   font-size: 18px;
   text-align: center;
   max-width: 1000px;
@@ -1632,18 +1640,18 @@
 }
 
 .htw-choose-tradiy-overlay {
-  color: white;
+  color: #000839;
 }
 
 .htw-choose-tradiy-container p {
-  color: #000839;
+  color: #423e3e;
   font-weight: 600;
   font-size: large;
   margin-bottom: 20px;
 }
 
 .htw-benefits-set {
-  background-color: #f2f4fa;
+  background-color: #f8faff;
   padding: 1.5rem;
   border-radius: 20px;
   max-width: 250px;
@@ -1651,6 +1659,7 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* Center content horizontally */
+  color: #423e3e;
 }
 
 .htw-benefits-set img {
@@ -1662,12 +1671,12 @@
   justify-content: center;
   font-size: x-large;
   margin: 0.5rem 0;
-  color: #000839;
+  color: #423e3e;
 }
 
 .htw-benefits-set p {
   font-size: medium;
-  color: #000839;
+  color: #423e3e;
   align-items: center;
   font-weight: 500;
 }
@@ -1704,7 +1713,8 @@
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   text-align: center; /* Ensure text is centered */
-  padding: 1rem; /* Add some padding */
+  gap: 10rem;
+  padding: 3rem; /* Add some padding */
 }
 
 .htw-overlay-text {
@@ -1712,15 +1722,15 @@
   flex-direction: column; /* Stack elements vertically */
   justify-content: center; /* Center content */
   text-align: left; /* Ensure text is left-aligned */
-  color: white;
-  max-width: 980px; /* Set a max-width for better readability */
+  color: #423e3e;
+  max-width: 580px; /* Set a max-width for better readability */
 }
 
 .htw-overlay-text h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
   font-weight: bold;
-  color: #fff;
+  color: #000839;
 }
 
 .htw-overlay-text p {
@@ -1735,7 +1745,7 @@
 }
 
 .htw-overlay-text button {
-  background-color: #2ec1c7;
+  background-color: #000839;
   transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Smooth hover effect */
 }
 
@@ -1743,28 +1753,35 @@
 
 .faqs-hero {
   background: url("./images/faqs-header.png") center/cover no-repeat;
-  height: 200px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   position: relative;
   font-size: x-large;
-  margin-top: 60px;
   font-family: "Hanken Grotesk", Arial;
   text-align: center;
-  margin-top: 195px;
+  margin-top: 70px;
 }
 
 .faqs-overlay {
-  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for separation */
   font-family: "Hanken Grotesk", Arial;
   font-size: 36px;
+}
+
+.faqs-overlay h1 {
+  padding: 14px;
+  background-color: #000839;
+  border-radius: 20px;
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
 .faqs-overlay p {
   font-size: large;
   margin-top: 8px;
+  color: #000839;
 }
 
 .faqs-search-container {
@@ -1773,6 +1790,7 @@
   justify-content: center; /* Centers content horizontally */
   margin: 0 auto; /* Ensures the container itself is centered within the parent */
   margin-top: 60px;
+  border-radius: 50px;
 }
 
 .faqs-search-input {
@@ -1780,6 +1798,7 @@
   color: #000839;
   font-size: 14px;
   font-weight: 600;
+  border-radius: 50px;
 }
 
 .faq-list {
@@ -1842,7 +1861,7 @@
 
 .search-icon {
   position: absolute;
-  left: 20px; /* Position the icon inside the input field */
+  left: 14px; /* Position the icon inside the input field */
   top: 50%;
   transform: translateY(-50%);
   width: 24px; /* Adjust the size of your icon */
@@ -1852,7 +1871,7 @@
 /* CONTACT US */
 
 .contact-us-container {
-  margin-top: 120px;
+  margin-top: 110px;
   text-align: center;
   font-family: "Hanken Grotesk", Arial;
 }
@@ -1864,9 +1883,11 @@
 }
 
 .contact-us-container p {
-  color: #000839;
+  color: #423e3e;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .contact-cards {
@@ -1897,8 +1918,9 @@
 .contact-card h3 {
   letter-spacing: 5px;
   font-size: 32px;
-  color: #000839;
+  color: #423e3e;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .contact-card p {
@@ -1908,7 +1930,7 @@
 }
 
 .contact-card .highlight {
-  color: #2ec1c7;
+  color: #423e3e;
   letter-spacing: 0px;
   font-size: 28px;
   font-weight: 700;
@@ -1952,7 +1974,7 @@
 
 .contact-button {
   background: #f2f4fa;
-  color: #000839;
+  color: #423e3e;
   border: none;
   padding: 12px;
   border-radius: 0 0 12px 12px;
@@ -2016,7 +2038,7 @@
   color: white;
   position: relative;
   font-size: x-large;
-  margin-top: 160px;
+  margin-top: 70px;
 }
 
 .tb-content {
@@ -2090,8 +2112,14 @@
   margin: 2rem 0;
 }
 
+.tb-benefits-icon-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .tb-benefits-set-2 {
-  background-color: #f2f4fa;
+  background-color: #f8faff;
   padding: 1.5rem;
   border-radius: 20px;
   max-width: 430px;
@@ -2099,7 +2127,7 @@
   flex-direction: column;
   align-items: flex-start; /* Align items to the left */
   justify-content: flex-start; /* Ensure items start from the top */
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 }
 
 .tb-benefits-set-2 img {
@@ -2110,13 +2138,13 @@
 .tb-benefits-set-2 h3 {
   font-size: x-large;
   margin: 0.5rem 0;
-  color: #000839;
+  color: #423e3e;
   text-align: left; /* Ensures the heading is aligned left */
 }
 
 .tb-benefits-set-2 p {
   font-size: medium;
-  color: #000839;
+  color: #423e3e;
   font-weight: 500;
   text-align: left; /* Ensures the paragraph text is aligned left */
 }
@@ -2133,13 +2161,17 @@
 .tb-dashboard-header {
   text-align: left;
   margin-left: 20px; /* Example for some left margin */
-  color: #000839;
+  color: #423e3e;
   font-size: x-large;
+}
+
+.tb-dashboard-header h2 {
+  color: #423e3e;
 }
 
 .tb-dashboard-header p {
   margin-top: 20px;
-  font-size: large;
+  font-size: medium;
 }
 
 .tb-check-text-wrapper {
@@ -2156,6 +2188,7 @@
 
 .tb-check {
   width: 32px;
+  border-radius: 50px;
 }
 
 .tb-check-text-container {
@@ -2171,10 +2204,12 @@
 
 .tb-bold {
   font-weight: 800;
+  color: #423e3e;
 }
 
 .tb-small {
   font-size: 14px !important;
+  color: #423e3e;
 }
 
 .tb-regular {
@@ -2196,6 +2231,8 @@
 
 .tb-overlay h2 {
   font-size: 20px;
+  color: #423e3e;
+  margin: 0 !important;
 }
 
 .tb-content-mid {
@@ -2207,11 +2244,11 @@
   font-size: 52px;
   margin-bottom: 30px;
   font-weight: 700;
-  color: #000839;
+  color: #423e3e;
 }
 
 .tb-content-mid p {
-  color: #000839;
+  color: #423e3e;
   width: 620px;
   text-align: left;
   font-size: 20px;
@@ -2250,7 +2287,7 @@
   justify-content: center; /* Centers content vertically */
   gap: 20px;
   background-color: #fdfeff;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 
   color: #000839;
   width: 1000px;
@@ -2270,8 +2307,8 @@
 }
 
 .star-icon {
-  color: #2ec1c7;
-  font-size: 30px;
+  color: #2ec1c7 !important;
+  font-size: 32px !important;
 }
 
 .video-section {
@@ -2307,7 +2344,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  margin-top: 190px;
+  margin-top: 20px;
 }
 
 .newsletter-container {
@@ -2318,7 +2355,6 @@
   height: fit-content !important;
   min-height: 100vh;
   background: white;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
   overflow: hidden;
   margin-bottom: -80px;
 }
@@ -2353,7 +2389,7 @@
 
 .newsletter-title {
   font-family: "Hanken Grotesk", Arial;
-  color: #000839;
+  color: #423e3e;
   font-size: large;
   font-weight: 700;
   margin-bottom: 0.5rem;
@@ -2361,7 +2397,7 @@
 
 .newsletter-image-section {
   flex: 1;
-  background-color: #f0f4f8;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2370,9 +2406,8 @@
 
 .newsletter-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover; /* Ensures the image covers the div */
-  object-position: right; /* Focus on the right part of the image */
 }
 
 .newsletter-role-selection {
@@ -2388,7 +2423,7 @@
 
 .newsletter-role-button {
   font-family: "Hanken Grotesk", Arial;
-  color: #000839;
+  color: #423e3e;
   flex: 1;
   padding: 12px;
   border: 1px solid #bbbcc0;
@@ -2411,15 +2446,15 @@
 }
 
 .newsletter-role-button.active {
-  border-color: #000839;
-  background-color: #000839;
-  color: white;
+  border-color: #f2f4fa;
+  background-color: #f2f4fa;
+  color: #423e3e;
 }
 
 .newsletter-role-button:hover {
-  background-color: #000839;
-  color: white;
-  border: 1px solid #000839;
+  background-color: #f2f4fa;
+  color: #423e3e;
+  border: 1px solid #f2f4fa;
 }
 
 .newsletter-button {
@@ -3530,7 +3565,7 @@
 
   .tb-benefits-icon-header {
     display: flex;
-    align-items: center;
+    align-items: left;
     gap: 20px;
   }
 
@@ -3822,7 +3857,7 @@
   }
 
   .contact-card .highlight {
-    color: #2ec1c7;
+    color: #423e3e;
     letter-spacing: 0px;
     font-size: 28px;
     font-weight: 700;

@@ -22,17 +22,16 @@ const BlogCard = ({ blog }) => {
     blog.image || extractFirstImage(blog.content) || PlaceholderNoImage;
 
   return (
-    <div className="blog-card">
-      <img src={blogImage} alt={blog.title} className="blog-image" />
-      <div className="blog-content">
-        <h2 className="blog-title">{blog.title}</h2>
-        <p className="blog-description">{extractText(blog.content)}</p>
-        {/* Link that navigates to the blog detail page using the blog's ID */}
-        <Link to={`/blog/${blog.id}`} className="read-more">
-          Read More
-        </Link>
+    <Link to={`/blog/${blog.id}`} style={{ textDecoration: "none" }}>
+      <div className="blog-card">
+        <img src={blogImage} alt={blog.title} className="blog-image" />
+        <div className="blog-content">
+          <h2 className="blog-title">{blog.title}</h2>
+          <p className="blog-description">{extractText(blog.content)}</p>
+          {/* Link that navigates to the blog detail page using the blog's ID */}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

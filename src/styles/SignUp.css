@@ -325,7 +325,7 @@ strong {
 }
 
 .email-verified-logo {
-  width: 200px;
+  width: 70px;
   margin-bottom: 20px; /* Reduce space for better stacking */
 }
 
@@ -341,10 +341,20 @@ strong {
   margin-bottom: 10px;
 }
 
+.email-verified-container h1 {
+  color: #423e3e;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
 .email-verified-container p {
-  color: #000839;
+  color: #423e3e;
   font-size: 16px;
   font-weight: 500;
+  max-width: 60%;
+  margin-bottom: 30px;
 }
 
 strong {
@@ -359,7 +369,7 @@ strong {
   font-size: 16px;
   cursor: pointer;
   border-radius: 50px;
-  margin-top: 40px;
+  margin-top: 10px;
   font-family: "Hanken Grotesk", Arial;
   transition: all 0.3s ease;
   width: 150px;
@@ -367,4 +377,9 @@ strong {
 
 .continue-button:hover {
   background-color: #2ec1c7;
+}
+
+.continue-button a {
+  color: white;
+  text-decoration: none !important;
 }

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { FaFacebookF, FaGoogle, FaApple } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../styles/Login.css";
-import Driller from "../images/driller.jpg";
-import TradiyLogo from "../images/tradiy-navy-seal.png";
+import Driller from "../images/login-img.png";
+import TradiyLogo from "../images/tradiy-hero-logo.png";
 import Divider from "../landing-page/divider";
 
 function Login() {
@@ -60,7 +60,7 @@ function Login() {
                 onClick={() => setRole("Homeowner")}
                 type="button"
               >
-                Homeowner
+                Customer
               </button>
               <button
                 className={`role-button ${role === "Trader" ? "active" : ""}`}

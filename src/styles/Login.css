@@ -14,7 +14,7 @@
   height: auto;
   min-height: 100vh;
   background: white;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
   overflow: hidden;
 }
 
@@ -59,7 +59,7 @@
 
 .login-title {
   font-family: "Hanken Grotesk", Arial;
-  color: #000839;
+  color: #423e3e;
   font-size: small;
   font-weight: 700;
   margin-bottom: 0.5rem;
@@ -67,7 +67,7 @@
 
 .role-button {
   font-family: "Hanken Grotesk", Arial;
-  color: #000839;
+  color: #423e3e;
   flex: 1;
   padding: 12px;
   border: 1px solid #bbbcc0;
@@ -95,7 +95,7 @@
   font-family: "Hanken Grotesk", Arial;
   font-size: small;
   font-weight: 700;
-  color: #000839;
+  color: #423e3e;
   margin-top: -0.5rem;
 }
 
@@ -174,7 +174,7 @@ input:focus {
 
 .forgot-password {
   font-size: 0.875rem;
-  color: #000839;
+  color: #423e3e;
   text-decoration: none;
   text-decoration: underline;
   cursor: pointer;
@@ -182,22 +182,23 @@ input:focus {
 
 .login-image-section {
   flex: 1;
-  background-color: #f0f4f8;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  width: 100%;
 }
 
 .login-image {
   width: 100%;
-  height: 100%;
+  height: 60%;
   object-fit: cover; /* Ensures the image covers the div */
   object-position: right; /* Focus on the right part of the image */
 }
 
 .signup-text {
-  color: #000839;
+  color: #423e3e;
   padding-top: 1rem;
   font-family: "Hanken Grotesk", Arial;
   font-size: small;
@@ -211,7 +212,7 @@ input:focus {
 }
 
 .or-text {
-  color: #000839;
+  color: #423e3e;
   margin-top: 2rem;
   font-family: "Hanken Grotesk", Arial;
   font-size: small;

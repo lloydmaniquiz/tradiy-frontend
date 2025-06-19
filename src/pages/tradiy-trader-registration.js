@@ -1,16 +1,27 @@
 import React, { useState, useEffect } from "react";
 import "../styles/RegForm.css";
+import { useNavigate } from "react-router-dom";
 import TradiyLogo from "../images/Tradiy-Hero-NewLogo.png";
 import Drilling from "../images/sign-up-img.png";
 import { FaTimes } from "react-icons/fa"; // Import the FaTimes icon
 import UploadModal from "../components/UploadModal";
-import workerSignup from "../images/worker-signup.png";
+import workerSignup from "../images/sign-up-banner.png";
 import Select from "react-select";
+import TimeSelector from "../components/TimeSelector";
 
 // Main Registration Form component
 const RegistrationForm = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({});
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // You can do any other logic here before navigating
+    // Then navigate:
+    navigate("/thank-you");
+  };
 
   useEffect(() => {
     // Load saved data from sessionStorage when the component mounts
@@ -27,12 +38,6 @@ const RegistrationForm = () => {
     const updatedData = { ...formData, [key]: value };
     setFormData(updatedData);
     sessionStorage.setItem("registrationForm", JSON.stringify(updatedData));
-  };
-
-  // Save and Continue for Later button action
-  const saveForLater = () => {
-    sessionStorage.setItem("registrationForm", JSON.stringify(formData));
-    alert("Your progress has been saved!");
   };
 
   // Navigate to the next step
@@ -101,7 +106,7 @@ const RegistrationForm = () => {
           onBack={goBack}
           onNext={goNext}
           onEdit={goToStep}
-          currentStep={5}
+          currentStep={6}
           totalSteps={9}
         />
       )}
@@ -112,7 +117,7 @@ const RegistrationForm = () => {
           onBack={goBack}
           onNext={goNext}
           onEdit={goToStep}
-          currentStep={6}
+          currentStep={7}
           totalSteps={9}
         />
       )}
@@ -123,7 +128,7 @@ const RegistrationForm = () => {
           onBack={goBack}
           onNext={goNext}
           onEdit={goToStep}
-          currentStep={7}
+          currentStep={8}
           totalSteps={9}
         />
       )}
@@ -134,28 +139,17 @@ const RegistrationForm = () => {
           onBack={goBack}
           onNext={goNext}
           onEdit={goToStep}
-          currentStep={8}
-          totalSteps={9}
-        />
-      )}
-      {step === 9 && (
-        <Step9
-          formData={formData}
-          onSave={saveFormData}
-          onBack={goBack}
-          onNext={goNext}
-          onEdit={goToStep}
           currentStep={9}
           totalSteps={9}
         />
       )}
+      {step === 9 && <Step9 onBack={goBack} onNext={goNext} />}
       {step === 10 && (
         <Step10
           formData={formData}
           onBack={goBack}
-          onNext={goNext}
-          saveForLater={saveForLater}
           onEdit={goToStep}
+          handleSubmit={handleSubmit}
         />
       )}
     </div>
@@ -355,11 +349,50 @@ const Step2 = ({
   const [errors, setErrors] = useState({});
 
   const options = [
-    { value: "Option 1", label: "Alarm / Security Services" },
-    { value: "Option 2", label: "Bathroom Services" },
-    { value: "Option 3", label: "Building / Home Improvement Services" },
-    { value: "Option 4", label: "Carpets / Flooring" },
-    { value: "Option 5", label: "Cleaning Services" },
+    { value: "alarms_security_services", label: "Alarms / Security Services" },
+    { value: "bathroom_services", label: "Bathroom Services" },
+    { value: "builder", label: "Builder" },
+    { value: "carpet_fitting", label: "Carpet Fitting" },
+    { value: "central_heating", label: "Central Heating" },
+    { value: "cleaning_services", label: "Cleaning Services" },
+    {
+      value: "conservatories_garden_rooms",
+      label: "Conservatories & Garden Rooms",
+    },
+    { value: "curtain_blind_fitters", label: "Curtain / Blind Fitters" },
+    { value: "damp_proofer", label: "Damp Proofer" },
+    { value: "drainage", label: "Drainage" },
+    { value: "driveways_patios", label: "Driveways/Patios" },
+    { value: "electrician", label: "Electrician" },
+    { value: "exterior_cleaning", label: "Exterior Cleaning" },
+    { value: "fascia_soffits", label: "Fascia / Soffits" },
+    { value: "fencing_gates", label: "Fencing / Gates" },
+    { value: "gardener", label: "Gardener" },
+    { value: "glass", label: "Glass" },
+    {
+      value: "it_systems_telecommunications",
+      label: "IT Systems & Telecommunications",
+    },
+    { value: "joiner", label: "Joiner" },
+    { value: "kitchens", label: "Kitchens" },
+    { value: "landscaping", label: "Landscaping" },
+    { value: "painter_decorator", label: "Painter/Decorator" },
+    { value: "plasterer", label: "Plasterer" },
+    { value: "plumber", label: "Plumber" },
+    { value: "pest_control", label: "Pest Control" },
+    { value: "powered_access", label: "Powered Access" },
+    { value: "renewable_energy", label: "Renewable Energy" },
+    { value: "roofer", label: "Roofer" },
+    { value: "roughcaster_renderer", label: "Roughcaster & Renderer" },
+    { value: "scaffolding", label: "Scaffolding" },
+    { value: "stone_work", label: "Stone Work" },
+    { value: "stoves_log_burners", label: "Stoves / Log Burners" },
+    { value: "tiler", label: "Tiler" },
+    { value: "tree_surgeon", label: "Tree Surgeon" },
+    { value: "upvc_windows", label: "UPVC Windows" },
+    { value: "waste_clearance", label: "Waste / Clearance" },
+    { value: "weather_coatings", label: "Weather Coatings" },
+    { value: "tv_aerials", label: "TV Aerials" },
   ];
 
   const handleChange = (selectedOptions) => {
@@ -592,7 +625,7 @@ const Step2 = ({
                 marginTop: "-5px",
               }}
             >
-              <p style={{ fontSize: "0.85rem", color: "#888" }}>
+              <p style={{ fontSize: "0.85rem", color: "#bbbcc0" }}>
                 How far (in miles) are you willing to travel for jobs?
               </p>
             </div>
@@ -655,9 +688,7 @@ const Step3 = ({
   totalSteps,
 }) => {
   // Ensure formData.services is initialized with one empty string if it's empty
-  const [services, setServices] = useState(
-    formData?.services?.length > 0 ? formData.services : [""]
-  );
+
   const [isVatRegistered, setIsVatRegistered] = useState(
     formData.isVatRegistered || false
   );
@@ -667,28 +698,24 @@ const Step3 = ({
     setIsVatRegistered(value);
     onSave("isVatRegistered", value);
   };
-  const maxServices = 10; // Define the maximum limit for services
+
+  const [callOutFee, setCallOutFee] = useState(formData.callOutFee || false);
+
+  const handleCallOutFeeChange = (e) => {
+    const value = e.target.value === "yes";
+    setCallOutFee(value);
+    onSave("callOutFee", value);
+  };
+
+  const [acceptCards, setAcceptCards] = useState(formData.acceptCards || false);
+
+  const handleAcceptCardsChange = (e) => {
+    const value = e.target.value === "yes";
+    setAcceptCards(value);
+    onSave("acceptCards", value);
+  };
 
   const progress = (currentStep / totalSteps) * 100;
-
-  const handleAddService = () => {
-    if (services.length < maxServices) {
-      setServices([...services, ""]); // Add a new empty input field
-    }
-  };
-
-  const handleChangeService = (index, value) => {
-    const updatedServices = [...services];
-    updatedServices[index] = value;
-    setServices(updatedServices);
-    onSave("services", updatedServices); // Save updated services data
-  };
-
-  const handleDeleteService = (index) => {
-    const updatedServices = services.filter((_, idx) => idx !== index); // Remove the selected input field
-    setServices(updatedServices);
-    onSave("services", updatedServices); // Save updated services data after deletion
-  };
 
   return (
     <div className="regForm-step-container">
@@ -705,7 +732,7 @@ const Step3 = ({
               ></div>
             </div>
             <div className="h2-skip-wrapper">
-              <h2>Business Information</h2>
+              <h2>More About Your Business</h2>
               <p
                 className="skip-text"
                 onClick={onNext}
@@ -724,7 +751,7 @@ const Step3 = ({
           <div className="regForm-input-wrapper">
             <div className="regForm-input-group">
               <label htmlFor="companyType" className="regForm-label">
-                Company Type
+                Company Type <span style={{ color: "red" }}>*</span>
               </label>
               <div className="regForm-select-wrapper">
                 <select
@@ -743,9 +770,35 @@ const Step3 = ({
                 </select>
               </div>
             </div>
+
+            {formData.companyType === "Option 2" && (
+              <div className="regForm-input-group">
+                <label
+                  htmlFor="companyRegistrationNumber"
+                  className="regForm-label"
+                >
+                  Company Registration Number{" "}
+                  <span style={{ color: "red" }}>*</span>
+                </label>
+                <input
+                  id="companyRegistrationNumber"
+                  type="text"
+                  placeholder="Enter your Company Registration Number"
+                  value={formData.companyRegistrationNumber || ""}
+                  onChange={(e) =>
+                    onSave("companyRegistrationNumber", e.target.value)
+                  }
+                  className="regForm-input"
+                  style={{
+                    fontFamily: '"Hanken Grotesk", "Arial"',
+                    color: "#000839",
+                  }}
+                />
+              </div>
+            )}
             <div className="regForm-input-group">
               <label htmlFor="websiteURL" className="regForm-label">
-                Website
+                Website URL
               </label>
               <input
                 id="websiteURL"
@@ -767,10 +820,10 @@ const Step3 = ({
                 <label className="regForm-radio-label">
                   <input
                     type="radio"
-                    name="vatRegistered"
+                    name="callOutFee"
                     value="yes"
-                    checked={isVatRegistered === true}
-                    onChange={handleVatChange}
+                    checked={callOutFee === true}
+                    onChange={handleCallOutFeeChange}
                     className="regForm-radio"
                     style={{
                       fontFamily: '"Hanken Grotesk", "Arial"',
@@ -782,10 +835,10 @@ const Step3 = ({
                 <label className="regForm-radio-label">
                   <input
                     type="radio"
-                    name="vatRegistered"
+                    name="callOutFee"
                     value="no"
-                    checked={isVatRegistered === false}
-                    onChange={handleVatChange}
+                    checked={callOutFee === false}
+                    onChange={handleCallOutFeeChange}
                     className="regForm-radio"
                     style={{
                       fontFamily: '"Hanken Grotesk", "Arial"',
@@ -852,50 +905,41 @@ const Step3 = ({
                 />
               </div>
             )}
+
             <div className="regForm-input-group">
-              <p className="regForm-label">Services Provided</p>
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="regForm-input-group-services"
-                  style={{ position: "relative" }}
-                >
+              <p className="regForm-label">Accept Cards</p>
+              <div className="regForm-radio-group">
+                <label className="regForm-radio-label">
                   <input
-                    type="text"
-                    placeholder={`Service ${index + 1}`}
-                    value={service}
-                    onChange={(e) => handleChangeService(index, e.target.value)}
-                    className="regForm-input"
+                    type="radio"
+                    name="acceptCards"
+                    value="yes"
+                    checked={acceptCards === true}
+                    onChange={handleAcceptCardsChange}
+                    className="regForm-radio"
                     style={{
                       fontFamily: '"Hanken Grotesk", "Arial"',
                       color: "#000839",
                     }}
                   />
-                  {/* Delete Button (X) with FaTimes icon */}
-                  {index > 0 && ( // Hide delete button for the first input
-                    <button
-                      onClick={() => handleDeleteService(index)}
-                      className="regForm-x-button"
-                    >
-                      <FaTimes /> {/* Using FaTimes icon */}
-                    </button>
-                  )}
-                </div>
-              ))}
-
-              {/* Add Service Button */}
-              {services.length < maxServices ? (
-                <button
-                  onClick={handleAddService}
-                  className="regForm-button-add-service"
-                >
-                  + Add Service
-                </button>
-              ) : (
-                <p className="max-limit-message" style={{ color: "red" }}>
-                  Maximum input limit reached
-                </p>
-              )}
+                  Yes
+                </label>
+                <label className="regForm-radio-label">
+                  <input
+                    type="radio"
+                    name="acceptCards"
+                    value="no"
+                    checked={acceptCards === false}
+                    onChange={handleAcceptCardsChange}
+                    className="regForm-radio"
+                    style={{
+                      fontFamily: '"Hanken Grotesk", "Arial"',
+                      color: "#000839",
+                    }}
+                  />
+                  No
+                </label>
+              </div>
             </div>
           </div>
 
@@ -935,8 +979,7 @@ const Step4 = ({
   const [modalType, setModalType] = useState(null);
   const [errorMessage, setErrorMessage] = useState(""); // State for error messages
   const [uploadedFiles, setUploadedFiles] = useState({
-    "Work Images": [],
-    Certifications: [],
+    "Photos of Your Work": [],
   });
 
   // Load files from localStorage on initial load
@@ -988,19 +1031,13 @@ const Step4 = ({
     setUploadedFiles((prev) => {
       let updatedFiles = [];
 
-      if (type === "Work Images") {
+      if (type === "Photos of Your Work") {
         validFiles = validFiles.filter((file) =>
           file.type.startsWith("image/")
         );
         updatedFiles = [...prev[type], ...validFiles].slice(0, 10);
         onSave("workImages", updatedFiles);
-      } else if (type === "Certifications") {
-        updatedFiles = [...prev[type], ...validFiles].slice(0, 10);
-        onSave("certifications", updatedFiles);
       }
-
-      // Log the updated files to ensure correct data
-      console.log("Updated uploaded files:", updatedFiles);
 
       return { ...prev, [type]: updatedFiles };
     });
@@ -1011,6 +1048,30 @@ const Step4 = ({
       ...prev,
       [modalType]: prev[modalType].filter((_, index) => index !== fileIndex),
     }));
+  };
+
+  const [services, setServices] = useState(
+    formData?.services?.length > 0 ? formData.services : [""]
+  );
+
+  const maxServices = 10; // Define the maximum limit for services
+  const handleAddService = () => {
+    if (services.length < maxServices) {
+      setServices([...services, ""]); // Add a new empty input field
+    }
+  };
+
+  const handleChangeService = (index, value) => {
+    const updatedServices = [...services];
+    updatedServices[index] = value;
+    setServices(updatedServices);
+    onSave("services", updatedServices); // Save updated services data
+  };
+
+  const handleDeleteService = (index) => {
+    const updatedServices = services.filter((_, idx) => idx !== index); // Remove the selected input field
+    setServices(updatedServices);
+    onSave("services", updatedServices); // Save updated services data after deletion
   };
 
   return (
@@ -1027,7 +1088,7 @@ const Step4 = ({
             </div>
 
             <div className="h2-skip-wrapper">
-              <h2>List Your Business</h2>
+              <h2>More About Your Business</h2>
               <p
                 className="skip-text"
                 onClick={onNext}
@@ -1038,26 +1099,114 @@ const Step4 = ({
             </div>
           </div>
 
+          <div className="regForm-input-group">
+            <p className="regForm-label">
+              Services Provided <span style={{ color: "red" }}>*</span>
+            </p>
+            <p className="regForm-description">
+              List the services you provide. Add one service per line for
+              clarity.
+            </p>
+
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="regForm-input-group-services"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  position: "relative",
+                  marginBottom: "8px",
+                }}
+              >
+                <input
+                  type="text"
+                  placeholder={`Service ${index + 1}`}
+                  value={service}
+                  onChange={(e) => handleChangeService(index, e.target.value)}
+                  className="regForm-input"
+                  style={{
+                    fontFamily: '"Hanken Grotesk", "Arial"',
+                    color: "#000839",
+                    flex: 1,
+                  }}
+                />
+
+                {/* Delete Button */}
+                {index > 0 && (
+                  <button
+                    onClick={() => handleDeleteService(index)}
+                    className="regForm-x-button"
+                    style={{
+                      marginLeft: "8px",
+                      background: "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                      ...(index === services.length - 1
+                        ? { right: "60px" }
+                        : {}),
+                    }}
+                  >
+                    <FaTimes />
+                  </button>
+                )}
+
+                {/* Add Button beside last input */}
+                {index === services.length - 1 &&
+                  services.length < maxServices && (
+                    <button
+                      onClick={handleAddService}
+                      className="regForm-button-add-service"
+                      style={{
+                        marginLeft: "8px",
+                        width: "36px",
+                        height: "36px",
+                        borderRadius: "50%",
+                        fontSize: "20px",
+                        lineHeight: "1",
+                        padding: "0",
+                        border: "1px solid #ccc",
+                        background: "#fff",
+                        color: "#000839",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontFamily: '"Hanken Grotesk", "Arial"',
+                        cursor: "pointer",
+                      }}
+                    >
+                      +
+                    </button>
+                  )}
+              </div>
+            ))}
+
+            {/* Max limit message below */}
+            {services.length >= maxServices && (
+              <p
+                className="max-limit-message"
+                style={{ color: "red", marginTop: "4px" }}
+              >
+                Maximum input limit reached
+              </p>
+            )}
+          </div>
+
           <div className="regForm-file-upload-buttons">
             {Object.keys(uploadedFiles).map((type) => (
               <div key={type} className="regForm-input-group">
                 <p className="regForm-label">{type}</p>
+                {type === "Photos of Your Work" && (
+                  <p className="regForm-description">
+                    Profiles with photos get 3x more enquiries.
+                  </p>
+                )}
                 <button
                   onClick={() => setModalType(type)}
                   className="regForm-button"
                 >
                   + Upload
                 </button>
-                {type === "Work Images" && (
-                  <p className="regForm-description">
-                    Showcase past work. (Up to 10 images, max 5MB each)
-                  </p>
-                )}
-                {type === "Certifications" && (
-                  <p className="regForm-description">
-                    Proof of qualifications (e.g., Gas Safe, NICEIC).
-                  </p>
-                )}
               </div>
             ))}
           </div>
@@ -1076,10 +1225,10 @@ const Step4 = ({
           <div className="regForm-input-wrapper">
             <div className="regForm-input-group">
               <p className="regForm-label">
-                Tell us a bit about your business.
+                Business Description <span style={{ color: "red" }}>*</span>
               </p>
               <textarea
-                placeholder="Short description of your experience and team."
+                placeholder="Tell customers why they should pick you – keep it short and sharp."
                 onChange={(e) => onSave("businessDescription", e.target.value)}
                 className="regForm-input-desc"
                 value={formData.businessDescription || ""}
@@ -1108,118 +1257,8 @@ const Step4 = ({
   );
 };
 
-// Step 5 Add Your Categories
+// Step 5 Business Opening Hours
 const Step5 = ({
-  onNext,
-  onBack,
-  formData,
-  onSave,
-  saveForLater,
-  currentStep,
-  totalSteps,
-}) => {
-  const progress = (currentStep / totalSteps) * 100;
-  return (
-    <div className="regForm-step-container">
-      <div className="regForm-content">
-        {/* Left Side - Form */}
-        <div className="regForm-form-container">
-          {/* Fixed Header */}
-          <div className="regForm-header">
-            <img className="regForm-logo" src={TradiyLogo} alt="Tradiy Logo" />
-            <div className="progress-bar-container">
-              <div
-                className="progress-bar"
-                style={{ width: `${progress}%` }}
-              ></div>
-            </div>
-            <div className="h2-skip-wrapper">
-              <h2>Add Your Categories</h2>
-              <p
-                className="skip-text"
-                onClick={onNext}
-                style={{
-                  cursor: "pointer",
-                  color: "#000839",
-                  textDecoration: "underline",
-                }}
-              >
-                Skip for now
-              </p>
-            </div>
-          </div>
-
-          {/* Scrollable Form Content */}
-          <div className="regForm-input-wrapper">
-            <div className="regForm-input-group">
-              <label htmlFor="primaryTradeCategory" className="regForm-label">
-                Primary Service Category
-              </label>
-              <input
-                id="primaryTradeCategory"
-                type="text"
-                placeholder="Confirm the main service. (e.g., Plumbing)"
-                value={formData.primaryTradeCategory || ""}
-                onChange={(e) => onSave("primaryTradeCategory", e.target.value)}
-                className="regForm-input"
-                style={{
-                  fontFamily: '"Hanken Grotesk", "Arial"',
-                  color: "#000839",
-                }}
-              />
-            </div>
-
-            <div className="regForm-input-group">
-              <label htmlFor="additionalCategory" className="regForm-label">
-                Additional Service Categories
-              </label>
-              <div className="regForm-select-wrapper">
-                <select
-                  id="additionalCategory"
-                  value={formData.additionalCategory || ""}
-                  onChange={(e) => onSave("additionalCategory", e.target.value)}
-                  className="regForm-select"
-                  style={{
-                    fontFamily: '"Hanken Grotesk", "Arial"',
-                    color: "#000839",
-                  }}
-                >
-                  <option value="">Select additional categories</option>
-                  <option value="Option 1">Option 1</option>
-                  <option value="Option 2">Option 2</option>
-                  <option value="Option 3">Option 3</option>
-                  <option value="Option 4">Option 4</option>
-                  <option value="Option 5">Option 5</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          {/* Fixed Footer Buttons */}
-          <div className="regForm-button-container">
-            <button onClick={onBack} className="regForm-button">
-              Back
-            </button>
-            <button onClick={saveForLater} className="regForm-button">
-              Save and Continue for Later
-            </button>
-            <button onClick={onNext} className="regForm-button">
-              Next
-            </button>
-          </div>
-        </div>
-
-        {/* Right Side - Image */}
-        <div className="regForm-image-container">
-          <img src={Drilling} alt="Business Information Illustration" />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Step 6 Business Opening Hours
-const Step6 = ({
   onNext,
   onBack,
   formData,
@@ -1251,16 +1290,6 @@ const Step6 = ({
       JSON.stringify(businessAvailability)
     );
   }, [businessAvailability]);
-
-  const [holidayModalOpen, setHolidayModalOpen] = useState(false);
-  const [newHoliday, setNewHoliday] = useState({
-    name: "",
-    startDate: "",
-    endDate: "",
-    openTime: "",
-    closeTime: "",
-  });
-  const [holidays, setHolidays] = useState([]);
 
   const handleCheckboxChange = (day) => {
     setbusinessAvailability((prev) => {
@@ -1307,58 +1336,15 @@ const Step6 = ({
     });
   };
 
-  const [emergencyHours, setEmergencyHours] = useState(() => {
-    const savedEmergencyHours = sessionStorage.getItem("emergencyHours");
-    return savedEmergencyHours ? JSON.parse(savedEmergencyHours) : false;
-  });
+  const [emergencyHours, setEmergencyHours] = useState(
+    formData.emergencyHours === "Yes"
+  );
 
-  useEffect(() => {
-    sessionStorage.setItem("emergencyHours", JSON.stringify(emergencyHours));
-  }, [emergencyHours]);
-
-  const handleEmergencyChange = () => {
-    setEmergencyHours((prev) => {
-      const newEmergencyStatus = !prev;
-      onSave("emergencyHours", newEmergencyStatus ? "Yes" : "No"); // Save emergencyHours separately
-      return newEmergencyStatus;
-    });
+  const handleEmergencyChange = (e) => {
+    const value = e.target.value === "yes";
+    setEmergencyHours(value);
+    onSave("emergencyHours", value ? "Yes" : "No");
   };
-
-  const handleHolidayInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewHoliday((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const addHoliday = () => {
-    if (
-      !newHoliday.name ||
-      !newHoliday.startDate ||
-      !newHoliday.endDate ||
-      !newHoliday.openTime ||
-      !newHoliday.closeTime
-    ) {
-      alert("Please fill in all required fields.");
-      return;
-    }
-
-    const updatedHolidays = [...holidays, newHoliday];
-    setHolidays(updatedHolidays);
-    sessionStorage.setItem("holidays", JSON.stringify(updatedHolidays)); // Store in sessionStorage
-    onSave("holidays", updatedHolidays);
-    setNewHoliday({
-      name: "",
-      startDate: "",
-      endDate: "",
-      openTime: "",
-      closeTime: "",
-    });
-    setHolidayModalOpen(false);
-  };
-
-  useEffect(() => {
-    const savedHolidays = JSON.parse(sessionStorage.getItem("holidays")) || [];
-    setHolidays(savedHolidays);
-  }, []);
 
   const handleNext = () => {
     // Check if any day has the checkbox selected but no time is entered
@@ -1396,7 +1382,7 @@ const Step6 = ({
               ></div>
             </div>
             <div className="h2-skip-wrapper">
-              <h2>Business Opening Hours</h2>
+              <h2>Opening Hours</h2>
               <p
                 className="skip-text"
                 onClick={onNext}
@@ -1410,9 +1396,11 @@ const Step6 = ({
               </p>
             </div>
           </div>
-          <p style={{ fontWeight: "bold", color: "#000839" }}>
-            Select your weekly schedule. Do not select a day if it is your day
-            off.
+          <p className="regForm-label">
+            Business Hours <span style={{ color: "red" }}>*</span>
+          </p>
+          <p className="regForm-description">
+            What days are you usually available?
           </p>
 
           <div className="regForm-input-wrapper">
@@ -1426,7 +1414,14 @@ const Step6 = ({
               "Saturday",
               "Sunday",
             ].map((day) => (
-              <div key={day} className="regForm-input-group-checkbox">
+              <div
+                key={day}
+                className="regForm-input-group-checkbox"
+                style={{
+                  opacity: businessAvailability[day].available ? 1 : 0.5,
+                  transition: "opacity 0.3s ease",
+                }}
+              >
                 <div className="checkbox-input-wrapper">
                   <div className="regForm-flex-container">
                     <input
@@ -1442,292 +1437,75 @@ const Step6 = ({
                   </div>
 
                   {/* Time Inputs */}
-                  <div className="regForm-time-inputs">
-                    <input
-                      type="time"
+                  <div
+                    className="regForm-time-inputs"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                  >
+                    <TimeSelector
                       value={businessAvailability[day].startTime}
-                      onChange={(e) =>
-                        handleTimeChange(day, "startTime", e.target.value)
+                      onChange={(newTime) =>
+                        handleTimeChange(day, "startTime", newTime)
                       }
-                      className="regForm-input-time"
                       disabled={!businessAvailability[day].available}
                     />
                     <span>-</span>
-                    <input
-                      type="time"
+                    <TimeSelector
                       value={businessAvailability[day].endTime}
-                      onChange={(e) =>
-                        handleTimeChange(day, "endTime", e.target.value)
+                      onChange={(newTime) =>
+                        handleTimeChange(day, "endTime", newTime)
                       }
-                      className="regForm-input-time"
                       disabled={!businessAvailability[day].available}
                     />
                   </div>
                 </div>
               </div>
             ))}
-
-            {/* Emergency Hours Checkbox */}
             <div
-              className="regForm-input-group-emergency"
+              className="regForm-input-group"
               style={{ marginTop: "15px", marginBottom: "20px" }}
             >
-              <div className="checkbox-input-wrapper">
-                <div className="regForm-flex-container">
+              <p className="regForm-label">Emergency Cover</p>
+              <p className="regForm-description">
+                Do you take on emergency or weekend jobs?
+              </p>
+
+              <div className="regForm-radio-group">
+                <label className="regForm-radio-label">
                   <input
-                    type="checkbox"
-                    id="emergencyHours"
+                    type="radio"
+                    name="emergencyHours"
+                    value="yes"
+                    checked={emergencyHours === true}
                     onChange={handleEmergencyChange}
-                    className="regForm-checkbox"
-                  />
-                  <label htmlFor="emergencyHours" className="regForm-label">
-                    Emergency Hours (Tick if you offer 24/7 services.)
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            {/* Add Holiday/Special Hours Button */}
-            <p
-              style={{
-                fontSize: "1rem",
-                fontWeight: "600",
-                color: "#000839",
-                marginTop: "0.5rem",
-              }}
-            >
-              Holiday/Special Hours
-            </p>
-            <div className="regForm-input-group">
-              <button
-                onClick={() => setHolidayModalOpen(true)}
-                className="regForm-button"
-              >
-                + Add Holiday/Special Hours
-              </button>
-            </div>
-
-            {/* Modal for adding Holiday/Special Hours */}
-            {holidayModalOpen && (
-              <div className="regForm-modal-overlay">
-                <div className="regForm-modal-content">
-                  <div className="header-close-wrapper">
-                    <h3 className="regForm-modal-heading">
-                      Holiday/Special Hours
-                    </h3>
-                    <button
-                      onClick={() => setHolidayModalOpen(false)}
-                      className="regForm-close-button"
-                    >
-                      &times;
-                    </button>
-                  </div>
-                  <p
+                    className="regForm-radio"
                     style={{
-                      display: "flex",
-                      fontStyle: "italic",
+                      fontFamily: '"Hanken Grotesk", "Arial"',
                       color: "#000839",
-                      marginBottom: "20px",
-                      marginTop: "20px",
-                    }}
-                  >
-                    You may add your custom dates for holiday hours.
-                  </p>
-
-                  {/* Input Fields for Holiday Details */}
-                  <div className="regForm-input-group">
-                    <label
-                      style={{
-                        display: "block",
-                        marginBottom: "5px",
-                        textAlign: "left",
-                        fontWeight: "600",
-                        color: "#000839",
-                      }}
-                    >
-                      Holiday/Special Hour Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Holiday/Special Hour Name"
-                      value={newHoliday.name}
-                      onChange={handleHolidayInputChange}
-                      className="regForm-input"
-                      maxLength={12}
-                      style={{
-                        fontFamily: '"Hanken Grotesk", "Arial"',
-                        color: "#000839",
-                      }}
-                      required
-                    />
-                  </div>
-
-                  <div className="regForm-input-group">
-                    <label
-                      style={{
-                        display: "block",
-                        marginBottom: "5px",
-                        textAlign: "left",
-                        fontWeight: "600",
-                        color: "#000839",
-                      }}
-                    >
-                      Start Date
-                    </label>
-                    <input
-                      type="date"
-                      name="startDate"
-                      value={newHoliday.startDate}
-                      onChange={handleHolidayInputChange}
-                      className="regForm-input"
-                      style={{
-                        fontFamily: '"Hanken Grotesk", "Arial"',
-                        color: "#000839",
-                      }}
-                      required
-                    />
-                  </div>
-
-                  <div className="regForm-input-group">
-                    <label
-                      style={{
-                        display: "block",
-                        marginBottom: "5px",
-                        textAlign: "left",
-                        fontWeight: "600",
-                        color: "#000839",
-                      }}
-                    >
-                      End Date
-                    </label>
-                    <input
-                      type="date"
-                      name="endDate"
-                      value={newHoliday.endDate}
-                      onChange={handleHolidayInputChange}
-                      className="regForm-input"
-                      style={{
-                        fontFamily: '"Hanken Grotesk", "Arial"',
-                        color: "#000839",
-                      }}
-                      required
-                    />
-                  </div>
-
-                  {/* Flexbox container for Open Time and Close Time */}
-                  <div
-                    className="regForm-input-group"
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      gap: "10px",
-                    }}
-                  >
-                    <div style={{ flex: "1" }}>
-                      <label
-                        style={{
-                          display: "block",
-                          marginBottom: "5px",
-                          textAlign: "left",
-                          fontWeight: "600",
-                          color: "#000839",
-                        }}
-                      >
-                        Open Time
-                      </label>
-                      <input
-                        type="time"
-                        name="openTime"
-                        value={newHoliday.openTime}
-                        onChange={handleHolidayInputChange}
-                        className="regForm-input"
-                        required
-                      />
-                    </div>
-                    <div style={{ flex: "1" }}>
-                      <label
-                        style={{
-                          display: "block",
-                          marginBottom: "5px",
-                          textAlign: "left",
-                          fontWeight: "600",
-                          color: "#000839",
-                        }}
-                      >
-                        Close Time
-                      </label>
-                      <input
-                        type="time"
-                        name="closeTime"
-                        value={newHoliday.closeTime}
-                        onChange={handleHolidayInputChange}
-                        className="regForm-input"
-                        style={{
-                          fontFamily: '"Hanken Grotesk", "Arial"',
-                          color: "#000839",
-                        }}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="regForm-modal-buttons">
-                    <button
-                      onClick={() => setHolidayModalOpen(false)}
-                      className="regForm-button"
-                    >
-                      Cancel
-                    </button>
-                    <button onClick={addHoliday} className="regForm-button">
-                      Add Holiday
-                    </button>
-                  </div>
-
-                  {/* Divider */}
-                  <hr
-                    style={{
-                      marginTop: "20px",
-                      marginBottom: "20px",
-                      border: "1px solid #ddd",
                     }}
                   />
-                  <p
+                  Yes
+                </label>
+                <label className="regForm-radio-label">
+                  <input
+                    type="radio"
+                    name="emergencyHours"
+                    value="no"
+                    checked={emergencyHours === false}
+                    onChange={handleEmergencyChange}
+                    className="regForm-radio"
                     style={{
-                      textAlign: "left",
-                      marginBottom: "15px",
-                      fontWeight: "bold",
-                      color: "#FFBC58",
+                      fontFamily: '"Hanken Grotesk", "Arial"',
+                      color: "#000839",
                     }}
-                  >
-                    Listed Holiday/Special Hours
-                  </p>
-                  {/* List of Holidays */}
-                  <div className="holidays-list">
-                    {holidays.length > 0 ? (
-                      <>
-                        <div className="holiday-item">
-                          <div>Name</div>
-                          <div>Start Date</div>
-                          <div>End Date</div>
-                          <div>Time</div>
-                        </div>
-                        {holidays.map((holiday, index) => (
-                          <div key={index} className="holiday-item">
-                            <div>{holiday.name}</div>
-                            <div>{holiday.startDate}</div>
-                            <div>{holiday.endDate}</div>
-                            <div>{`${holiday.openTime}-${holiday.closeTime}`}</div>
-                          </div>
-                        ))}
-                      </>
-                    ) : (
-                      <p>No holidays added yet.</p>
-                    )}
-                  </div>
-                </div>
+                  />
+                  No
+                </label>
               </div>
-            )}
+            </div>
           </div>
 
           <div className="regForm-button-container">
@@ -1751,8 +1529,8 @@ const Step6 = ({
   );
 };
 
-// Step 7 Tell Us About Yourself
-const Step7 = ({
+// Step 6 Tell Us About Yourself
+const Step6 = ({
   onNext,
   onBack,
   formData,
@@ -1809,7 +1587,7 @@ const Step7 = ({
             </div>
 
             <div className="h2-skip-wrapper">
-              <h2>Tell Us About Yourself</h2>
+              <h2>About You</h2>
               <p
                 className="skip-text"
                 onClick={onNext}
@@ -1822,16 +1600,17 @@ const Step7 = ({
 
           <div className="regForm-file-upload-buttons">
             <div className="regForm-input-group">
-              <p className="regForm-label">Profile Picture</p>
+              <p className="regForm-label">Profile Picture / Selfie</p>
+              <p className="regForm-description">
+                Let the customers know who they are working with. Profiles with
+                a face get 60% more trust.
+              </p>
               <button
                 onClick={() => setModalType("Profile Picture")}
                 className="regForm-button"
               >
                 + Upload
               </button>
-              <p className="regForm-description">
-                High-quality image of your profile.
-              </p>
             </div>
           </div>
 
@@ -1846,7 +1625,9 @@ const Step7 = ({
 
           <div className="regForm-input-wrapper">
             <div className="regForm-input-group">
-              <p className="regForm-label">Short Bio</p>
+              <p className="regForm-label">
+                Short Bio <span style={{ color: "red" }}>*</span>
+              </p>
               <textarea
                 placeholder="Introduce yourself to build trust. (e.g., “Hi, I’m Edward, with 15 years of plumbing experience.”)"
                 value={formData.shortBio || ""}
@@ -1858,24 +1639,9 @@ const Step7 = ({
 
           <div className="regForm-input-wrapper">
             <div className="regForm-input-group">
-              <p className="regForm-label">Home Address</p>
-              <input
-                type="text"
-                placeholder="Enter your personal address."
-                value={formData.homeAddress || ""}
-                onChange={(e) => onSave("homeAddress", e.target.value)}
-                className="regForm-input"
-                style={{
-                  fontFamily: '"Hanken Grotesk", "Arial"',
-                  color: "#000839",
-                }}
-              />
-            </div>
-          </div>
-
-          <div className="regForm-input-wrapper">
-            <div className="regForm-input-group">
-              <p className="regForm-label">Birthday</p>
+              <p className="regForm-label">
+                Date of Birth <span style={{ color: "red" }}>*</span>
+              </p>
               <input
                 type="date"
                 value={formData.birthday || ""}
@@ -1909,8 +1675,8 @@ const Step7 = ({
   );
 };
 
-// Step 8 Trader Verification
-const Step8 = ({
+// Step 7 Trader Verification
+const Step7 = ({
   onNext,
   onBack,
   formData,
@@ -1925,6 +1691,7 @@ const Step8 = ({
     insuranceCertificate: null,
     photoId: null,
     businessAddressProof: null,
+    certificates: null,
   });
 
   const handleFileUpload = (event) => {
@@ -1948,6 +1715,7 @@ const Step8 = ({
       "Insurance Certificate": "insuranceCertificate",
       "Photo ID": "photoId",
       "Proof of Business Address": "businessAddressProof",
+      Certificates: "certificates",
     };
 
     setUploadedFiles((prev) => {
@@ -1978,7 +1746,7 @@ const Step8 = ({
               ></div>
             </div>
             <div className="h2-skip-wrapper">
-              <h2>Trader Verification</h2>
+              <h2>Get Verified</h2>
               <p
                 className="skip-text"
                 onClick={onNext}
@@ -1997,7 +1765,8 @@ const Step8 = ({
             {/* Insurance Certificate Upload Button */}
             <div className="regForm-input-group">
               <p className="regForm-label" style={{ marginBottom: "10px" }}>
-                Insurance Certificate
+                Public Liability Insurance Certificate{" "}
+                <span style={{ color: "red" }}>*</span>
               </p>
               <button
                 onClick={() => setModalType("Insurance Certificate")}
@@ -2006,14 +1775,14 @@ const Step8 = ({
                 + Upload
               </button>
               <p className="regForm-description">
-                e.g., Public Liability Insurance
+                Upload your insurance – verified traders get 3x more leads.
               </p>
             </div>
 
             {/* Photo ID Upload Button */}
             <div className="regForm-input-group">
               <p className="regForm-label" style={{ marginBottom: "10px" }}>
-                Photo ID
+                Photo ID <span style={{ color: "red" }}>*</span>
               </p>
               <button
                 onClick={() => setModalType("Photo ID")}
@@ -2022,7 +1791,8 @@ const Step8 = ({
                 + Upload
               </button>
               <p className="regForm-description">
-                e.g., Passport, Driver’s License
+                Upload your driving license or passport to confirm their
+                identity.
               </p>
             </div>
 
@@ -2038,8 +1808,24 @@ const Step8 = ({
                 + Upload
               </button>
               <p className="regForm-description">
-                e.g., Public Liability Insurance
+                As part of our verfiication process, we need proof of address.
               </p>
+            </div>
+
+            <div className="regForm-input-group">
+              <p className="regForm-label" style={{ marginBottom: "10px" }}>
+                Certificates
+              </p>
+              <p className="regForm-description">
+                Share any trade qualifications, training, or safety certs you
+                hold.
+              </p>
+              <button
+                onClick={() => setModalType("Certificates")}
+                className="regForm-button"
+              >
+                + Upload
+              </button>
             </div>
           </div>
 
@@ -2052,35 +1838,6 @@ const Step8 = ({
             handleDelete={handleDelete}
             errorMessage={errorMessage}
           />
-
-          <div className="display-container">
-            <p className="regForm-label" style={{ marginTop: "50px" }}>
-              Business Verification
-            </p>
-            <p style={{ color: "#000839", marginBottom: "10px" }}>
-              Reconfirm your company number and registered address.
-            </p>
-            <p
-              className="regForm-input"
-              style={{
-                marginBottom: "10px",
-                backgroundColor: "#F2F4FA",
-                color: "#000839",
-              }}
-            >
-              <strong>Business Address:</strong> {formData.businessAddress}
-            </p>
-            <p
-              className="regForm-input"
-              style={{
-                marginBottom: "10px",
-                backgroundColor: "#F2F4FA",
-                color: "#000839",
-              }}
-            >
-              <strong>Business Phone Number:</strong> {formData.businessNumber}
-            </p>
-          </div>
 
           <div className="regForm-button-container">
             <button onClick={onBack} className="regForm-button">
@@ -2102,8 +1859,8 @@ const Step8 = ({
   );
 };
 
-// Step 9 Social Media
-const Step9 = ({
+// Step 8 Social Media
+const Step8 = ({
   onNext,
   onBack,
   formData,
@@ -2154,10 +1911,6 @@ const Step9 = ({
               ></div>
             </div>
             <h2>Social Media</h2>
-            <p>
-              Feel free to enter your business’s social media links below. This
-              is optional and helps homeowners connect with you online.
-            </p>
           </div>
 
           {/* Scrollable Form Content */}
@@ -2209,14 +1962,163 @@ const Step9 = ({
   );
 };
 
-// Step 10
-const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
+//Step9 Code of Conduct
+const Step9 = ({ onBack, onNext }) => (
   <>
-    <div style={{ overflow: "hidden", height: "250px" }}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <img
         src={workerSignup}
         alt="worker cleaning"
-        style={{ width: "100%", objectFit: "cover" }}
+        style={{ height: "auto", width: "auto", maxWidth: "100%" }}
+      />
+    </div>
+    <div className="form-container">
+      <div className="regForm-final-header">
+        <div className="regForm-header-p">
+          <h2>Code of Conduct</h2>
+        </div>
+        <button onClick={onBack} type="button" className="regForm-button">
+          <i className="fas fa-chevron-left"></i>
+          Back
+        </button>
+      </div>
+      <p className="section-text">
+        Before completing your sign-up, please take a moment to review the
+        information you’ve entered and read through the Code of Conduct.
+      </p>
+
+      <div className="section">
+        <p className="section-title">Members Pledge to Tradiy.com Customers</p>
+        <ol>
+          <li>
+            Honesty and Realism: Be honest in all dealings with customers,
+            providing realistic estimates for work duration and dates.
+          </li>
+          <li>
+            Communication and Respect: Keep customers informed about any changes
+            or delays, respecting their time and property.
+          </li>
+          <li>
+            Appointment Integrity: Honour all appointments and agreed-upon
+            timings. If unable to meet the original schedule, promptly inform
+            the customer and attempt to reschedule.
+          </li>
+          <li>
+            Customer Satisfaction: Prioritise customer satisfaction above all
+            else, promptly addressing any complaints or concerns without
+            confrontation or abuse.
+          </li>
+          <li>
+            Financial Transparency: Never demand cash and inform customers of
+            any call-out fees before commencing work.
+          </li>
+          <li>
+            Quality Assurance: Deliver quality workmanship and notify customers
+            of any additional costs before starting extra work. Obtain customer
+            agreement for any variations to the original contract.
+          </li>
+          <li>
+            Safety and Professionalism: Maintain professionalism at all times,
+            ensuring compliance with safety regulations and standards.
+          </li>
+          <li>
+            Feedback Responsibility: Encourage customers to leave reviews and
+            feedback, providing them with a platform to share their experiences.
+          </li>
+        </ol>
+      </div>
+
+      <div className="section">
+        <p className="section-title">Members Pledge to Tradiy.com</p>
+        <ol>
+          <li>
+            Documentation and Communication: Supply Tradiy.com with necessary
+            documentation promptly, including insurance schedules and
+            accreditations. Respond promptly to messages from both customers and
+            Tradiy.com.
+          </li>
+          <li>
+            Sub-Contracting Compliance: Ensure compliance with all regulations
+            when subcontracting work, including providing necessary
+            qualifications and certifications for subcontractors.
+          </li>
+          <li>
+            Professional Conduct: Maintain courteous and respectful
+            communication with both customers and Tradiy.com staff, adhering to
+            the highest standards of professionalism.
+          </li>
+          <li>
+            Respect for All: Treat everyone with respect and courtesy,
+            regardless of differences or disagreements.
+          </li>
+          <li>
+            Clear Communication: Keep communication clear and timely, responding
+            promptly to customer inquiries and feedback.
+          </li>
+          <li>
+            Prioritise Safety: Make safety a top priority in all tasks, adhering
+            to relevant regulations and standards.
+          </li>
+          <li>
+            Maintain Professionalism: Present yourself professionally at all
+            times, both online and in-person, as a proud representative of
+            Tradiy.com.
+          </li>
+          <li>
+            Embrace Learning: Continuously seek opportunities for learning and
+            improvement, aiming to enhance skills and knowledge.
+          </li>
+          <li>
+            Work Together: Collaborate with fellow members, supporting each
+            other to achieve shared goals and objectives.
+          </li>
+          <li>
+            Take Responsibility: Hold yourself accountable for your actions and
+            decisions, demonstrating integrity and reliability.
+          </li>
+        </ol>
+      </div>
+      <hr
+        style={{
+          border: "1px solid #ccc",
+          width: "87",
+          margin: "0 auto",
+          marginTop: "50px",
+          marginBottom: "50px",
+          marginRight: "150px",
+          marginLeft: "130px",
+        }}
+      />
+      <div style={{ display: "flex", justifyContent: "flex-start" }}>
+        <form className="section-text-checkbox">
+          <input type="checkbox" id="agree" />
+          <label htmlFor="agree">
+            I agree to the Tradiy Code of Conduct{" "}
+            <span style={{ color: "red" }}>*</span>
+          </label>
+        </form>
+      </div>
+
+      <button
+        onClick={onNext}
+        type="submit"
+        className="regForm-button"
+        style={{ marginLeft: "130px", marginTop: "30px", marginBottom: "50px" }}
+      >
+        Finish Sign Up
+      </button>
+    </div>
+  </>
+);
+
+// Step10
+const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
+  <>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <img
+        src={workerSignup}
+        alt="worker cleaning"
+        style={{ height: "auto", width: "auto", maxWidth: "100%" }}
       />
     </div>
     <div className="step-container">
@@ -2234,7 +2136,7 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
       </div>
       <div className="business-container">
         <div className="header-block">
-          <span className="title">Business Details</span>
+          <span className="title">Business Basics</span>
           <p
             style={{ cursor: "pointer" }}
             onClick={() => onEdit(1)}
@@ -2251,19 +2153,19 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
             </div>
           </div>
           <div className="detail-item">
-            <div className="summary-label">Business Owner</div>
+            <div className="summary-label">Owner Name</div>
             <div className="value">
               {formData.businessOwner || "No business owner provided"}
             </div>
           </div>
           <div className="detail-item">
-            <div className="summary-label">Business Registered Address</div>
+            <div className="summary-label">Business Address</div>
             <div className="value">
               {formData.businessAddress || "No registered address provided"}
             </div>
           </div>
           <div className="detail-item">
-            <div className="summary-label">Business Phone Number</div>
+            <div className="summary-label">Phone Number</div>
             <div className="value">
               {formData.businessNumber || "No phone number provided"}
             </div>
@@ -2274,88 +2176,12 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
               {formData.traderCategory || "No trade category provided"}
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div className="step-container">
-      <div className="business-container">
-        <div className="header-block">
-          <span className="title">Business Info</span>
-          <p
-            style={{ cursor: "pointer" }}
-            onClick={() => onEdit(2)}
-            className="edit-link"
-          >
-            Edit
-          </p>
-        </div>
-        <div className="details">
           <div className="detail-item">
-            <div className="summary-label">Company Type</div>
+            <div className="summary-label">Years in Business </div>
             <div className="value">
-              {formData.companyType || "No company type provided"}
+              {formData.businessYears || "No years in business provided"}
             </div>
           </div>
-          <div className="detail-item">
-            <div className="summary-label">Website URL</div>
-            <div className="value">
-              {formData.websiteURL || "No website URL provided"}
-            </div>
-          </div>
-          <div className="detail-item">
-            <div className="summary-label">Services Provided</div>
-            <div className="value">
-              {Array.isArray(formData.services) &&
-              formData.services.length > 0 ? (
-                formData.services.map((service, index) => (
-                  <div key={index}>{service}</div>
-                ))
-              ) : (
-                <span>No services listed</span>
-              )}
-            </div>
-          </div>
-          <div className="detail-item">
-            <div className="summary-label">VAT Registered?</div>
-            <div className="value">
-              {formData.isVatRegistered ? "Yes" : "No"}
-            </div>
-          </div>
-          <div className="detail-item">
-            <div className="summary-label">VAT Number</div>
-            <div className="value">
-              {formData.isVatRegistered && formData.vatNumber
-                ? formData.vatNumber
-                : "Not registered"}
-            </div>
-          </div>
-          <div className="detail-item">
-            <div className="summary-label">Call-Out Charge</div>
-            <div className="value">
-              {formData.calloutCharge
-                ? `£${formData.calloutCharge} per visit`
-                : "No call-out charge provided"}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div className="step-container">
-      <div className="business-container">
-        <div className="header-block">
-          <span className="title">List Your Business</span>
-          <p
-            style={{ cursor: "pointer" }}
-            onClick={() => onEdit(4)}
-            className="edit-link"
-          >
-            Edit
-          </p>
-        </div>
-        <div className="details">
-          {/* Business Logo */}
           <div className="detail-item">
             <div className="summary-label">Business Logo</div>
             <div className="value">
@@ -2379,10 +2205,83 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
               )}
             </div>
           </div>
+          <div className="detail-item">
+            <div className="summary-label">Work Radius </div>
+            <div className="value">
+              {formData.workRadius || "No Work Radius provided"}
+              {"miles"}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div className="step-container">
+      <div className="business-container">
+        <div className="header-block">
+          <span className="title">More About Your Business</span>
+          <p
+            style={{ cursor: "pointer" }}
+            onClick={() => onEdit(2)}
+            className="edit-link"
+          >
+            Edit
+          </p>
+        </div>
+        <div className="details">
+          <div className="detail-item">
+            <div className="summary-label">Company Type</div>
+            <div className="value">
+              {formData.companyType || "No company type provided"}
+            </div>
+          </div>
+          <div className="detail-item">
+            <div className="summary-label">Company Registration Number</div>
+            <div className="value">
+              {formData.companyType ||
+                "No Company Registration Number Provided"}
+            </div>
+          </div>
+          <div className="detail-item">
+            <div className="summary-label">Website URL</div>
+            <div className="value">
+              {formData.websiteURL || "No website URL provided"}
+            </div>
+          </div>
+          <div className="detail-item">
+            <div className="summary-label">Call-Out Fee</div>
+            <div className="value">
+              {formData.calloutCharge || "No Call-Out Fee Status provided"}
+            </div>
+          </div>
+          <div className="detail-item">
+            <div className="summary-label">VAT Registered</div>
+            <div className="value">
+              {formData.isVatRegistered || "No Vat Registered Status provided"}
+            </div>
+          </div>
+          <div className="detail-item">
+            <div className="summary-label">Accept Cards</div>
+            <div className="value">
+              {formData.acceptCards || "No Accept Cards Status provided"}
+            </div>
+          </div>
+          <div className="detail-item">
+            <div className="summary-label">Services Provided</div>
+            <div className="value">
+              {Array.isArray(formData.services) &&
+              formData.services.length > 0 ? (
+                formData.services.map((service, index) => (
+                  <div key={index}>{service}</div>
+                ))
+              ) : (
+                <span>No services listed</span>
+              )}
+            </div>
+          </div>
           {/* Work Images */}
           <div className="detail-item">
-            <div className="summary-label">Work Images</div>
+            <div className="summary-label">Photos of Your Work</div>
             <div className="value">
               {formData.workImages && formData.workImages.length > 0 ? (
                 <ul>
@@ -2413,38 +2312,6 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
               )}
             </div>
           </div>
-
-          {/* Certifications */}
-          <div className="detail-item">
-            <div className="summary-label">Certifications</div>
-            <div className="value">
-              {formData.certifications && formData.certifications.length > 0 ? (
-                <ul>
-                  {formData.certifications.map((file, index) => {
-                    // Ensure the file is either a Blob or a File object
-                    const isValidFile =
-                      file instanceof Blob || file instanceof File;
-                    return isValidFile ? (
-                      <li key={index}>
-                        <a
-                          href={URL.createObjectURL(file)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          View Certificate {index + 1}
-                        </a>
-                      </li>
-                    ) : (
-                      <li key={index}>Invalid file</li> // Show fallback for invalid file type
-                    );
-                  })}
-                </ul>
-              ) : (
-                "No certifications uploaded" // Fallback for empty or non-existent certifications array
-              )}
-            </div>
-          </div>
-
           {/* Business Description */}
           <div className="detail-item">
             <div className="summary-label">About Your Business</div>
@@ -2459,43 +2326,7 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
     <div className="step-container">
       <div className="business-container">
         <div className="header-block">
-          <span className="title">Add Your Categories</span>
-          <p
-            style={{ cursor: "pointer" }}
-            onClick={() => onEdit(5)}
-            className="edit-link"
-          >
-            Edit
-          </p>
-        </div>
-        <div className="details">
-          <div className="detail-item">
-            <div className="summary-label">Primary Trade Category</div>
-            <div className="value">
-              {formData.companyType || "No primary trade category provided"}
-            </div>
-          </div>
-          <div className="detail-item">
-            <div className="summary-label">Additional Categories</div>
-            <div className="value">
-              {Array.isArray(formData.additionalCategory) &&
-              formData.additionalCategory.length > 0 ? (
-                formData.additionalCategory.map((category, index) => (
-                  <div key={index}>{category}</div>
-                ))
-              ) : (
-                <span>No additional categories provided</span>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div className="step-container">
-      <div className="business-container">
-        <div className="header-block">
-          <span className="title">Business Opening Hours</span>
+          <span className="title">Opening Hours</span>
           <p
             style={{ cursor: "pointer" }}
             onClick={() => onEdit(6)}
@@ -2506,7 +2337,7 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
         </div>
         <div className="details">
           <div className="detail-item">
-            <div className="summary-label">Weekly Schedule</div>
+            <div className="summary-label">Business Hours</div>
             <div className="value">
               {formData.businessAvailability &&
                 Object.keys(formData.businessAvailability).map((day) => {
@@ -2608,7 +2439,7 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
         </div>
 
         <div className="detail-item">
-          <div className="summary-label">Emergency Hours</div>
+          <div className="summary-label">Emergency Cover</div>
           <div className="value">
             {formData.emergencyHours === "Yes"
               ? "Offer 24/7 services"
@@ -2617,69 +2448,13 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
               : "Not selected"}
           </div>
         </div>
-
-        <div className="detail-item">
-          <div className="summary-label">Holiday/Special Hours</div>
-          <div className="value">
-            {formData.holidays && formData.holidays.length > 0 ? (
-              formData.holidays.map((holiday, index) => {
-                const formatTime = (time) => {
-                  if (!time) return "";
-                  const [hours, minutes] = time.split(":");
-                  return new Date(0, 0, 0, hours, minutes).toLocaleTimeString(
-                    "en-US",
-                    {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      hour12: true,
-                    }
-                  );
-                };
-
-                return (
-                  <div key={index} className="holiday-item">
-                    <span className="holiday-name">{holiday.name}</span>
-                    <span className="holiday-date">
-                      (
-                      {new Intl.DateTimeFormat("en-GB", {
-                        day: "2-digit",
-                        month: "long",
-                        year: "numeric",
-                      }).format(new Date(holiday.startDate + "T00:00:00"))}
-                      ,{" "}
-                    </span>
-                    <span className="holiday-date">
-                      {" "}
-                      {formatTime(holiday.openTime)}{" "}
-                    </span>
-                    <span className="holiday-date"> - </span>
-                    <span className="holiday-date">
-                      {new Intl.DateTimeFormat("en-GB", {
-                        day: "2-digit",
-                        month: "long",
-                        year: "numeric",
-                      }).format(new Date(holiday.endDate + "T00:00:00"))}
-                      ,{" "}
-                    </span>
-                    <span className="holiday-date">
-                      {" "}
-                      {formatTime(holiday.closeTime)})
-                    </span>
-                  </div>
-                );
-              })
-            ) : (
-              <span>No special holidays set</span>
-            )}
-          </div>
-        </div>
       </div>
     </div>
 
     <div className="step-container">
       <div className="business-container">
         <div className="header-block">
-          <span className="title">Tell Us About Yourself</span>
+          <span className="title">About You</span>
           <p
             style={{ cursor: "pointer" }}
             onClick={() => onEdit(7)}
@@ -2690,7 +2465,7 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
         </div>
         <div className="details">
           <div className="detail-item">
-            <div className="summary-label">Profile Picture</div>
+            <div className="summary-label">Profile Picture / Selfie</div>
             <div className="value">
               {formData.profilePicture &&
               (typeof formData.profilePicture === "string" ||
@@ -2718,10 +2493,6 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
             <div className="value">{formData.shortBio}</div>
           </div>
           <div className="detail-item">
-            <div className="summary-label">Home Address</div>
-            <div className="value">{formData.homeAddress}</div>
-          </div>
-          <div className="detail-item">
             <div className="summary-label">Date of Birth</div>
             <div className="value">
               {formData.birthday
@@ -2740,7 +2511,7 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
     <div className="step-container">
       <div className="business-container">
         <div className="header-block">
-          <span className="title">Trader Verification</span>
+          <span className="title">Get Verified</span>
           <p
             style={{ cursor: "pointer" }}
             onClick={() => onEdit(8)}
@@ -2751,7 +2522,9 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
         </div>
         <div className="details">
           <div className="detail-item">
-            <div className="summary-label">Insurance Certificate</div>
+            <div className="summary-label">
+              Public Liability Insurance Certificate
+            </div>
             <div className="value">
               {formData.insuranceCertificate &&
               (typeof formData.insuranceCertificate === "string" ||
@@ -2819,6 +2592,36 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
               )}
             </div>
           </div>
+          {/* Certifications */}
+          <div className="detail-item">
+            <div className="summary-label">Certifications</div>
+            <div className="value">
+              {formData.certifications && formData.certifications.length > 0 ? (
+                <ul>
+                  {formData.certifications.map((file, index) => {
+                    // Ensure the file is either a Blob or a File object
+                    const isValidFile =
+                      file instanceof Blob || file instanceof File;
+                    return isValidFile ? (
+                      <li key={index}>
+                        <a
+                          href={URL.createObjectURL(file)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          View Certificate {index + 1}
+                        </a>
+                      </li>
+                    ) : (
+                      <li key={index}>Invalid file</li> // Show fallback for invalid file type
+                    );
+                  })}
+                </ul>
+              ) : (
+                "No certifications uploaded" // Fallback for empty or non-existent certifications array
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2870,6 +2673,39 @@ const Step10 = ({ formData, onBack, onNext, saveForLater, onEdit }) => (
         </div>
       </div>
     </div>
+    <hr
+      style={{
+        border: "1px solid #ccc",
+        width: "87",
+        margin: "0 auto",
+        marginTop: "50px",
+        marginBottom: "50px",
+        marginRight: "150px",
+        marginLeft: "130px",
+      }}
+    />
+    <div style={{ display: "flex", justifyContent: "flex-start" }}>
+      <form className="section-text-checkbox">
+        <input type="checkbox" id="agree" />
+        <label htmlFor="agree">
+          I hereby agree to submit the details requested for the purpose of the
+          verification process. I understand that these details will be used
+          solely for administrative reference and verification purposes in
+          accordance with the stated guidelines.{" "}
+          <span style={{ color: "red" }}>*</span>
+        </label>
+      </form>
+    </div>
+
+    <form onSubmit={handleSubmit}>
+      <button
+        type="submit"
+        className="regForm-button"
+        style={{ marginLeft: "130px", marginTop: "30px", marginBottom: "50px" }}
+      >
+        Submit for Review
+      </button>
+    </form>
   </>
 );
 
