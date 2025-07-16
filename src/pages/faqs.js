@@ -10,184 +10,178 @@ import searchIcon from "../images/search-blue.png";
 const questionsData = [
   {
     category: "GENERAL FAQS",
-    question: "What is Tradiy in general?",
+    question: "What is Tradiy?",
     answer:
-      "Tradiy is an online directory connecting homeowners in Scotland with verified tradespeople. It’s designed to make finding trusted professionals for home projects quick, simple, and stress-free.",
+      "Tradiy is a local directory and job tool that helps people in Scotland find skilled tradespeople. It also gives traders digital tools to run their business — like quotes, calendars, and job tracking. You don’t need to be verified to use Tradiy Hero or appear on the site, but we’re building a trusted platform and working to keep it full of real pros.",
   },
   {
     category: "GENERAL FAQS",
-    question: "How does Tradiy ensure tradespeople are reliable?",
-    answer:
-      "All tradespeople listed on Tradiy are personally vetted by our team. They must provide valid ID, public liability insurance, and relevant certifications to be verified.",
+    question: "Are all tradespeople verified?",
+    answer: [
+      "Nope. Verification is optional — not everyone has it.",
+      "Verified traders have passed our checks (ID, insurance, trade certs).",
+      "Unverified traders might still be brilliant — some just haven’t sent their documents yet. We clearly show who’s verified and who’s not, so you can decide.",
+    ],
   },
   {
     category: "GENERAL FAQS",
-    question: "Is Tradiy free to use?",
+    question: "Is Tradiy free?",
     answer:
-      "Yes, Tradiy is free for homeowners to browse and contact tradespeople. Tradespeople can currently sign up and get verified for free as well..",
+      "Yes. Homeowners use Tradiy for free. Tradespeople can sign up and use the core site for free too. You only pay if you want access to our full job tools or extras like ad boosts.",
   },
   {
     category: "GENERAL FAQS",
-    question: "How do I search for tradespeople on Tradiy?",
+    question: "How do I find someone for a job?",
     answer:
-      "You can search the directory by trade and location. For example, enter “electrician in Glasgow” or “plumber in Ayrshire” to find professionals near you.",
+      "Search by trade and location — things like “plumber in Ayr” or “sparky in Glasgow.” You’ll see both verified and unverified traders.",
   },
   {
     category: "GENERAL FAQS",
-    question: "Can homeowners leave reviews?",
-    answer:
-      "Currently, our team personally vets all tradespeople. In the future, homeowners will be able to leave reviews to further help others make informed decisions.",
+    question: "Can I leave a review?",
+    answer: [
+      "Yes. You can leave a review if:",
+      "You found the trader through Tradiy Hero, or",
+      "You’ve used them in the past (even off the platform).",
+      "We clearly mark reviews as either:",
+      "✅ Verified – we’ve confirmed the job or the reviewer.",
+      "⚠️ Unverified – we couldn’t confirm their identity or they don’t have a Tradiy account.",
+      "Both types are allowed, and it’s up to you who you trust.",
+    ],
   },
 
   {
     category: "FOR TRADESPEOPLE",
-    question: "What is Tradiy?",
-    answer:
-      "Tradiy is an online directory and soon-to-be mobile app designed to connect local tradespeople in Scotland with homeowners looking for reliable, verified professionals. It helps you grow your business by making it easy for potential clients to find and trust your services.",
+    question: "Do I need to be verified to join?",
+    answer: [
+      "No.",
+      "You don’t need to be verified to:",
+      "Be listed on Tradiy",
+      "Use Tradiy Hero tools like quotes, invoices, calendars, etc.",
+      "But if you want the Verified badge, send us your ID, public liability insurance, and any trade certs. Being verified helps you stand out and build trust with customers.",
+    ],
   },
   {
     category: "FOR TRADESPEOPLE",
-    question: "Why should I join Tradiy?",
+    question: "What’s the point of being verified?",
     answer: [
-      "By joining Tradiy, you gain access to:",
-      "- Increased visibility among local homeowners.",
-      "- A platform that verifies your credentials, boosting your credibility.",
-      "- Exclusive promotions and competitions, like the current **DeWalt cordless drill raffle**.",
-      "- A simple way to showcase your work and expertise.",
-      "- **A trusted brand association that helps you stand out from unverified competitors.**",
+      "It’s not required, but it does help.",
+      "Verified traders look more professional and may get more work. Homeowners can see who’s verified and who’s not. It’s all about building trust.",
     ],
   },
   {
     category: "FOR TRADESPEOPLE",
     question: "What do I need to sign up?",
     answer: [
-      "To sign up and get verified on Tradiy, you’ll need to provide:",
-      "- Proof of identity (valid ID).",
-      "- Public liability insurance documentation.",
-      "- Any relevant trade qualifications or certifications.",
-      "- **A valid business address or trading location.**",
+      "Just your name, contact details, and a bit about your work. That gets your listing live.",
+      "For verification, you’ll need:",
+      "Valid ID",
+      "Public liability insurance",
+      "Any relevant trade certs",
     ],
   },
   {
     category: "FOR TRADESPEOPLE",
-    question: "Is Tradiy a paid service?",
-    answer:
-      "Currently, sign-up and verification on Tradiy are free. However, premium features, such as enhanced listings, advertising opportunities, or additional exposure tools, may be introduced in the future.",
-  },
-  {
-    category: "FOR TRADESPEOPLE",
-    question: "How do I get verified?",
-    answer:
-      "After submitting your documents during registration, our team will review and approve them. Verification ensures homeowners can trust you, giving you an edge over unverified competitors.",
-  },
-  {
-    category: "FOR TRADESPEOPLE",
     question: "How long does verification take?",
-    answer:
-      "Verification typically takes 1–2 business days once all required documents are submitted. We’ll notify you once your profile is live.",
+    answer: "Usually 1–2 working days once all your documents are in.",
+  },
+  {
+    category: "FOR TRADESPEOPLE",
+    question: "Can I use the platform without being verified?",
+    answer: [
+      "Yes.",
+      "Even if you’re not verified, you can:",
+      "Be listed",
+      "Be found by customers",
+      "Use our software tools to run your business",
+      "But again — verified traders may appear higher in results and have more trust.",
+    ],
   },
   {
     category: "FOR TRADESPEOPLE",
     question: "Can I update my profile later?",
     answer:
-      "Yes! You can log in anytime to update your profile, add new services, upload photos of completed work, or refresh your contact details.",
+      "Yep. You can log in anytime to update your services, upload photos, add new skills, or change contact details.",
   },
   {
     category: "FOR TRADESPEOPLE",
-    question: "What happens if my documents expire?",
+    question: "How do customers find me?",
     answer:
-      "We’ll send you reminders to update any expiring documents, such as public liability insurance. Keeping your profile updated ensures you maintain your verified status.",
+      "They search by trade and location. If you’re in the area and offer the service, you’ll show up — verified or not. But verified traders may get shown higher.",
   },
   {
     category: "FOR TRADESPEOPLE",
-    question: "How will homeowners find me?",
+    question: "What support does Tradiy offer?",
     answer:
-      "Homeowners in Scotland can search the Tradiy directory by location and trade. Your verified profile will appear in relevant search results, making it easy for them to contact you directly.",
+      "We’ve got your back. Whether you need help getting set up, uploading docs, or using the tools, just drop us a message through the site or email.",
   },
   {
     category: "FOR TRADESPEOPLE",
-    question: "Can I delete my profile?",
+    question: "Can I delete my account?",
     answer:
-      "Yes, you can deactivate or delete your profile at any time by contacting Tradiy support or through your account settings.",
-  },
-  {
-    category: "FOR TRADESPEOPLE",
-    question: "What support does Tradiy provide for tradespeople?",
-    answer:
-      "- Tradiy offers personalised support to help you complete your profile, troubleshoot issues, or navigate compliance requirements like insurance renewals. You can reach out via email or the website’s contact form.",
-  },
-
-  {
-    category: "FOR HOMEOWNERS",
-    question: "What is Tradiy?",
-    answer:
-      "Tradiy is a platform that helps you find local, verified tradespeople for your home improvement and repair needs. From plumbers to electricians, all listed professionals are vetted to ensure quality and reliability.",
+      "Yes. You can deactivate or delete your profile anytime from your account or by contacting us.",
   },
   {
     category: "FOR HOMEOWNERS",
-    question: "How do I search for tradespeople",
+    question: "How do I find a tradesperson?",
     answer:
-      "Visit Tradiy’s website (or soon, the mobile app) and search by location and trade. For example, you can look for “electricians in Ayrshire” or “plumbers in Glasgow.”",
+      "Go to our website or app, type what you need and where you are — like “roofer in Kilmarnock.” You’ll see a list of available traders, both verified and unverified.",
   },
   {
     category: "FOR HOMEOWNERS",
-    question: "Are all tradespeople verified?",
-    answer:
-      "Yes, tradespeople listed on Tradiy must provide valid ID, public liability insurance, and any necessary certifications to ensure they are trustworthy and competent.",
-  },
-  {
-    category: "FOR HOMEOWNERS",
-    question: "Is Tradiy free to use?",
-    answer: "Yes, Tradiy is completely free for homeowners to use.",
+    question: "Do I have to choose a verified tradesperson?",
+    answer: [
+      "No.",
+      "You can choose anyone you feel is right for the job. We show you clearly who’s verified and who’s not, and both can be brilliant.",
+    ],
   },
   {
     category: "FOR HOMEOWNERS",
     question: "How do I contact a tradesperson?",
     answer:
-      "Once you find a tradesperson you’d like to work with, you can contact them directly through the details provided in their Tradiy profile.",
+      "Each profile has direct contact info. Just call, text, or email them — no middleman.",
   },
   {
     category: "FOR HOMEOWNERS",
-    question: "How do I know the tradesperson is right for my job?",
-    answer:
-      "Each tradesperson’s profile includes details about their experience, qualifications, and customer reviews, helping you make an informed choice.",
-  },
-  {
-    category: "FOR HOMEOWNERS",
-    question: "Can I leave a review?",
-    answer:
-      "Yes, Tradiy encourages homeowners to leave reviews after a job is completed. This helps other users make informed decisions and supports high-quality tradespeople.",
-  },
-  {
-    category: "FOR HOMEOWNERS",
-    question: "What types of tradespeople can I find on Tradiy?",
+    question: "How do I know if they’re right for me?",
     answer: [
-      "You can find a wide range of professionals, including:",
-      "- Electricians",
-      "- Plumbers",
-      "- Carpenters",
-      "- Roofers",
-      "- Painters and decorators",
-      "General contractors. If your required trade isn’t listed, feel free to suggest it to Tradiy’s support team.",
+      "Check their profile. We show:",
+      "Their trade and experience",
+      "Qualifications (if verified)",
+      "Photos of their work",
+      "Customer reviews (both verified and unverified)",
     ],
   },
   {
     category: "FOR HOMEOWNERS",
-    question: "What if I have an issue with a tradesperson?",
-    answer:
-      "If you encounter any problems, you can: Contact the tradesperson directly to resolve the issue or Report the issue to Tradiy’s support team for further assistance.",
+    question: "Can I leave a review after the job?",
+    answer: [
+      "Yes. If you’ve worked with the trader — on or off Tradiy — you can leave a review.",
+      "Reviews are marked:",
+      "✅ Verified (confirmed job or identity)",
+      "⚠️ Unverified (no confirmed link)",
+      "We leave the choice to you who to trust.",
+    ],
   },
   {
     category: "FOR HOMEOWNERS",
-    question: "Can I request multiple quotes?",
-    answer:
-      "Yes, you can contact multiple tradespeople through the platform and request quotes to compare services and prices.",
+    question: "What if there’s a problem?",
+    answer: [
+      "First, try speaking directly to the tradesperson.",
+      "If it’s not resolved, contact Tradiy support and we’ll help where we can.",
+    ],
   },
   {
     category: "FOR HOMEOWNERS",
-    question: "How does Tradiy ensure my safety?",
-    answer:
-      "Tradiy requires tradespeople to provide valid ID, insurance, and proof of qualifications. Additionally, you can check reviews from previous customers to confirm their reliability.",
+    question: "Can I ask for more than one quote?",
+    answer: "Definitely. Message as many tradespeople as you like and compare.",
+  },
+  {
+    category: "FOR HOMEOWNERS",
+    question: "Is it safe to use Tradiy?",
+    answer: [
+      "Yes — and we’re working to make it safer every day.",
+      "We clearly label who’s been verified, and we’re building a trusted platform that keeps rogue traders out.",
+    ],
   },
 ];
 

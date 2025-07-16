@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { FaFacebookF, FaGoogle, FaApple } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../styles/Login.css";
 import Driller from "../images/login-img.png";
 import TradiyLogo from "../images/tradiy-hero-logo.png";
 import Divider from "../landing-page/divider";
+import facebookIcon from "../images/fb-icon.png";
+import googleIcon from "../images/google-icon.png";
+import appleIcon from "../images/apple-icon.png";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -134,13 +136,16 @@ function Login() {
           <p className="or-text">or login using</p>
           <div className="social-login">
             <button className="social-button facebook">
-              <FaFacebookF /> {/* Facebook Icon */}
+              <img src={facebookIcon} alt="fb-icon" />
+              {/* Facebook Icon */}
             </button>
             <button className="social-button google">
-              <FaGoogle /> {/* Google Icon */}
+              <img src={googleIcon} alt="fb-icon" />
+              {/* Google Icon */}
             </button>
             <button className="social-button apple">
-              <FaApple /> {/* Apple Icon */}
+              <img src={appleIcon} alt="fb-icon" />
+              {/* Apple Icon */}
             </button>
           </div>
         </div>

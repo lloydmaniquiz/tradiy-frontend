@@ -1,16 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../App.css"; // Import the CSS for styling
+import "../App.css";
 
 const BurgerDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null); // Reference to the entire component
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
+  // Close the menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    // Listen for mouse clicks
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="burger-dropdown">
+    <div className="burger-dropdown" ref={menuRef}>
       <button className="burger-icon" onClick={toggleMenu}>
         <div className={`burger-line ${isOpen ? "open" : ""}`} />
         <div className={`burger-line ${isOpen ? "open" : ""}`} />

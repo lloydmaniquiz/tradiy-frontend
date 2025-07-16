@@ -53,6 +53,9 @@ import DashboardTickets from "./pages/DashboardTickets";
 import DashboardResources from "./pages/DashboardResources";
 import DashboardReferrals from "./pages/DashboardReferrals";
 import ThankYouForm from "./pages/ThankYouForm";
+import ResetPWSuccess from "./landing-page/password-change-success";
+import FailedPrompt from "./landing-page/failed-prompt";
+import Referral from "./pages/Referral";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -234,10 +237,14 @@ function App() {
           <Route path="/email-verification" element={<EmailVerification />} />
           <Route path="/email-verified" element={<EmailVerified />} />
           <Route path="/thank-you" element={<ThankYouForm />} />
+          <Route path="/reset-password-success" element={<ResetPWSuccess />} />
+          <Route path="/failed-prompt" element={<FailedPrompt />} />
           <Route
             path="/tradiy-registration-form"
             element={<RegistrationForm />}
           />
+
+          <Route path="/referral" element={<Referral />} />
           <Route path="/how-tradiy-works" element={<HowTradiyWorks />} />
           <Route path="/tradiy-benefits" element={<TradiyBenefits />} />
           <Route path="/faqs" element={<FAQs />} />

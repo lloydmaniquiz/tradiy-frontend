@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { FaCheckCircle } from 'react-icons/fa'; // Check icon
+import React, { useState } from "react";
+import { FaCheckCircle } from "react-icons/fa"; // Check icon
 import "../styles/ResetPassword.css";
 import resetPassword from "../images/reset-password/reset-password.png";
-import TradiyLogo from "../images/tradiy-navy-seal.png";
+import TradiyLogo from "../images/tradiy-hero-logo.png";
 
 const ResetPassword = () => {
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordValid, setPasswordValid] = useState({
     length: false,
     upperLower: false,
@@ -40,9 +40,9 @@ const ResetPassword = () => {
     e.preventDefault();
     // Handle password reset logic here
     if (Object.values(passwordValid).every(Boolean) && passwordMatch) {
-      alert('Password reset successful!');
+      alert("Password reset successful!");
     } else {
-      alert('Please ensure all conditions are met.');
+      alert("Please ensure all conditions are met.");
     }
   };
 
@@ -51,21 +51,25 @@ const ResetPassword = () => {
       <div className="reset-password-container">
         {/* Wrapper for images */}
         <div className="reset-password-image-wrapper">
-          <img 
-            src={TradiyLogo} 
-            alt="Tradiy Logo" 
-            className="reset-password-reset-password-image" />
-          <img 
-            src={resetPassword} 
-            alt="Reset Password" 
-            className="reset-password-reset-password-image" />
+          <img
+            src={TradiyLogo}
+            alt="Tradiy Logo"
+            className="reset-password-reset-password-image-logo"
+          />
+          <img
+            src={resetPassword}
+            alt="Reset Password"
+            className="reset-password-reset-password-image"
+          />
         </div>
 
         <h2>Reset your password</h2>
         <form onSubmit={handleSubmit} className="reset-password-form">
           {/* New Password Form */}
           <div>
-            <label htmlFor="newPassword" className="reset-password-label">New Password</label>
+            <label htmlFor="newPassword" className="reset-password-label">
+              New Password
+            </label>
             <input
               type="password"
               id="newPassword"
@@ -77,14 +81,15 @@ const ResetPassword = () => {
             />
             <div className="reset-password-password-checker">
               <ul>
-                <li className={passwordValid.length ? 'valid' : 'invalid'}>
+                <li className={passwordValid.length ? "valid" : "invalid"}>
                   <FaCheckCircle /> Password must be at least 8 characters
                 </li>
-                <li className={passwordValid.upperLower ? 'valid' : 'invalid'}>
+                <li className={passwordValid.upperLower ? "valid" : "invalid"}>
                   <FaCheckCircle /> Include both uppercase and lowercase letters
                 </li>
-                <li className={passwordValid.specialChar ? 'valid' : 'invalid'}>
-                  <FaCheckCircle /> Contain at least one special character (e.g., !, @, #, $, %)
+                <li className={passwordValid.specialChar ? "valid" : "invalid"}>
+                  <FaCheckCircle /> Contain at least one special character
+                  (e.g., !, @, #, $, %)
                 </li>
               </ul>
             </div>
@@ -92,7 +97,9 @@ const ResetPassword = () => {
 
           {/* Confirm New Password Form */}
           <div>
-            <label htmlFor="confirmPassword" className="reset-password-label">Confirm New Password</label>
+            <label htmlFor="confirmPassword" className="reset-password-label">
+              Confirm New Password
+            </label>
             <input
               type="password"
               id="confirmPassword"
@@ -104,17 +111,22 @@ const ResetPassword = () => {
             />
             {/* Only show the match message if both passwords are not empty */}
             {isTouched && newPassword && confirmPassword && (
-              <p style={{ color: passwordMatch ? 'green' : 'red' }} className="reset-password-password-match">
-                {passwordMatch ? 'Passwords match!' : 'Passwords do not match!'}
+              <p
+                style={{ color: passwordMatch ? "green" : "red" }}
+                className="reset-password-password-match"
+              >
+                {passwordMatch ? "Passwords match!" : "Passwords do not match!"}
               </p>
             )}
           </div>
 
           {/* Reset Password Button */}
           <div className="reset-password-form-container">
-            <button 
-              type="submit" 
-              disabled={!Object.values(passwordValid).every(Boolean) || !passwordMatch} 
+            <button
+              type="submit"
+              disabled={
+                !Object.values(passwordValid).every(Boolean) || !passwordMatch
+              }
               className="reset-password-button"
             >
               Reset Password

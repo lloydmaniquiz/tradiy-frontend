@@ -11,7 +11,7 @@
   text-align: left;
   margin-bottom: 20px;
   font-size: 12px;
-  color: #000839;
+  color: #423e3e;
   font-style: italic;
 }
 
@@ -100,7 +100,7 @@ textarea {
   gap: 8px; /* Space between checkbox and text */
   width: fit-content; /* Prevents full width */
   max-width: 100%; /* Ensures responsiveness */
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .checkbox-group input[type="checkbox"] {

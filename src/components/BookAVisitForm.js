@@ -12,6 +12,7 @@ const BookAVisitForm = ({
   closeModal,
   modalData = {},
 }) => {
+  const [isDragging, setIsDragging] = useState(false);
   const [trader, setTrader] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -291,7 +292,7 @@ const BookAVisitForm = ({
       <span onClick={closeModal} className="close-icon">
         &times;
       </span>
-      <h1 className="form-title">Book a Quote Visit Form</h1>
+      <h1 className="form-title">Book a Quote Visit</h1>
       <p className="description">
         This form is only for quote visits and does not indicate the actual
         acceptance of the job. It is solely for assessing the scope and cost of
@@ -456,19 +457,50 @@ const BookAVisitForm = ({
                     <p className="error-message">{error.serviceType}</p>
                   )}{" "}
                 </div>
-                <div>
-                  <label htmlFor="postCode">
-                    Post Code <span className="required">*</span>
+                <div className="location-group">
+                  <label htmlFor="location" className="location-label">
+                    Location <span className="required">*</span>
                   </label>
+
                   <input
                     type="text"
-                    id="postCode"
-                    name="postCode"
-                    value={formData.postCode}
+                    id="address"
+                    name="address"
+                    placeholder=""
+                    value={formData.address}
                     onChange={handleChange}
-                    placeholder="Post Code"
                     required
                   />
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder="City"
+                    value={formData.city}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="state"
+                    placeholder="State"
+                    value={formData.state}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="region"
+                    placeholder="Region"
+                    value={formData.region}
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="text"
+                    name="postCode"
+                    placeholder="Postcode"
+                    value={formData.postCode}
+                    onChange={handleChange}
+                    required
+                  />
+
                   {error?.postCode && (
                     <p className="error-message">{error.postCode}</p>
                   )}
@@ -508,8 +540,21 @@ const BookAVisitForm = ({
                   <label htmlFor="upload">
                     Upload Photos or Files (Optional)
                   </label>
-                  <div className="file-upload">
-                    <p>Drag and drop files here</p>
+                  <div
+                    className={`file-upload ${isDragging ? "dragging" : ""}`}
+                    onDragOver={(e) => {
+                      e.preventDefault();
+                      setIsDragging(true);
+                    }}
+                    onDragLeave={() => setIsDragging(false)}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      setIsDragging(false);
+                      const files = Array.from(e.dataTransfer.files);
+                      handleFileChange({ target: { files } }); // triggers your existing logic
+                    }}
+                  >
+                    <p>Drag and drop files here or</p>
 
                     <label htmlFor="upload" className="custom-file-upload">
                       Choose File
@@ -523,7 +568,6 @@ const BookAVisitForm = ({
                       onChange={handleFileChange}
                     />
 
-                    {/* Dynamically Display File Names */}
                     <div className="file-name">
                       {formData.files.length > 0
                         ? formData.files.map((file, index) => {
@@ -536,7 +580,7 @@ const BookAVisitForm = ({
                             const extension = fileName.slice(extIndex);
 
                             const truncatedName =
-                              nameWithoutExtension.length > 10 // Adjust length as needed
+                              nameWithoutExtension.length > 10
                                 ? `${nameWithoutExtension.slice(0, 10)}...`
                                 : nameWithoutExtension;
 
@@ -552,23 +596,6 @@ const BookAVisitForm = ({
                   <hr className="custom-divider" />
                   <div>
                     <div className="checkbox-group">
-                      <label>
-                        <input
-                          type="checkbox"
-                          id="confirm"
-                          name="confirm"
-                          checked={formData.confirm || false}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              confirm: e.target.checked,
-                            })
-                          }
-                          required
-                        />
-                        I confirm that I am the homeowner or have permission to
-                        book this visit.
-                      </label>
                       {error?.confirm && (
                         <p className="error-message">{error.confirm}</p>
                       )}{" "}
@@ -598,9 +625,54 @@ const BookAVisitForm = ({
                       {/* Error for agree checkbox */}
                     </div>
 
-                    <button type="submit" className="quote-book-btn">
-                      Book My Visit
-                    </button>
+                    <div className="contact-preference-section">
+                      <p className="contact-label">
+                        I would like to be contacted via:
+                      </p>
+                      <div className="contact-options">
+                        <label>
+                          <input
+                            type="radio"
+                            name="contactMethod"
+                            value="Email"
+                            checked={formData.contactMethod === "Email"}
+                            onChange={handleChange}
+                          />
+                          Email
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="contactMethod"
+                            value="Chat"
+                            checked={formData.contactMethod === "Chat"}
+                            onChange={handleChange}
+                          />
+                          Chat
+                        </label>
+                        <label>
+                          <input
+                            type="radio"
+                            name="contactMethod"
+                            value="WhatsApp"
+                            checked={formData.contactMethod === "WhatsApp"}
+                            onChange={handleChange}
+                          />
+                          WhatsApp
+                        </label>
+                      </div>
+
+                      <button type="submit" className="quote-book-btn">
+                        Get My Estimate
+                      </button>
+
+                      <p className="info-paragraph">
+                        If you’re new to Tradiy, we’ll setup an account for you
+                        with your email above. This will make it easier to
+                        access your conversations with trades and manage your
+                        jobs.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { FaStar } from "react-icons/fa";
+import yellowStar from "../images/yellow-star.png";
 import { Carousel } from "react-responsive-carousel";
 import peacockCheck from "../images/peacock-check.png";
 import TradiyHero from "../images/tradiy-hero.png";
@@ -97,13 +97,13 @@ const SearchResultsCard = ({ result }) => {
         <div className="services">
           {Array.isArray(result.services)
             ? result.services.map((service, index) => (
-                <div key={index} className="service">
+                <div key={index} className="service-card">
                   <img src={peacockCheck} alt="check" />
                   {service}
                 </div>
               ))
             : JSON.parse(result.services || "[]").map((service, index) => (
-                <div key={index} className="service">
+                <div key={index} className="service-card">
                   <img src={peacockCheck} alt="check" />
                   {service}
                 </div>
@@ -112,7 +112,12 @@ const SearchResultsCard = ({ result }) => {
 
         {/* Rating and Reviews */}
         <div className="rating-reviews">
-          <FaStar className="star-icon" />
+          <img
+            className="yellow-star"
+            src={yellowStar}
+            alt="yellow-star"
+            style={{ width: "14px", height: "auto" }}
+          />
           <span className="rating">{result.rating}</span>
           <span className="reviews">| {result.reviews} reviews</span>
         </div>

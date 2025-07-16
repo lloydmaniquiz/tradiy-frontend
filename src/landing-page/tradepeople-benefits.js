@@ -5,6 +5,8 @@ import expert from "../images/benefits-set/expert.png";
 import connect from "../images/benefits-set/connect.png";
 import comingSoon from "../images/coming-soon.png";
 import ReviewSlider from "./landing-reviews";
+import googlePlay from "../images/googlePlay.svg.png";
+import apple from "../images/apple.png";
 
 const BenefitsTradespeople = () => {
   return (
@@ -75,12 +77,19 @@ const BenefitsTradespeople = () => {
           <img src={comingSoon} alt="Coming Soon" />
           <div className="overlay">
             <div className="overlay-text">
-              <h2>Tradiy App Coming Soon!</h2>
+              <h2>Tradiy Mobile App is now live!</h2>
               <p>
-                With features like real-time messaging, project dashboards, and
-                instant notifications, we’re making it even easier to connect
-                and manage your projects. Stay tuned!
+                Your go-to tool for hassle-free transactions and smart solutions
+                is just a tap away.
               </p>
+              <div className="buttons-nav-wrapper">
+                <img
+                  className="nav-button"
+                  src={googlePlay}
+                  alt="google-button"
+                />
+                <img className="nav-button" src={apple} alt="apple-button" />
+              </div>
             </div>
           </div>
         </div>

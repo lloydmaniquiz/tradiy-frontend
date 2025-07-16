@@ -461,7 +461,7 @@ const TraderProfile = () => {
                       setSideModalType("estimate");
                     }}
                   >
-                    Quick Estimate
+                    Send an enquiry
                   </button>
                   <p>or</p>
                   <button
@@ -952,6 +952,20 @@ const TraderProfile = () => {
               )}
             </div>
           </div>
+        </div>
+
+        <div className="profile-footer-cta">
+          <div className="cta-text">
+            <strong>
+              Don’t wait! Click below to get a fast, free estimate!
+            </strong>
+          </div>
+          <button
+            className="cta-button"
+            onClick={() => setIsMainModalOpen(true)} // ✅ Add this line
+          >
+            Request a Quote
+          </button>
         </div>
 
         {/* TRADER'S RATING */}

@@ -103,21 +103,37 @@ p {
 }
 
 .trader-services ul {
-  list-style: none;
+  display: flex;
+  flex-wrap: wrap; /* allows wrapping to next line if there's not enough space */
+  gap: 40px; /* spacing between items */
   padding: 0;
+  list-style: none;
 }
 
 .trader-services li {
-  display: flex;
+  flex: 0 0 auto;
+}
+
+.service-card {
   align-items: center;
-  margin-bottom: 10px;
-  color: #423e3e;
-  font-weight: 400;
+  gap: 8px;
 }
 
 .service {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  text-align: center;
+  max-width: 140px; /* adjust as needed */
+  word-wrap: break-word;
+  word-break: break-word; /* force breaks for long words */
+}
+
+.service-icon {
+  width: 40px; /* adjust as needed */
+  height: auto !important;
+  margin: 0 !important;
+  margin-bottom: 10px !important; /* space between icon and text */
 }
 
 .trader-details-container {
@@ -836,6 +852,54 @@ li {
   width: 80%;
 }
 
+.profile-footer-overlay img {
+  margin-top: 30px;
+  height: 150px !important;
+}
+
+.profile-footer-cta {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 40px;
+  background-image: url("/src/images/profile-footer.png"); /* use your image path */
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  color: #0c0c34;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.cta-text {
+  max-width: 70%;
+  font-family: "Hanken Grotesk", Arial;
+  font-weight: 1000;
+}
+
+.cta-text strong {
+  font-size: 24px;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+}
+
+.cta-button {
+  background-color: #0c0c34;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 999px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.cta-button:hover {
+  background-color: #2ec1c7;
+}
+
 @media (max-width: 1024px) {
   .trader-container {
     width: 95%;
@@ -1106,11 +1170,17 @@ li {
   position: relative;
 }
 
+.modal p {
+  color: #423e3e;
+  font-style: italic;
+}
+
 /* Title styling */
 .modal-title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #423e3e;
 }
 
 /* Modal Overlay */
@@ -1158,7 +1228,7 @@ li {
 
 .btn.outline {
   background-color: transparent;
-  border: 2px solid #000839;
+  border: 1px solid #000839;
   color: #000839;
   border-radius: 20px;
 }
@@ -1175,7 +1245,11 @@ li {
 
 .close-request-wrapper {
   display: flex;
-  align-items: center;
+  align-items: left;
+}
+
+.close-request-wrapper p {
+  color: #423e3e;
 }
 
 /* Side Modal Styling */

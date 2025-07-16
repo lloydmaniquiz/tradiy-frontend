@@ -29,7 +29,7 @@
 
 .login-form-section img {
   padding-top: -1.5rem;
-  width: 12rem;
+  width: 10rem;
   display: block;
   margin: 0 auto; /* Centers the image horizontally */
 }
@@ -241,6 +241,11 @@ input:focus {
   font-size: 24px; /* Icon size */
   padding: 10px; /* Padding around the icon */
   transition: transform 0.2s ease; /* Smooth hover effect */
+}
+
+.social-button img {
+  height: 24px;
+  width: auto;
 }
 
 .social-button:hover {

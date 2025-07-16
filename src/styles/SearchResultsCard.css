@@ -81,13 +81,13 @@
   margin-top: 10px;
 }
 
-.service {
+.service-card {
   display: flex;
   align-items: center;
   font-size: 14px;
 }
 
-.service img {
+.service-card img {
   height: 12px;
   margin-right: 10px;
 }
@@ -104,10 +104,12 @@
   margin-top: 10px;
 }
 
-.star-icon {
-  color: #ffbc58;
-  margin-right: 5px;
-  font-size: 16px;
+.star-icon img {
+  height: 5px !important;
+}
+
+.yellow-star img {
+  height: 5px !important;
 }
 
 .rating {

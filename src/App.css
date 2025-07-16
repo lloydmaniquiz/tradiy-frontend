@@ -43,6 +43,7 @@ html {
 
 .burger-dropdown {
   position: relative; /* Needed to position the dropdown inside the parent */
+  z-index: 1000;
 }
 
 /* Burger icon button */
@@ -87,23 +88,6 @@ html {
   color: #000839;
 }
 
-/* Dropdown menu styling */
-.dropdown-menu {
-  position: absolute;
-  top: 55px; /* Adjust to space below the burger icon */
-  right: 0;
-  background-color: #fdfeff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
-  z-index: 10000;
-  min-width: 320px; /* Ensure a consistent width */
-  font-family: "Hanken Grotesk", Arial;
-  font-size: large;
-  font-weight: 600;
-}
-
 /* List inside the dropdown menu */
 .dropdown-menu ul {
   list-style: none;
@@ -113,7 +97,7 @@ html {
 
 .dropdown-wrapper {
   margin: 0 !important;
-  z-index: 100000;
+  z-index: 1000;
   color: #423e3e;
 }
 
@@ -218,7 +202,6 @@ html {
   display: flex;
   justify-content: center;
   margin-left: 100px;
-  z-index: 1000;
 }
 
 /* Dropdown and input styling */
@@ -356,7 +339,6 @@ html {
   margin-top: 4px;
   padding: 20px;
   padding-right: 12px !important; /* Adding space for the scrollbar */
-  z-index: 10000000000;
   font-weight: 400;
 }
 
@@ -385,7 +367,6 @@ html {
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
   border-radius: 20px;
-  z-index: 1000;
 }
 
 .dropdown-option img {
@@ -410,7 +391,6 @@ html {
   position: relative;
   font-size: small;
   font-family: "Hanken Grotesk", Arial;
-  z-index: 100;
 }
 
 .dropdown-toggle {
@@ -585,7 +565,6 @@ html {
   position: relative;
   overflow: hidden;
   width: 100%; /* Maximize the width of the carousel container */
-  z-index: 1;
 }
 
 .carousel-button {
@@ -959,8 +938,8 @@ html {
 .overlay {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 20;
+  width: 90%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -977,13 +956,15 @@ html {
   font-size: 2rem;
   margin-bottom: 1rem;
   font-weight: bold;
-  color: #fff;
+  color: #000839;
   margin: 0;
 }
 
 .overlay-text p {
   font-size: 1.35rem;
   max-width: 1000px;
+  margin-bottom: 30px;
+  color: #000839;
 }
 
 /* LANDING PAGE - REVIEWS */
@@ -1807,9 +1788,9 @@ html {
 }
 
 .faq-category {
-  color: #000839;
+  color: #fdfeff;
   padding: 10px;
-  background-color: #00f2ea;
+  background-color: #2ec1c7;
   width: 250px;
   font-family: "Hanken Grotesk", Arial;
   border-radius: 10px;
@@ -1819,6 +1800,7 @@ html {
   margin-top: 60px;
   font-size: 18px;
   margin-left: 50px;
+  letter-spacing: 2px;
 }
 
 .faq-category-container {
@@ -2489,6 +2471,17 @@ html {
   font-size: 12px;
 }
 
+.buttons-nav-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-button {
+  height: 40px !important;
+  width: auto !important;
+  cursor: pointer;
+}
+
 .newsletter-agreement {
   display: flex;
   align-items: center; /* Vertically align checkbox and label */
@@ -2547,7 +2540,6 @@ html {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 1000;
   margin-top: 100px;
 }
 
@@ -2557,6 +2549,22 @@ html {
 
 .back-btn:hover {
   background: #0056b3;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  position: absolute;
+  top: 55px; /* Adjust to space below the burger icon */
+  right: 0;
+  background-color: #fdfeff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  min-width: 320px; /* Ensure a consistent width */
+  font-family: "Hanken Grotesk", Arial;
+  font-size: large;
+  font-weight: 600;
 }
 
 @media (min-width: 1025px) {
@@ -2712,7 +2720,6 @@ html {
     border-radius: 10px;
     width: 100%; /* Full width */
     max-height: 160px;
-    z-index: 1000 !important;
   }
 
   .dropdown-option {
