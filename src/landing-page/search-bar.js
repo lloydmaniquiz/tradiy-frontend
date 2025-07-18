@@ -2,44 +2,73 @@ import React, { useState, forwardRef, useRef, useEffect } from "react";
 import "../App.css";
 import SearchIcon from "../images/search-white.png";
 import SearchDropdown from "../images/search-dropdown.png";
-import alarmsIcon from "../images/directory-carousel/Alarms  Security.png";
-import bathroomsIcon from "../images/directory-carousel/Bathrooms.png";
-import builderIcon from "../images/directory-carousel/Builder.png";
-import carpetFittingIcon from "../images/directory-carousel/carpet.png";
-import centralHeatingIcon from "../images/directory-carousel/Central Heating.png";
-import cleanerIcon from "../images/directory-carousel/Cleaner.png";
-import conservatoriesIcon from "../images/directory-carousel/Conservatories & Garden Rooms.png";
-import curtainblindIcon from "../images/directory-carousel/Curtain  Blind Fitters.png";
-import dampProoferIcon from "../images/directory-carousel/Damp Proofer.png";
-import drainageIcon from "../images/directory-carousel/Drainage.png";
-import drivewaysIcon from "../images/directory-carousel/Driveways  Patios.png";
-import electricianIcon from "../images/directory-carousel/electrician.png";
-import exteriorCleaningIcon from "../images/directory-carousel/Exterior Cleaning.png";
-import fasciaIcon from "../images/directory-carousel/Fascia  Soffits.png";
-import fencingIcon from "../images/directory-carousel/Fencing  Gates.png";
-import gardenerIcon from "../images/directory-carousel/Gardener.png";
-import glassIcon from "../images/directory-carousel/glass.png";
-import ITIcon from "../images/directory-carousel/IT Systems & Telecommunications.png";
-import joinerIcon from "../images/directory-carousel/Joiner.png";
-import kitchenIcon from "../images/directory-carousel/kitchen.png";
-import landscapingIcon from "../images/directory-carousel/Landscaping.png";
-import painterIcon from "../images/directory-carousel/Painter  Decorator.png";
-import pestcontrolIcon from "../images/directory-carousel/pest-control.png";
-import plastererIcon from "../images/directory-carousel/Plasterer.png";
-import plumberIcon from "../images/directory-carousel/Plumber.png";
-import poweredaccessIcon from "../images/directory-carousel/Powered Access.png";
-import renewableEnergyIcon from "../images/directory-carousel/Renewable Energy.png";
-import rooferIcon from "../images/directory-carousel/Roofer.png";
-import roughcasterIcon from "../images/directory-carousel/Roughcaster & Renderer.png";
-import scaffoldingIcon from "../images/directory-carousel/scaffolding.png";
-import stoneWorkIcon from "../images/directory-carousel/Stone Work.png";
-import stovesLogIcon from "../images/directory-carousel/Stoves  Log Burners.png";
-import tilerIcon from "../images/directory-carousel/Tiler.png";
-import treeSurgeonIcon from "../images/directory-carousel/Tree Surgeon.png";
-import tvAerialsIcon from "../images/directory-carousel/TV Aerials  Satellite Services.png";
-import upvcWindowsIcon from "../images/directory-carousel/UPVC Windows.png";
-import wasteClearanceIcon from "../images/directory-carousel/Waste  Clearance.png";
-import weatherCoatingsIcon from "../images/directory-carousel/Weather Coatings.png";
+import airConditioningAndVentilationIcon from "../images/icons/Heating, Energy & Smart Tech/airConditioning.png";
+import alarmsAndSecurityIcon from "../images/icons/Emergency & Essential Services/alarmsSecurity.png";
+import architecturalServicesIcon from "../images/icons/Home Improvements & Renovations/architecturalServices.png";
+import artificialGrassIcon from "../images/icons/Garden & Outdoor Projects/artificialGrass.png";
+import bathroomsIcon from "../images/icons/Home Improvements & Renovations/bathrooms.png";
+import blacksmithIronworkIcon from "../images/icons/Skilled & Specialist Trades/blacksmith.png";
+import boilerInstallationRepairsIcon from "../images/icons/Heating, Energy & Smart Tech/boilerInstallation.png";
+import builderIcon from "../images/icons/Home Improvements & Renovations/builder.png";
+import carpetUpholsteryCleaningIcon from "../images/icons/Cleaning & Waste Services/carpetUpholstry.png";
+import carpetFittersIcon from "../images/icons/Floors, Fixtures & Finishes/carpet.png";
+import centralHeatingBoilersIcon from "../images/icons/Emergency & Essential Services/centralHeating.png";
+import chimneyServicesIcon from "../images/icons/Skilled & Specialist Trades/chimneyServices.png";
+import chimneySweepRepairsIcon from "../images/icons/Roofing, Walls & Exteriors/chimneySweepRepairs.png";
+import conservatoriesGardenRoomsIcon from "../images/icons/Windows, Doors & Glazing/conservatoriesGardenRooms.png";
+import curtainBlindFittersIcon from "../images/icons/Floors, Fixtures & Finishes/curtainBlindFitters.png";
+import dampProofingIcon from "../images/icons/Emergency & Essential Services/dampProofer.png";
+import deckingIcon from "../images/icons/Garden & Outdoor Projects/decking.png";
+import doorLockInstallersIcon from "../images/icons/Windows, Doors & Glazing/doorLockInstallers.png";
+import domesticCleaningIcon from "../images/icons/Cleaning & Waste Services/domesticCleaning.png";
+import drainageBlockagesIcon from "../images/icons/Emergency & Essential Services/drainage.png";
+import drivewaysPatiosIcon from "../images/icons/Garden & Outdoor Projects/drivewaysPatios.png";
+import electricianIcon from "../images/icons/Emergency & Essential Services/electrician.png";
+import emergencyRoofingRepairsIcon from "../images/icons/Emergency & Essential Services/emergencyRoofingRepairs.png";
+import endOfTenancyCleaningIcon from "../images/icons/Cleaning & Waste Services/endOfTenancyCleaning.png";
+import exteriorPressureCleaningIcon from "../images/icons/Cleaning & Waste Services/exteriorCleaning.png";
+import exteriorWallInsulationIcon from "../images/icons/Roofing, Walls & Exteriors/exteriorWallInsulation.png";
+import extensionsConversionsIcon from "../images/icons/Home Improvements & Renovations/extensionsConversions.png";
+import fasciaSoffitsGutteringIcon from "../images/icons/Roofing, Walls & Exteriors/fasciaSoffits.png";
+import fencingGatesIcon from "../images/icons/Garden & Outdoor Projects/fencingGates.png";
+import fireplaceLogBurnersIcon from "../images/icons/Floors, Fixtures & Finishes/fireplaceLogBurners.png";
+import flooringFittersIcon from "../images/icons/Floors, Fixtures & Finishes/flooringFitters.png";
+import garageConversionsIcon from "../images/icons/Home Improvements & Renovations/garageConversions.png";
+import garageDoorsIcon from "../images/icons/Windows, Doors & Glazing/garageDoors.png";
+import gardenDesignIcon from "../images/icons/Garden & Outdoor Projects/gardenDesign.png";
+import gardeningMaintenanceIcon from "../images/icons/Garden & Outdoor Projects/gardener.png";
+import glassDoubleGlazingRepairsIcon from "../images/icons/Windows, Doors & Glazing/glass.png";
+import gutterCleaningIcon from "../images/icons/Cleaning & Waste Services/gutterCleaning.png";
+import homeItTelecomsIcon from "../images/icons/Heating, Energy & Smart Tech/itSystemsTelecoms.png";
+import insulationIcon from "../images/icons/Home Improvements & Renovations/insulation.png";
+import interiorDesignSupportIcon from "../images/icons/Home Improvements & Renovations/interiorDesignSupport.png";
+import joineryCarpentryIcon from "../images/icons/Home Improvements & Renovations/joiner.png";
+import kitchensIcon from "../images/icons/Home Improvements & Renovations/kitchen.png";
+import landscapingIcon from "../images/icons/Garden & Outdoor Projects/landscaping.png";
+import lightingInstallationIcon from "../images/icons/Floors, Fixtures & Finishes/lightingInstallation.png";
+import loftConversionsIcon from "../images/icons/Home Improvements & Renovations/loftConversions.png";
+import outdoorLightingIcon from "../images/icons/Garden & Outdoor Projects/outdoorLighting.png";
+import paintingDecoratingIcon from "../images/icons/Home Improvements & Renovations/painterDecorator.png";
+import pestControlIcon from "../images/icons/Emergency & Essential Services/pestControl.png";
+import plasteringIcon from "../images/icons/Home Improvements & Renovations/plasterer.png";
+import plumberIcon from "../images/icons/Emergency & Essential Services/plumber.png";
+import poweredAccessLiftsIcon from "../images/icons/Skilled & Specialist Trades/poweredAccess.png";
+import renewableEnergyIcon from "../images/icons/Heating, Energy & Smart Tech/renewableEnergy.png";
+import roofingIcon from "../images/icons/Roofing, Walls & Exteriors/Roofer.svg";
+import roughcastingRenderingIcon from "../images/icons/Roofing, Walls & Exteriors/roughcasterRenderer.png";
+import scaffoldersIcon from "../images/icons/Skilled & Specialist Trades/scaffolders.png";
+import scaffoldingIcon from "../images/icons/Roofing, Walls & Exteriors/scaffolding.png";
+import smartHomeSystemsIcon from "../images/icons/Heating, Energy & Smart Tech/smartHomeSystems.png";
+import stoneworkMasonryIcon from "../images/icons/Roofing, Walls & Exteriors/stoneWork.png";
+import tilingIcon from "../images/icons/Home Improvements & Renovations/tiler.png";
+import toolHireAccessorySupplyIcon from "../images/icons/Skilled & Specialist Trades/toolHire.png";
+import treeSurgeryIcon from "../images/icons/Garden & Outdoor Projects/treeSurgeon.png";
+import tvAerialsSatelliteIcon from "../images/icons/Heating, Energy & Smart Tech/tvAerialsSatelliteServices.png";
+import underfloorHeatingIcon from "../images/icons/Heating, Energy & Smart Tech/underfloorHeating.png";
+import upvcWindowsWindowFittersIcon from "../images/icons/Windows, Doors & Glazing/upvcWindows.png";
+import wardrobesStorageSolutionsIcon from "../images/icons/Floors, Fixtures & Finishes/wardrobesStorageSolution.png";
+import wasteClearanceIcon from "../images/icons/Cleaning & Waste Services/wasteClearance.png";
+import weatherproofCoatingsIcon from "../images/icons/Roofing, Walls & Exteriors/weatherCoatings.png";
 
 // Forward ref to root div
 const SearchBar = forwardRef(({ handleSearch }, ref) => {
@@ -126,23 +155,92 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Alarm / Security Services");
+                    setService("Air Conditioning & Ventilation");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={alarmsIcon} alt="Alarm / Security Services" />
-                  <span>Alarm / Security Services</span>
+                  <img
+                    src={airConditioningAndVentilationIcon}
+                    alt="Air Conditioning & Ventilation"
+                  />
+                  <span>Air Conditioning & Ventilation</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Bathroom Services");
+                    setService("Alarms & Security");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={bathroomsIcon} alt="Bathroom Services" />
-                  <span>Bathroom Services</span>
+                  <img src={alarmsAndSecurityIcon} alt="Alarms & Security" />
+                  <span>Alarms & Security</span>
                 </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Architectural Services");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={architecturalServicesIcon}
+                    alt="Architectural Services"
+                  />
+                  <span>Architectural Services</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Artificial Grass");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={artificialGrassIcon} alt="Artificial Grass" />
+                  <span>Artificial Grass</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Bathrooms");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={bathroomsIcon} alt="Bathrooms" />
+                  <span>Bathrooms</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Blacksmith / Ironwork");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={blacksmithIronworkIcon}
+                    alt="Blacksmith / Ironwork"
+                  />
+                  <span>Blacksmith / Ironwork</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Boiler Installation / Repairs");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={boilerInstallationRepairsIcon}
+                    alt="Boiler Installation / Repairs"
+                  />
+                  <span>Boiler Installation / Repairs</span>
+                </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
@@ -153,36 +251,71 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   <img src={builderIcon} alt="Builder" />
                   <span>Builder</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Carpet Fitting");
+                    setService("Carpet & Upholstery Cleaning");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={carpetFittingIcon} alt="Carpet Fitting" />
-                  <span>Carpet Fitting</span>
+                  <img
+                    src={carpetUpholsteryCleaningIcon}
+                    alt="Carpet & Upholstery Cleaning"
+                  />
+                  <span>Carpet & Upholstery Cleaning</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Central Heating");
+                    setService("Carpet Fitters");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={centralHeatingIcon} alt="Central Heating" />
-                  <span>Central Heating</span>
+                  <img src={carpetFittersIcon} alt="Carpet Fitters" />
+                  <span>Carpet Fitters</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Cleaning Services");
+                    setService("Central Heating & Boilers");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={cleanerIcon} alt="Cleaning Services" />
-                  <span>Cleaning Services</span>
+                  <img
+                    src={centralHeatingBoilersIcon}
+                    alt="Central Heating & Boilers"
+                  />
+                  <span>Central Heating & Boilers</span>
                 </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Chimney Services");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={chimneyServicesIcon} alt="Chimney Services" />
+                  <span>Chimney Services</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Chimney Sweep & Repairs");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={chimneySweepRepairsIcon}
+                    alt="Chimney Sweep & Repairs"
+                  />
+                  <span>Chimney Sweep & Repairs</span>
+                </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
@@ -191,51 +324,95 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   }}
                 >
                   <img
-                    src={conservatoriesIcon}
+                    src={conservatoriesGardenRoomsIcon}
                     alt="Conservatories & Garden Rooms"
                   />
                   <span>Conservatories & Garden Rooms</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Curtain / Blind Fitters");
+                    setService("Curtain & Blind Fitters");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={curtainblindIcon} alt="Curtain / Blind Fitters" />
-                  <span>Curtain / Blind Fitters</span>
+                  <img
+                    src={curtainBlindFittersIcon}
+                    alt="Curtain & Blind Fitters"
+                  />
+                  <span>Curtain & Blind Fitters</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Damp Proofer");
+                    setService("Damp Proofing");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={dampProoferIcon} alt="Damp Proofer" />
-                  <span>Damp Proofer</span>
+                  <img src={dampProofingIcon} alt="Damp Proofing" />
+                  <span>Damp Proofing</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Drainage");
+                    setService("Decking");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={drainageIcon} alt="Drainage" />
-                  <span>Drainage</span>
+                  <img src={deckingIcon} alt="Decking" />
+                  <span>Decking</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Driveways / Patios");
+                    setService("Door & Lock Installers");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={drivewaysIcon} alt="Driveways/Patios" />
-                  <span>Driveways/Patios</span>
+                  <img
+                    src={doorLockInstallersIcon}
+                    alt="Door & Lock Installers"
+                  />
+                  <span>Door & Lock Installers</span>
                 </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Domestic Cleaning");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={domesticCleaningIcon} alt="Domestic Cleaning" />
+                  <span>Domestic Cleaning</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Drainage & Blockages");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={drainageBlockagesIcon} alt="Drainage & Blockages" />
+                  <span>Drainage & Blockages</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Driveways & Patios");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={drivewaysPatiosIcon} alt="Driveways & Patios" />
+                  <span>Driveways & Patios</span>
+                </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
@@ -246,76 +423,249 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   <img src={electricianIcon} alt="Electrician" />
                   <span>Electrician</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Exterior Cleaning");
+                    setService("Emergency Roofing Repairs");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={exteriorCleaningIcon} alt="Exterior Cleaning" />
-                  <span>Exterior Cleaning</span>
+                  <img
+                    src={emergencyRoofingRepairsIcon}
+                    alt="Emergency Roofing Repairs"
+                  />
+                  <span>Emergency Roofing Repairs</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Fascia / Soffits");
+                    setService("End of Tenancy Cleaning");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={fasciaIcon} alt="Fascia / Soffits" />
-                  <span>Fascia / Soffits</span>
+                  <img
+                    src={endOfTenancyCleaningIcon}
+                    alt="End of Tenancy Cleaning"
+                  />
+                  <span>End of Tenancy Cleaning</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Fencing / Gates");
+                    setService("Exterior / Pressure Cleaning");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={fencingIcon} alt="Fencing / Gates" />
-                  <span>Fencing / Gates</span>
+                  <img
+                    src={exteriorPressureCleaningIcon}
+                    alt="Exterior / Pressure Cleaning"
+                  />
+                  <span>Exterior / Pressure Cleaning</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Gardener");
+                    setService("Exterior Wall Insulation");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={gardenerIcon} alt="Gardener" />
-                  <span>Gardener</span>
+                  <img
+                    src={exteriorWallInsulationIcon}
+                    alt="Exterior Wall Insulation"
+                  />
+                  <span>Exterior Wall Insulation</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Glass");
+                    setService("Extensions & Conversions");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={glassIcon} alt="Glass" />
-                  <span>Glass</span>
+                  <img
+                    src={extensionsConversionsIcon}
+                    alt="Extensions & Conversions"
+                  />
+                  <span>Extensions & Conversions</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("IT Systems & Telecommunications");
+                    setService("Fascia, Soffits & Guttering");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={ITIcon} alt="IT Systems" />
-                  <span>IT Systems & Telecommunications</span>
+                  <img
+                    src={fasciaSoffitsGutteringIcon}
+                    alt="Fascia, Soffits & Guttering"
+                  />
+                  <span>Fascia, Soffits & Guttering</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Joiner");
+                    setService("Fencing & Gates");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={joinerIcon} alt="Joiner" />
-                  <span>Joiner</span>
+                  <img src={fencingGatesIcon} alt="Fencing & Gates" />
+                  <span>Fencing & Gates</span>
                 </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Fireplace / Log Burners");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={fireplaceLogBurnersIcon}
+                    alt="Fireplace / Log Burners"
+                  />
+                  <span>Fireplace / Log Burners</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Flooring Fitters (Wood, Laminate, Vinyl)");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={flooringFittersIcon}
+                    alt="Flooring Fitters (Wood, Laminate, Vinyl)"
+                  />
+                  <span>Flooring Fitters (Wood, Laminate, Vinyl)</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Garage Conversions");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={garageConversionsIcon} alt="Garage Conversions" />
+                  <span>Garage Conversions</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Garage Doors");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={garageDoorsIcon} alt="Garage Doors" />
+                  <span>Garage Doors</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Garden Design");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={gardenDesignIcon} alt="Garden Design" />
+                  <span>Garden Design</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Gardening / Maintenance");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={gardeningMaintenanceIcon}
+                    alt="Gardening / Maintenance"
+                  />
+                  <span>Gardening / Maintenance</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Glass / Double Glazing Repairs");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={glassDoubleGlazingRepairsIcon}
+                    alt="Glass / Double Glazing Repairs"
+                  />
+                  <span>Glass / Double Glazing Repairs</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Gutter Cleaning");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={gutterCleaningIcon} alt="Gutter Cleaning" />
+                  <span>Gutter Cleaning</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Home IT & Telecoms");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={homeItTelecomsIcon} alt="Home IT & Telecoms" />
+                  <span>Home IT & Telecoms</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Insulation");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={insulationIcon} alt="Insulation" />
+                  <span>Insulation</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Interior Design Support");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={interiorDesignSupportIcon}
+                    alt="Interior Design Support"
+                  />
+                  <span>Interior Design Support</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Joinery & Carpentry");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={joineryCarpentryIcon} alt="Joinery & Carpentry" />
+                  <span>Joinery & Carpentry</span>
+                </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
@@ -323,9 +673,10 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={kitchenIcon} alt="Kitchens" />
+                  <img src={kitchensIcon} alt="Kitchens" />
                   <span>Kitchens</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
@@ -336,26 +687,79 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   <img src={landscapingIcon} alt="Landscaping" />
                   <span>Landscaping</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Painter / Decorator");
+                    setService("Lighting Installation");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={painterIcon} alt="Painter / Decorator" />
-                  <span>Painter / Decorator</span>
+                  <img
+                    src={lightingInstallationIcon}
+                    alt="Lighting Installation"
+                  />
+                  <span>Lighting Installation</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Plasterer");
+                    setService("Loft Conversions");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={plastererIcon} alt="Plasterer" />
-                  <span>Plasterer</span>
+                  <img src={loftConversionsIcon} alt="Loft Conversions" />
+                  <span>Loft Conversions</span>
                 </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Outdoor Lighting");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={outdoorLightingIcon} alt="Outdoor Lighting" />
+                  <span>Outdoor Lighting</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Painting & Decorating");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={paintingDecoratingIcon}
+                    alt="Painting & Decorating"
+                  />
+                  <span>Painting & Decorating</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Pest Control");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={pestControlIcon} alt="Pest Control" />
+                  <span>Pest Control</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Plastering");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={plasteringIcon} alt="Plastering" />
+                  <span>Plastering</span>
+                </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
@@ -366,26 +770,21 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   <img src={plumberIcon} alt="Plumber" />
                   <span>Plumber</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Pest Control");
+                    setService("Powered Access / Lifts");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={pestcontrolIcon} alt="Pest Control" />
-                  <span>Pest Control</span>
+                  <img
+                    src={poweredAccessLiftsIcon}
+                    alt="Powered Access / Lifts"
+                  />
+                  <span>Powered Access / Lifts</span>
                 </div>
-                <div
-                  className="dropdown-option"
-                  onClick={() => {
-                    setService("Powered Access");
-                    setDropdownOpen(false);
-                  }}
-                >
-                  <img src={poweredaccessIcon} alt="Powered Access" />
-                  <span>Powered Access</span>
-                </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
@@ -396,26 +795,43 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   <img src={renewableEnergyIcon} alt="Renewable Energy" />
                   <span>Renewable Energy</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Roofer");
+                    setService("Roofing");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={rooferIcon} alt="Roofer" />
-                  <span>Roofer</span>
+                  <img src={roofingIcon} alt="Roofing" />
+                  <span>Roofing</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Roughcaster & Renderer");
+                    setService("Roughcasting & Rendering");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={roughcasterIcon} alt="Roughcaster & Renderer" />
-                  <span>Roughcaster & Renderer</span>
+                  <img
+                    src={roughcastingRenderingIcon}
+                    alt="Roughcasting & Rendering"
+                  />
+                  <span>Roughcasting & Rendering</span>
                 </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Scaffolders");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={scaffoldersIcon} alt="Scaffolders" />
+                  <span>Scaffolders</span>
+                </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
@@ -426,85 +842,141 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
                   <img src={scaffoldingIcon} alt="Scaffolding" />
                   <span>Scaffolding</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Stone Work");
+                    setService("Smart Home Systems");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={stoneWorkIcon} alt="Stone Work" />
-                  <span>Stone Work</span>
+                  <img src={smartHomeSystemsIcon} alt="Smart Home Systems" />
+                  <span>Smart Home Systems</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Stoves / Log Burners");
+                    setService("Stonework & Masonry");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={stovesLogIcon} alt="Stoves / Log Burners" />
-                  <span>Stoves / Log Burners</span>
+                  <img src={stoneworkMasonryIcon} alt="Stonework & Masonry" />
+                  <span>Stonework & Masonry</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Tiler");
+                    setService("Tiling");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={tilerIcon} alt="Tiler" />
-                  <span>Tiler</span>
+                  <img src={tilingIcon} alt="Tiling" />
+                  <span>Tiling</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Tree Surgeon");
+                    setService("Tool Hire / Accessory Supply");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={treeSurgeonIcon} alt="Tree Surgeon" />
-                  <span>Tree Surgeon</span>
+                  <img
+                    src={toolHireAccessorySupplyIcon}
+                    alt="Tool Hire / Accessory Supply"
+                  />
+                  <span>Tool Hire / Accessory Supply</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("UPVC Windows");
+                    setService("Tree Surgery");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={upvcWindowsIcon} alt="UPVC Windows" />
-                  <span>UPVC Windows</span>
+                  <img src={treeSurgeryIcon} alt="Tree Surgery" />
+                  <span>Tree Surgery</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Waste / Clearance");
+                    setService("TV Aerials / Satellite");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={wasteClearanceIcon} alt="Waste / Clearance" />
-                  <span>Waste / Clearance</span>
+                  <img
+                    src={tvAerialsSatelliteIcon}
+                    alt="TV Aerials / Satellite"
+                  />
+                  <span>TV Aerials / Satellite</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("Weather Coatings");
+                    setService("Underfloor Heating");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={weatherCoatingsIcon} alt="Weather Coatings" />
-                  <span>Weather Coatings</span>
+                  <img src={underfloorHeatingIcon} alt="Underfloor Heating" />
+                  <span>Underfloor Heating</span>
                 </div>
+
                 <div
                   className="dropdown-option"
                   onClick={() => {
-                    setService("TV Aerials");
+                    setService("Wardrobes & Storage Solutions");
                     setDropdownOpen(false);
                   }}
                 >
-                  <img src={tvAerialsIcon} alt="TV Aerials" />
-                  <span>TV Aerials</span>
+                  <img
+                    src={wardrobesStorageSolutionsIcon}
+                    alt="Wardrobes & Storage Solutions"
+                  />
+                  <span>Wardrobes & Storage Solutions</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Waste Clearance");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img src={wasteClearanceIcon} alt="Waste Clearance" />
+                  <span>Waste Clearance</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Weatherproof Coatings");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={weatherproofCoatingsIcon}
+                    alt="Weatherproof Coatings"
+                  />
+                  <span>Weatherproof Coatings</span>
+                </div>
+
+                <div
+                  className="dropdown-option"
+                  onClick={() => {
+                    setService("Window Fitters / UPVC Windows");
+                    setDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={upvcWindowsWindowFittersIcon}
+                    alt="Window Fitters / UPVC Windows"
+                  />
+                  <span>Window Fitters / UPVC Windows</span>
                 </div>
               </div>
             )}

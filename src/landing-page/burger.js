@@ -54,7 +54,7 @@ const BurgerDropdown = () => {
                 Sign Up
               </Link>
             </li>
-            <div className="divider"></div>
+            <div className="dropdown-burger-divider" />
             <li className="has-submenu">
               HOMEOWNERS
               <ul className="submenu">
@@ -89,7 +89,7 @@ const BurgerDropdown = () => {
                 </li>
               </ul>
             </li>
-            <div className="divider"></div>
+            <div className="dropdown-burger-divider" />
             <li>
               <Link to="/blogs" onClick={() => setIsOpen(false)}>
                 Blog

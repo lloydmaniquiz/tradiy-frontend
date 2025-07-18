@@ -104,6 +104,8 @@ html {
 .submenu li a {
   text-decoration: none;
   color: #423e3e;
+  margin-bottom: 5px !important;
+  margin-top: 5px !important;
 }
 
 .submenu li button {
@@ -115,23 +117,24 @@ html {
 .dropdown-menu ul li {
   padding-left: 1rem;
   padding-right: 1rem;
+  margin-bottom: 4px;
 }
 
-.divider {
-  height: 2px;
-  background-color: #000839;
-  width: 80%; /* Set width to 80% */
-  margin: 5px auto; /* Center the divider and add space above and below */
+.dropdown-burger-divider {
+  width: 80%; /* or any width you prefer */
+  height: 0.5px;
+  background-color: #bbbcc0;
+  margin: 16px auto;
 }
 
 .dropdown-menu ul li a {
   text-decoration: none;
   color: #423e3e;
-  font-size: 14px;
+  font-size: 20px;
   display: block;
   padding: 0.8rem;
   transition: background-color 0.3s ease;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* Hover effect for menu items */
@@ -144,7 +147,9 @@ html {
 .has-submenu {
   color: #2ec1c7;
   padding-top: 0.8rem;
-  margin: 15px;
+  margin-left: 16px;
+  font-size: 20px;
+  margin-bottom: 20px !important;
 }
 
 .user-icon i {
@@ -340,6 +345,7 @@ html {
   padding: 20px;
   padding-right: 12px !important; /* Adding space for the scrollbar */
   font-weight: 400;
+  z-index: 100000;
 }
 
 /* Custom scrollbar */
@@ -441,6 +447,7 @@ html {
   ); /* Approximate height for 6 items (adjust per item size) */
   overflow: hidden; /* Hide extra content beyond 6 items */
   text-align: left;
+  z-index: 1000;
 }
 
 .dropdown-content::-webkit-scrollbar {
@@ -645,6 +652,7 @@ html {
   text-align: center;
   font-family: "Hanken Grotesk", Arial;
   font-weight: 400;
+  max-width: 100px;
 }
 
 .carousel-button img {
@@ -2558,10 +2566,10 @@ html {
   right: 0;
   background-color: #fdfeff;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
-  min-width: 320px; /* Ensure a consistent width */
+  padding: 20px 0;
+  min-width: 340px; /* Ensure a consistent width */
   font-family: "Hanken Grotesk", Arial;
   font-size: large;
   font-weight: 600;

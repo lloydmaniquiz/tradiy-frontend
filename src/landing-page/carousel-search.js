@@ -1,87 +1,178 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import "../App.css";
-import alarmsIcon from "../images/directory-carousel/Alarms  Security.png";
-import bathroomsIcon from "../images/directory-carousel/Bathrooms.png";
-import builderIcon from "../images/directory-carousel/Builder.png";
-import carpetFittingIcon from "../images/directory-carousel/carpet.png";
-import centralHeatingIcon from "../images/directory-carousel/Central Heating.png";
-import cleanerIcon from "../images/directory-carousel/Cleaner.png";
-import conservatoriesIcon from "../images/directory-carousel/Conservatories & Garden Rooms.png";
-import curtainblindIcon from "../images/directory-carousel/Curtain  Blind Fitters.png";
-import dampProoferIcon from "../images/directory-carousel/Damp Proofer.png";
-import drainageIcon from "../images/directory-carousel/Drainage.png";
-import drivewaysIcon from "../images/directory-carousel/Driveways  Patios.png";
-import electricianIcon from "../images/directory-carousel/electrician.png";
-import exteriorCleaningIcon from "../images/directory-carousel/Exterior Cleaning.png";
-import fasciaIcon from "../images/directory-carousel/Fascia  Soffits.png";
-import fencingIcon from "../images/directory-carousel/Fencing  Gates.png";
-import gardenerIcon from "../images/directory-carousel/Gardener.png";
-import glassIcon from "../images/directory-carousel/glass.png";
-import ITIcon from "../images/directory-carousel/IT Systems & Telecommunications.png";
-import joinerIcon from "../images/directory-carousel/Joiner.png";
-import kitchenIcon from "../images/directory-carousel/kitchen.png";
-import landscapingIcon from "../images/directory-carousel/Landscaping.png";
-import painterIcon from "../images/directory-carousel/Painter  Decorator.png";
-import pestcontrolIcon from "../images/directory-carousel/pest-control.png";
-import plastererIcon from "../images/directory-carousel/Plasterer.png";
-import plumberIcon from "../images/directory-carousel/Plumber.png";
-import poweredaccessIcon from "../images/directory-carousel/Powered Access.png";
-import renewableEnergyIcon from "../images/directory-carousel/Renewable Energy.png";
-import rooferIcon from "../images/directory-carousel/Roofer.png";
-import roughcasterIcon from "../images/directory-carousel/Roughcaster & Renderer.png";
-import scaffoldingIcon from "../images/directory-carousel/scaffolding.png";
-import stoneWorkIcon from "../images/directory-carousel/Stone Work.png";
-import stovesLogIcon from "../images/directory-carousel/Stoves  Log Burners.png";
-import tilerIcon from "../images/directory-carousel/Tiler.png";
-import treeSurgeonIcon from "../images/directory-carousel/Tree Surgeon.png";
-import tvAerialsIcon from "../images/directory-carousel/TV Aerials  Satellite Services.png";
-import upvcWindowsIcon from "../images/directory-carousel/UPVC Windows.png";
-import wasteClearanceIcon from "../images/directory-carousel/Waste  Clearance.png";
-import weatherCoatingsIcon from "../images/directory-carousel/Weather Coatings.png";
+import airConditioningAndVentilationIcon from "../images/icons/Heating, Energy & Smart Tech/airConditioning.png";
+import alarmsAndSecurityIcon from "../images/icons/Emergency & Essential Services/alarmsSecurity.png";
+import architecturalServicesIcon from "../images/icons/Home Improvements & Renovations/architecturalServices.png";
+import artificialGrassIcon from "../images/icons/Garden & Outdoor Projects/artificialGrass.png";
+import bathroomsIcon from "../images/icons/Home Improvements & Renovations/bathrooms.png";
+import blacksmithIronworkIcon from "../images/icons/Skilled & Specialist Trades/blacksmith.png";
+import boilerInstallationRepairsIcon from "../images/icons/Heating, Energy & Smart Tech/boilerInstallation.png";
+import builderIcon from "../images/icons/Home Improvements & Renovations/builder.png";
+import carpetUpholsteryCleaningIcon from "../images/icons/Cleaning & Waste Services/carpetUpholstry.png";
+import carpetFittersIcon from "../images/icons/Floors, Fixtures & Finishes/carpet.png";
+import centralHeatingBoilersIcon from "../images/icons/Emergency & Essential Services/centralHeating.png";
+import chimneyServicesIcon from "../images/icons/Skilled & Specialist Trades/chimneyServices.png";
+import chimneySweepRepairsIcon from "../images/icons/Roofing, Walls & Exteriors/chimneySweepRepairs.png";
+import conservatoriesGardenRoomsIcon from "../images/icons/Windows, Doors & Glazing/conservatoriesGardenRooms.png";
+import curtainBlindFittersIcon from "../images/icons/Floors, Fixtures & Finishes/curtainBlindFitters.png";
+import dampProofingIcon from "../images/icons/Emergency & Essential Services/dampProofer.png";
+import deckingIcon from "../images/icons/Garden & Outdoor Projects/decking.png";
+import doorLockInstallersIcon from "../images/icons/Windows, Doors & Glazing/doorLockInstallers.png";
+import domesticCleaningIcon from "../images/icons/Cleaning & Waste Services/domesticCleaning.png";
+import drainageBlockagesIcon from "../images/icons/Emergency & Essential Services/drainage.png";
+import drivewaysPatiosIcon from "../images/icons/Garden & Outdoor Projects/drivewaysPatios.png";
+import electricianIcon from "../images/icons/Emergency & Essential Services/electrician.png";
+import emergencyRoofingRepairsIcon from "../images/icons/Emergency & Essential Services/emergencyRoofingRepairs.png";
+import endOfTenancyCleaningIcon from "../images/icons/Cleaning & Waste Services/endOfTenancyCleaning.png";
+import exteriorPressureCleaningIcon from "../images/icons/Cleaning & Waste Services/exteriorCleaning.png";
+import exteriorWallInsulationIcon from "../images/icons/Roofing, Walls & Exteriors/exteriorWallInsulation.png";
+import extensionsConversionsIcon from "../images/icons/Home Improvements & Renovations/extensionsConversions.png";
+import fasciaSoffitsGutteringIcon from "../images/icons/Roofing, Walls & Exteriors/fasciaSoffits.png";
+import fencingGatesIcon from "../images/icons/Garden & Outdoor Projects/fencingGates.png";
+import fireplaceLogBurnersIcon from "../images/icons/Floors, Fixtures & Finishes/fireplaceLogBurners.png";
+import flooringFittersIcon from "../images/icons/Floors, Fixtures & Finishes/flooringFitters.png";
+import garageConversionsIcon from "../images/icons/Home Improvements & Renovations/garageConversions.png";
+import garageDoorsIcon from "../images/icons/Windows, Doors & Glazing/garageDoors.png";
+import gardenDesignIcon from "../images/icons/Garden & Outdoor Projects/gardenDesign.png";
+import gardeningMaintenanceIcon from "../images/icons/Garden & Outdoor Projects/gardener.png";
+import glassDoubleGlazingRepairsIcon from "../images/icons/Windows, Doors & Glazing/glass.png";
+import gutterCleaningIcon from "../images/icons/Cleaning & Waste Services/gutterCleaning.png";
+import homeItTelecomsIcon from "../images/icons/Heating, Energy & Smart Tech/itSystemsTelecoms.png";
+import insulationIcon from "../images/icons/Home Improvements & Renovations/insulation.png";
+import interiorDesignSupportIcon from "../images/icons/Home Improvements & Renovations/interiorDesignSupport.png";
+import joineryCarpentryIcon from "../images/icons/Home Improvements & Renovations/joiner.png";
+import kitchensIcon from "../images/icons/Home Improvements & Renovations/kitchen.png";
+import landscapingIcon from "../images/icons/Garden & Outdoor Projects/landscaping.png";
+import lightingInstallationIcon from "../images/icons/Floors, Fixtures & Finishes/lightingInstallation.png";
+import loftConversionsIcon from "../images/icons/Home Improvements & Renovations/loftConversions.png";
+import outdoorLightingIcon from "../images/icons/Garden & Outdoor Projects/outdoorLighting.png";
+import paintingDecoratingIcon from "../images/icons/Home Improvements & Renovations/painterDecorator.png";
+import pestControlIcon from "../images/icons/Emergency & Essential Services/pestControl.png";
+import plasteringIcon from "../images/icons/Home Improvements & Renovations/plasterer.png";
+import plumberIcon from "../images/icons/Emergency & Essential Services/plumber.png";
+import poweredAccessLiftsIcon from "../images/icons/Skilled & Specialist Trades/poweredAccess.png";
+import renewableEnergyIcon from "../images/icons/Heating, Energy & Smart Tech/renewableEnergy.png";
+import roofingIcon from "../images/icons/Roofing, Walls & Exteriors/Roofer.svg";
+import roughcastingRenderingIcon from "../images/icons/Roofing, Walls & Exteriors/roughcasterRenderer.png";
+import scaffoldersIcon from "../images/icons/Skilled & Specialist Trades/scaffolders.png";
+import scaffoldingIcon from "../images/icons/Roofing, Walls & Exteriors/scaffolding.png";
+import smartHomeSystemsIcon from "../images/icons/Heating, Energy & Smart Tech/smartHomeSystems.png";
+import stoneworkMasonryIcon from "../images/icons/Roofing, Walls & Exteriors/stoneWork.png";
+import tilingIcon from "../images/icons/Home Improvements & Renovations/tiler.png";
+import toolHireAccessorySupplyIcon from "../images/icons/Skilled & Specialist Trades/toolHire.png";
+import treeSurgeryIcon from "../images/icons/Garden & Outdoor Projects/treeSurgeon.png";
+import tvAerialsSatelliteIcon from "../images/icons/Heating, Energy & Smart Tech/tvAerialsSatelliteServices.png";
+import underfloorHeatingIcon from "../images/icons/Heating, Energy & Smart Tech/underfloorHeating.png";
+import upvcWindowsWindowFittersIcon from "../images/icons/Windows, Doors & Glazing/upvcWindows.png";
+import wardrobesStorageSolutionsIcon from "../images/icons/Floors, Fixtures & Finishes/wardrobesStorageSolution.png";
+import wasteClearanceIcon from "../images/icons/Cleaning & Waste Services/wasteClearance.png";
+import weatherproofCoatingsIcon from "../images/icons/Roofing, Walls & Exteriors/weatherCoatings.png";
 import leftNext from "../images/carousel-search/left-next.png";
 import rightNext from "../images/carousel-search/right-next.png";
 
 const CarouselSearch = ({ handleSearch, label, disableAutoScroll }) => {
   const searches = useMemo(
     () => [
-      { label: "Alarms / Security Services", icon: alarmsIcon },
-      { label: "Bathroom Services", icon: bathroomsIcon },
+      {
+        label: "Air Conditioning & Ventilation",
+        icon: airConditioningAndVentilationIcon,
+      },
+      { label: "Alarms & Security", icon: alarmsAndSecurityIcon },
+      { label: "Architectural Services", icon: architecturalServicesIcon },
+      { label: "Artificial Grass", icon: artificialGrassIcon },
+      { label: "Bathrooms", icon: bathroomsIcon },
+      { label: "Blacksmith / Ironwork", icon: blacksmithIronworkIcon },
+      {
+        label: "Boiler Installation / Repairs",
+        icon: boilerInstallationRepairsIcon,
+      },
       { label: "Builder", icon: builderIcon },
-      { label: "Carpet Fitting", icon: carpetFittingIcon },
-      { label: "Central Heating", icon: centralHeatingIcon },
-      { label: "Cleaning Services", icon: cleanerIcon },
-      { label: "Conservatories & Garden Rooms", icon: conservatoriesIcon },
-      { label: "Curtain / Blind Fitters", icon: curtainblindIcon },
-      { label: "Damp Proofer", icon: dampProoferIcon },
-      { label: "Drainage", icon: drainageIcon },
-      { label: "Driveways/Patios", icon: drivewaysIcon },
+      {
+        label: "Carpet & Upholstery Cleaning",
+        icon: carpetUpholsteryCleaningIcon,
+      },
+      { label: "Carpet Fitters", icon: carpetFittersIcon },
+      { label: "Central Heating & Boilers", icon: centralHeatingBoilersIcon },
+      { label: "Chimney Services", icon: chimneyServicesIcon },
+      { label: "Chimney Sweep & Repairs", icon: chimneySweepRepairsIcon },
+      {
+        label: "Conservatories & Garden Rooms",
+        icon: conservatoriesGardenRoomsIcon,
+      },
+      { label: "Curtain & Blind Fitters", icon: curtainBlindFittersIcon },
+      { label: "Damp Proofing", icon: dampProofingIcon },
+      { label: "Decking", icon: deckingIcon },
+      { label: "Door & Lock Installers", icon: doorLockInstallersIcon },
+      { label: "Domestic Cleaning", icon: domesticCleaningIcon },
+      { label: "Drainage & Blockages", icon: drainageBlockagesIcon },
+      { label: "Driveways & Patios", icon: drivewaysPatiosIcon },
       { label: "Electrician", icon: electricianIcon },
-      { label: "Exterior Cleaning", icon: exteriorCleaningIcon },
-      { label: "Fascia / Soffits", icon: fasciaIcon },
-      { label: "Fencing / Gates", icon: fencingIcon },
-      { label: "Gardener", icon: gardenerIcon },
-      { label: "Glass", icon: glassIcon },
-      { label: "IT Systems & Telecommunications", icon: ITIcon },
-      { label: "Joiner", icon: joinerIcon },
-      { label: "Kitchens", icon: kitchenIcon },
+      { label: "Emergency Roofing Repairs", icon: emergencyRoofingRepairsIcon },
+      { label: "End of Tenancy Cleaning", icon: endOfTenancyCleaningIcon },
+      {
+        label: "Exterior / Pressure Cleaning",
+        icon: exteriorPressureCleaningIcon,
+      },
+      { label: "Exterior Wall Insulation", icon: exteriorWallInsulationIcon },
+      { label: "Extensions & Conversions", icon: extensionsConversionsIcon },
+      {
+        label: "Fascia, Soffits & Guttering",
+        icon: fasciaSoffitsGutteringIcon,
+      },
+      { label: "Fencing & Gates", icon: fencingGatesIcon },
+      { label: "Fireplace / Log Burners", icon: fireplaceLogBurnersIcon },
+      {
+        label: "Flooring Fitters",
+        icon: flooringFittersIcon,
+      },
+      { label: "Garage Conversions", icon: garageConversionsIcon },
+      { label: "Garage Doors", icon: garageDoorsIcon },
+      { label: "Garden Design", icon: gardenDesignIcon },
+      { label: "Gardening / Maintenance", icon: gardeningMaintenanceIcon },
+      {
+        label: "Glass / Double Glazing Repairs",
+        icon: glassDoubleGlazingRepairsIcon,
+      },
+      { label: "Gutter Cleaning", icon: gutterCleaningIcon },
+      { label: "Home IT & Telecoms", icon: homeItTelecomsIcon },
+      { label: "Insulation", icon: insulationIcon },
+      { label: "Interior Design Support", icon: interiorDesignSupportIcon },
+      { label: "Joinery & Carpentry", icon: joineryCarpentryIcon },
+      { label: "Kitchens", icon: kitchensIcon },
       { label: "Landscaping", icon: landscapingIcon },
-      { label: "Painter/Decorator", icon: painterIcon },
-      { label: "Plasterer", icon: plastererIcon },
+      { label: "Lighting Installation", icon: lightingInstallationIcon },
+      { label: "Loft Conversions", icon: loftConversionsIcon },
+      { label: "Outdoor Lighting", icon: outdoorLightingIcon },
+      { label: "Painting & Decorating", icon: paintingDecoratingIcon },
+      { label: "Pest Control", icon: pestControlIcon },
+      { label: "Plastering", icon: plasteringIcon },
       { label: "Plumber", icon: plumberIcon },
-      { label: "Pest Control", icon: pestcontrolIcon },
-      { label: "Powered Access", icon: poweredaccessIcon },
+      { label: "Powered Access / Lifts", icon: poweredAccessLiftsIcon },
       { label: "Renewable Energy", icon: renewableEnergyIcon },
-      { label: "Roofer", icon: rooferIcon },
-      { label: "Roughcaster & Renderer", icon: roughcasterIcon },
+      { label: "Roofing", icon: roofingIcon },
+      { label: "Roughcasting & Rendering", icon: roughcastingRenderingIcon },
+      { label: "Scaffolders", icon: scaffoldersIcon },
       { label: "Scaffolding", icon: scaffoldingIcon },
-      { label: "Stone Work", icon: stoneWorkIcon },
-      { label: "Stoves / Log Burners", icon: stovesLogIcon },
-      { label: "Tiler", icon: tilerIcon },
-      { label: "Tree Surgeon", icon: treeSurgeonIcon },
-      { label: "UPVC Windows", icon: upvcWindowsIcon },
-      { label: "Waste / Clearance", icon: wasteClearanceIcon },
-      { label: "Weather Coatings", icon: weatherCoatingsIcon },
-      { label: "TV Aerials", icon: tvAerialsIcon },
+      { label: "Smart Home Systems", icon: smartHomeSystemsIcon },
+      { label: "Stonework & Masonry", icon: stoneworkMasonryIcon },
+      { label: "Tiling", icon: tilingIcon },
+      {
+        label: "Tool Hire / Accessory Supply",
+        icon: toolHireAccessorySupplyIcon,
+      },
+      { label: "Tree Surgery", icon: treeSurgeryIcon },
+      { label: "TV Aerials / Satellite", icon: tvAerialsSatelliteIcon },
+      { label: "Underfloor Heating", icon: underfloorHeatingIcon },
+      {
+        label: "Window Fitters / UPVC Windows",
+        icon: upvcWindowsWindowFittersIcon,
+      },
+      {
+        label: "Wardrobes & Storage Solutions",
+        icon: wardrobesStorageSolutionsIcon,
+      },
+      { label: "Waste Clearance", icon: wasteClearanceIcon },
+      { label: "Weatherproof Coatings", icon: weatherproofCoatingsIcon },
     ],
     []
   );
