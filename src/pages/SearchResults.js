@@ -80,8 +80,6 @@ const SearchResults = ({ handleFilter }) => {
     }
   };
 
-  console.log("Test Variable:", process.env.REACT_APP_TEST_VARIABLE);
-
   // Fetch data from the API endpoint
 
   useEffect(() => {
@@ -124,7 +122,18 @@ const SearchResults = ({ handleFilter }) => {
   // Filter results to match search query
   const filteredResults = searchResults.filter((result) => {
     const relatedServices = tradeServicesMap[searchQuery] || [];
-    const traderCategory = JSON.parse(result.traderCategory || "[]");
+
+    let traderCategory = [];
+    try {
+      traderCategory = JSON.parse(
+        result.traderCategory && result.traderCategory.trim() !== ""
+          ? result.traderCategory
+          : "[]"
+      );
+    } catch (error) {
+      console.warn("Invalid JSON in traderCategory for result:", result, error);
+      traderCategory = [];
+    }
 
     const matchesService =
       traderCategory.some((service) =>
