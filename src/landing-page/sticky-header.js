@@ -38,6 +38,7 @@ function StickyHeader({
     "/refer-a-trade",
     "/blogs",
     "/bookmarks",
+    "/referral",
   ].some((path) => location.pathname.includes(path));
 
   return (

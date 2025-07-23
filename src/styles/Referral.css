@@ -1,5 +1,204 @@
-.referral-top-container img {
-  margin-top: 150px;
-  height: 90vh;
-  width: auto;
+.referral-container {
+  position: relative;
+  min-height: 600px;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.referral-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1900px;
+  height: 100%;
+  max-height: 600px;
+  background-image: url("../images/referral-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.referral-content {
+  font-family: "Hanken Grotesk", Arial;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1024px;
+  padding: 20px;
+}
+
+.referral-content h1 {
+  font-size: 54px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.referral-content p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+.referral-link-container {
+  font-family: "Hanken Grotesk", Arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.referral-link-container input {
+  font-family: "Hanken Grotesk", Arial;
+  padding: 10px;
+  border-radius: 30px;
+  border: none;
+  width: 60%;
+  max-width: 450px;
+  font-size: 0.75rem;
+  color: #333;
+}
+
+.referral-link-container button {
+  font-family: "Hanken Grotesk", Arial;
+  padding: 10px 20px;
+  background-color: #00c7c7;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.share-text {
+  margin-top: 80px;
+  font-size: 12px !important;
+  text-align: left !important;
+  margin-bottom: 20px !important;
+}
+
+.social-buttons {
+  font-family: "Hanken Grotesk", Arial;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.social-buttons button {
+  font-family: "Hanken Grotesk", Arial;
+  padding: 10px 90px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.social-buttons .facebook {
+  background-color: #3b5998;
+}
+
+.social-buttons .instagram {
+  background-color: #e1306c;
+}
+
+.social-buttons .linkedin {
+  background-color: #0077b5;
+}
+
+.social-buttons .tiktok {
+  background-color: #000;
+}
+
+.how-it-works {
+  background-color: white;
+}
+
+.how-it-works-inner {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.how-it-works h2 {
+  font-size: 2.4rem;
+  margin-bottom: 50px;
+  color: #333;
+  font-weight: 600;
+  text-align: left;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.step-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 25px 36px;
+  width: 100%;
+  max-width: 361px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: block;
+  gap: 40px;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+}
+
+.step-card img {
+  height: 45px;
+  flex-shrink: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.step-card h3 {
+  font-size: 24px;
+  margin: 0 0 10px;
+  color: #423e3e;
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  font-size: 16px;
+  color: #423e3e;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.step-text-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.join-button {
+  font-family: "Hanken Grotesk", Arial;
+  margin-top: 20px;
+  background-color: #2ec1c7;
+  color: white;
+  border: none;
+  padding: 12px 36px;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.join-button:hover {
+  background-color: #2ec1c7;
 }

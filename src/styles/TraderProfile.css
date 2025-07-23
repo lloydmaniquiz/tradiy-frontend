@@ -1294,3 +1294,20 @@ li {
   background-color: #000839;
   font-weight: 600;
 }
+
+.bookmark-button {
+  color: #423e3e;
+  font-family: "Hanken Grotesk", Arial;
+  padding: 8px 20px;
+  border-radius: 50px;
+  background-color: white;
+  outline: #423e3e;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center; /* Vertically centers text and image */
+  justify-content: center; /* Optional: centers contents horizontally */
+  border: 1px solid #423e3e;
+  background-color: transparent; /* Or any background */
+  font-size: 14px;
+}

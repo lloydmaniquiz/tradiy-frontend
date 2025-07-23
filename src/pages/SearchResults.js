@@ -8,6 +8,40 @@ import SearchResultCard from "../components/SearchResultsCard";
 import MobileHeader from "../landing-page/mobile-header";
 
 const SearchResults = ({ handleFilter }) => {
+  const fetchReviewData = async (traderId) => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/reviews/?tradesperson_id=${traderId}`
+      );
+      if (!response.ok) throw new Error("Failed to fetch reviews");
+
+      const data = await response.json();
+      const reviews = data.reviews || [];
+
+      const validRatings = reviews
+        .map((r) => r.trader_service)
+        .filter((r) => r !== null && r !== undefined);
+
+      const averageRating =
+        validRatings.length > 0
+          ? (
+              validRatings.reduce((acc, val) => acc + val, 0) /
+              validRatings.length
+            ).toFixed(2)
+          : "N/A";
+
+      return {
+        reviewsCount: reviews.length,
+        averageRating,
+      };
+    } catch (err) {
+      console.error(`Error fetching reviews for trader ${traderId}:`, err);
+      return {
+        reviewsCount: 0,
+        averageRating: "N/A",
+      };
+    }
+  };
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const [searchResults, setSearchResults] = useState([]);
   const [selectedSort, setSelectedSort] = useState("relevance"); // Default sorting
@@ -57,10 +91,26 @@ const SearchResults = ({ handleFilter }) => {
           `${process.env.REACT_APP_API_URL}/tradespeople/`
         );
         const data = await response.json();
-        setSearchResults(Array.isArray(data) ? data : []); // Ensure it's an array
+        const tradespeople = Array.isArray(data) ? data : [];
+
+        // For each tradesperson, fetch their review info
+        const resultsWithReviews = await Promise.all(
+          tradespeople.map(async (trader) => {
+            const { reviewsCount, averageRating } = await fetchReviewData(
+              trader.id
+            );
+            return {
+              ...trader,
+              reviews: reviewsCount,
+              rating: averageRating,
+            };
+          })
+        );
+
+        setSearchResults(resultsWithReviews);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        setSearchResults([]); // Set to empty array on error
+        console.error("Error fetching tradespeople:", error);
+        setSearchResults([]);
       }
     };
 

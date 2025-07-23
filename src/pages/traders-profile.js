@@ -21,8 +21,8 @@ import profilePlaceholder from "../images/profile-placeholder.jpg";
 import Map from "../components/BusinessMap";
 import QuickEstimateForm from "../components/QuickEstimateForm";
 import BookAVisitForm from "../components/BookAVisitForm";
+import BookmarkIcon from "../images/bookmark-gray.png";
 
-import alarmsIcon from "../images/directory-carousel/Alarms  Security.png";
 import bathroomsIcon from "../images/directory-carousel/Bathrooms.png";
 import builderIcon from "../images/directory-carousel/Builder.png";
 import carpetFittingIcon from "../images/directory-carousel/carpet.png";
@@ -61,6 +61,65 @@ import upvcWindowsIcon from "../images/directory-carousel/UPVC Windows.png";
 import wasteClearanceIcon from "../images/directory-carousel/Waste  Clearance.png";
 import weatherCoatingsIcon from "../images/directory-carousel/Weather Coatings.png";
 
+// added new set of icons
+
+import airConditioningAndVentilationIcon from "../images/icons/Heating, Energy & Smart Tech/airConditioning.png";
+import alarmsAndSecurityIcon from "../images/icons/Emergency & Essential Services/alarmsSecurity.png";
+import architecturalServicesIcon from "../images/icons/Home Improvements & Renovations/architecturalServices.png";
+import artificialGrassIcon from "../images/icons/Garden & Outdoor Projects/artificialGrass.png";
+import blacksmithIronworkIcon from "../images/icons/Skilled & Specialist Trades/blacksmith.png";
+import boilerInstallationRepairsIcon from "../images/icons/Heating, Energy & Smart Tech/boilerInstallation.png";
+import carpetUpholsteryCleaningIcon from "../images/icons/Cleaning & Waste Services/carpetUpholstry.png";
+import carpetFittersIcon from "../images/icons/Floors, Fixtures & Finishes/carpet.png";
+import centralHeatingBoilersIcon from "../images/icons/Emergency & Essential Services/centralHeating.png";
+import chimneyServicesIcon from "../images/icons/Skilled & Specialist Trades/chimneyServices.png";
+import chimneySweepRepairsIcon from "../images/icons/Roofing, Walls & Exteriors/chimneySweepRepairs.png";
+import curtainBlindFittersIcon from "../images/icons/Floors, Fixtures & Finishes/curtainBlindFitters.png";
+import dampProofingIcon from "../images/icons/Emergency & Essential Services/dampProofer.png";
+import deckingIcon from "../images/icons/Garden & Outdoor Projects/decking.png";
+import doorLockInstallersIcon from "../images/icons/Windows, Doors & Glazing/doorLockInstallers.png";
+import domesticCleaningIcon from "../images/icons/Cleaning & Waste Services/domesticCleaning.png";
+import drainageBlockagesIcon from "../images/icons/Emergency & Essential Services/drainage.png";
+import drivewaysPatiosIcon from "../images/icons/Garden & Outdoor Projects/drivewaysPatios.png";
+import emergencyRoofingRepairsIcon from "../images/icons/Emergency & Essential Services/emergencyRoofingRepairs.png";
+import endOfTenancyCleaningIcon from "../images/icons/Cleaning & Waste Services/endOfTenancyCleaning.png";
+import exteriorPressureCleaningIcon from "../images/icons/Cleaning & Waste Services/exteriorCleaning.png";
+import exteriorWallInsulationIcon from "../images/icons/Roofing, Walls & Exteriors/exteriorWallInsulation.png";
+import extensionsConversionsIcon from "../images/icons/Home Improvements & Renovations/extensionsConversions.png";
+import fasciaSoffitsGutteringIcon from "../images/icons/Roofing, Walls & Exteriors/fasciaSoffits.png";
+import fencingGatesIcon from "../images/icons/Garden & Outdoor Projects/fencingGates.png";
+import fireplaceLogBurnersIcon from "../images/icons/Floors, Fixtures & Finishes/fireplaceLogBurners.png";
+import flooringFittersIcon from "../images/icons/Floors, Fixtures & Finishes/flooringFitters.png";
+import garageConversionsIcon from "../images/icons/Home Improvements & Renovations/garageConversions.png";
+import garageDoorsIcon from "../images/icons/Windows, Doors & Glazing/garageDoors.png";
+import gardenDesignIcon from "../images/icons/Garden & Outdoor Projects/gardenDesign.png";
+import gardeningMaintenanceIcon from "../images/icons/Garden & Outdoor Projects/gardener.png";
+import glassDoubleGlazingRepairsIcon from "../images/icons/Windows, Doors & Glazing/glass.png";
+import gutterCleaningIcon from "../images/icons/Cleaning & Waste Services/gutterCleaning.png";
+import homeItTelecomsIcon from "../images/icons/Heating, Energy & Smart Tech/itSystemsTelecoms.png";
+import insulationIcon from "../images/icons/Home Improvements & Renovations/insulation.png";
+import interiorDesignSupportIcon from "../images/icons/Home Improvements & Renovations/interiorDesignSupport.png";
+import joineryCarpentryIcon from "../images/icons/Home Improvements & Renovations/joiner.png";
+import lightingInstallationIcon from "../images/icons/Floors, Fixtures & Finishes/lightingInstallation.png";
+import loftConversionsIcon from "../images/icons/Home Improvements & Renovations/loftConversions.png";
+import outdoorLightingIcon from "../images/icons/Garden & Outdoor Projects/outdoorLighting.png";
+import paintingDecoratingIcon from "../images/icons/Home Improvements & Renovations/painterDecorator.png";
+import plasteringIcon from "../images/icons/Home Improvements & Renovations/plasterer.png";
+import poweredAccessLiftsIcon from "../images/icons/Skilled & Specialist Trades/poweredAccess.png";
+import roofingIcon from "../images/icons/Roofing, Walls & Exteriors/Roofer.svg";
+import roughcastingRenderingIcon from "../images/icons/Roofing, Walls & Exteriors/roughcasterRenderer.png";
+import scaffoldersIcon from "../images/icons/Skilled & Specialist Trades/scaffolders.png";
+import smartHomeSystemsIcon from "../images/icons/Heating, Energy & Smart Tech/smartHomeSystems.png";
+import stoneworkMasonryIcon from "../images/icons/Roofing, Walls & Exteriors/stoneWork.png";
+import tilingIcon from "../images/icons/Home Improvements & Renovations/tiler.png";
+import toolHireAccessorySupplyIcon from "../images/icons/Skilled & Specialist Trades/toolHire.png";
+import treeSurgeryIcon from "../images/icons/Garden & Outdoor Projects/treeSurgeon.png";
+import tvAerialsSatelliteIcon from "../images/icons/Heating, Energy & Smart Tech/tvAerialsSatelliteServices.png";
+import underfloorHeatingIcon from "../images/icons/Heating, Energy & Smart Tech/underfloorHeating.png";
+import upvcWindowsWindowFittersIcon from "../images/icons/Windows, Doors & Glazing/upvcWindows.png";
+import wardrobesStorageSolutionsIcon from "../images/icons/Floors, Fixtures & Finishes/wardrobesStorageSolution.png";
+import weatherproofCoatingsIcon from "../images/icons/Roofing, Walls & Exteriors/weatherCoatings.png";
+
 const TraderProfile = () => {
   const { id } = useParams();
   const traderId = Number(id);
@@ -83,7 +142,6 @@ const TraderProfile = () => {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
   const serviceIcons = {
-    "Alarms / Security Services": alarmsIcon,
     "Bathroom Services": bathroomsIcon,
     "Building / Home Improvement Services": builderIcon,
     "Carpets / Flooring": carpetFittingIcon,
@@ -122,6 +180,64 @@ const TraderProfile = () => {
     "Waste / Clearance": wasteClearanceIcon,
     "Weather Coatings": weatherCoatingsIcon,
     "TV Aerials": tvAerialsIcon,
+    "Air Conditioning & Ventilation": airConditioningAndVentilationIcon,
+    "Alarms / Security Services": alarmsAndSecurityIcon,
+    "Architectural Services": architecturalServicesIcon,
+    "Artificial Grass": artificialGrassIcon,
+    Bathrooms: bathroomsIcon,
+    "Blacksmith / Ironwork": blacksmithIronworkIcon,
+    "Boiler Installation / Repairs": boilerInstallationRepairsIcon,
+    "Carpet & Upholstery Cleaning": carpetUpholsteryCleaningIcon,
+    "Carpet Fitters": carpetFittersIcon,
+    "Central Heating & Boilers": centralHeatingBoilersIcon,
+    "Chimney Services": chimneyServicesIcon,
+    "Chimney Sweep & Repairs": chimneySweepRepairsIcon,
+    "Curtain & Blind Fitters": curtainBlindFittersIcon,
+    "Damp Proofing": dampProofingIcon,
+    Decking: deckingIcon,
+    "Door & Lock Installers": doorLockInstallersIcon,
+    "Domestic Cleaning": domesticCleaningIcon,
+    "Drainage & Blockages": drainageBlockagesIcon,
+    "Driveways & Patios": drivewaysPatiosIcon,
+    "Emergency Roofing Repairs": emergencyRoofingRepairsIcon,
+    "End of Tenancy Cleaning": endOfTenancyCleaningIcon,
+    "Exterior / Pressure Cleaning": exteriorPressureCleaningIcon,
+    "Exterior Wall Insulation": exteriorWallInsulationIcon,
+    "Extensions & Conversions": extensionsConversionsIcon,
+    "Fascia, Soffits & Guttering": fasciaSoffitsGutteringIcon,
+    "Fencing & Gates": fencingGatesIcon,
+    "Fireplace / Log Burners": fireplaceLogBurnersIcon,
+    "Flooring Fitters": flooringFittersIcon,
+    "Garage Conversions": garageConversionsIcon,
+    "Garage Doors": garageDoorsIcon,
+    "Garden Design": gardenDesignIcon,
+    "Gardening / Maintenance": gardeningMaintenanceIcon,
+    "Glass / Double Glazing Repairs": glassDoubleGlazingRepairsIcon,
+    "Gutter Cleaning": gutterCleaningIcon,
+    "Home IT & Telecoms": homeItTelecomsIcon,
+    Insulation: insulationIcon,
+    "Interior Design Support": interiorDesignSupportIcon,
+    "Joinery & Carpentry": joineryCarpentryIcon,
+    "Lighting Installation": lightingInstallationIcon,
+    "Loft Conversions": loftConversionsIcon,
+    "Outdoor Lighting": outdoorLightingIcon,
+    "Painting & Decorating": paintingDecoratingIcon,
+    Plastering: plasteringIcon,
+    "Powered Access / Lifts": poweredAccessLiftsIcon,
+    Roofing: roofingIcon,
+    "Roughcasting & Rendering": roughcastingRenderingIcon,
+    Scaffolders: scaffoldersIcon,
+    "Smart Home Systems": smartHomeSystemsIcon,
+    "Stonework & Masonry": stoneworkMasonryIcon,
+    Tiling: tilingIcon,
+    "Tool Hire / Accessory Supply": toolHireAccessorySupplyIcon,
+    "Tree Surgery": treeSurgeryIcon,
+    "TV Aerials / Satellite": tvAerialsSatelliteIcon,
+    "Underfloor Heating": underfloorHeatingIcon,
+    "Window Fitters / UPVC Windows": upvcWindowsWindowFittersIcon,
+    "Wardrobes & Storage Solutions": wardrobesStorageSolutionsIcon,
+    "Waste Clearance": wasteClearanceIcon,
+    "Weatherproof Coatings": weatherproofCoatingsIcon,
   };
 
   useEffect(() => {
@@ -410,16 +526,34 @@ const TraderProfile = () => {
         <StickyHeader handleSearch={handleSearch} />
       )}
       <div className="trader-container">
-        <div className="trader-top-header">
-          {searchQuery ? (
-            <>
-              <p onClick={handleSearchClick} style={{ cursor: "pointer" }}>
-                {searchQuery}
-              </p>
-              <p>&gt;</p>
-              <h3>{trader.businessName}</h3>
-            </>
-          ) : null}
+        <div
+          className="trader-top-header"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            {searchQuery ? (
+              <>
+                <p onClick={handleSearchClick} style={{ cursor: "pointer" }}>
+                  {searchQuery}
+                </p>
+                <p>&gt;</p>
+                <h3>{trader.businessName}</h3>
+              </>
+            ) : null}
+          </div>
+
+          <button className="bookmark-button">
+            <img
+              src={BookmarkIcon}
+              alt="Bookmark"
+              style={{ width: "12px", height: "auto", marginRight: "6px" }}
+            />
+            Bookmark
+          </button>
         </div>
 
         <div className="trader-profile">

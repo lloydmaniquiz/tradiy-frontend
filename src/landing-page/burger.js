@@ -106,7 +106,7 @@ const BurgerDropdown = () => {
               </Link>
             </li>
             <li>
-              <Link to="/refer-a-trader" onClick={() => setIsOpen(false)}>
+              <Link to="/referral" onClick={() => setIsOpen(false)}>
                 Refer a Trader
               </Link>
             </li>

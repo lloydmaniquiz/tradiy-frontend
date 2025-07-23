@@ -119,7 +119,8 @@ const SearchResultsCard = ({ result }) => {
             style={{ width: "14px", height: "auto" }}
           />
           <span className="rating">{result.rating}</span>
-          <span className="reviews">| {result.reviews} reviews</span>
+          <span>|</span>
+          <span className="reviews">{result.reviews} reviews</span>
         </div>
       </div>
     </div>

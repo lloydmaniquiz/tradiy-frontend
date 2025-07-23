@@ -8,6 +8,7 @@ import UploadModal from "../components/UploadModal";
 import workerSignup from "../images/sign-up-banner.png";
 import Select from "react-select";
 import TimeSelector from "../components/TimeSelector";
+import { traderCategoryOptions } from "../constants/traderCategories";
 
 // Main Registration Form component
 const RegistrationForm = () => {
@@ -348,113 +349,6 @@ const Step2 = ({
 
   const [errors, setErrors] = useState({});
 
-  const options = [
-    {
-      value: "air_conditioning_ventilation",
-      label: "Air Conditioning & Ventilation",
-    },
-    { value: "alarms_security", label: "Alarms & Security" },
-    { value: "architectural_services", label: "Architectural Services" },
-    { value: "artificial_grass", label: "Artificial Grass" },
-    { value: "bathrooms", label: "Bathrooms" },
-    { value: "blacksmith_ironwork", label: "Blacksmith / Ironwork" },
-    {
-      value: "boiler_installation_repairs",
-      label: "Boiler Installation / Repairs",
-    },
-    { value: "builder", label: "Builder" },
-    {
-      value: "carpet_upholstery_cleaning",
-      label: "Carpet & Upholstery Cleaning",
-    },
-    { value: "carpet_fitters", label: "Carpet Fitters" },
-    { value: "central_heating_boilers", label: "Central Heating & Boilers" },
-    { value: "chimney_services", label: "Chimney Services" },
-    { value: "chimney_sweep_repairs", label: "Chimney Sweep & Repairs" },
-    {
-      value: "conservatories_garden_rooms",
-      label: "Conservatories & Garden Rooms",
-    },
-    { value: "curtain_blind_fitters", label: "Curtain & Blind Fitters" },
-    { value: "damp_proofing", label: "Damp Proofing" },
-    { value: "decking", label: "Decking" },
-    { value: "door_lock_installers", label: "Door & Lock Installers" },
-    { value: "domestic_cleaning", label: "Domestic Cleaning" },
-    { value: "drainage_blockages", label: "Drainage & Blockages" },
-    { value: "driveways_patios", label: "Driveways & Patios" },
-    { value: "electrician", label: "Electrician" },
-    { value: "emergency_roofing_repairs", label: "Emergency Roofing Repairs" },
-    { value: "end_of_tenancy_cleaning", label: "End of Tenancy Cleaning" },
-    {
-      value: "exterior_pressure_cleaning",
-      label: "Exterior / Pressure Cleaning",
-    },
-    { value: "exterior_wall_insulation", label: "Exterior Wall Insulation" },
-    { value: "extensions_conversions", label: "Extensions & Conversions" },
-    { value: "fascia_soffits_guttering", label: "Fascia, Soffits & Guttering" },
-    { value: "fencing_gates", label: "Fencing & Gates" },
-    { value: "fireplace_log_burners", label: "Fireplace / Log Burners" },
-    {
-      value: "flooring_fitters",
-      label: "Flooring Fitters (Wood, Laminate, Vinyl)",
-    },
-    { value: "garage_conversions", label: "Garage Conversions" },
-    { value: "garage_doors", label: "Garage Doors" },
-    { value: "garden_design", label: "Garden Design" },
-    { value: "gardening_maintenance", label: "Gardening / Maintenance" },
-    {
-      value: "glass_double_glazing_repairs",
-      label: "Glass / Double Glazing Repairs",
-    },
-    { value: "gutter_cleaning", label: "Gutter Cleaning" },
-    { value: "home_it_telecoms", label: "Home IT & Telecoms" },
-    { value: "insulation", label: "Insulation" },
-    { value: "interior_design_support", label: "Interior Design Support" },
-    { value: "joinery_carpentry", label: "Joinery & Carpentry" },
-    { value: "kitchens", label: "Kitchens" },
-    { value: "landscaping", label: "Landscaping" },
-    { value: "lighting_installation", label: "Lighting Installation" },
-    { value: "loft_conversions", label: "Loft Conversions" },
-    { value: "outdoor_lighting", label: "Outdoor Lighting" },
-    { value: "painting_decorating", label: "Painting & Decorating" },
-    { value: "pest_control", label: "Pest Control" },
-    { value: "plastering", label: "Plastering" },
-    { value: "plumber", label: "Plumber" },
-    { value: "powered_access_lifts", label: "Powered Access / Lifts" },
-    {
-      value: "renewable_energy",
-      label: "Renewable Energy (Solar, EV Charging)",
-    },
-    { value: "roofing", label: "Roofing (Flat / Pitched / Repairs)" },
-    { value: "roughcasting_rendering", label: "Roughcasting & Rendering" },
-    { value: "scaffolders", label: "Scaffolders" },
-    { value: "scaffolding", label: "Scaffolding" },
-    { value: "smart_home_systems", label: "Smart Home Systems" },
-    { value: "stonework_masonry", label: "Stonework & Masonry" },
-    { value: "tiling", label: "Tiling" },
-    {
-      value: "tool_hire_accessory_supply",
-      label: "Tool Hire / Accessory Supply",
-    },
-    { value: "tree_surgery", label: "Tree Surgery" },
-    { value: "tv_aerials_satellite", label: "TV Aerials / Satellite" },
-    { value: "underfloor_heating", label: "Underfloor Heating" },
-    {
-      value: "upvc_windows_window_fitters",
-      label: "UPVC Windows / Window Fitters",
-    },
-    {
-      value: "wardrobes_storage_solutions",
-      label: "Wardrobes & Storage Solutions",
-    },
-    { value: "waste_clearance", label: "Waste Clearance" },
-    { value: "weatherproof_coatings", label: "Weatherproof Coatings" },
-    {
-      value: "window_fitters_upvc_windows",
-      label: "Window Fitters / UPVC Windows",
-    },
-  ];
-
   const handleChange = (selectedOptions) => {
     // Ensure selectedOptions is always an array
     const selectedValues = selectedOptions
@@ -590,11 +484,11 @@ const Step2 = ({
               <div className="regForm-select-wrapper">
                 <Select
                   id="traderCategory"
-                  value={options.filter((option) =>
+                  value={traderCategoryOptions.filter((option) =>
                     (formData.traderCategory || []).includes(option.value)
                   )}
                   onChange={handleChange}
-                  options={options}
+                  options={traderCategoryOptions}
                   isMulti // Enable multiple selection
                   className="regForm-select"
                   styles={{
@@ -766,6 +660,8 @@ const Step3 = ({
     setCallOutFee(value);
     onSave("callOutFee", value);
   };
+
+  console.log("formData.callOutFee:", formData.callOutFee); // ← Put it here
 
   const [acceptCards, setAcceptCards] = useState(formData.acceptCards || false);
 
@@ -2233,7 +2129,24 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
           <div className="detail-item">
             <div className="summary-label">Trade Category </div>
             <div className="value">
-              {formData.traderCategory || "No trade category provided"}
+              {(formData.traderCategory || []).length > 0 ? (
+                <div>
+                  {formData.traderCategory
+                    .map(
+                      (value) =>
+                        traderCategoryOptions.find((opt) => opt.value === value)
+                          ?.label
+                    )
+                    .filter(Boolean)
+                    .map((label, index) => (
+                      <div key={index} style={{ marginBottom: "10px" }}>
+                        {label}
+                      </div>
+                    ))}
+                </div>
+              ) : (
+                "No trade category provided"
+              )}
             </div>
           </div>
           <div className="detail-item">
@@ -2282,7 +2195,7 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
           <span className="title">More About Your Business</span>
           <p
             style={{ cursor: "pointer" }}
-            onClick={() => onEdit(2)}
+            onClick={() => onEdit(3)}
             className="edit-link"
           >
             Edit
@@ -2298,7 +2211,7 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
           <div className="detail-item">
             <div className="summary-label">Company Registration Number</div>
             <div className="value">
-              {formData.companyType ||
+              {formData.companyRegistrationNumber ||
                 "No Company Registration Number Provided"}
             </div>
           </div>
@@ -2311,19 +2224,37 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
           <div className="detail-item">
             <div className="summary-label">Call-Out Fee</div>
             <div className="value">
-              {formData.calloutCharge || "No Call-Out Fee Status provided"}
+              {formData.callOutFee === true
+                ? "Yes"
+                : formData.callOutFee === false
+                ? "No"
+                : "No Call-Out Fee Status provided"}
             </div>
           </div>
           <div className="detail-item">
             <div className="summary-label">VAT Registered</div>
             <div className="value">
-              {formData.isVatRegistered || "No Vat Registered Status provided"}
+              {formData.isVatRegistered === true
+                ? "Yes"
+                : formData.isVatRegistered === false
+                ? "No"
+                : "No Vat Registered Status provided"}
+            </div>
+          </div>
+          <div className="detail-item">
+            <div className="summary-label">VAT Number</div>
+            <div className="value">
+              {formData.vatNumber || "No Vat Registered Status provided"}
             </div>
           </div>
           <div className="detail-item">
             <div className="summary-label">Accept Cards</div>
             <div className="value">
-              {formData.acceptCards || "No Accept Cards Status provided"}
+              {formData.acceptCards === true
+                ? "Yes"
+                : formData.acceptCards === false
+                ? "No"
+                : "No Accept Cards Status provided"}
             </div>
           </div>
           <div className="detail-item">
@@ -2344,12 +2275,12 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
             <div className="summary-label">Photos of Your Work</div>
             <div className="value">
               {formData.workImages && formData.workImages.length > 0 ? (
-                <ul>
+                <div className="work-image-list">
                   {formData.workImages.map((file, index) => {
                     const isValidFile =
                       file instanceof Blob || file instanceof File;
                     return (
-                      <li key={index}>
+                      <div key={index}>
                         <a
                           href={
                             typeof file === "string"
@@ -2363,10 +2294,10 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
                         >
                           View Work Image {index + 1}
                         </a>
-                      </li>
+                      </div>
                     );
                   })}
-                </ul>
+                </div>
               ) : (
                 "No work images uploaded"
               )}
@@ -2374,7 +2305,7 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
           </div>
           {/* Business Description */}
           <div className="detail-item">
-            <div className="summary-label">About Your Business</div>
+            <div className="summary-label">Business Description</div>
             <div className="value">
               {formData.businessDescription || "No description provided"}
             </div>
@@ -2389,7 +2320,7 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
           <span className="title">Opening Hours</span>
           <p
             style={{ cursor: "pointer" }}
-            onClick={() => onEdit(6)}
+            onClick={() => onEdit(5)}
             className="edit-link"
           >
             Edit
@@ -2517,7 +2448,7 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
           <span className="title">About You</span>
           <p
             style={{ cursor: "pointer" }}
-            onClick={() => onEdit(7)}
+            onClick={() => onEdit(6)}
             className="edit-link"
           >
             Edit
@@ -2574,7 +2505,7 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
           <span className="title">Get Verified</span>
           <p
             style={{ cursor: "pointer" }}
-            onClick={() => onEdit(8)}
+            onClick={() => onEdit(7)}
             className="edit-link"
           >
             Edit
@@ -2692,7 +2623,7 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
           <span className="title">Social Media</span>
           <p
             style={{ cursor: "pointer" }}
-            onClick={() => onEdit(9)}
+            onClick={() => onEdit(8)}
             className="edit-link"
           >
             Edit
@@ -2744,17 +2675,16 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
         marginLeft: "130px",
       }}
     />
-    <div style={{ display: "flex", justifyContent: "flex-start" }}>
-      <form className="section-text-checkbox">
-        <input type="checkbox" id="agree" />
-        <label htmlFor="agree">
+    <div className="agreement-container">
+      <label className="agreement-label">
+        <input type="checkbox" className="agreement-checkbox" />
+        <span className="agreement-text">
           I hereby agree to submit the details requested for the purpose of the
           verification process. I understand that these details will be used
           solely for administrative reference and verification purposes in
-          accordance with the stated guidelines.{" "}
-          <span style={{ color: "red" }}>*</span>
-        </label>
-      </form>
+          accordance with the stated guidelines.
+        </span>
+      </label>
     </div>
 
     <form onSubmit={handleSubmit}>
