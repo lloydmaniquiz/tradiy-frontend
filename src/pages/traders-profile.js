@@ -557,9 +557,8 @@ const TraderProfile = () => {
         </div>
 
         <div className="trader-profile">
-          {/* Gallery at the top */}
+          {/* Gallery at the top */}f
           <Gallery workImages={workImages} />
-
           {/* Trader Info Section */}
           <div className="trader-info">
             <div className="trader-header">
@@ -721,9 +720,7 @@ const TraderProfile = () => {
               </div>
             </div>
           </div>
-
           <hr style={{ margin: "20px 0", borderTop: "2px solid #BBBCC0" }} />
-
           {/* Services Section */}
           <div className="trader-services">
             {traderCategory.length > 0 ? (

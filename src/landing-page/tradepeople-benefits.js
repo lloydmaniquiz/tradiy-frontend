@@ -25,7 +25,7 @@ const BenefitsTradespeople = () => {
         <div className="benefits-set">
           <img src={free} alt="free" />
           <div>
-            <h3>100% Free to Join</h3>
+            <h3>Free to Join</h3>
             <p>
               Create a profile and list your services for free. There are no
               hidden fees or commissions.

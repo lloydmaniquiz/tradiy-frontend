@@ -14,20 +14,20 @@
 }
 
 .blog-content-container h1 {
-  color: #000839;
+  color: #423e3e;
   font-size: 40px;
   text-align: left;
   margin-bottom: 20px;
 }
 
 .blog-content-container h2 {
-  color: #000839 !important;
+  color: #423e3e !important;
   font-size: 24px;
   text-align: left;
 }
 
 .blog-content-container p {
-  color: #000839 !important;
+  color: #423e3e !important;
   font-size: 16px;
   text-align: left;
 }

@@ -72,7 +72,7 @@ const NewsletterPage = () => {
             <div className="newsletter-role-selection-container">
               <h4 className="newsletter-title">Join the newsletter as:</h4>
               <div className="newsletter-role-selection">
-                {["Homeowner", "Trader"].map((role) => (
+                {["Customer", "Trader"].map((role) => (
                   <button
                     key={role}
                     className={`newsletter-role-button ${
@@ -83,8 +83,8 @@ const NewsletterPage = () => {
                   >
                     <h1>{role}</h1>
                     <p>
-                      {role === "Homeowner"
-                        ? "Newsletter for all homeowners and customers"
+                      {role === "Customer"
+                        ? "Newsletter for all customers"
                         : "Newsletter for all traders"}
                     </p>
                   </button>

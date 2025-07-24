@@ -718,9 +718,10 @@ html {
 }
 
 .how-it-works h2 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  color: #000839;
+  font-size: 1.7rem;
+  color: #423e3e;
+  margin: 0 auto 10px;
+  text-align: center !important;
 }
 
 .how-it-works p {
@@ -860,6 +861,10 @@ html {
   padding-bottom: 1rem;
   font-size: 1.25rem;
   color: #423e3e;
+}
+
+.benefits-list h2 {
+  color: #423e3e !important;
 }
 
 .benefits-wrapper {
@@ -1163,7 +1168,7 @@ html {
   padding: 2rem 1rem; /* Add padding for smaller screens */
   max-width: 1200px; /* Restrict max width */
   margin: 0 auto;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 .faq-container {
@@ -2473,7 +2478,7 @@ html {
 }
 
 .disclaimer-content {
-  color: #000839;
+  color: #423e3e;
   font-weight: 500;
   font-family: "Hanken Grotesk", Arial;
   font-size: 12px;
@@ -2504,7 +2509,7 @@ html {
 
 .newsletter-agreement label {
   font-family: "Hanken Grotesk", Arial;
-  color: #000839;
+  color: #423e3e;
   white-space: nowrap; /* Prevent the text from wrapping onto two lines */
   cursor: pointer;
   font-size: 14px;
@@ -2521,7 +2526,7 @@ html {
 .newsletter-input {
   color: #000839;
   font-family: "Hanken Grotesk", Arial;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .your-search-text {
@@ -2586,6 +2591,10 @@ html {
   .mobile-search-page {
     display: none;
   }
+
+  .mobile-footer {
+    display: none;
+  }
 }
 
 /* Mobile View Adjustments */
@@ -2607,10 +2616,6 @@ html {
   .image-item img {
     height: 100px;
     width: 100px;
-  }
-
-  .coming-soon {
-    transform: scale(0.9);
   }
 
   .overlay {
@@ -2650,6 +2655,11 @@ html {
   .benefits-list {
     width: 90%;
     margin: 0 auto;
+    margin-top: 30px;
+  }
+
+  .benefits-list h2 {
+    color: #423e3e;
   }
 
   .hero-content {
@@ -2727,7 +2737,8 @@ html {
     background-color: white;
     border-radius: 10px;
     width: 100%; /* Full width */
-    max-height: 160px;
+    max-height: 390px;
+    z-index: 100000;
   }
 
   .dropdown-option {
@@ -2803,6 +2814,7 @@ html {
     font-family: Arial, sans-serif;
     margin-top: 30px;
     margin-bottom: 10px;
+    z-index: 1;
   }
 
   .recent-searches-carousel {
@@ -2884,7 +2896,7 @@ html {
   }
 
   .image-text {
-    font-size: 1.1rem; /* Smaller text on mobile */
+    font-size: 20px; /* Smaller text on mobile */
     margin-top: 1rem;
     text-align: left !important; /* Ensure it's left-aligned */
     margin: 0; /* Remove any unwanted margins */
@@ -2892,7 +2904,7 @@ html {
 
   .image-item p {
     text-align: left; /* Make sure paragraph is aligned to the left */
-    font-size: 0.7rem;
+    font-size: 16px;
   }
 
   .reversed {
@@ -2922,16 +2934,15 @@ html {
 
   .how-it-works h2 {
     font-size: 1.7rem;
-    margin-bottom: 0.5rem;
-    color: #000839;
-    margin: 0;
-    margin-bottom: 10px;
+    color: #423e3e;
+    margin: 0 auto 10px;
+    text-align: center;
   }
 
   .how-it-works p {
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
-    color: #000839;
+    color: #423e3e;
     margin: 0;
     margin-bottom: 40px;
     font-weight: 600;
@@ -2990,7 +3001,7 @@ html {
     background-color: #f2f4fa;
     padding: 1.5rem;
     border-radius: 20px;
-    max-width: 320px;
+    max-width: 90%;
     text-align: left;
     display: flex; /* Arrange the container in a row */
     flex-direction: row; /* Align items in a row (image and text side by side) */
@@ -3010,24 +3021,19 @@ html {
   }
 
   .benefits-set h3 {
-    font-size: large;
+    font-size: 20px;
     margin: 0;
-    color: #000839;
+    color: #423e3e;
     text-align: left;
   }
 
   .benefits-set p {
-    font-size: small;
-    color: #000839;
+    font-size: 16px;
+    color: #423e3e;
     font-weight: 500;
     text-align: left;
     margin: 0; /* Remove any extra margin */
   }
-
-  .coming-soon {
-    display: none;
-  }
-
   .reviews-wrapper {
     display: flex;
     justify-content: center; /* Center horizontally */
@@ -3044,10 +3050,10 @@ html {
 
   .review-item {
     position: relative;
-    padding-top: 1rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 3rem;
+    padding-right: 2rem;
+    padding-left: 2em;
+    padding-bottom: 2rem;
     background-color: #fdfeff;
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -3071,17 +3077,15 @@ html {
     justify-content: center; /* Center content vertically */
     align-items: center; /* Center content horizontally */
     text-align: center; /* Optional: Centers text inside h1 and h3 */
-    padding-top: 1rem !important;
-    margin: 0;
   }
 
   .faqs h3 {
-    margin-top: -110px;
-    font-size: 15px;
+    font-size: 16px;
+    margin-top: -20px;
   }
 
   .faqs h1 {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .faq-container {
@@ -3126,16 +3130,15 @@ html {
 
   .faq-content {
     margin-top: 6px;
-    background-color: #ecedf2;
     padding: 1.2rem;
     transition: background-color 0.3s ease;
-    font-size: large;
+    font-size: 16px;
     font-weight: 600;
     border-radius: 10px;
   }
 
   .faq-content p {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .local-trades-dropdown {
@@ -3161,6 +3164,15 @@ html {
   .local-trades-dropdown li {
     display: flex;
     gap: 10px;
+  }
+
+  .step-text h3 {
+    font-size: 20px;
+  }
+
+  .step-text p {
+    font-size: 16px;
+    font-weight: 400;
   }
 
   .htw-hero {
@@ -3419,6 +3431,14 @@ html {
     font-family: "Hanken Grotesk", Arial;
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
     margin-bottom: 100px;
+  }
+
+  .review-item p {
+    margin-top: 20px;
+  }
+
+  .rating {
+    margin-top: 20px !important;
   }
 
   .search-button {
@@ -3743,6 +3763,7 @@ html {
     font-family: "Hanken Grotesk", Arial;
     text-align: left;
     margin-top: 160px;
+    background-color: none !important;
   }
 
   .faqs-overlay {
@@ -3752,10 +3773,15 @@ html {
     width: 90%;
     line-height: 1;
     margin: 0 auto;
+    background-color: white !important;
   }
 
   .faqs-overlay p {
     display: none;
+  }
+
+  .faqs-overlay h1 {
+    background-color: transparent !important;
   }
 
   .faqs-search-container {
@@ -3767,9 +3793,9 @@ html {
   }
 
   .faq-category {
-    color: #000839;
-    padding: 10px;
-    background-color: #00f2ea;
+    color: white;
+    padding: 10px 20px;
+    background-color: #2ec1c7;
     width: fit-content;
     font-family: "Hanken Grotesk", Arial;
     border-radius: 10px;
@@ -3825,9 +3851,9 @@ html {
   }
 
   .contact-us-container p {
-    color: #000839;
+    color: #423e3e;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
     margin-top: 10px;
     width: 85%;
     margin: 0 auto;
@@ -3906,7 +3932,7 @@ html {
 
   .contact-button {
     background: #f2f4fa;
-    color: #000839;
+    color: #423e3e;
     border: none;
     padding: 12px;
     border-radius: 0 0 12px 12px;
@@ -3947,6 +3973,11 @@ html {
     padding: 20px 35px 20px;
     align-items: center;
     justify-content: center;
+    color: #423e3e;
+  }
+
+  .contact-card-content h3 {
+    color: #432e3e;
   }
 
   .newsletter-container {
@@ -4009,10 +4040,11 @@ html {
     width: 90%;
     font-size: 18px;
     margin: 0 auto;
+    color: #423e3e;
   }
 
-  .local-trades-dropdown-container {
-    margin-bottom: 120px;
+  .landing-reviews-wrapper h1 {
+    font-size: 32px;
   }
 
   .video-placeholder iframe {
@@ -4047,5 +4079,40 @@ html {
 
   .social-icon:hover {
     transform: scale(1.1);
+  }
+
+  .mobile-footer {
+    max-width: 90%;
+    margin: 0 auto !important;
+  }
+
+  .local-trades-dropdown {
+    margin: 0 auto !important;
+    margin-top: 10px !important;
+  }
+
+  .local-trades-dropdown p {
+    color: #423e3e;
+    background-color: #f2f4fa;
+  }
+
+  .mobile-footer {
+    padding-bottom: 10px !important;
+  }
+
+  .how-it-works-image {
+    object-position: 0 20%;
+  }
+
+  .faqs-search-input {
+    font-weight: 400;
+  }
+
+  .newsletter-image-section {
+    display: none;
+  }
+
+  .newsletter-title {
+    font-weight: 400;
   }
 }

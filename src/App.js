@@ -56,6 +56,8 @@ import ThankYouForm from "./pages/ThankYouForm";
 import ResetPWSuccess from "./landing-page/password-change-success";
 import FailedPrompt from "./landing-page/failed-prompt";
 import Referral from "./pages/Referral";
+import Divider from "./landing-page/divider";
+import LocalTrades from "./landing-page/local-trades";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -225,6 +227,20 @@ function App() {
                   <HowItWorks />
                   <BenefitsTradespeople />
                   <Questions />
+                  <div className="mobile-footer">
+                    <Divider />
+                    <LocalTrades />
+                    <hr
+                      style={{
+                        border: "1px solid #ccc",
+                        width: "100%",
+                        margin: "0 auto",
+                        marginTop: "10px",
+                        marginBottom: "100px",
+                        marginRight: "150px",
+                      }}
+                    />
+                  </div>
                   <Footer />
                 </main>
               </>

@@ -48,7 +48,11 @@ function Login() {
         <div className="login-form-section">
           <img className="brand-title" src={TradiyLogo} alt="Tradiy Logo" />
           <h2 className="tagline">
-            Find and connect with only vetted and qualified local tradespeople.
+            <span className="tagline-desktop">
+              Find and connect with only vetted and qualified local
+              tradespeople.
+            </span>
+            <span className="tagline-mobile">LOGIN</span>
           </h2>
 
           {/* Role Selection */}

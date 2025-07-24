@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import "../styles/MenuPage.css";
 import TradiyLogoLion from "../images/tradiy-lion.png";
+import TradiyHeroLogo from "../images/tradiy-hero-logo.png";
 
 const MenuPage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
@@ -26,23 +27,21 @@ const MenuPage = () => {
 
       <MenuSection title="Homeowners">
         <MenuItem label="Are you a homeowner?" link="#/how-tradiy-works" />
-        <MenuItem label="Find a Trade" link="#/directory" />
       </MenuSection>
 
       <MenuSection title="Tradespeople">
         <MenuItem label="Tradiy Benefits" link="#/tradiy-benefits" />
-        <MenuItem label="Be a Tradiy Trader" link="#/sign-up" />
       </MenuSection>
 
       <MenuSection title="Sources">
         <MenuItem label="Blogs" link="#/blogs" />
         <MenuItem label="Join our Newsletter" link="#/newsletter" />
+        <MenuItem label="Site Map" link="#/site-map" />
       </MenuSection>
 
       <MenuSection title="Support">
         <MenuItem label="Contact Us" link="#/contact-us" />
         <MenuItem label="FAQs" link="#/faqs" />
-        <MenuItem label="Helpdesk" link="#" />
       </MenuSection>
 
       <MenuSection title="Legal">
@@ -52,7 +51,7 @@ const MenuPage = () => {
       </MenuSection>
 
       <footer className="menu-footer">
-        <img src={TradiyLogoLion} alt="Tradify Logo" className="logo" />
+        <img src={TradiyHeroLogo} alt="Tradify Logo" className="logo" />
         <p>United Kingdom</p>
         <p>© 2024, Tradify. All rights reserved.</p>
       </footer>

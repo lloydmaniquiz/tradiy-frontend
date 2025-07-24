@@ -74,9 +74,49 @@
   .directory-container {
     max-width: 1500px;
     margin: 20px auto;
-    padding: 16px;
+    padding: 24px;
     margin-top: 150px;
     font-family: "Hanken Grotesk", Arial;
     margin-bottom: 100px;
+  }
+
+  .directory-service-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    flex-direction: row; /* horizontal layout for icon + text */
+  }
+
+  .directory-service-item img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+
+  .directory-service-item span {
+    font-size: 0.95rem;
+  }
+
+  /* Keep categories stacked */
+  .directory-categories {
+    display: flex;
+    flex-direction: column; /* makes them stack vertically */
+    gap: 1rem;
+  }
+  .directory-category {
+    width: 100%;
+    margin-bottom: 0px;
+  }
+
+  .directory-services {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .directory-service-item {
+    width: 100%;
   }
 }

@@ -9,7 +9,7 @@ import EmailNow from "../images/contact-us/email.png";
 import WhatsAppNow from "../images/contact-us/whatsapp.png";
 import LiveChat from "../images/contact-us/live-chat.png";
 import QR from "../images/contact-us/qr.png";
-import ArrowBlue from "../images/contact-us/arrow-blue.png";
+import ArrowGray from "../images/arrow-gray.png";
 import ArrowWhite from "../images/contact-us/arrow-white.png";
 
 // Import social media icons
@@ -75,7 +75,7 @@ const ContactUs = () => {
             </div>
             <a href="tel:01234567890" className="contact-button">
               Call Now
-              <img src={ArrowBlue} alt="blue-arrow" className="arrow-icon" />
+              <img src={ArrowGray} alt="blue-arrow" className="arrow-icon" />
             </a>
           </div>
 
@@ -95,7 +95,7 @@ const ContactUs = () => {
             </div>
             <a href="mailto:support@email.com" className="contact-button">
               Email Now
-              <img src={ArrowBlue} alt="blue-arrow" className="arrow-icon" />
+              <img src={ArrowGray} alt="blue-arrow" className="arrow-icon" />
             </a>
           </div>
 

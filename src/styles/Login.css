@@ -46,6 +46,10 @@
   padding-bottom: 2rem;
 }
 
+.tagline-mobile {
+  display: none;
+}
+
 .role-selection {
   display: flex;
   justify-content: space-between;
@@ -266,4 +270,42 @@ input:focus {
 
 .social-button.apple svg {
   color: #000000; /* Apple black color */
+}
+
+@media (max-width: 1024px) {
+  .login-image-section {
+    display: none;
+  }
+
+  .login-form-section {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90% !important;
+  }
+
+  .login-title {
+    font-weight: 400;
+  }
+
+  .login-form-section img {
+    width: 5rem;
+  }
+
+  .tagline-desktop {
+    display: none;
+  }
+
+  .tagline-mobile {
+    display: inline;
+    font-size: 48px;
+    margin-top: -20px !important;
+  }
+
+  .social-button img {
+    height: 24px;
+    width: auto;
+  }
 }

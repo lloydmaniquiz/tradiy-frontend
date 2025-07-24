@@ -120,7 +120,7 @@ const SearchResultsCard = ({ result }) => {
           />
           <span className="rating">{result.rating}</span>
           <span>|</span>
-          <span className="reviews">{result.reviews} reviews</span>
+          <span className="result-reviews">{result.reviews} reviews</span>
         </div>
       </div>
     </div>
