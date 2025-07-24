@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import "../styles/MenuPage.css";
-import TradiyLogoLion from "../images/tradiy-lion.png";
 import TradiyHeroLogo from "../images/tradiy-hero-logo.png";
 
 const MenuPage = () => {
