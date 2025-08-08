@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     background: white;
-    padding: 10px;
+    padding: 20px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -17,6 +17,11 @@
   .logo {
     height: 26px;
     margin-left: 5px;
+  }
+
+  .menu-icon {
+    height: 12px;
+    width: 18px;
   }
 
   .mobile-search-button {
