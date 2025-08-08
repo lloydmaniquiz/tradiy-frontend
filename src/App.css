@@ -562,6 +562,7 @@ html {
   font-family: Arial, sans-serif;
   margin-top: 10px;
   margin-bottom: 10px;
+  
 }
 
 .recent-searches-carousel {
@@ -569,7 +570,6 @@ html {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  position: relative;
   overflow: hidden;
   width: 100%; /* Maximize the width of the carousel container */
 }
@@ -2730,7 +2730,6 @@ html {
 
   /* Stack the dropdown options vertically on mobile */
   .dropdown-options {
-    position: absolute;
     display: flex;
     flex-direction: column; /* Stack options vertically */
     padding: 1rem;
@@ -2738,7 +2737,7 @@ html {
     border-radius: 10px;
     width: 100%; /* Full width */
     max-height: 390px;
-    z-index: 100000;
+    position: relative
   }
 
   .dropdown-option {
@@ -2807,21 +2806,18 @@ html {
   }
 
   .carousel-combine {
-    position: relative;
     text-align: center;
     background-color: #fff;
     color: #333;
     font-family: Arial, sans-serif;
     margin-top: 30px;
     margin-bottom: 10px;
-    z-index: 1;
   }
 
   .recent-searches-carousel {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     overflow: hidden;
     width: 90%; /* Maximize the width of the carousel container */
     margin: 0 auto;
