@@ -1,10 +1,8 @@
 import React from "react";
-import { FaHammer } from "react-icons/fa";
 import HammerIconBlue from "../images/hammer-icon-blue.png"
 import HammerIconGray from "../images/hammer-icon-gray.png"
 import SettingsBlue from "../images/settings-blue.png"
 import SettingsGray from "../images/settings-gray.png"
-import { AiOutlineSetting } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/BottomNavBar.css";
 
