@@ -884,6 +884,10 @@
     font-size: 24px;
   }
 
+  .regForm-header-p p {
+    font-size: 16px;
+  }
+
   .regForm-button.final {
     display: none;
   }
@@ -947,5 +951,81 @@
 
   .worker-signup-img-desktop {
     display: none;
+  }
+
+  .business-container {
+    background: white;
+    padding-left: 0rem;
+    padding-top: 0rem;
+    max-width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  .detail-item {
+    display: block; /* default block behavior stacks items */
+    margin-bottom: 10px;
+    text-align: left;
+    padding-left: 1rem;
+    max-width: 90%;
+  }
+
+  .detail-item-emergency {
+    max-width: 83%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: -30px;
+  }
+
+  .summary-label {
+    text-align: left;
+    font-family: "Hanken Grotesk", Arial;
+    font-size: 16px;
+    padding-bottom: 0rem;
+    min-width: 100%;
+  }
+
+  .title {
+    padding: 0.5rem;
+    background-color: #ecedf2;
+    color: #423e3e;
+    font-weight: 700;
+    font-family: "Hanken Grotesk", Arial;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+
+  .edit-link {
+    color: #423e3e;
+    text-decoration: none;
+    font-size: 16px;
+    text-decoration: underline;
+    font-family: "Hanken Grotesk", Arial;
+    font-weight: 500;
+  }
+
+  .value {
+    color: #423e3e;
+    flex-grow: 1; /* Makes the value take the remaining space */
+    text-align: left;
+    font-family: "Hanken Grotesk", Arial;
+    font-size: 16px;
+    padding-bottom: 1rem;
+  }
+
+  .header-block {
+    max-width: 85%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  .details {
+    max-width: 90%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  .email-verified-container h1 {
+    font-size: 20px;
   }
 }

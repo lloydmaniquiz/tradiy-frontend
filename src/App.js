@@ -150,6 +150,7 @@ function App() {
     "/email-verification",
     "/email-verified",
     "/tradiy-registration-form",
+    "/thank-you",
   ];
   const shouldShowBottomNav =
     isMobile &&

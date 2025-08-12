@@ -30,7 +30,7 @@ export default function ThankYouForm() {
         </p>
 
         {/* Continue button */}
-        <button className="continue-button">
+        <button className="regForm-button custom-next-btn">
           <Link to="/">Continue</Link>
         </button>
       </div>

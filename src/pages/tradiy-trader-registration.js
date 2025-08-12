@@ -2084,7 +2084,7 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
             submitting your form.
           </p>
         </div>
-        <button onClick={onBack} className="regForm-button">
+        <button onClick={onBack} className="regForm-button final">
           Back
         </button>
       </div>
@@ -2427,7 +2427,7 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
           </div>
         </div>
 
-        <div className="detail-item">
+        <div className="detail-item-emergency">
           <div className="summary-label">Emergency Cover</div>
           <div className="value">
             {formData.emergencyHours === "Yes"
@@ -2662,17 +2662,7 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
         </div>
       </div>
     </div>
-    <hr
-      style={{
-        border: "1px solid #ccc",
-        width: "87",
-        margin: "0 auto",
-        marginTop: "50px",
-        marginBottom: "50px",
-        marginRight: "150px",
-        marginLeft: "130px",
-      }}
-    />
+    <hr className="custom-divider" />
     <div className="agreement-container">
       <label className="agreement-label">
         <input type="checkbox" className="agreement-checkbox" />
@@ -2686,11 +2676,7 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
     </div>
 
     <form onSubmit={handleSubmit}>
-      <button
-        type="submit"
-        className="regForm-button"
-        style={{ marginLeft: "130px", marginTop: "30px", marginBottom: "50px" }}
-      >
+      <button type="submit" className="regForm-button custom-next-btn">
         Submit for Review
       </button>
     </form>
