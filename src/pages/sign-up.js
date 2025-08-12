@@ -78,10 +78,12 @@ export default function SignUp() {
 
           <div className="signup-form-section">
             <img className="brand-title" src={TradiyLogo} alt="Tradiy Logo" />
-            <p className="signup-subtitle">
+            <span className="sign-up-tagline-desktop">
               Welcome to Tradiy, your easy solution for finding trusted
               tradespeople and managing home projects.
-            </p>
+            </span>
+
+            <span className="sign-up-tagline-mobile">SIGN UP</span>
 
             <p className="signup-role-header">Sign Up as:</p>
             <div className="signup-role-selection">

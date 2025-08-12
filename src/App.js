@@ -147,6 +147,9 @@ function App() {
     "/forgot-password",
     "/reset-password",
     "/trader",
+    "/email-verification",
+    "/email-verified",
+    "/tradiy-registration-form",
   ];
   const shouldShowBottomNav =
     isMobile &&

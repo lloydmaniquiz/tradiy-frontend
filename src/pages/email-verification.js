@@ -1,8 +1,10 @@
 import TradiyLogo from "../images/Tradiy-Hero-NewLogo.png";
 import VerificationIllustration from "../images/verification.png";
 import "../styles/SignUp.css";
+import { useNavigate } from "react-router-dom";
 
 export default function EmailVerification() {
+  const navigate = useNavigate();
   return (
     <div className="email-verification-page">
       <div className="email-verification-header">
@@ -32,6 +34,12 @@ export default function EmailVerification() {
           your inbox.
         </p>
       </div>
+      <button
+        className="verification-continue-button"
+        onClick={() => navigate("/login")}
+      >
+        OK
+      </button>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import TradiyLogo from "../images/tradiy-hero-logo.png";
 import VerifiedIllustration from "../images/verified.png";
 import "../styles/SignUp.css";
+import { useNavigate } from "react-router-dom";
 
 export default function EmailVerified() {
+  const navigate = useNavigate();
   return (
     <div className="email-verified-page">
       <div className="email-verified-container">
@@ -24,7 +26,10 @@ export default function EmailVerified() {
         </p>
 
         {/* Continue button */}
-        <button className="continue-button" href="/sign-up">
+        <button
+          className="verification-continue-button"
+          onClick={() => navigate("/login")}
+        >
           Continue
         </button>
       </div>

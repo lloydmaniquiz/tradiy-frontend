@@ -66,18 +66,6 @@
   color: #2c3e50;
 }
 
-/* Subtitle */
-.signup-subtitle {
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: 1rem;
-  max-width: 400px;
-  color: #2ec1c7;
-  margin-bottom: 20px;
-  text-align: center;
-  font-family: "Hanken Grotesk", Arial;
-}
-
 /* Role selection header */
 .signup-role-header {
   display: block; /* Makes it a block-level element */
@@ -192,10 +180,10 @@
 
 /* Login text */
 .signup-login-text {
-  font-size: 14px;
+  font-size: 16px;
   margin-top: 15px;
-  color: #000839;
-  font-weight: 600;
+  color: #423e3e;
+  font-weight: 500;
   font-family: "Hanken Grotesk", Arial;
 }
 
@@ -375,6 +363,20 @@ strong {
   width: 150px;
 }
 
+.verification-continue-button {
+  background-color: #000839;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-top: 10px;
+  font-family: "Hanken Grotesk", Arial;
+  transition: all 0.3s ease;
+  width: 80%;
+}
+
 .continue-button:hover {
   background-color: #2ec1c7;
 }
@@ -382,4 +384,92 @@ strong {
 .continue-button a {
   color: white;
   text-decoration: none !important;
+}
+
+.sign-up-tagline-mobile {
+  display: none;
+}
+
+.sign-up-tagline-desktop {
+  color: #2ec1c7;
+  font-family: "Hanken Grotesk", Arial;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 18px;
+}
+
+@media (max-width: 1024px) {
+  .signup-image-section {
+    display: none;
+  }
+
+  .sign-up-tagline-desktop {
+    display: none;
+  }
+
+  .sign-up-tagline-mobile {
+    display: inline;
+    font-size: 48px;
+    color: #2ec1c7;
+    font-family: "Hanken Grotesk", Arial;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 28px;
+  }
+
+  .signup-form-section img {
+    width: 5rem;
+  }
+
+  .signup-form-section {
+    padding: 30px;
+  }
+
+  .signup-password-checker ul,
+  li {
+    font-weight: 300 !important;
+    font-size: 12px !important;
+  }
+
+  .email-verification-logo {
+    width: 71px;
+  }
+
+  .email-verification-image {
+    width: 268px;
+  }
+
+  .email-verification-container h2 {
+    font-size: 32px;
+  }
+
+  .email-verification-container p {
+    font-size: 14px;
+    max-width: 80%;
+    margin-bottom: 12px;
+  }
+
+  .email-verification-container {
+    margin-top: 60px;
+    margin-bottom: 50px;
+  }
+
+  .email-verified-container h2 {
+    font-size: 32px !important;
+  }
+
+  .email-verified-container p {
+    color: #423e3e;
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 84%;
+    margin-bottom: 20px;
+  }
+
+  .signup-login-link {
+    font-size: 16px;
+    font-weight: 500;
+  }
 }

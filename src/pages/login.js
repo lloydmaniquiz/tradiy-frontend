@@ -66,7 +66,7 @@ function Login() {
                 onClick={() => setRole("Homeowner")}
                 type="button"
               >
-                Customer
+                Homeowner
               </button>
               <button
                 className={`role-button ${role === "Trader" ? "active" : ""}`}

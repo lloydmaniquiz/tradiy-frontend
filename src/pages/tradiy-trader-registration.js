@@ -6,6 +6,7 @@ import Drilling from "../images/sign-up-img.png";
 import { FaTimes } from "react-icons/fa"; // Import the FaTimes icon
 import UploadModal from "../components/UploadModal";
 import workerSignup from "../images/sign-up-banner.png";
+import workerSignupMobile from "../images/final-header-mobile.png";
 import Select from "react-select";
 import TimeSelector from "../components/TimeSelector";
 import { traderCategoryOptions } from "../constants/traderCategories";
@@ -194,7 +195,7 @@ const Step1 = ({
               <input
                 id="businessName"
                 type="text"
-                placeholder="Your business name as registered with HMRC or Companies House."
+                placeholder="Your business name as registered."
                 value={formData.businessName || ""}
                 onChange={(e) => onSave("businessName", e.target.value)}
                 className="regForm-input"
@@ -317,10 +318,10 @@ const Step1 = ({
 
           {/* Fixed Footer Buttons */}
           <div className="regForm-button-container">
-            <button onClick={saveForLater} className="regForm-button">
+            <button onClick={saveForLater} className="regForm-button save">
               Save and Continue for Later
             </button>
-            <button onClick={onNext} className="regForm-button">
+            <button onClick={onNext} className="regForm-button next">
               Next
             </button>
           </div>
@@ -1921,19 +1922,27 @@ const Step8 = ({
 //Step9 Code of Conduct
 const Step9 = ({ onBack, onNext }) => (
   <>
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <img
-        src={workerSignup}
-        alt="worker cleaning"
-        style={{ height: "auto", width: "auto", maxWidth: "100%" }}
-      />
+    <div className="worker-signup-wrapper">
+      <picture>
+        <img
+          src={workerSignupMobile}
+          alt="worker cleaning"
+          className="worker-signup-img-mobile"
+        />
+        <img
+          src={workerSignup}
+          alt="worker cleaning"
+          className="worker-signup-img-desktop"
+        />
+      </picture>
     </div>
+
     <div className="form-container">
       <div className="regForm-final-header">
         <div className="regForm-header-p">
           <h2>Code of Conduct</h2>
         </div>
-        <button onClick={onBack} type="button" className="regForm-button">
+        <button onClick={onBack} type="button" className="regForm-button final">
           <i className="fas fa-chevron-left"></i>
           Back
         </button>
@@ -2034,17 +2043,7 @@ const Step9 = ({ onBack, onNext }) => (
           </li>
         </ol>
       </div>
-      <hr
-        style={{
-          border: "1px solid #ccc",
-          width: "87",
-          margin: "0 auto",
-          marginTop: "50px",
-          marginBottom: "50px",
-          marginRight: "150px",
-          marginLeft: "130px",
-        }}
-      />
+      <hr className="custom-divider" />
       <div style={{ display: "flex", justifyContent: "flex-start" }}>
         <form className="section-text-checkbox">
           <input type="checkbox" id="agree" />
@@ -2058,8 +2057,7 @@ const Step9 = ({ onBack, onNext }) => (
       <button
         onClick={onNext}
         type="submit"
-        className="regForm-button"
-        style={{ marginLeft: "130px", marginTop: "30px", marginBottom: "50px" }}
+        className="regForm-button custom-next-btn"
       >
         Finish Sign Up
       </button>
@@ -2070,11 +2068,11 @@ const Step9 = ({ onBack, onNext }) => (
 // Step10
 const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
   <>
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div className="final-header-image-container">
       <img
         src={workerSignup}
         alt="worker cleaning"
-        style={{ height: "auto", width: "auto", maxWidth: "100%" }}
+        className="final-header-image"
       />
     </div>
     <div className="step-container">

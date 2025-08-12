@@ -103,6 +103,7 @@
 .regForm-input {
   padding: 10px 15px !important;
   font-size: 14px !important;
+  font-family: "Hanken Grotesk", Arial;
 }
 
 .regForm-input-group img {
@@ -122,7 +123,7 @@
 .regForm-header h2 {
   font-family: "Hanken Grotesk", Arial;
   font-weight: 600;
-  color: #000839;
+  color: #423e3e;
   font-size: 2rem;
 }
 
@@ -752,4 +753,199 @@
 
 .holiday-date {
   margin-right: 5px; /* Adjust the spacing between dates and times */
+}
+
+.final-header-image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.final-header-image {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+}
+
+.custom-divider {
+  border: 1px solid #ccc;
+  width: 80%; /* you forgot 'px' in your inline version */
+  margin: 50px 150px 50px 130px; /* top, right, bottom, left */
+}
+
+.custom-next-btn {
+  margin-left: 130px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  padding: 10px 20px; /* normal width for desktop */
+}
+
+.section-text-checkbox label {
+  margin: 0;
+}
+
+.worker-signup-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.worker-signup-img-mobile {
+  display: none;
+}
+
+.worker-signup-img-desktop {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .regForm-image-container {
+    display: none;
+  }
+
+  .final-header-image {
+    height: 200px !important;
+  }
+
+  .regForm-header {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto !important;
+    padding: 0 40px 0 40px;
+    margin-top: -40px;
+  }
+
+  .regForm-form-container {
+    width: 80%;
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 180px;
+    height: calc(100% - 120px); /* Adjusts height to account for footer */
+  }
+
+  .regForm-button-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column-reverse; /* Reverse order for mobile */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .regForm-button-container button {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .regForm-button-container .regForm-button:nth-child(1) {
+    display: none;
+  }
+
+  .regForm-header h2 {
+    font-size: 24px;
+  }
+
+  .regForm-button.next {
+    background-color: #000839; /* Your navy blue */
+    color: white;
+    border: none;
+  }
+
+  .regForm-button.next:hover {
+    background-color: #001866; /* Slightly lighter on hover */
+  }
+
+  .skip-text {
+    display: none;
+  }
+
+  .h2-skip-wrapper h2 {
+    margin: 0;
+  }
+
+  .regForm-final-header {
+    padding: 0;
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
+
+  .regForm-header-p {
+    padding: 0;
+  }
+
+  .regForm-header-p h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .regForm-button.final {
+    display: none;
+  }
+
+  .section-text {
+    font-family: "Hanken Grotesk", Arial;
+    color: #423e3e;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px !important;
+    font-size: 16px;
+    max-width: 85%;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: "Hanken Grotesk", Arial;
+    color: #2ec1c7 !important;
+    margin-left: 0px;
+    font-size: 16px !important;
+    max-width: 85%;
+    margin: 0 auto;
+    font-weight: 600 !important;
+    margin-bottom: 20px;
+    margin-top: 40px !important;
+  }
+
+  .section li {
+    font-family: "Hanken Grotesk", Arial;
+    color: #423e3e;
+    margin-left: 20px;
+    font-size: 16px !important;
+    line-height: 1.5;
+    font-weight: 500 !important;
+    margin-right: 0px;
+    max-width: 75%;
+    margin: 0 auto;
+  }
+
+  .custom-divider {
+    margin: 0 auto;
+    width: 80%; /* optional smaller width for mobile */
+  }
+
+  .section-text-checkbox {
+    margin-left: 0px;
+    margin: 0 auto;
+  }
+
+  .custom-next-btn {
+    width: 90%; /* make it wide */
+    margin: 30px auto 50px auto; /* center it horizontally */
+    display: block; /* ensures centering works */
+  }
+
+  .worker-signup-img-mobile {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  .worker-signup-img-desktop {
+    display: none;
+  }
 }
