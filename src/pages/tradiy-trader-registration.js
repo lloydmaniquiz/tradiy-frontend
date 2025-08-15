@@ -10,6 +10,7 @@ import workerSignupMobile from "../images/final-header-mobile.png";
 import Select from "react-select";
 import TimeSelector from "../components/TimeSelector";
 import { traderCategoryOptions } from "../constants/traderCategories";
+import SignUpBack from "../images/sign-up-back.png";
 
 // Main Registration Form component
 const RegistrationForm = () => {
@@ -1940,6 +1941,15 @@ const Step9 = ({ onBack, onNext }) => (
     <div className="form-container">
       <div className="regForm-final-header">
         <div className="regForm-header-p">
+          {/* Back button (visible only on mobile) */}
+          <button
+            className="regForm-back-button"
+            onClick={onBack}
+            aria-label="Go back"
+          >
+            <img src={SignUpBack} alt="Back" />
+          </button>
+
           <h2>Code of Conduct</h2>
         </div>
         <button onClick={onBack} type="button" className="regForm-button final">
@@ -2068,12 +2078,19 @@ const Step9 = ({ onBack, onNext }) => (
 // Step10
 const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
   <>
-    <div className="final-header-image-container">
-      <img
-        src={workerSignup}
-        alt="worker cleaning"
-        className="final-header-image"
-      />
+    <div className="worker-signup-wrapper">
+      <picture>
+        <img
+          src={workerSignupMobile}
+          alt="worker cleaning"
+          className="worker-signup-img-mobile"
+        />
+        <img
+          src={workerSignup}
+          alt="worker cleaning"
+          className="worker-signup-img-desktop"
+        />
+      </picture>
     </div>
     <div className="step-container">
       <div className="regForm-final-header">
@@ -2678,6 +2695,9 @@ const Step10 = ({ formData, onBack, onEdit, handleSubmit }) => (
     <form onSubmit={handleSubmit}>
       <button type="submit" className="regForm-button custom-next-btn">
         Submit for Review
+      </button>
+      <button onClick={onBack} className="regForm-button custom-next-btn final">
+        Back
       </button>
     </form>
   </>

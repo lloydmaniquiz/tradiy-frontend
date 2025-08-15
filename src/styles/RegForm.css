@@ -798,13 +798,29 @@
   max-width: 100%;
 }
 
+.regForm-back-button {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.regForm-back-button img {
+  height: 13px;
+}
+
+.regForm-button.final {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .regForm-image-container {
     display: none;
   }
 
   .final-header-image {
-    height: 200px !important;
+    height: 40px !important;
   }
 
   .regForm-header {
@@ -872,7 +888,7 @@
     padding: 0;
     width: 85%;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   .regForm-header-p {
@@ -1017,6 +1033,7 @@
     max-width: 85%;
     margin: 0 auto;
     margin-bottom: 20px;
+    gap: 1rem;
   }
 
   .details {
@@ -1027,5 +1044,16 @@
 
   .email-verified-container h1 {
     font-size: 20px;
+  }
+
+  .regForm-back-button {
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+
+  .regForm-button.custom-next-btn.final {
+    display: block;
+    margin-top: -40px;
   }
 }
