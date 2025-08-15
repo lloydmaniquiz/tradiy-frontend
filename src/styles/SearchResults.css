@@ -93,6 +93,7 @@
     width: 100%;
     margin: 0 auto;
     margin-bottom: 20px;
+    justify-content: center;
   }
 
   .sort-buttons span {
@@ -117,5 +118,9 @@
     background: #000839;
     color: white;
     border-color: #000839;
+  }
+
+  .sort-buttons span {
+    display: none;
   }
 }

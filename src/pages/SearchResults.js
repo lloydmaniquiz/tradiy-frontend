@@ -159,8 +159,10 @@ const SearchResults = ({ handleFilter }) => {
   // Sort the filtered results based on the selected sorting option
   const sortedResults = [...filteredResults].sort((a, b) => {
     if (selectedSort === "top-reviews") {
-      return b.rating - a.rating; // Sort by highest rating
+      // Sort by rating first, then by number of reviews
+      return b.rating - a.rating || b.reviews - a.reviews;
     }
+
     if (selectedSort === "top-services") {
       return (
         JSON.parse(b.services || "[]").length -
