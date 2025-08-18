@@ -272,6 +272,7 @@ html {
 .dropdown-selected {
   color: #423e3e;
   font-weight: 400;
+  font-size: 20px;
 }
 
 .search-bar input {
@@ -373,6 +374,7 @@ html {
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease;
   border-radius: 20px;
+  font-size: 16px;
 }
 
 .dropdown-option img {
@@ -387,7 +389,7 @@ html {
 }
 
 .dropdown-option span {
-  font-size: medium;
+  font-size: 16px;
   font-family: "Hanken Grotesk", Arial;
   font-weight: 400;
 }
@@ -562,7 +564,6 @@ html {
   font-family: Arial, sans-serif;
   margin-top: 10px;
   margin-bottom: 10px;
-  
 }
 
 .recent-searches-carousel {
@@ -588,8 +589,30 @@ html {
 
 .carousel-track {
   display: flex;
-  transition: transform 0.5s ease-in-out; /* Smooth sliding */
-  width: calc(12 * 120px); /* Adjust total width based on the number of items */
+  transition: transform 0.5s ease-in-out;
+  width: calc(12 * 174px);
+}
+
+/* Gradient fade edges */
+.carousel-container::before,
+.carousel-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px; /* how wide the fade effect is */
+  height: 100%;
+  z-index: 2;
+  pointer-events: none; /* don’t block clicks */
+}
+
+.carousel-container::before {
+  left: 0;
+  background: linear-gradient(to right, white 0%, transparent 100%);
+}
+
+.carousel-container::after {
+  right: 0;
+  background: linear-gradient(to left, white 0%, transparent 100%);
 }
 
 .carousel-container {
@@ -647,7 +670,7 @@ html {
 }
 
 .carousel-item-label {
-  font-size: 0.9rem;
+  font-size: 14px;
   color: #423e3e;
   text-align: center;
   font-family: "Hanken Grotesk", Arial;
@@ -712,7 +735,7 @@ html {
 .how-it-works {
   text-align: center;
   padding: 5rem;
-  background-color: #f7f9fc;
+  background-color: #f8faff;
   color: #333;
   font-family: "Hanken Grotesk", Arial, sans-serif;
 }
@@ -893,13 +916,13 @@ html {
 
 .benefits-set h3 {
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 36px;
   margin: 0.5rem 0;
   color: #423e3e;
 }
 
 .benefits-set p {
-  font-size: small;
+  font-size: 20px;
   color: #423e3e;
   align-items: center;
   font-weight: 500;
@@ -2198,7 +2221,7 @@ html {
 }
 
 .tb-bold {
-  font-weight: 800;
+  font-weight: 600;
   color: #423e3e;
 }
 
@@ -2737,7 +2760,7 @@ html {
     border-radius: 10px;
     width: 100%; /* Full width */
     max-height: 390px;
-    position: relative
+    position: relative;
   }
 
   .dropdown-option {
@@ -2848,6 +2871,12 @@ html {
   /* Make sure the carousel items are scrollable */
   .carousel-track {
     width: 90%; /* Display 4 items at a time */
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Smooth sliding */
+    width: calc(8 * 30px); /* Adjust total width based on the number of items */
   }
 
   .carousel-button {
