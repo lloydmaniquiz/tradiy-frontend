@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/MobileHeader.css";
-import TradiyLogo from "../images/tradiy-navy-seal.png";
+import TradiyLogo from "../images/tradiy-hero-logo.png";
 import SearchIcon from "../images/search-navy-blue.png";
-import MenuIcon from "../images/menu-icon.png"
+import MenuIcon from "../images/menu-icon.png";
 
 function MobileHeader() {
   const navigate = useNavigate();
@@ -27,7 +27,12 @@ function MobileHeader() {
         <img src={SearchIcon} alt="Search" />
         <span>Search for services...</span>
       </button>
-      <img className="menu-icon" src={MenuIcon} alt="Menu Icon" onClick={() => navigate("/menu-page")} />
+      <img
+        className="menu-icon"
+        src={MenuIcon}
+        alt="Menu Icon"
+        onClick={() => navigate("/menu-page")}
+      />
     </header>
   );
 }
