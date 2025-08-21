@@ -58,8 +58,8 @@ export default function SignUp() {
     ) {
       // Prepare the form data
       const roleMap = {
-        Homeowner: "homeowner",
-        "Tradiy Trader": "trader",
+        Homeowner: "Homeowner",
+        "Tradiy Trader": "Trader",
       };
 
       // Prepare form data

@@ -77,9 +77,9 @@ function Login() {
 
       // 🔹 Redirect based on role
       if (role === "Homeowner") {
-        navigate("/homeowner-dashboard");
-      } else if (role === "Tradiy Trader") {
-        navigate("/trader-dashboard");
+        navigate("/");
+      } else if (role === "Trader") {
+        navigate("/");
       } else {
         navigate("/");
       }
