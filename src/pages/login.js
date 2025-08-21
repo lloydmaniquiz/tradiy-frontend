@@ -20,16 +20,9 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // 🔹 Basic validation first
-    const allowedRoles = ["Homeowner", "Tradiy Trader"]; // only valid roles
-
+    // ✅ Frontend basic checks
     if (!role) {
       setErrorMessage("Please select a role.");
-      return;
-    }
-
-    if (!allowedRoles.includes(role.toLowerCase())) {
-      setErrorMessage("Invalid role selected.");
       return;
     }
 
@@ -44,18 +37,21 @@ function Login() {
     }
 
     try {
-      // 🔹 Prepare form-data (FastAPI expects `username` instead of `email`)
+      // 🔹 Prepare form-data
       const formData = new URLSearchParams();
       formData.append("username", email);
       formData.append("password", password);
 
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/login/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: formData.toString(),
-      });
+      const response = await fetch(
+        `https://tradiy-backend-ewh5dwbue6gvcbgc.ukwest-01.azurewebsites.net/login/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: formData.toString(),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -64,16 +60,32 @@ function Login() {
 
       const data = await response.json();
 
-      // 🔹 Save token for later requests
+      // 🔹 Save token
       if (data.access_token) {
         localStorage.setItem("token", data.access_token);
       }
 
-      alert(`${role} login successful!`);
+      // ✅ Backend decides the final role
+      if (data.role) {
+        if (data.role !== role) {
+          // user picked "Trader" but backend says "Homeowner" (or vice versa)
+          throw new Error(
+            "Role mismatch. Please check your login credentials."
+          );
+        }
+        console.log("Logged in as:", data.role);
+      }
+
       setErrorMessage("");
 
-      // 🔹 Redirect to homepage
-      navigate("/");
+      // 🔹 Redirect based on role
+      if (role === "Homeowner") {
+        navigate("/homeowner-dashboard");
+      } else if (role === "Tradiy Trader") {
+        navigate("/trader-dashboard");
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       console.error("Login error:", error);
       setErrorMessage(error.message);
