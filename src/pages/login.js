@@ -42,16 +42,13 @@ function Login() {
       formData.append("username", email);
       formData.append("password", password);
 
-      const response = await fetch(
-        `https://tradiy-backend-ewh5dwbue6gvcbgc.ukwest-01.azurewebsites.net/login/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: formData.toString(),
-        }
-      );
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/login/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formData.toString(),
+      });
 
       if (!response.ok) {
         const errorData = await response.json();
