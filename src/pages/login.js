@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import Driller from "../images/login-img.png";
 import TradiyLogo from "../images/tradiy-hero-logo.png";
@@ -15,29 +15,68 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [role, setRole] = useState("");
 
-  const handleLogin = (e) => {
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Basic validation
+    // 🔹 Basic validation first
+    const allowedRoles = ["Homeowner", "Tradiy Trader"]; // only valid roles
+
     if (!role) {
       setErrorMessage("Please select a role.");
       return;
     }
+
+    if (!allowedRoles.includes(role.toLowerCase())) {
+      setErrorMessage("Invalid role selected.");
+      return;
+    }
+
     if (!email) {
       setErrorMessage("Please enter your email.");
       return;
     }
+
     if (!password) {
       setErrorMessage("Please enter your password.");
       return;
     }
 
-    // Simulated login logic
-    if (email === "test-email@tradiy.com" && password === "Password123") {
+    try {
+      // 🔹 Prepare form-data (FastAPI expects `username` instead of `email`)
+      const formData = new URLSearchParams();
+      formData.append("username", email);
+      formData.append("password", password);
+
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/login/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formData.toString(),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "Login failed");
+      }
+
+      const data = await response.json();
+
+      // 🔹 Save token for later requests
+      if (data.access_token) {
+        localStorage.setItem("token", data.access_token);
+      }
+
       alert(`${role} login successful!`);
       setErrorMessage("");
-    } else {
-      setErrorMessage("Invalid email or password.");
+
+      // 🔹 Redirect to homepage
+      navigate("/");
+    } catch (error) {
+      console.error("Login error:", error);
+      setErrorMessage(error.message);
     }
   };
 
@@ -141,15 +180,12 @@ function Login() {
           <div className="social-login">
             <button className="social-button facebook">
               <img src={facebookIcon} alt="fb-icon" />
-              {/* Facebook Icon */}
             </button>
             <button className="social-button google">
-              <img src={googleIcon} alt="fb-icon" />
-              {/* Google Icon */}
+              <img src={googleIcon} alt="google-icon" />
             </button>
             <button className="social-button apple">
-              <img src={appleIcon} alt="fb-icon" />
-              {/* Apple Icon */}
+              <img src={appleIcon} alt="apple-icon" />
             </button>
           </div>
         </div>

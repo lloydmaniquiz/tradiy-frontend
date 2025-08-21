@@ -1,10 +1,14 @@
 import TradiyLogo from "../images/Tradiy-Hero-NewLogo.png";
 import VerificationIllustration from "../images/verification.png";
 import "../styles/SignUp.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function EmailVerification() {
   const navigate = useNavigate();
+
+  const location = useLocation();
+  // Get the email from the navigation state
+  const email = location.state?.email || "your email";
   return (
     <div className="email-verification-page">
       <div className="email-verification-header">
@@ -23,7 +27,7 @@ export default function EmailVerification() {
         />
         <h2>Great! We’ve sent you a verification email.</h2>
         <p>
-          An email has been sent to <strong>(email)</strong> with your account
+          An email has been sent to <strong>{email}</strong> with your account
           verification link.
         </p>
         <p>

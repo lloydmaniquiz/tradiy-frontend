@@ -1,13 +1,28 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 
 const BurgerDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef(null); // Reference to the entire component
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const menuRef = useRef(null);
+  const navigate = useNavigate();
+
+  // Check if user is logged in
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // or use context/state if you have it
+    setIsLoggedIn(!!token);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Clear token
+    setIsLoggedIn(false);
+    setIsOpen(false);
+    navigate("/login"); // redirect to login page
   };
 
   // Close the menu when clicking outside
@@ -17,13 +32,8 @@ const BurgerDropdown = () => {
         setIsOpen(false);
       }
     };
-
-    // Listen for mouse clicks
     document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -33,28 +43,42 @@ const BurgerDropdown = () => {
         <div className={`burger-line ${isOpen ? "open" : ""}`} />
         <div className={`burger-line ${isOpen ? "open" : ""}`} />
       </button>
+
       {isOpen && (
         <div className="dropdown-menu">
           <ul>
-            <li>
-              <Link
-                to="/login"
-                target="_blank"
-                onClick={() => setIsOpen(false)}
-              >
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/sign-up"
-                target="_blank"
-                onClick={() => setIsOpen(false)}
-              >
-                Sign Up
-              </Link>
-            </li>
-            <div className="dropdown-burger-divider" />
+            {/* Show Login/Sign Up only if not logged in */}
+            {!isLoggedIn && (
+              <>
+                <li>
+                  <Link to="/login" onClick={() => setIsOpen(false)}>
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/sign-up" onClick={() => setIsOpen(false)}>
+                    Sign Up
+                  </Link>
+                </li>
+                <div className="dropdown-burger-divider" />
+              </>
+            )}
+            {/* Show Dashboard and Bookmarks if logged in */}
+            {isLoggedIn && (
+              <>
+                <li>
+                  <Link to="/dashboard" className="dashboard-link">
+                    Your Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/bookmarks" className="bookmarks-link">
+                    Bookmarks
+                  </Link>
+                </li>
+                <div className="dropdown-burger-divider" />
+              </>
+            )}
             <li className="has-submenu">
               HOMEOWNERS
               <ul className="submenu">
@@ -78,15 +102,13 @@ const BurgerDropdown = () => {
                     Tradiy Benefits
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    to="/sign-up"
-                    target="_blank"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Be a Tradiy Trader
-                  </Link>
-                </li>
+                {!isLoggedIn && (
+                  <li>
+                    <Link to="/sign-up" onClick={() => setIsOpen(false)}>
+                      Be a Tradiy Trader
+                    </Link>
+                  </li>
+                )}
               </ul>
             </li>
             <div className="dropdown-burger-divider" />
@@ -110,6 +132,14 @@ const BurgerDropdown = () => {
                 Refer a Trader
               </Link>
             </li>
+            {/* Show Logout if logged in */}{" "}
+            {isLoggedIn && (
+              <li>
+                <Link onClick={handleLogout} className="logout-button">
+                  Logout
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       )}

@@ -58,6 +58,7 @@ import FailedPrompt from "./landing-page/failed-prompt";
 import Referral from "./pages/Referral";
 import Divider from "./landing-page/divider";
 import LocalTrades from "./landing-page/local-trades";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -281,7 +282,14 @@ function App() {
           />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/menu-page" element={<MenuPage />} />
-          <Route path="/dashboard" element={<Dashboard />}>
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          >
             <Route path="quick-actions" element={<QuickAction />} />
             <Route path="dashboard-home" element={<DashboardHome />} />
             <Route path="calendar" element={<DashboardCalendar />} />

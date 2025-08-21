@@ -46,21 +46,61 @@ export default function SignUp() {
     setPasswordMatch(newPassword === confirmPasswordInput);
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
+    // Validate form
     if (
       Object.values(passwordValid).every(Boolean) &&
       passwordMatch &&
-      email.trim() !== ""
+      email.trim() !== "" &&
+      role !== "null"
     ) {
-      // Check if the selected role is Homeowner
-      if (role === "Homeowner") {
-        // Redirect to email-verification page if the role is Homeowner
-        navigate("/email-verification");
-      } else {
-        navigate("/tradiy-registration-form");
+      // Prepare the form data
+      const roleMap = {
+        Homeowner: "homeowner",
+        "Tradiy Trader": "trader",
+      };
+
+      // Prepare form data
+      const formData = {
+        email: email.trim(),
+        password: newPassword,
+        role: roleMap[role] || "", // defaults to empty string if role is invalid
+      };
+
+      try {
+        // Send POST request to your backend API
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/signup/`, // replace with your Azure backend endpoint
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Redirect based on role
+          if (role === "Homeowner") {
+            navigate("/email-verification", { state: { email: email.trim() } });
+          } else {
+            navigate("/tradiy-registration-form");
+          }
+        } else {
+          // Show backend error
+          alert(data.message || "Signup failed. Please try again.");
+        }
+      } catch (error) {
+        console.error("Signup error:", error);
+        alert("An error occurred while signing up. Please try again.");
       }
+    } else {
+      alert("Please fill all fields correctly before signing up.");
     }
   };
 

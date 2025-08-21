@@ -46,6 +46,10 @@ html {
   z-index: 1000;
 }
 
+.logout-button {
+  color: #ff7469 !important;
+}
+
 /* Burger icon button */
 .burger-icon {
   display: flex;
