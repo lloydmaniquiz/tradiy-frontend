@@ -72,7 +72,7 @@ export default function SignUp() {
       try {
         // Send POST request to your backend API
         const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/signup/`, // replace with your Azure backend endpoint
+          `${process.env.REACT_APP_API_URL}/signup`, // replace with your Azure backend endpoint
           {
             method: "POST",
             headers: {
