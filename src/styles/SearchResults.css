@@ -69,6 +69,19 @@
   border-color: #000839;
 }
 
+.bookmark-results-container {
+  margin-top: 100px;
+  font-family: "Hanken Grotesk", Arial;
+  color: #000839;
+}
+
+.bookmark-results-container h1 {
+  font-size: 40px;
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+  color: #2ec1c7;
+}
+
 @media (max-width: 1024px) {
   .search-results-container {
     font-family: "Hanken Grotesk", Arial;

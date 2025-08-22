@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import yellowStar from "../images/yellow-star.png";
 import { Carousel } from "react-responsive-carousel";
 import peacockCheck from "../images/peacock-check.png";
@@ -10,26 +9,124 @@ import BookmarkBlank from "../images/BookmarkBlank.png";
 import BookmarkFilled from "../images/BookmarkFilled.png";
 
 const SearchResultsCard = ({ result }) => {
-  const [isBookmarked, setIsBookmarked] = useState(false); // Track bookmark status
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [bookmarkId, setBookmarkId] = useState(null);
 
-  // Ensure work images are properly handled
+  const token = localStorage.getItem("token");
+
+  // Fetch user's bookmarks when component mounts
+  useEffect(() => {
+    const fetchBookmarks = async () => {
+      if (!token) return;
+
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/bookmarks`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        if (!response.ok) throw new Error("Failed to fetch bookmarks");
+        const bookmarks = await response.json();
+
+        // Check if this result is already bookmarked
+        const currentBookmark = bookmarks.find(
+          (b) =>
+            b.url ===
+            `/trader/${result.id}?query=${encodeURIComponent(
+              result.businessName
+            )}`
+        );
+        if (currentBookmark) {
+          setIsBookmarked(true);
+          setBookmarkId(currentBookmark.id);
+        }
+      } catch (err) {
+        console.error("Error fetching bookmarks:", err);
+      }
+    };
+
+    fetchBookmarks();
+  }, [result.id, result.businessName, token]);
+
+  const handleBookmarkClick = async (e) => {
+    e.stopPropagation();
+    if (!token) {
+      alert("Please log in to save bookmarks");
+      return;
+    }
+
+    try {
+      if (!isBookmarked) {
+        // Add bookmark
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/bookmarks`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              title: result.businessName,
+              url: `/trader/${result.id}?query=${encodeURIComponent(
+                result.businessName
+              )}`,
+              trader_id: result.id, // <-- send trader_id
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.detail || "Failed to add bookmark");
+        }
+
+        const data = await response.json();
+        setIsBookmarked(true);
+        setBookmarkId(data.id);
+        console.log("Bookmark added:", data);
+      } else {
+        // Remove bookmark
+        if (!bookmarkId) return;
+
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/bookmarks/${bookmarkId}`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.detail || "Failed to remove bookmark");
+        }
+
+        setIsBookmarked(false);
+        setBookmarkId(null);
+        console.log("Bookmark removed");
+      }
+    } catch (err) {
+      console.error("Error updating bookmark:", err);
+      alert(err.message);
+    }
+  };
+
+  // Handle work images
   const workImages = result.workImages
     ? String(result.workImages)
         .split(",")
         .map((img) => img.trim())
     : [];
 
-  const handleBookmarkClick = (e) => {
-    e.stopPropagation(); // Prevent parent click event
-    setIsBookmarked((prev) => !prev); // Toggle bookmark state
-  };
-
   return (
     <div className="result-card">
       <div className="results-image-container">
         <div className="card-header">
           <div className="image-overlay">
-            {/* Flexbox container for hero & bookmark */}
             <div className="overlay-left">
               {result.isTradiyHero && (
                 <span className="tradiy-hero">
@@ -44,9 +141,9 @@ const SearchResultsCard = ({ result }) => {
 
             <button className="bookmark" onClick={handleBookmarkClick}>
               <img
-                src={isBookmarked ? BookmarkFilled : BookmarkBlank} // Toggle images
+                src={isBookmarked ? BookmarkFilled : BookmarkBlank}
                 alt={isBookmarked ? "Bookmarked" : "Not Bookmarked"}
-                style={{ height: "30px" }} // Adjust size if needed
+                style={{ height: "30px" }}
               />
             </button>
           </div>
@@ -54,9 +151,9 @@ const SearchResultsCard = ({ result }) => {
           {workImages.length > 0 ? (
             <Carousel
               showThumbs={false}
-              autoPlay={false} // ✅ No auto-scroll
+              autoPlay={false}
               infiniteLoop
-              showArrows={true}
+              showArrows
               showStatus={false}
               onClickItem={(e) => e.stopPropagation()}
               onClickThumb={(e) => e.stopPropagation()}
@@ -77,7 +174,6 @@ const SearchResultsCard = ({ result }) => {
             </div>
           )}
 
-          {/* Business Logo */}
           {result.businessLogo && (
             <img
               src={result.businessLogo}
@@ -88,12 +184,10 @@ const SearchResultsCard = ({ result }) => {
         </div>
       </div>
 
-      {/* Business Info */}
       <div className="card-content">
         <h3 className="business-name">{result.businessName}</h3>
         <p className="business-address">{result.businessAddress}</p>
 
-        {/* Services */}
         <div className="services">
           {Array.isArray(result.services)
             ? result.services.map((service, index) => (
@@ -110,7 +204,6 @@ const SearchResultsCard = ({ result }) => {
               ))}
         </div>
 
-        {/* Rating and Reviews */}
         <div className="rating-reviews">
           <img
             className="yellow-star"

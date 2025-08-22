@@ -59,6 +59,7 @@ import Referral from "./pages/Referral";
 import Divider from "./landing-page/divider";
 import LocalTrades from "./landing-page/local-trades";
 import PrivateRoute from "./components/PrivateRoute";
+import Bookmarks from "./pages/Bookmarks";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -275,6 +276,14 @@ function App() {
           <Route path="/search" element={<SearchResults />} />
           <Route path="/trader/:id" element={<TraderProfile />} />
           <Route path="/blogs" element={<BlogsPage />} />
+          <Route
+            path="bookmarks"
+            element={
+              <PrivateRoute>
+                <Bookmarks />
+              </PrivateRoute>
+            }
+          />
           <Route path="/" element={<MobileHeader />} />
           <Route
             path="/mobile-search"

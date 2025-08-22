@@ -138,11 +138,15 @@ const SearchResults = ({ handleFilter }) => {
     const matchesService =
       traderCategory.some((service) =>
         relatedServices.some((relatedService) =>
-          service.toLowerCase().includes(relatedService.toLowerCase())
+          (service || "")
+            .toLowerCase()
+            .includes((relatedService || "").toLowerCase())
         )
       ) ||
       traderCategory.some((category) =>
-        category.toLowerCase().includes(searchQuery.toLowerCase())
+        (category || "")
+          .toLowerCase()
+          .includes((searchQuery || "").toLowerCase())
       );
 
     const matchesVerified = filters.verified ? result.isVerified : true;
