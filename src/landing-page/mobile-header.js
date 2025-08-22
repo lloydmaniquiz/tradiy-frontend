@@ -9,15 +9,16 @@ function MobileHeader() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Define the single page where MobileHeader should NOT appear
-  const hiddenPage = "/menu-page"; // Change this to the page where you want it hidden
+  // Define all pages where MobileHeader should NOT appear
+  const hiddenPages = ["/menu-page", "/login", "/signup", "/dashboard"]; // Add more paths as needed
 
-  if (location.pathname === hiddenPage) {
-    return null; // Do not render the header on this page
+  // Do not render the header if the current page is in hiddenPages
+  if (hiddenPages.includes(location.pathname)) {
+    return null;
   }
 
   const openSearchPage = () => {
-    navigate("/mobile-search"); // Redirect to /search
+    navigate("/mobile-search"); // Redirect to /mobile-search
   };
 
   return (

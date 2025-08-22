@@ -1,28 +1,70 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import "../styles/MenuPage.css";
 import TradiyHeroLogo from "../images/tradiy-hero-logo.png";
+import DefaultUserImage from "../images/default-sticky.png";
 
 const MenuPage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1024);
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  if (!isMobile) {
-    return null; // Hide the component if the screen is wider than 1024px
-  }
+  useEffect(() => {
+    // Check if user is logged in (example: token stored in localStorage)
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
+
+  if (!isMobile) return null;
 
   return (
     <div className="menu-container">
-      <h2>Menu</h2>
+      {/* Menu Header */}
+      <div
+        className="menu-page-header"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "10px 16px",
+        }}
+      >
+        <h2>Menu</h2>
+        <button
+          onClick={() => navigate(-1)}
+          style={{
+            background: "none",
+            border: "none",
+            fontSize: "24px",
+            cursor: "pointer",
+            color: "#423e3e",
+          }}
+          aria-label="Close Menu"
+        >
+          &times;
+        </button>
+      </div>
+
+      {/* Show Guest User only if NOT logged in */}
+      {!isLoggedIn && (
+        <div className="guest-user-button">
+          <img src={DefaultUserImage} alt="Guest" className="guest-avatar" />
+          <span className="guest-name">Guest User</span>
+          <a href="#/login" className="login-signup">
+            Login / Sign Up
+          </a>
+        </div>
+      )}
 
       <MenuSection title="Homeowners">
         <MenuItem label="Are you a homeowner?" link="#/how-tradiy-works" />

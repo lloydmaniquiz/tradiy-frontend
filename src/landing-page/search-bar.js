@@ -987,7 +987,11 @@ const SearchBar = forwardRef(({ handleSearch }, ref) => {
           placeholder="What is your postcode?"
           value={postcode}
           onChange={(e) => setPostcode(e.target.value)}
-          style={{ color: "#423e3e", fontWeight: "400", fontSize: "20px" }}
+          style={{
+            color: "#423e3e",
+            fontWeight: "400",
+            fontSize: window.innerWidth <= 1024 ? "16px" : "20px",
+          }}
         />
         <button className="search-button" type="submit">
           <img src={SearchIcon} alt="🔍" />
