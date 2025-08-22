@@ -52,7 +52,7 @@ const MenuPage = () => {
       <footer className="menu-footer">
         <img src={TradiyHeroLogo} alt="Tradify Logo" className="logo" />
         <p>United Kingdom</p>
-        <p>© 2024, Tradify. All rights reserved.</p>
+        <p>© 2025, Tradify. All rights reserved.</p>
       </footer>
     </div>
   );

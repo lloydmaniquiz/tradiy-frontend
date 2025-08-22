@@ -60,6 +60,8 @@ function Login() {
       // 🔹 Save token
       if (data.access_token) {
         localStorage.setItem("token", data.access_token);
+        const expiry = new Date().getTime() + 60 * 60 * 1000; // 1 hour
+        localStorage.setItem("token_expiry", expiry);
       }
 
       // ✅ Backend decides the final role

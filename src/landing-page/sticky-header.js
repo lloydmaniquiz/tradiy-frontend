@@ -60,7 +60,7 @@ function StickyHeader({
 
           <div className="sticky-burger-wrapper">
             <p>Be a Tradiy Trader</p>
-            <BurgerDropdown />
+            <BurgerDropdown showLoginButton={false} isSticky={false} />
           </div>
         </div>
 
