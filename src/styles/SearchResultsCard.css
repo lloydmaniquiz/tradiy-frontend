@@ -64,14 +64,15 @@
 }
 
 .business-name {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
-  margin-top: -10px;
+  margin-top: 0px;
 }
 
 .business-address {
   font-size: 14px;
   color: gray;
+  font-weight: 400;
 }
 
 .services {

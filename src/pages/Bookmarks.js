@@ -16,6 +16,41 @@ const Bookmarks = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const fetchReviewData = async (traderId) => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/reviews/?tradesperson_id=${traderId}`
+      );
+      if (!response.ok) throw new Error("Failed to fetch reviews");
+
+      const data = await response.json();
+      const reviews = data.reviews || [];
+
+      const validRatings = reviews
+        .map((r) => r.trader_service)
+        .filter((r) => r !== null && r !== undefined);
+
+      const averageRating =
+        validRatings.length > 0
+          ? (
+              validRatings.reduce((acc, val) => acc + val, 0) /
+              validRatings.length
+            ).toFixed(2)
+          : "N/A";
+
+      return {
+        reviewsCount: reviews.length,
+        averageRating,
+      };
+    } catch (err) {
+      console.error(`Error fetching reviews for trader ${traderId}:`, err);
+      return {
+        reviewsCount: 0,
+        averageRating: "N/A",
+      };
+    }
+  };
+
   useEffect(() => {
     const fetchBookmarksWithTraders = async () => {
       try {
@@ -32,7 +67,6 @@ const Bookmarks = () => {
 
         const data = await response.json();
 
-        // Fetch trader data for each bookmark
         const bookmarksWithTraders = await Promise.all(
           data.map(async (bookmark) => {
             try {
@@ -40,15 +74,25 @@ const Bookmarks = () => {
                 `${process.env.REACT_APP_API_URL}/tradespeople/${bookmark.trader_id}`
               );
               if (!traderRes.ok) throw new Error("Failed to fetch trader data");
-
               const traderData = await traderRes.json();
-              return { ...traderData, bookmarkId: bookmark.id };
+
+              // Fetch reviews using your function
+              const { reviewsCount, averageRating } = await fetchReviewData(
+                bookmark.trader_id
+              );
+
+              return {
+                ...traderData,
+                bookmarkId: bookmark.id,
+                rating: averageRating,
+                reviews: reviewsCount,
+              };
             } catch (err) {
               console.error(
                 `Error fetching trader ${bookmark.trader_id}:`,
                 err
               );
-              return null; // Skip if trader fetch fails
+              return null;
             }
           })
         );
