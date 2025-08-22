@@ -557,7 +557,7 @@ const TraderProfile = () => {
         </div>
 
         <div className="trader-profile">
-          {/* Gallery at the top */}f
+          {/* Gallery at the top */}
           <Gallery workImages={workImages} />
           {/* Trader Info Section */}
           <div className="trader-info">
