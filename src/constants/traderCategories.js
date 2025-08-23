@@ -1,106 +1,274 @@
 export const traderCategoryOptions = [
   {
-    value: "air_conditioning_ventilation",
+    value: "Air Conditioning & Ventilation",
     label: "Air Conditioning & Ventilation",
   },
-  { value: "alarms_security", label: "Alarms & Security" },
-  { value: "architectural_services", label: "Architectural Services" },
-  { value: "artificial_grass", label: "Artificial Grass" },
-  { value: "bathrooms", label: "Bathrooms" },
-  { value: "blacksmith_ironwork", label: "Blacksmith / Ironwork" },
   {
-    value: "boiler_installation_repairs",
+    value: "Alarms & Security",
+    label: "Alarms & Security",
+  },
+  {
+    value: "Architectural Services",
+    label: "Architectural Services",
+  },
+  {
+    value: "Artificial Grass",
+    label: "Artificial Grass",
+  },
+  {
+    value: "Bathrooms",
+    label: "Bathrooms",
+  },
+  {
+    value: "Blacksmith / Ironwork",
+    label: "Blacksmith / Ironwork",
+  },
+  {
+    value: "Boiler Installation / Repairs",
     label: "Boiler Installation / Repairs",
   },
-  { value: "builder", label: "Builder" },
   {
-    value: "carpet_upholstery_cleaning",
+    value: "Builder",
+    label: "Builder",
+  },
+  {
+    value: "Carpet & Upholstery Cleaning",
     label: "Carpet & Upholstery Cleaning",
   },
-  { value: "carpet_fitters", label: "Carpet Fitters" },
-  { value: "central_heating_boilers", label: "Central Heating & Boilers" },
-  { value: "chimney_services", label: "Chimney Services" },
-  { value: "chimney_sweep_repairs", label: "Chimney Sweep & Repairs" },
   {
-    value: "conservatories_garden_rooms",
+    value: "Carpet Fitters",
+    label: "Carpet Fitters",
+  },
+  {
+    value: "Central Heating & Boilers",
+    label: "Central Heating & Boilers",
+  },
+  {
+    value: "Chimney Services",
+    label: "Chimney Services",
+  },
+  {
+    value: "Chimney Sweep & Repairs",
+    label: "Chimney Sweep & Repairs",
+  },
+  {
+    value: "Conservatories & Garden Rooms",
     label: "Conservatories & Garden Rooms",
   },
-  { value: "curtain_blind_fitters", label: "Curtain & Blind Fitters" },
-  { value: "damp_proofing", label: "Damp Proofing" },
-  { value: "decking", label: "Decking" },
-  { value: "door_lock_installers", label: "Door & Lock Installers" },
-  { value: "domestic_cleaning", label: "Domestic Cleaning" },
-  { value: "drainage_blockages", label: "Drainage & Blockages" },
-  { value: "driveways_patios", label: "Driveways & Patios" },
-  { value: "electrician", label: "Electrician" },
-  { value: "emergency_roofing_repairs", label: "Emergency Roofing Repairs" },
-  { value: "end_of_tenancy_cleaning", label: "End of Tenancy Cleaning" },
   {
-    value: "exterior_pressure_cleaning",
+    value: "Curtain & Blind Fitters",
+    label: "Curtain & Blind Fitters",
+  },
+  {
+    value: "Damp Proofing",
+    label: "Damp Proofing",
+  },
+  {
+    value: "Decking",
+    label: "Decking",
+  },
+  {
+    value: "Door & Lock Installers",
+    label: "Door & Lock Installers",
+  },
+  {
+    value: "Domestic Cleaning",
+    label: "Domestic Cleaning",
+  },
+  {
+    value: "Drainage & Blockages",
+    label: "Drainage & Blockages",
+  },
+  {
+    value: "Driveways & Patios",
+    label: "Driveways & Patios",
+  },
+  {
+    value: "Electrician",
+    label: "Electrician",
+  },
+  {
+    value: "Emergency Roofing Repairs",
+    label: "Emergency Roofing Repairs",
+  },
+  {
+    value: "End of Tenancy Cleaning",
+    label: "End of Tenancy Cleaning",
+  },
+  {
+    value: "Exterior / Pressure Cleaning",
     label: "Exterior / Pressure Cleaning",
   },
-  { value: "exterior_wall_insulation", label: "Exterior Wall Insulation" },
-  { value: "extensions_conversions", label: "Extensions & Conversions" },
-  { value: "fascia_soffits_guttering", label: "Fascia, Soffits & Guttering" },
-  { value: "fencing_gates", label: "Fencing & Gates" },
-  { value: "fireplace_log_burners", label: "Fireplace / Log Burners" },
   {
-    value: "flooring_fitters",
+    value: "Exterior Wall Insulation",
+    label: "Exterior Wall Insulation",
+  },
+  {
+    value: "Extensions & Conversions",
+    label: "Extensions & Conversions",
+  },
+  {
+    value: "Fascia, Soffits & Guttering",
+    label: "Fascia, Soffits & Guttering",
+  },
+  {
+    value: "Fencing & Gates",
+    label: "Fencing & Gates",
+  },
+  {
+    value: "Fireplace / Log Burners",
+    label: "Fireplace / Log Burners",
+  },
+  {
+    value: "Flooring Fitters (Wood, Laminate, Vinyl)",
     label: "Flooring Fitters (Wood, Laminate, Vinyl)",
   },
-  { value: "garage_conversions", label: "Garage Conversions" },
-  { value: "garage_doors", label: "Garage Doors" },
-  { value: "garden_design", label: "Garden Design" },
-  { value: "gardening_maintenance", label: "Gardening / Maintenance" },
   {
-    value: "glass_double_glazing_repairs",
+    value: "Garage Conversions",
+    label: "Garage Conversions",
+  },
+  {
+    value: "Garage Doors",
+    label: "Garage Doors",
+  },
+  {
+    value: "Garden Design",
+    label: "Garden Design",
+  },
+  {
+    value: "Gardening / Maintenance",
+    label: "Gardening / Maintenance",
+  },
+  {
+    value: "Glass / Double Glazing Repairs",
     label: "Glass / Double Glazing Repairs",
   },
-  { value: "gutter_cleaning", label: "Gutter Cleaning" },
-  { value: "home_it_telecoms", label: "Home IT & Telecoms" },
-  { value: "insulation", label: "Insulation" },
-  { value: "interior_design_support", label: "Interior Design Support" },
-  { value: "joinery_carpentry", label: "Joinery & Carpentry" },
-  { value: "kitchens", label: "Kitchens" },
-  { value: "landscaping", label: "Landscaping" },
-  { value: "lighting_installation", label: "Lighting Installation" },
-  { value: "loft_conversions", label: "Loft Conversions" },
-  { value: "outdoor_lighting", label: "Outdoor Lighting" },
-  { value: "painting_decorating", label: "Painting & Decorating" },
-  { value: "pest_control", label: "Pest Control" },
-  { value: "plastering", label: "Plastering" },
-  { value: "plumber", label: "Plumber" },
-  { value: "powered_access_lifts", label: "Powered Access / Lifts" },
   {
-    value: "renewable_energy",
+    value: "Gutter Cleaning",
+    label: "Gutter Cleaning",
+  },
+  {
+    value: "Home IT & Telecoms",
+    label: "Home IT & Telecoms",
+  },
+  {
+    value: "Insulation",
+    label: "Insulation",
+  },
+  {
+    value: "Interior Design Support",
+    label: "Interior Design Support",
+  },
+  {
+    value: "Joinery & Carpentry",
+    label: "Joinery & Carpentry",
+  },
+  {
+    value: "Kitchens",
+    label: "Kitchens",
+  },
+  {
+    value: "Landscaping",
+    label: "Landscaping",
+  },
+  {
+    value: "Lighting Installation",
+    label: "Lighting Installation",
+  },
+  {
+    value: "Loft Conversions",
+    label: "Loft Conversions",
+  },
+  {
+    value: "Outdoor Lighting",
+    label: "Outdoor Lighting",
+  },
+  {
+    value: "Painting & Decorating",
+    label: "Painting & Decorating",
+  },
+  {
+    value: "Pest Control",
+    label: "Pest Control",
+  },
+  {
+    value: "Plastering",
+    label: "Plastering",
+  },
+  {
+    value: "Plumber",
+    label: "Plumber",
+  },
+  {
+    value: "Powered Access / Lifts",
+    label: "Powered Access / Lifts",
+  },
+  {
+    value: "Renewable Energy (Solar, EV Charging)",
     label: "Renewable Energy (Solar, EV Charging)",
   },
-  { value: "roofing", label: "Roofing (Flat / Pitched / Repairs)" },
-  { value: "roughcasting_rendering", label: "Roughcasting & Rendering" },
-  { value: "scaffolders", label: "Scaffolders" },
-  { value: "scaffolding", label: "Scaffolding" },
-  { value: "smart_home_systems", label: "Smart Home Systems" },
-  { value: "stonework_masonry", label: "Stonework & Masonry" },
-  { value: "tiling", label: "Tiling" },
   {
-    value: "tool_hire_accessory_supply",
+    value: "Roofing (Flat / Pitched / Repairs)",
+    label: "Roofing (Flat / Pitched / Repairs)",
+  },
+  {
+    value: "Roughcasting & Rendering",
+    label: "Roughcasting & Rendering",
+  },
+  {
+    value: "Scaffolders",
+    label: "Scaffolders",
+  },
+  {
+    value: "Scaffolding",
+    label: "Scaffolding",
+  },
+  {
+    value: "Smart Home Systems",
+    label: "Smart Home Systems",
+  },
+  {
+    value: "Stonework & Masonry",
+    label: "Stonework & Masonry",
+  },
+  {
+    value: "Tiling",
+    label: "Tiling",
+  },
+  {
+    value: "Tool Hire / Accessory Supply",
     label: "Tool Hire / Accessory Supply",
   },
-  { value: "tree_surgery", label: "Tree Surgery" },
-  { value: "tv_aerials_satellite", label: "TV Aerials / Satellite" },
-  { value: "underfloor_heating", label: "Underfloor Heating" },
   {
-    value: "upvc_windows_window_fitters",
+    value: "Tree Surgery",
+    label: "Tree Surgery",
+  },
+  {
+    value: "TV Aerials / Satellite",
+    label: "TV Aerials / Satellite",
+  },
+  {
+    value: "Underfloor Heating",
+    label: "Underfloor Heating",
+  },
+  {
+    value: "UPVC Windows / Window Fitters",
     label: "UPVC Windows / Window Fitters",
   },
   {
-    value: "wardrobes_storage_solutions",
+    value: "Wardrobes & Storage Solutions",
     label: "Wardrobes & Storage Solutions",
   },
-  { value: "waste_clearance", label: "Waste Clearance" },
-  { value: "weatherproof_coatings", label: "Weatherproof Coatings" },
   {
-    value: "window_fitters_upvc_windows",
+    value: "Waste Clearance",
+    label: "Waste Clearance",
+  },
+  {
+    value: "Weatherproof Coatings",
+    label: "Weatherproof Coatings",
+  },
+  {
+    value: "Window Fitters / UPVC Windows",
     label: "Window Fitters / UPVC Windows",
   },
 ];

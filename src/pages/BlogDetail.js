@@ -48,6 +48,7 @@ const BlogDetail = () => {
     }
   };
 
+  // 1. Fetch blog details
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -57,15 +58,9 @@ const BlogDetail = () => {
         const foundBlog = fetchedBlogs.find((blog) => blog.id === parseInt(id));
         setBlog(foundBlog);
 
-        // Filter out the current blog and remove duplicates
         const filteredBlogs = fetchedBlogs
-          .filter((b) => b.id !== parseInt(id)) // Exclude current blog
-          .reduce((unique, item) => {
-            return unique.some((blog) => blog.id === item.id)
-              ? unique
-              : [...unique, item];
-          }, [])
-          .slice(0, 3); // Limit to 3 unique blogs
+          .filter((b) => b.id !== parseInt(id))
+          .slice(0, 3);
 
         setOtherBlogs(filteredBlogs);
       } catch (error) {
@@ -74,6 +69,19 @@ const BlogDetail = () => {
     };
 
     fetchBlogs();
+  }, [id]);
+
+  // 2. Increment views (only once per load)
+  useEffect(() => {
+    const incrementView = async () => {
+      if (id) {
+        await fetch(`${process.env.REACT_APP_API_URL}/blogs/${id}/view`, {
+          method: "POST",
+        });
+      }
+    };
+
+    incrementView();
   }, [id]);
 
   if (!blog) return <div>Loading...</div>;
@@ -106,7 +114,8 @@ const BlogDetail = () => {
       <div className="blog-content-container">
         <h1>{blog.title}</h1>
         <div className="author-content">
-          Posted by: {blog.author} · Published: {formatDate(blog.created_at)}
+          Posted by: {blog.author} · Published: {formatDate(blog.created_at)} ·
+          Views: {blog.views}
         </div>
 
         <div
