@@ -1,0 +1,122 @@
+/* DashboardEnquiries.css */
+
+.enquiries-container {
+  padding: 24px;
+}
+
+.enquiries-card {
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background: #fff;
+  overflow: hidden;
+}
+
+.enquiries-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px 16px;
+}
+
+.search-input {
+  flex: 1;
+  max-width: 300px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 9999px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-input:focus {
+  border-color: #3b82f6;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.filter-button:hover {
+  background: #f9fafb;
+}
+
+.enquiries-list {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.enquiry-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.enquiry-item:hover {
+  background: #f9fafb;
+}
+
+.enquiry-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.unread-dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  flex-shrink: 0;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.badge-blue {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.badge-pink {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+.enquiry-name {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  color: #111827;
+}
+
+.enquiry-email {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.enquiry-date {
+  font-size: 13px;
+  color: #9ca3af;
+  flex-shrink: 0;
+  margin-left: 12px;
+}

@@ -72,6 +72,7 @@ function Login() {
             "Role mismatch. Please check your login credentials."
           );
         }
+        localStorage.setItem("role", data.role);
         console.log("Logged in as:", data.role);
       }
 

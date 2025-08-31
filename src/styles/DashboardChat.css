@@ -1,0 +1,349 @@
+.chat-page {
+  display: flex;
+  height: calc(100vh - 60px); /* leave space for your top header */
+  background: #f9f9f9;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+/* ---------- Left Sidebar ---------- */
+.chat-sidebar {
+  width: 20%;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.chat-sidebar h2 {
+  padding: 16px;
+  margin: 0;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.chat-list {
+  flex: 1;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 0px 10px 0px 10px;
+  border-radius: 10px;
+}
+
+.chat-item:hover {
+  background: #f7f7f7;
+}
+
+.chat-item.active {
+  background: #f2f4fa;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.chat-info {
+  flex: 1;
+  position: relative;
+}
+
+.chat-info h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.chat-info p {
+  margin: 0;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #423e3e;
+}
+
+.chat-time {
+  font-size: 12px;
+  color: #999;
+}
+
+/* ---------- Middle Chat Window ---------- */
+.chat-window {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  background: #f0f2f5;
+}
+
+.chat-title {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* small spacing between name and star */
+}
+
+.chat-title h4 {
+  font-size: 16px; /* your preferred text size */
+  margin: 0;
+  color: #423e3e;
+}
+
+.chatlist-star {
+  font-size: 14px; /* same size as h4 text */
+  cursor: pointer;
+  color: gold;
+  display: none; /* hidden by default */
+  margin-left: 6px;
+}
+
+.chatlist-star.visible {
+  display: inline; /* always show if starred */
+}
+
+.chat-item:hover .chatlist-star {
+  display: inline; /* only show when hovering the chat-item */
+}
+
+.chatlist-star:hover {
+  color: gold; /* gold highlight on hover */
+}
+
+.chat-header {
+  padding: 14px !important;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* pushes star to far right */
+}
+
+.chat-header-star {
+  cursor: pointer;
+  color: gold;
+  margin-left: auto;
+}
+
+.chat-header-star:hover {
+  color: gold;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.chat-bubble {
+  max-width: 70%;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.chat-bubble.sent {
+  background: #000839;
+  color: #fff;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-bubble.received {
+  background: #f2f4fa;
+  border: none;
+  color: #423e3e;
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+}
+
+.msg-time {
+  display: block;
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+  text-align: right;
+}
+
+.chat-input {
+  display: flex;
+  padding: 12px;
+  background: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  font-family: "Hanken Grotesk", Arial !important;
+}
+
+.chat-input button {
+  margin-left: 8px;
+  padding: 10px 16px;
+  border: none;
+  background: white;
+  color: #423e3e;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-input button:hover {
+  background: #000839;
+}
+
+/* ---------- Right Sidebar (Client Details) ---------- */
+.chat-details {
+  width: 20%;
+  background: #fff;
+  border-left: 1px solid #ddd;
+  padding: 16px;
+}
+
+.chat-details strong {
+  font-size: 20px;
+  color: #423e3e;
+}
+
+.chat-details h3 {
+  margin-top: 0;
+  font-size: 32px;
+  color: #423e3e;
+}
+
+.chat-details p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #423e3e;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.chat-details button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  background: #007bff;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-details button:hover {
+  background: #000839;
+  color: white;
+}
+
+.main-content.chat-mode {
+  padding: 0 !important;
+  background: #f9f9f9;
+}
+
+.chat-filters {
+  display: flex;
+  margin: 0.5rem 0 1rem;
+  padding: 0 0.5rem;
+  gap: 10px;
+  font-family: "Hanken Grotesk", Arial !important;
+}
+
+.filter-btn {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem; /* add some horizontal padding */
+  font-size: 16px;
+  cursor: pointer;
+  color: #423e3e;
+  transition: color 0.2s, font-weight 0.2s;
+  border-radius: 50px;
+  gap: 5px;
+  font-family: "Hanken Grotesk", Arial !important;
+  flex: 0 0 auto; /* don't stretch, size based on content */
+  width: auto; /* shrink to fit text */
+}
+
+.filter-btn.active {
+  color: white;
+  background-color: #000839;
+}
+
+.chat-back-btn {
+  background: none;
+  border: none;
+  color: #423e34;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  margin-top: 20px;
+  font-family: inherit;
+  gap: 8px;
+  margin-left: 20px; /* explicitly align left */
+  width: 210px;
+  font-family: "Hanken Grotesk", Arial !important;
+}
+
+.chat-back-btn:hover {
+  color: #000839;
+  border: 1px solid #000839;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.chat-header-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.chat-header h3 {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #423e3e;
+  margin-left: 5px;
+}
+
+.chat-header h3 {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #423e3e;
+  margin-left: 5px;
+}
+
+.client-details-btns {
+  margin-top: 50px;
+}
+
+.client-details-btns button {
+  background-color: white;
+  color: #000839;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 16px;
+  border: 1px solid #000839;
+}

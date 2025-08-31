@@ -1,0 +1,291 @@
+.calendar-page-container {
+  padding: 40px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: #fff;
+  margin-top: 20px;
+}
+
+.calendar-top-header {
+  font-size: 36px;
+}
+
+/* ===== Calendar Container ===== */
+.fc {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+/* ===== Toolbar (header) ===== */
+.fc-toolbar.fc-header-toolbar {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Title (month + year) */
+.fc-toolbar-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ===== Nav Arrows ===== */
+.fc-prev-button,
+.fc-next-button {
+  background-color: #fff !important;
+  border-radius: 8px !important;
+  border: 1px solid #ddd !important;
+  color: #423e3e !important;
+  transition: background 0.2s ease !important;
+  margin: 0 4px !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.fc-prev-button:hover,
+.fc-next-button:hover {
+  background: #f5f5f5 !important;
+}
+
+/* ===== Custom Dropdown ===== */
+.fc-toolbar .fc-custom-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.fc-custom-dropdown button {
+  border-radius: 20px;
+  padding: 6px 14px;
+  background: #fff;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.fc-custom-dropdown button:hover {
+  border-color: #2cb1bc;
+}
+
+/* Dropdown menu */
+.fc-custom-dropdown .dropdown-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+  min-width: 120px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.fc-custom-dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+.fc-custom-dropdown .dropdown-menu div {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.fc-custom-dropdown .dropdown-menu div:hover {
+  background: #f4f4f4;
+}
+
+/* ===== Today button ===== */
+.fc-today-button {
+  border-radius: 20px !important;
+  padding: 6px 16px !important;
+  font-weight: 600 !important;
+  background: #fff !important;
+  border: 1px solid #ddd !important;
+  color: #333 !important;
+}
+
+.fc-today-button:hover {
+  border-color: #2cb1bc !important;
+}
+
+/* ===== Add (+) Button ===== */
+.fc-add-button {
+  background: #0a0a3c !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 18px !important;
+  cursor: pointer;
+}
+
+/* ===== Table Styling ===== */
+.fc .fc-col-header-cell {
+  background: #fafafa;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  padding: 8px 0;
+}
+
+.fc .fc-daygrid-day {
+  border: 1px solid #eee;
+}
+
+.fc .fc-daygrid-day-number {
+  font-size: 12px;
+  font-weight: 500;
+  color: #444;
+  padding: 4px 6px;
+}
+
+/* Today highlight */
+.fc .fc-day-today {
+  background: #f0fafb !important;
+  border: 1px solid #2cb1bc !important;
+}
+
+/* ===== Events ===== */
+.fc-event {
+  border: none;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.fc-daygrid-event {
+  margin-top: 4px;
+}
+
+.fc-timegrid-event {
+  padding: 4px 6px;
+}
+
+/* Example colors */
+.fc-event-blue {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.fc-event-pink {
+  background: #ffe4e6;
+  color: #be123c;
+}
+
+.fc-event-gray {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.left-controls .nav-btn {
+  padding: 12px !important;
+  margin-right: 14px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  color: #423e3e;
+}
+
+.left-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.right-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.right-controls .dropdown-btn,
+.today-btn {
+  padding: 12px 18px 12px 18px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  cursor: pointer;
+  font: inherit;
+  color: #423e3e;
+}
+
+.right-controls .add-btn {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  cursor: pointer;
+  font: inherit;
+  color: #423e3e;
+}
+
+/* Remove or comment out old .fc-custom-dropdown rules */
+
+/* ✅ Custom Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* pushes text left, icon right */
+  max-width: 120px; /* your fixed width */
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.dropdown-btn .dropdown-icon {
+  font-size: 12px;
+  margin-left: 6px;
+  color: #666;
+}
+
+.calendar-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.calendar-dropdown-menu div {
+  padding: 8px;
+  cursor: pointer;
+  text-align: center; /* align text nicely */
+}
+
+.calendar-dropdown-menu div:hover {
+  background: #f5f5f5;
+}

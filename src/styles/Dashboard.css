@@ -1,9 +1,16 @@
 /* Dashboard.css */
 .dashboard {
   display: flex;
-  height: 100vh;
-  font-family: "Hanken Grotesk", Arial;
   flex-direction: column;
+  min-height: 100vh; /* instead of fixed height */
+  font-family: "Hanken Grotesk", Arial;
+}
+
+.layout-below-header {
+  flex: 1; /* takes remaining space after header */
+  display: flex;
+  overflow: hidden; /* prevents chat pushing extra scroll */
+  min-height: 0;
 }
 
 .sidebar {
@@ -14,7 +21,7 @@
   flex-direction: column;
   padding: 1rem;
   border-right: 1px solid #bbbcc0;
-  min-height: calc(100vh - 60px); /* Adjust height under header */
+  min-height: unset;
 }
 
 .sidebar-header img {
@@ -160,7 +167,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .search-form {
@@ -181,7 +188,7 @@
 }
 
 .greeting {
-  font-size: 1.5rem;
+  font-size: 48px;
   font-weight: bold;
   margin-bottom: 1rem;
   color: #423e3e;
@@ -192,8 +199,8 @@
   align-items: center;
   background-color: white;
   padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  border: 1px solid #ddd;
 }
 
 .progress-ring {
@@ -266,4 +273,6 @@
   justify-content: space-between;
   align-items: center;
   width: 95%; /* make it expand the full width of the button */
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
