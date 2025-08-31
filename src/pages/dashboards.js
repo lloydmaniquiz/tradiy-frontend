@@ -11,7 +11,8 @@ export default function Dashboard() {
   const [workbenchOpen, setWorkbenchOpen] = useState(false);
   const [isHelpdeskOpen, setIsHelpdeskOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [role, setRole] = useState(localStorage.getItem("role") || "");
+  const role = localStorage.getItem("role") || "";
+
 
   const location = useLocation(); // 👈 get current route
   const isChatRoute = location.pathname.includes("/chat"); // 👈 true on /dashboard/chat
