@@ -122,7 +122,7 @@ const BlogsPage = () => {
           </button>
         </div>
         <hr className="divider" />
-        <div className="search-container">
+        <div className="search-container1">
           <input
             type="text"
             placeholder="Search blogs..."

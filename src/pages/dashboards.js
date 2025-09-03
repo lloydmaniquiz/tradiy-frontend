@@ -6,13 +6,28 @@ import FastForward from "../images/fast-forward.png";
 import ArrowUp from "../images/arrow-up.png";
 import ArrowDown from "../images/arrow-down.png";
 import Divider from "../landing-page/divider";
+import BellIcon from "../images/bell.png";
+import SettingsIcon from "../images/settings.png";
+import defaultPhoto from "../images/default-user.png";
+import DashboardIcon from "../images/db.png";
+import CalendarIcon from "../images/calendar.png";
+import ChatIcon from "../images/chats.png";
+import QAIcon from "../images/qa.png";
+import QuotesIcon from "../images/quotes.png";
+import JobsIcon from "../images/jobs.png";
+import InvoicesIcon from "../images/clients-blue.png";
+import ReviewsIcon from "../images/reviews.png";
+import ReferralsIcon from "../images/referrals.png";
+import EnquiriesIcon from "../images/enq.png";
+import CustomersIcon from "../images/clients-blue.png";
+import PaymentsIcon from "../images/payments.png";
+import ReportsIcon from "../images/reports.png";
 
-export default function Dashboard() {
+export default function Dashboard({ user }) {
   const [workbenchOpen, setWorkbenchOpen] = useState(false);
   const [isHelpdeskOpen, setIsHelpdeskOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const role = localStorage.getItem("role") || "";
-
 
   const location = useLocation(); // 👈 get current route
   const isChatRoute = location.pathname.includes("/chat"); // 👈 true on /dashboard/chat
@@ -50,22 +65,26 @@ export default function Dashboard() {
           <img src={TradiyLogo} alt="Tradiy Hero logo" width="56" />
         </div>
         <div className="header-right">
-          <button className="icon-button">
-            <i className="far fa-bell"></i>
-            <span className="notification-dot"></span>
-          </button>
-          <button className="icon-button">
-            <i className="fas fa-cog"></i>
-          </button>
+          <div className="header-right">
+            <button className="icon-button">
+              <img src={BellIcon} alt="Notifications" className="icon-img" />
+              <span className="notification-dot"></span>
+            </button>
+
+            <button className="icon-button">
+              <img src={SettingsIcon} alt="Settings" className="icon-img" />
+            </button>
+          </div>
           <button className="profile-button">
             <img
-              src="https://storage.googleapis.com/a1aa/image/fbf9999e-513e-4e59-c928-36b57757d0d0.jpg"
-              alt="Profile of Jacob Butler"
+              src={user?.profilePhoto || defaultPhoto}
+              alt={`Profile of ${user?.name || "User"}`}
               width="32"
               height="32"
+              className="profile-avatar-dropdown"
             />
-            <span>Jacob Butler</span>
-            <i className="fas fa-chevron-down"></i>
+            <span>{user?.name || "Guest"}</span>
+            <i className="fas fa-chevron-down profile-chevron"></i>
           </button>
         </div>
       </header>
@@ -92,10 +111,10 @@ export default function Dashboard() {
                   <NavLink
                     to="quick-actions"
                     className={({ isActive }) =>
-                      isActive ? "nav-item active" : "nav-item"
+                      isActive ? "db-nav-item active" : "db-nav-item"
                     }
                   >
-                    <i className="fas fa-bicycle"></i>
+                    <img src={QAIcon} alt="Dashboard" className="nav-icon" />
                     <span className="label">Quick Action</span>
                   </NavLink>
                 )}
@@ -104,28 +123,36 @@ export default function Dashboard() {
                   to="dashboard-home"
                   end
                   className={({ isActive }) =>
-                    isActive ? "nav-item active" : "nav-item"
+                    isActive ? "db-nav-item active" : "db-nav-item"
                   }
                 >
-                  <i className="fas fa-th-large"></i>
+                  <img
+                    src={DashboardIcon}
+                    alt="Dashboard"
+                    className="nav-icon"
+                  />
                   <span className="label">Dashboard</span>
                 </NavLink>
                 <NavLink
                   to="calendar"
                   className={({ isActive }) =>
-                    isActive ? "nav-item active" : "nav-item"
+                    isActive ? "db-nav-item active" : "db-nav-item"
                   }
                 >
-                  <i className="far fa-calendar-alt"></i>
+                  <img
+                    src={CalendarIcon}
+                    alt="Dashboard"
+                    className="nav-icon"
+                  />
                   <span className="label">Calendar</span>
                 </NavLink>
                 <NavLink
                   to="chat"
                   className={({ isActive }) =>
-                    isActive ? "nav-item active" : "nav-item"
+                    isActive ? "db-nav-item active" : "db-nav-item"
                   }
                 >
-                  <i className="far fa-comment-alt"></i>
+                  <img src={ChatIcon} alt="Dashboard" className="nav-icon" />
                   <span className="label">Chat</span>
                 </NavLink>
                 <Divider />
@@ -136,14 +163,18 @@ export default function Dashboard() {
                     <NavLink
                       to="enquiries"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="fas fa-question-circle"></i>
+                      <img
+                        src={EnquiriesIcon}
+                        alt="Dashboard"
+                        className="nav-icon"
+                      />
                       <span className="label">Enquiries</span>
                     </NavLink>
 
-                    <button className="nav-item" onClick={toggleWorkbench}>
+                    <button className="db-nav-item" onClick={toggleWorkbench}>
                       <div className="text-button-wrapper">
                         <span className="helpdesk-text">Workbench</span>
                         <img
@@ -158,19 +189,17 @@ export default function Dashboard() {
                         <NavLink
                           to="workbench/profile"
                           className={({ isActive }) =>
-                            isActive ? "nav-item active" : "nav-item"
+                            isActive ? "db-nav-item active" : "db-nav-item"
                           }
                         >
-                          <i className="fas fa-user"></i>
                           <span className="label">Profile</span>
                         </NavLink>
                         <NavLink
                           to="workbench/business"
                           className={({ isActive }) =>
-                            isActive ? "nav-item active" : "nav-item"
+                            isActive ? "db-nav-item active" : "db-nav-item"
                           }
                         >
-                          <i className="fas fa-briefcase"></i>
                           <span className="label">Business</span>
                         </NavLink>
                       </div>
@@ -179,55 +208,79 @@ export default function Dashboard() {
                     <NavLink
                       to="quotes"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="far fa-file-alt"></i>
+                      <img
+                        src={QuotesIcon}
+                        alt="Dashboard"
+                        className="nav-icon"
+                      />
                       <span className="label">Quotes</span>
                     </NavLink>
                     <NavLink
                       to="jobs"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="fas fa-truck"></i>
+                      <img
+                        src={JobsIcon}
+                        alt="Dashboard"
+                        className="nav-icon"
+                      />
                       <span className="label">Jobs</span>
                     </NavLink>
                     <NavLink
                       to="clients"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="fas fa-users"></i>
+                      <img
+                        src={CustomersIcon}
+                        alt="Dashboard"
+                        className="nav-icon"
+                      />
                       <span className="label">Customers</span>
                     </NavLink>
                     <NavLink
                       to="payments"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="far fa-credit-card"></i>
+                      <img
+                        src={PaymentsIcon}
+                        alt="Dashboard"
+                        className="nav-icon"
+                      />
                       <span className="label">Payments</span>
                     </NavLink>
                     <NavLink
                       to="reviews"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="far fa-star"></i>
+                      <img
+                        src={ReviewsIcon}
+                        alt="Dashboard"
+                        className="nav-icon"
+                      />
                       <span className="label">Reviews</span>
                     </NavLink>
                     <NavLink
                       to="reports"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="far fa-chart-bar"></i>
+                      <img
+                        src={ReportsIcon}
+                        alt="Dashboard"
+                        className="nav-icon"
+                      />
                       <span className="label">Reports</span>
                     </NavLink>
 
@@ -241,37 +294,53 @@ export default function Dashboard() {
                     <NavLink
                       to="quotes"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="far fa-file-alt"></i>
+                      <img
+                        src={QuotesIcon}
+                        alt="Dashboard"
+                        className="nav-icon"
+                      />
                       <span className="label">Quotes</span>
                     </NavLink>
                     <NavLink
                       to="jobs"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="fas fa-truck"></i>
+                      <img
+                        src={JobsIcon}
+                        alt="Dashboard"
+                        className="nav-icon"
+                      />
                       <span className="label">Jobs</span>
                     </NavLink>
                     <NavLink
                       to="invoices"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="fas fa-file-invoice"></i>
+                      <img
+                        src={InvoicesIcon}
+                        alt="Dashboard"
+                        className="nav-icon"
+                      />
                       <span className="label">Invoices</span>
                     </NavLink>
                     <NavLink
                       to="reviews"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="far fa-star"></i>
+                      <img
+                        src={ReviewsIcon}
+                        alt="Dashboard"
+                        className="nav-icon"
+                      />
                       <span className="label">Reviews</span>
                     </NavLink>
                   </>
@@ -279,7 +348,7 @@ export default function Dashboard() {
 
                 {/* Shared Helpdesk + Referrals */}
                 <button
-                  className="nav-item helpdesk-button"
+                  className="db-nav-item helpdesk-button"
                   onClick={toggleHelpdesk}
                 >
                   <div className="text-button-wrapper">
@@ -296,19 +365,17 @@ export default function Dashboard() {
                     <NavLink
                       to="helpdesk/tickets"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="fas fa-ticket-alt"></i>
                       <span className="label">Tickets</span>
                     </NavLink>
                     <NavLink
                       to="helpdesk/resources"
                       className={({ isActive }) =>
-                        isActive ? "nav-item active" : "nav-item"
+                        isActive ? "db-nav-item active" : "db-nav-item"
                       }
                     >
-                      <i className="fas fa-book"></i>
                       <span className="label">Resources</span>
                     </NavLink>
                   </div>
@@ -316,10 +383,14 @@ export default function Dashboard() {
                 <NavLink
                   to="referrals"
                   className={({ isActive }) =>
-                    isActive ? "nav-item active" : "nav-item"
+                    isActive ? "db-nav-item active" : "db-nav-item"
                   }
                 >
-                  <i className="fas fa-user-friends"></i>
+                  <img
+                    src={ReferralsIcon}
+                    alt="Dashboard"
+                    className="nav-icon"
+                  />
                   <span className="label">Referrals</span>
                 </NavLink>
 

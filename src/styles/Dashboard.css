@@ -30,8 +30,8 @@
 }
 
 .sidebar-title {
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 800;
+  font-size: 20px;
   margin: 0;
   color: #2f2f2f;
   letter-spacing: 0.05em;
@@ -51,7 +51,7 @@
   background-color: #fdfeff;
 }
 
-.sidebar-nav .nav-item {
+.sidebar-nav .db-nav-item {
   display: flex;
   align-items: flex-start;
   padding: 0.2rem;
@@ -63,17 +63,17 @@
   text-align: left;
   gap: 0.5rem;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 20px;
   font-weight: 500;
   padding-left: 20px;
 }
 
-.sidebar-nav .nav-item.disabled {
+.sidebar-nav .db-nav-item.disabled {
   color: #423e3e;
   cursor: default;
 }
 
-.sidebar-nav .nav-item.active {
+.sidebar-nav .db-nav-item.active {
   background-color: #ecedf2;
   border-radius: 30px;
   font-weight: 600;
@@ -106,8 +106,7 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-right: 20px;
+  gap: 0.5rem;
 }
 
 .header-left {
@@ -135,12 +134,32 @@
   background-color: #fdfeff;
 }
 
+.profile-avatar-dropdown {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .icon-button {
-  background: none;
+  background-color: #f2f4fa;
   border: none;
-  position: relative;
   cursor: pointer;
-  font-size: 1.2rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.icon-img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block; /* better than inline-block here */
 }
 
 .notification-dot {
@@ -158,9 +177,32 @@
   align-items: center;
   background: none;
   border: none;
-  gap: 0.5rem;
-  font-weight: bold;
+  gap: 8px; /* space between items */
+  font-weight: 500;
   cursor: pointer;
+  background-color: #f2f4fa;
+  color: #423e3e;
+  font-family: "Hanken Grotesk", Arial;
+  padding: 5px;
+  border-radius: 50px;
+  margin-right: 14px;
+  height: 36px;
+}
+
+.profile-button span {
+  font-size: 14px;
+  line-height: 1; /* keeps text aligned properly */
+}
+
+.profile-chevron {
+  font-size: 12px;
+  color: #423e3e;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* stretch so it centers properly */
+  margin-right: 6px;
 }
 
 .top-bar {
@@ -236,25 +278,46 @@
   color: #423e3e;
 }
 
-.nav-item .label {
-  margin-left: 0; /* ensures no added spacing */
-  color: #423e3e;
-  font-weight: 500;
-  font-size: 1rem;
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0; /* keeps icon from shrinking */
 }
 
-.nav-item.active .label {
-  font-weight: 600; /* or bold */
-  color: #423e3e;
+.db-nav-item .label {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1; /* keeps baseline alignment */
+  color: #423e3e !important;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.db-nav-item.active .label {
+  font-weight: 600;
+  color: #423e3e !important;
+  margin: 0 auto;
+}
+
+.db-nav-item {
+  display: flex;
+  align-items: center !important; /* centers icon + text vertically */
+  gap: 16px !important; /* adjust spacing between icon and text */
+  height: 48px; /* match button height like 2nd image */
+  padding: 0 20px;
+  border-radius: 50px;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  font-size: 18px; /* bigger text like 2nd image */
+  font-weight: 600; /* make it bold */
+  text-decoration: none;
+  color: #333; /* adjust as needed */
+  margin-top: 10px !important;
 }
 
 .time-display {
   font-weight: 500;
   color: #423e3e;
-}
-
-.nav-item {
-  font-family: "Hanken Grotesk", Arial;
 }
 
 .helpdesk-button {
@@ -275,4 +338,17 @@
   width: 95%; /* make it expand the full width of the button */
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
+}
+
+.find-trader-btn {
+  padding: 12px 20px 12px 20px;
+  margin-top: 30px;
+  font-family: "Hanken Grotesk", Arial;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+  color: #423e3e;
+  background-color: #ecedf2;
 }

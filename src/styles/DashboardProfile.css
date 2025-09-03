@@ -1,0 +1,184 @@
+/* Container */
+.db-profile-container {
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  color: #333;
+  padding: 20px;
+}
+
+/* Header */
+.db-profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #fff;
+}
+
+/* Profile Info */
+.db-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.db-profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #eee;
+  object-fit: cover;
+}
+
+.db-profile-name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.db-profile-id,
+.db-profile-email,
+.db-profile-phone {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.db-profile-verified {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #28a745;
+  font-weight: 600;
+}
+
+/* Feedback Section */
+.db-profile-feedback {
+  min-width: 200px;
+}
+
+.db-profile-feedback h4 {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #444;
+}
+
+.db-profile-toggle-item {
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 6px 12px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s;
+  background: #fafafa;
+}
+
+.db-profile-toggle-item:hover {
+  background: #f0f0f0;
+}
+
+.db-profile-toggle-item.active {
+  background: #fcbf49;
+  color: #fff;
+  border-color: #fcbf49;
+  font-weight: 600;
+}
+
+/* Section Container */
+.db-profile-section {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  background: #fff;
+  margin-bottom: 20px;
+}
+
+.db-profile-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.db-profile-section-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.db-profile-edit-btn {
+  border: none;
+  background: #eee;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.db-profile-edit-btn:hover {
+  background: #ddd;
+}
+
+/* About Yourself */
+.db-profile-about h4 {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #444;
+}
+
+.db-profile-info-row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.db-profile-label {
+  width: 120px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #555;
+}
+
+.db-profile-value {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Business Profile */
+.db-profile-business-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.db-profile-business-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #eee;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fafafa;
+  flex: 1 1 45%;
+}
+
+.db-profile-business-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.db-profile-business-card h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.db-profile-business-card p {
+  margin: 2px 0;
+  font-size: 13px;
+  color: #555;
+}

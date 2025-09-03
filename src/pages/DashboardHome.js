@@ -1,12 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../styles/DashboardHome.css";
 
 export default function DashboardHome() {
+  const [role, setRole] = useState(null);
+
+  useEffect(() => {
+    // Example: role is stored like { role: "tradesperson" } or just "tradesperson"
+    const storedRole = localStorage.getItem("role");
+    if (storedRole) {
+      setRole(storedRole.toLowerCase()); // normalize to lowercase
+    } else {
+      setRole("tradesperson"); // fallback default
+    }
+  }, []);
+
+  if (!role) {
+    return <div>Loading dashboard...</div>;
+  }
+
+  return (
+    <div className="dashboard-container">
+      {role === "homeowner" ? (
+        <HomeownerDashboard />
+      ) : (
+        <TradespersonDashboard />
+      )}
+    </div>
+  );
+}
+
+/* ---------------- Tradesperson Dashboard ---------------- */
+function TradespersonDashboard() {
   const [date, setDate] = useState(new Date());
 
-  // Demo data
   const stats = {
     enquiries: 12,
     quotes: 12,
@@ -107,7 +135,6 @@ export default function DashboardHome() {
     },
   ];
 
-  // Booking dates to highlight
   const bookingDates = [
     new Date(2024, 11, 21),
     new Date(2024, 11, 22),
@@ -125,8 +152,10 @@ export default function DashboardHome() {
   };
 
   return (
-    <div className="dashboard-container">
+    <>
       <h1 className="greeting">Good evening, Jacob!</h1>
+
+      {/* Profile Completion */}
       <section className="profile-completion">
         <div className="progress-ring">
           <svg viewBox="0 0 96 96">
@@ -157,47 +186,21 @@ export default function DashboardHome() {
           </p>
         </div>
       </section>
+
       {/* Stats Cards */}
       <section className="stats-card">
-        <div className="stat-item">
-          <div className="stat-top">
-            <div className="stat-icon">
-              <i className="fas fa-comments"></i>
-            </div>
-            <span className="stat-title">Enquiries</span>
-          </div>
-          <span className="stat-value">{stats.enquiries}</span>
-        </div>
-
-        <div className="stat-item">
-          <div className="stat-top">
-            <div className="stat-icon">
-              <i className="fas fa-file-alt"></i>
-            </div>
-            <span className="stat-title">Quotes</span>
-          </div>
-          <span className="stat-value">{stats.quotes}</span>
-        </div>
-
-        <div className="stat-item">
-          <div className="stat-top">
-            <div className="stat-icon">
-              <i className="fas fa-briefcase"></i>
-            </div>
-            <span className="stat-title">Jobs</span>
-          </div>
-          <span className="stat-value">{stats.jobs}</span>
-        </div>
-
-        <div className="stat-item">
-          <div className="stat-top">
-            <div className="stat-icon">
-              <i className="fas fa-handshake"></i>
-            </div>
-            <span className="stat-title">Clients</span>
-          </div>
-          <span className="stat-value">{stats.clients}</span>
-        </div>
+        <StatCard
+          icon="fas fa-comments"
+          title="Enquiries"
+          value={stats.enquiries}
+        />
+        <StatCard icon="fas fa-file-alt" title="Quotes" value={stats.quotes} />
+        <StatCard icon="fas fa-briefcase" title="Jobs" value={stats.jobs} />
+        <StatCard
+          icon="fas fa-handshake"
+          title="Clients"
+          value={stats.clients}
+        />
       </section>
 
       {/* To-do & Invoices */}
@@ -224,6 +227,7 @@ export default function DashboardHome() {
             ))}
           </ul>
         </div>
+
         <div className="card">
           <h3>
             <i className="fas fa-file-invoice"></i> Invoices
@@ -282,6 +286,150 @@ export default function DashboardHome() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
+
+/* ---------------- Homeowner Dashboard ---------------- */
+function HomeownerDashboard() {
+  const reviews = 12;
+  const bookmarks = 12;
+
+  const schedule = [
+    {
+      id: "JOB-7890",
+      title: "Service Type",
+      time: "08:00",
+      trader: "Ryan Johnson",
+    },
+    {
+      id: "QT-HJKL-0987",
+      title: "Quote Visit",
+      time: "10:00",
+      trader: "Jacob Butler",
+    },
+    { id: "JOB-5678", title: "Review Job", time: "—", trader: "Evan Watson" },
+    {
+      id: "QT-OPQR-6789",
+      title: "Quote Estimate",
+      time: "—",
+      trader: "Daniel Hunt",
+    },
+  ];
+
+  const invoices = [
+    {
+      id: "INV-D-141-516",
+      name: "Service Name A",
+      due: "25 January 2025",
+      status: "UPCOMING",
+    },
+    {
+      id: "INV-D-141-516",
+      name: "Service Name B",
+      due: "15 January 2025",
+      status: "OVERDUE",
+    },
+    {
+      id: "INV-D-141-516",
+      name: "Service Name A",
+      due: "25 January 2025",
+      status: "PROCESSING",
+    },
+    {
+      id: "INV-D-141-516",
+      name: "Service Name B",
+      due: "15 January 2025",
+      status: "PAID",
+    },
+  ];
+
+  return (
+    <>
+      <h1 className="greeting">Good evening, Charlotte!</h1>
+
+      <div className="profile-header">
+        <div className="profile-section profile-left">
+          <img
+            src="/path/to/profile.jpg"
+            alt="Charlotte"
+            className="profile-avatar"
+          />
+          <div>
+            <h2>Charlotte Knight</h2>
+            <p>Member since 2024</p>
+            <ul>
+              <li>Identity</li>
+              <li>Email Address</li>
+              <li>Phone Number</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="profile-section profile-stat">
+          <p>Reviews Received</p>
+          <span>{reviews}</span>
+        </div>
+
+        <div className="profile-section profile-stat">
+          <p>Bookmarks</p>
+          <span>{bookmarks}</span>
+        </div>
+      </div>
+
+      <button className="similar-trades-btn">
+        Similar Trades in your Area
+      </button>
+
+      <div className="grid-two">
+        <div className="card">
+          <h3>Today's Schedule</h3>
+          <ul>
+            {schedule.map((item) => (
+              <li key={item.id}>
+                <strong>
+                  {item.id}: {item.title}
+                </strong>
+                <p>Trader: {item.trader}</p>
+                <span>{item.time}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="card">
+          <h3>Invoices</h3>
+          <ul>
+            {invoices.map((inv, i) => (
+              <li key={i}>
+                <span className={`status ${inv.status.toLowerCase()}`}>
+                  {inv.status}
+                </span>
+                <div>
+                  <strong>
+                    {inv.id}: {inv.name}
+                  </strong>
+                  <p>Due: {inv.due}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* ---------------- Small Reusable Components ---------------- */
+function StatCard({ icon, title, value }) {
+  return (
+    <div className="stat-item">
+      <div className="stat-top">
+        <div className="stat-icon">
+          <i className={icon}></i>
+        </div>
+        <span className="stat-title">{title}</span>
+      </div>
+      <span className="stat-value">{value}</span>
     </div>
   );
 }

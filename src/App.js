@@ -60,6 +60,7 @@ import Divider from "./landing-page/divider";
 import LocalTrades from "./landing-page/local-trades";
 import PrivateRoute from "./components/PrivateRoute";
 import Bookmarks from "./pages/Bookmarks";
+import DashboardInvoices from "./pages/DashboardInvoices";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -309,6 +310,7 @@ function App() {
             <Route path="clients" element={<DashboardClients />} />
             <Route path="payments" element={<DashboardPayments />} />
             <Route path="reviews" element={<DashboardReviews />} />
+            <Route path="invoices" element={<DashboardInvoices />} />
             <Route path="reports" element={<DashboardReports />} />
             <Route path="workbench/profile" element={<DashboardProfile />} />
             <Route path="workbench/business" element={<DashboardBusiness />} />

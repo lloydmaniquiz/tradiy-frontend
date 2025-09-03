@@ -348,3 +348,196 @@ body {
   max-width: 100% !important;
   height: 100% !important;
 }
+
+/* ========================= */
+/* HOMEOWNER DASHBOARD STYLES */
+/* ========================= */
+
+.profile-header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal parts */
+  align-items: center;
+  gap: 20px; /* spacing between them */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.profile-section:not(:last-child) {
+  border-right: 1px solid #ddd; /* divider between columns */
+}
+
+.profile-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #423e3e;
+  flex-shrink: 0; /* prevents it from being squashed */
+}
+
+.profile-left h2 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+  color: #423e3e;
+}
+
+.profile-left p {
+  font-size: 14px;
+  color: #423e3e;
+  margin: 4px 0;
+}
+
+.profile-left ul {
+  margin: 6px 0 0;
+  padding-left: 16px;
+  font-size: 13px;
+  color: #555;
+}
+
+.profile-stats {
+  display: contents;
+  border-left: 1px solid #ddd;
+  margin-left: 32px;
+  padding-left: 32px;
+}
+
+.profile-stat {
+  flex: 1;
+  text-align: left;
+  padding: 0 24px;
+  position: relative;
+}
+
+.profile-stat:not(:last-child) {
+  border-right: 1px solid #ddd;
+}
+
+.profile-stat p {
+  font-size: 20px;
+  color: #423e3e;
+  margin-bottom: 6px;
+}
+
+.profile-stat span {
+  font-size: 48px;
+  font-weight: 800;
+  color: #423e3e;
+}
+
+/* Similar Trades Button */
+.similar-trades-btn {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 16px 0;
+  font-weight: 600;
+  background: #fafafa;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.similar-trades-btn:hover {
+  background: #2cb1bc;
+  color: #fff;
+}
+
+/* Schedule & Invoices */
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  background: #fff;
+}
+
+.card h3 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  color: #423e3e;
+}
+
+/* Schedule List */
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card ul li {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.card ul li:last-child {
+  border-bottom: none;
+}
+
+.card ul li strong {
+  color: #423e3e;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.card ul li p {
+  font-size: 12px;
+  color: #9f9f9f;
+  font-weight: 400;
+  margin: 2px 0;
+}
+
+.card ul li span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #423e3e;
+}
+
+/* Invoice Status Styling */
+.status {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+.status.upcoming {
+  background: #e8f2ff;
+  color: #568fd8;
+}
+
+.status.overdue {
+  background: #ffebf1;
+  color: #f32f6c;
+}
+
+.status.processing {
+  background: #fff8ef;
+  color: #d88715;
+}
+
+.status.paid {
+  background: #e2fae4;
+  color: #21a62a;
+}

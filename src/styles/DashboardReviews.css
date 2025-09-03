@@ -1,0 +1,287 @@
+/* Container */
+.db-reviews-container {
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  color: #333;
+  padding: 20px;
+}
+
+/* Header */
+.db-reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.db-reviews-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.db-reviews-business-select {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Stats */
+.db-reviews-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.db-reviews-card {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+}
+
+.db-reviews-card h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.db-reviews-number {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Tabs */
+.db-reviews-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+}
+
+.db-reviews-tab {
+  background: none;
+  border: none;
+  padding: 10px 0;
+  font-size: 14px;
+  cursor: pointer;
+  color: #666;
+  position: relative;
+}
+
+.db-reviews-tab.active {
+  font-weight: 600;
+  color: #1d2b64;
+}
+
+.db-reviews-tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #1d2b64;
+  border-radius: 2px;
+}
+
+/* Red count badge */
+.db-reviews-badge {
+  background: #ffeded;
+  color: #d32f2f;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+
+/* Review List */
+.db-reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.db-reviews-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px 20px;
+  background: #fff;
+}
+
+.db-reviews-info h4 {
+  font-size: 15px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.db-reviews-info p {
+  font-size: 13px;
+  color: #555;
+}
+
+.db-reviews-muted {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Button */
+.db-reviews-btn {
+  background: #1d2b64;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.db-reviews-btn:hover {
+  background: #14204a;
+}
+
+/* Pagination */
+.db-reviews-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.db-reviews-page {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.db-reviews-page.active {
+  background: #1d2b64;
+  color: #fff;
+  border-color: #1d2b64;
+}
+
+/* Container */
+.db-reviews-home-container {
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  color: #333;
+  padding: 20px;
+}
+
+/* Header */
+.db-reviews-home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.db-reviews-home-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Tabs */
+.db-reviews-home-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.db-reviews-home-tab {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #555;
+  padding: 8px 0;
+  position: relative;
+}
+
+.db-reviews-home-tab.active {
+  font-weight: 600;
+  color: #1d2b64;
+}
+
+.db-reviews-home-tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #1d2b64;
+  border-radius: 2px;
+}
+
+.db-reviews-home-badge {
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 2px 6px;
+  margin-left: 5px;
+}
+
+/* Review List */
+.db-reviews-home-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.db-reviews-home-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px 20px;
+  background: #fff;
+}
+
+.db-reviews-home-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.db-reviews-home-card p {
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.db-reviews-home-date {
+  font-size: 13px;
+  color: #666;
+}
+
+.db-reviews-home-muted {
+  font-size: 13px;
+  color: #999;
+}
+
+/* Buttons */
+.db-reviews-home-btn {
+  background: #0a0f3d;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.db-reviews-home-btn:hover {
+  background: #1d2b64;
+}
