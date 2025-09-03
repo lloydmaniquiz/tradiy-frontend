@@ -418,10 +418,6 @@ export default function Dashboard({ user }) {
               <div className="time-display">
                 {formatDate(currentTime)}, {formatTime(currentTime)}
               </div>
-              <form className="search-form">
-                <i className="fas fa-search"></i>
-                <input type="search" placeholder="Search" />
-              </form>
             </section>
           )}
           <Outlet />

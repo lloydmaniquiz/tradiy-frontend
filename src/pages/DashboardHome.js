@@ -12,7 +12,7 @@ export default function DashboardHome() {
     if (storedRole) {
       setRole(storedRole.toLowerCase()); // normalize to lowercase
     } else {
-      setRole("tradesperson"); // fallback default
+      setRole("Trader"); // fallback default
     }
   }, []);
 

@@ -6,9 +6,9 @@
 
 .enquiries-card {
   border-radius: 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   background: #fff;
   overflow: hidden;
+  border: 1px solid #ddd;
 }
 
 .enquiries-header {
@@ -16,7 +16,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e5e7eb;
-  padding: 12px 16px;
+  padding: 12px 24px;
 }
 
 .search-input {
@@ -57,11 +57,29 @@
 
 .enquiry-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  border-bottom: 1px solid #f0f0f0;
-  transition: background 0.2s;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.enquiry-dot-type {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 160px; /* fixed/consistent width for left column */
+}
+
+.enquiry-info {
+  flex: 1; /* takes middle space */
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.enquiry-date {
+  width: 80px; /* right column */
+  text-align: right;
+  color: #423e3e;
 }
 
 .enquiry-item:hover {
@@ -92,25 +110,25 @@
 }
 
 .badge-blue {
-  background: #e0f2fe;
-  color: #0369a1;
+  background: #eff5ff;
+  color: #476eb2;
 }
 
 .badge-pink {
-  background: #fce7f3;
-  color: #be185d;
+  background: #ffeaf8;
+  color: #a82078;
 }
 
 .enquiry-name {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   margin: 0;
-  color: #111827;
+  color: #423e3e;
 }
 
 .enquiry-email {
-  font-size: 13px;
-  color: #6b7280;
+  font-size: 16px;
+  color: #9f9f9f;
   margin: 0;
 }
 
@@ -119,4 +137,70 @@
   color: #9ca3af;
   flex-shrink: 0;
   margin-left: 12px;
+}
+
+.filter-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: 110%; /* below button */
+  right: 0; /* align right edge */
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 220px;
+  z-index: 100;
+}
+
+.filter-title {
+  color: #423e3e;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between checkbox and label text */
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  color: #423e3e;
+}
+
+.filter-option input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #423e3e; /* sets the checkbox tick color (modern browsers) */
+  cursor: pointer;
+}
+
+.enq-apply-button {
+  padding: 10px 16px;
+  border: none;
+  background-color: #000839;
+  color: white;
+  border-radius: 50px;
+  margin-top: 10px;
+}
+
+.enq-clear-button {
+  padding: 10px 16px;
+  border: 1px solid #000839;
+  background-color: white;
+  color: #000839;
+  border-radius: 50px;
+}
+
+.enq-filter-btns {
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+  gap: 10px; /* spacing between buttons */
 }
