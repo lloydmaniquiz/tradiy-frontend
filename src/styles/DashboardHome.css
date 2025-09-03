@@ -32,14 +32,15 @@ body {
   border: 1px solid #ddd;
   border-radius: 12px;
   overflow: hidden;
+  padding: 20px;
 }
 
 .stat-item {
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
   border-right: 1px solid #ddd;
 }
 
@@ -55,8 +56,8 @@ body {
 }
 
 .stat-icon {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #f3f4f6; /* light circle bg */
   display: flex;
@@ -64,6 +65,11 @@ body {
   justify-content: center;
   color: #4b5563;
   font-size: 16px;
+}
+
+.stat-icon img {
+  width: 24px;
+  height: 24px;
 }
 
 .stat-title {
@@ -102,6 +108,11 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.card img {
+  height: 32px;
+  width: 32px;
 }
 
 .empty-text {
@@ -301,6 +312,11 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.availability-card img {
+  height: 32px;
+  width: 32px;
 }
 
 .availability-subtext {

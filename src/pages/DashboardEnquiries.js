@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import "../styles/DashboardEnquiries.css";
+import { FaChevronDown } from "react-icons/fa";
 
 const enquiries = [
   {
@@ -112,8 +113,19 @@ export default function DashboardEnquiries() {
 
   return (
     <div className="enquiries-container">
+      <div className="db-quotes-header">
+        <h1 className="db-quotes-header-title">Enquiries</h1>
+
+        <div className="db-quotesheader-select-wrapper">
+          <select className="db-quotesheader-select">
+            <option>Business Name 1</option>
+            <option>Business Name 2</option>
+            <option>Business Name 3</option>
+          </select>
+          <FaChevronDown className="db-quotesheader-icon" />
+        </div>
+      </div>
       <div className="enquiries-card">
-        {/* Header with Search & Filters */}
         <div className="enquiries-header">
           <input
             type="text"

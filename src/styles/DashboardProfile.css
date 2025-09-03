@@ -8,25 +8,46 @@
 /* Header */
 .db-profile-header {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
-  border: 1px solid #ddd;
   border-radius: 12px;
-  padding: 20px;
   margin-bottom: 20px;
   background: #fff;
+  gap: 10px;
+  align-items: stretch; /* 🔑 makes children equal height */
 }
 
-/* Profile Info */
+/* Profile Info Card (70%) */
 .db-profile-info {
+  flex: 0 0 71%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 20px;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
+}
+
+/* Feedback Card (30%) */
+.db-profile-feedback {
+  flex: 0 0 28%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 30px;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.tradiy-banner {
+  width: 172px;
+  height: 40px;
 }
 
 .db-profile-avatar {
-  width: 90px;
-  height: 90px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   border: 3px solid #eee;
   object-fit: cover;
@@ -34,7 +55,7 @@
 
 .db-profile-name {
   margin: 0;
-  font-size: 20px;
+  font-size: 36px;
   font-weight: 600;
 }
 
@@ -42,7 +63,7 @@
 .db-profile-email,
 .db-profile-phone {
   margin: 2px 0;
-  font-size: 14px;
+  font-size: 20px;
   color: #555;
 }
 
@@ -54,47 +75,87 @@
   font-weight: 600;
 }
 
-/* Feedback Section */
-.db-profile-feedback {
-  min-width: 200px;
+.db-profile-feedback h4 {
+  font-size: 20px;
+  color: #423e3e;
+  margin: 0;
 }
 
-.db-profile-feedback h4 {
-  font-size: 14px;
-  margin-bottom: 12px;
-  color: #444;
+.db-profile-feedback-sub {
+  font-size: 16px;
+  color: #9f9f9f;
+  font-weight: 300;
+  margin-bottom: 20px;
 }
 
 .db-profile-toggle-item {
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  padding: 6px 12px;
-  margin-bottom: 8px;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-weight: 400;
+  font-size: 20px;
   cursor: pointer;
-  text-align: center;
-  transition: all 0.3s;
-  background: #fafafa;
+  position: relative;
 }
 
-.db-profile-toggle-item:hover {
-  background: #f0f0f0;
+.db-profile-toggle-item img {
+  width: 172px;
+  height: 40px;
 }
 
-.db-profile-toggle-item.active {
-  background: #fcbf49;
-  color: #fff;
-  border-color: #fcbf49;
-  font-weight: 600;
+/* Hide native checkbox */
+.db-profile-toggle-item input {
+  display: none;
+}
+
+/* Toggle switch track */
+.db-toggle-switch {
+  width: 36px;
+  height: 20px;
+  background: #ddd;
+  border-radius: 20px;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+
+/* Toggle knob */
+.db-toggle-switch::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+}
+
+/* Checked state */
+.db-profile-toggle-item input:checked + .db-toggle-switch {
+  background: #fbb040;
+}
+
+.db-profile-toggle-item input:checked + .db-toggle-switch::after {
+  transform: translateX(16px);
 }
 
 /* Section Container */
 .db-profile-section {
   border: 1px solid #ddd;
   border-radius: 12px;
-  padding: 20px;
+  padding: 30px;
   background: #fff;
   margin-bottom: 20px;
+}
+
+.db-profile-section h3 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 30px;
 }
 
 .db-profile-section-header {
@@ -106,28 +167,31 @@
 
 .db-profile-section-header h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 36px;
 }
 
 .db-profile-edit-btn {
   border: none;
-  background: #eee;
-  padding: 6px 14px;
-  border-radius: 8px;
+  background: white;
+  padding: 12px 28px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   transition: background 0.3s;
-}
-
-.db-profile-edit-btn:hover {
-  background: #ddd;
+  font-weight: 400;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  border: 1px solid #000839;
 }
 
 /* About Yourself */
 .db-profile-about h4 {
   margin-bottom: 10px;
-  font-size: 15px;
-  color: #444;
+  font-size: 20px;
+  color: #423e3e;
+  background-color: #ecedf2;
+  padding: 12px 16px;
+  width: 175px;
+  border-radius: 10px;
 }
 
 .db-profile-info-row {
@@ -138,13 +202,13 @@
 .db-profile-label {
   width: 120px;
   font-weight: 600;
-  font-size: 14px;
-  color: #555;
+  font-size: 16px;
+  color: #423e3e;
 }
 
 .db-profile-value {
-  font-size: 14px;
-  color: #333;
+  font-size: 16px;
+  color: #423e3e;
 }
 
 /* Business Profile */
@@ -158,10 +222,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  border: 1px solid #eee;
   padding: 12px;
   border-radius: 12px;
-  background: #fafafa;
   flex: 1 1 45%;
 }
 
@@ -173,12 +235,18 @@
 
 .db-profile-business-card h4 {
   margin: 0;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 600;
+  text-decoration: underline;
+}
+
+.db-profile-business-card img {
+  width: 84px;
+  height: 84px;
 }
 
 .db-profile-business-card p {
   margin: 2px 0;
-  font-size: 13px;
-  color: #555;
+  font-size: 18px;
+  color: #423e3e;
 }

@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../styles/DashboardHome.css";
+import EnquiriesIcon from "../images/enq.png";
+import QuotesIcon from "../images/quotes.png";
+import JobsIcon from "../images/jobs.png";
+import ClientsIcon from "../images/clients.png";
+import TodoIcon from "../images/todo.png";
+import InvoiceIcon from "../images/invoice.png";
+import CalenderIcon from "../images/calendar.png";
 
 export default function DashboardHome() {
   const [role, setRole] = useState(null);
@@ -190,24 +197,20 @@ function TradespersonDashboard() {
       {/* Stats Cards */}
       <section className="stats-card">
         <StatCard
-          icon="fas fa-comments"
+          icon={EnquiriesIcon}
           title="Enquiries"
           value={stats.enquiries}
         />
-        <StatCard icon="fas fa-file-alt" title="Quotes" value={stats.quotes} />
-        <StatCard icon="fas fa-briefcase" title="Jobs" value={stats.jobs} />
-        <StatCard
-          icon="fas fa-handshake"
-          title="Clients"
-          value={stats.clients}
-        />
+        <StatCard icon={QuotesIcon} title="Quotes" value={stats.quotes} />
+        <StatCard icon={JobsIcon} title="Jobs" value={stats.jobs} />
+        <StatCard icon={ClientsIcon} title="Clients" value={stats.clients} />
       </section>
 
       {/* To-do & Invoices */}
       <section className="grid-two">
         <div className="card">
           <h3>
-            <i className="fas fa-tasks"></i> To-do List
+            <img src={TodoIcon} alt="To-do-icon" /> To-do List
           </h3>
           <ul className="todo-list">
             {todos.map((item) => (
@@ -230,7 +233,7 @@ function TradespersonDashboard() {
 
         <div className="card">
           <h3>
-            <i className="fas fa-file-invoice"></i> Invoices
+            <img src={InvoiceIcon} alt="Invoices" /> Invoices
           </h3>
           <ul className="invoice-list">
             {invoices.map((inv, i) => (
@@ -254,7 +257,7 @@ function TradespersonDashboard() {
       {/* Availability */}
       <section className="availability-card">
         <h3>
-          <i className="fas fa-calendar-alt"></i> Your Availability
+          <img src={CalenderIcon} alt="Availability" /> Your Availability
         </h3>
         <p className="availability-subtext">
           Click on days in the calendar below to quickly toggle your
@@ -425,7 +428,7 @@ function StatCard({ icon, title, value }) {
     <div className="stat-item">
       <div className="stat-top">
         <div className="stat-icon">
-          <i className={icon}></i>
+          <img src={icon} alt={title} />
         </div>
         <span className="stat-title">{title}</span>
       </div>
