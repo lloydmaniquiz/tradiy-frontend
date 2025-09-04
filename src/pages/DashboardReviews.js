@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/DashboardReviews.css";
+import { FaChevronDown } from "react-icons/fa";
 
 export default function DashboardReviews() {
   const role = localStorage.getItem("role");
@@ -50,23 +51,28 @@ export default function DashboardReviews() {
   return (
     <div className="db-reviews-container">
       {/* Header */}
-      <div className="db-reviews-header">
-        <h2 className="db-reviews-title">Reviews</h2>
-        <select className="db-reviews-business-select">
-          <option>Business Name 1</option>
-          <option>Business Name 2</option>
-        </select>
+      <div className="db-quotes-header">
+        <h1 className="db-quotes-header-title">Customers</h1>
+
+        <div className="db-quotesheader-select-wrapper">
+          <select className="db-quotesheader-select">
+            <option>Business Name 1</option>
+            <option>Business Name 2</option>
+            <option>Business Name 3</option>
+          </select>
+          <FaChevronDown className="db-quotesheader-icon" />
+        </div>
       </div>
 
       {/* Stats */}
-      <div className="db-reviews-stats">
-        <div className="db-reviews-card">
+      <div className="db-quotes-stats">
+        <div className="db-quotes-item">
           <h4>Average Stars</h4>
-          <p className="db-reviews-number">4.6</p>
+          <p className="db-quotes-number">4.6</p>
         </div>
-        <div className="db-reviews-card">
+        <div className="db-quotes-item">
           <h4>Total Reviews Received</h4>
-          <p className="db-reviews-number">123</p>
+          <p className="db-quotes-number">123</p>
         </div>
       </div>
 

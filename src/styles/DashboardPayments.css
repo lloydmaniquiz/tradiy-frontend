@@ -98,15 +98,16 @@
   background: none;
   border: none;
   padding: 8px 0;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   position: relative;
-  color: #666;
+  color: #423e3e;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
 }
 
 .db-payments-tab.active {
   font-weight: 600;
-  color: #1d2b64;
+  color: #423e3e;
 }
 
 .db-payments-tab.active::after {
@@ -116,14 +117,13 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #1d2b64;
+  background: #2ec1c7;
   border-radius: 2px;
 }
 
 /* Table */
 .db-payments-table-wrapper {
   border: 1px solid #ddd;
-  border-radius: 12px;
   overflow: hidden;
   background: #fff;
 }
@@ -131,11 +131,11 @@
 .db-payments-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .db-payments-table thead {
-  background: #f9f9f9;
+  background: #f2f4fa;
 }
 
 .db-payments-table th,
@@ -147,8 +147,8 @@
 
 .db-payments-table th {
   font-weight: 600;
-  font-size: 13px;
-  color: #555;
+  font-size: 16px;
+  color: #423e3e;
 }
 
 /* Status Badges */

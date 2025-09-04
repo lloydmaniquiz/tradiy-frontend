@@ -65,15 +65,16 @@
   background: none;
   border: none;
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
-  color: #666;
+  color: #423e3e;
   position: relative;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
 }
 
 .db-reviews-tab.active {
   font-weight: 600;
-  color: #1d2b64;
+  color: #423e3e;
 }
 
 .db-reviews-tab.active::after {
@@ -83,7 +84,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #1d2b64;
+  background: #2ec1c7;
   border-radius: 2px;
 }
 
@@ -109,41 +110,43 @@
   justify-content: space-between;
   align-items: center;
   border: 1px solid #eee;
-  border-radius: 12px;
-  padding: 16px 20px;
+  border-radius: 20px;
+  padding: 40px;
   background: #fff;
 }
 
 .db-reviews-info h4 {
-  font-size: 15px;
-  margin-bottom: 5px;
+  font-size: 20px;
+  margin-bottom: 10px;
   font-weight: 600;
 }
 
 .db-reviews-info p {
-  font-size: 13px;
-  color: #555;
+  font-size: 16px;
+  color: #9f9f9f;
 }
 
 .db-reviews-muted {
-  font-size: 12px;
-  color: #999;
+  font-size: 16px;
+  color: #9f9f9f;
 }
 
 /* Button */
 .db-reviews-btn {
-  background: #1d2b64;
+  background: #000839;
   color: #fff;
   border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 13px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
   transition: background 0.3s;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
 }
 
 .db-reviews-btn:hover {
-  background: #14204a;
+  background: #000839;
 }
 
 /* Pagination */

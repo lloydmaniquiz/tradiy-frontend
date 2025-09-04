@@ -1,88 +1,110 @@
 import React from "react";
 import "../styles/DashboardClients.css";
+import { FaChevronDown } from "react-icons/fa";
+import TotalCustomersIcon from "../images/total-customers.png";
+import NewCustomersIcon from "../images/new-customers.png";
+import LeadsIcon from "../images/leads.png";
 
 export default function DashboardClients() {
   return (
     <div className="db-clients-container">
       {/* Page Title + Business Selector */}
-      <div className="db-clients-header">
-        <h2 className="db-clients-title">Customers</h2>
-        <select className="db-clients-business-select">
-          <option>Business Name 1</option>
-          <option>Business Name 2</option>
-        </select>
+      <div className="db-quotes-header">
+        <h1 className="db-quotes-header-title">Customers</h1>
+
+        <div className="db-quotesheader-select-wrapper">
+          <select className="db-quotesheader-select">
+            <option>Business Name 1</option>
+            <option>Business Name 2</option>
+            <option>Business Name 3</option>
+          </select>
+          <FaChevronDown className="db-quotesheader-icon" />
+        </div>
       </div>
 
       {/* Stats */}
-      <div className="db-clients-stats">
-        <div className="db-clients-card">
-          <h4>Total Customers</h4>
-          <p className="db-clients-number">1,234</p>
+      <div className="db-quotes-stats">
+        <div className="db-quotes-item">
+          <div className="db-quotes-icon">
+            <img src={TotalCustomersIcon} alt="Total Customers" />
+            <h4>Total Customers</h4>
+          </div>
+          <p className="db-quotes-number">1,234</p>
         </div>
-        <div className="db-clients-card">
-          <h4>
-            New Customers <span className="db-clients-sub">Past 30 days</span>
-          </h4>
-          <p className="db-clients-number">12</p>
+        <div className="db-quotes-item">
+          <div className="db-quotes-icon">
+            <img src={NewCustomersIcon} alt="New Customers" />
+            <h4>New Customers</h4>
+          </div>
+          <p className="db-quotes-number">12</p>
         </div>
-        <div className="db-clients-card">
-          <h4>Leads</h4>
-          <p className="db-clients-number">123</p>
+        <div className="db-quotes-item">
+          <div className="db-quotes-icon">
+            <img src={LeadsIcon} alt="Leads" />
+            <h4>Leads</h4>
+          </div>
+          <p className="db-quotes-number">123</p>
         </div>
       </div>
 
-      {/* Toolbar */}
-      <div className="db-clients-toolbar">
-        <input type="text" placeholder="Search" className="db-clients-search" />
-        <button className="db-clients-add-btn">+ Add Customer</button>
-      </div>
+      <div className="db-quotes-main-container">
+        {/* Toolbar */}
+        <div className="db-quotes-toolbar">
+          <input
+            type="text"
+            placeholder="Search"
+            className="db-quotes-search"
+          />
+          <button className="db-quotes-add-btn">+ Add Customer</button>
+        </div>
 
-      {/* Table */}
-      <div className="db-clients-table-wrapper">
-        <table className="db-clients-table">
-          <thead>
-            <tr>
-              <th>Customer Name</th>
-              <th>Quotes</th>
-              <th>Jobs</th>
-              <th>Payments</th>
-              <th>Job Status</th>
-              <th>Reviews</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Freya Reynolds</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>
-                <span className="db-clients-badge orange">QUOTE SENT</span>
-              </td>
-              <td>⭐⭐⭐⭐⭐</td>
-            </tr>
-            <tr>
-              <td>David Walsh</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>
-                <span className="db-clients-badge green">QUOTE ACCEPTED</span>
-              </td>
-              <td>⭐⭐⭐⭐⭐</td>
-            </tr>
-            <tr>
-              <td>Toby Reid</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>
-                <span className="db-clients-badge blue">JOB SCHEDULED</span>
-              </td>
-              <td>⭐⭐⭐⭐☆</td>
-            </tr>
-          </tbody>
-        </table>
+        {/* Table */}
+        <div className="db-clients-table-wrapper">
+          <table className="db-clients-table">
+            <thead>
+              <tr>
+                <th>Customer Name</th>
+                <th>Quotes</th>
+                <th>Jobs</th>
+                <th>Payments</th>
+                <th>Job Status</th>
+                <th>Reviews</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Freya Reynolds</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>
+                  <span className="db-clients-badge orange">QUOTE SENT</span>
+                </td>
+                <td>⭐⭐⭐⭐⭐</td>
+              </tr>
+              <tr>
+                <td>David Walsh</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>
+                  <span className="db-clients-badge green">QUOTE ACCEPTED</span>
+                </td>
+                <td>⭐⭐⭐⭐⭐</td>
+              </tr>
+              <tr>
+                <td>Toby Reid</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>
+                  <span className="db-clients-badge blue">JOB SCHEDULED</span>
+                </td>
+                <td>⭐⭐⭐⭐☆</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Pagination */}

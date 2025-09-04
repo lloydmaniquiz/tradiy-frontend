@@ -96,7 +96,6 @@
 /* Table */
 .db-clients-table-wrapper {
   border: 1px solid #ddd;
-  border-radius: 12px;
   overflow: hidden;
   background: #fff;
 }
@@ -104,11 +103,11 @@
 .db-clients-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .db-clients-table thead {
-  background: #f9f9f9;
+  background: #f2f4fa;
 }
 
 .db-clients-table th,
@@ -120,8 +119,8 @@
 
 .db-clients-table th {
   font-weight: 600;
-  font-size: 13px;
-  color: #555;
+  font-size: 16px;
+  color: #423e3e;
 }
 
 /* Status Badges */
