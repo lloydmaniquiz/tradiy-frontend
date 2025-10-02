@@ -1,0 +1,71 @@
+.quote-drawer-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+.clickable-quote-id {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.quote-drawer {
+  background: #fff;
+  width: 400px;
+  max-width: 90%;
+  height: 100%;
+  padding: 24px;
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  position: relative;
+}
+
+.quote-drawer-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.quote-detail {
+  margin: 16px 0;
+}
+
+.quote-detail .label {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 4px;
+}
+
+.quote-drawer-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.quote-drawer-actions .primary {
+  background: #2d6cdf;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.quote-drawer-actions .outline {
+  background: transparent;
+  border: 1px solid #2d6cdf;
+  color: #2d6cdf;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}

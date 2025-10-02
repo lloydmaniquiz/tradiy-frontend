@@ -1,91 +1,131 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/DashboardQuotes.css";
 import { FaChevronDown } from "react-icons/fa";
 import AcceptedIcon from "../images/accepted.png";
 import PendingIcon from "../images/pending.png";
 import ConvertedIcon from "../images/converted.png";
+import QuoteDetailsDrawer from "../components/QuoteDetailsDrawer";
+import AddQuoteForm from "../components/AddQuoteForm";
+import QuoteDetails from "./QuoteDetails";
 
 export default function DashboardQuotes() {
-  const role = localStorage.getItem("role"); // check role from localStorage
-  const [activeTab, setActiveTab] = useState("Pending"); // default tab
+  const navigate = useNavigate();
+  const role = localStorage.getItem("role");
+  const [activeTab, setActiveTab] = useState("Pending");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+  const itemsPerPageHome = 12;
 
-  // dummy datasets
-  const pendingQuotes = [
-    {
-      id: "QT-ABCD-1234",
-      customer: "Freya Reynolds",
-      type: "Quote Visit",
-      date: "29 Jan 2025",
-      status: "Pending",
-    },
-    {
-      id: "QT-EFGH-5678",
-      customer: "David Walsh",
-      type: "Quote Estimate",
-      date: "28 Jan 2025",
-      status: "Pending",
-    },
-  ];
+  const [quotes, setQuotes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [userEmail, setUserEmail] = useState(null);
+  const [selectedQuote, setSelectedQuote] = useState(null);
+  const [showFullDetails, setShowFullDetails] = useState(false);
+  const [homeownerStatusFilter, setHomeownerStatusFilter] = useState("All");
+  const [showAddForm, setShowAddForm] = useState(false);
 
-  const acceptedQuotes = [
-    {
-      id: "QT-IJKL-9012",
-      customer: "Toby Reid",
-      type: "Quote Visit",
-      date: "28 Jan 2025",
-    },
-    {
-      id: "QT-MNOP-3456",
-      customer: "Cameron Turner",
-      type: "Quote Visit",
-      date: "27 Jan 2025",
-    },
-  ];
+  // Fetch user email
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("user_id");
+      if (!token || !userId) return;
 
-  const convertedQuotes = [
-    {
-      id: "QT-QRST-7890",
-      customer: "Charlotte Griffiths",
-      type: "Quote Visit",
-      date: "26 Jan 2025",
-    },
-  ];
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/dashboard/${userId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        if (!res.ok) throw new Error("Failed to fetch user data");
 
-  const declinedQuotes = [
-    { id: "QT-UVWX-1234", customer: "Daisy Holmes", type: "Quote Visit" },
-    { id: "QT-YZAB-5678", customer: "Michael Carter", type: "Quote Estimate" },
-  ];
+        const data = await res.json();
+        setUserEmail(data.user.email);
+      } catch (err) {
+        console.error("Error fetching user data:", err);
+      }
+    };
 
-  // pick correct dataset
-  let data = [];
-  if (activeTab === "Pending") data = pendingQuotes;
-  if (activeTab === "Accepted") data = acceptedQuotes;
-  if (activeTab === "Converted") data = convertedQuotes;
-  if (activeTab === "Declined") data = declinedQuotes;
+    fetchUser();
+  }, []);
 
-  // pagination slice
+  // Fetch quotes
+  useEffect(() => {
+    if (!userEmail) return;
+
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    const endpoint =
+      role === "Trader"
+        ? `/quotes/${userEmail}` // Quotes for trader
+        : `/quotes/sent/${userEmail}`; // Quotes sent by homeowner
+
+    fetch(`${process.env.REACT_APP_API_URL}${endpoint}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setQuotes(data);
+        else setQuotes([]);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching quotes:", err);
+        setQuotes([]);
+        setLoading(false);
+      });
+  }, [userEmail, role]);
+
+  // Filter quotes
+  const filteredQuotes =
+    role === "Trader"
+      ? quotes.filter((q) => {
+          const status = q.status?.trim().toLowerCase();
+          const tab = activeTab.toLowerCase();
+          return status === tab;
+        })
+      : quotes.filter((q) => {
+          if (homeownerStatusFilter === "All") return true;
+          const status = q.status?.trim().toLowerCase();
+          const filter = homeownerStatusFilter.toLowerCase();
+          return status === filter;
+        });
+
+  // Pagination (Trader)
   const indexOfLast = currentPage * itemsPerPage;
   const indexOfFirst = indexOfLast - itemsPerPage;
-  const currentItems = data.slice(indexOfFirst, indexOfLast);
+  const currentItems = filteredQuotes.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(filteredQuotes.length / itemsPerPage);
 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-
-  // reset page when switching tab
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setCurrentPage(1);
   };
 
-  // ✅ Tradesperson view (table layout)
-  if (role === "Trader") {
+  // === SHOW ONLY FULL QUOTE DETAILS ===
+  if (showFullDetails && selectedQuote) {
     return (
-      <div className="db-quotes-container">
-        {/* Stats Summary */}
-        <div className="db-quotes-header">
-          <h1 className="db-quotes-header-title">Quotes</h1>
+      <QuoteDetails
+        quote={selectedQuote}
+        onBack={() => {
+          setShowFullDetails(false);
+          setSelectedQuote(null);
+        }}
+      />
+    );
+  }
 
+  // === DASHBOARD VIEW ===
+  return (
+    <div className="db-quotes-container">
+      <div className="db-quotes-header">
+        <h1 className="db-quotes-header-title">
+          {showAddForm ? "Create New Quote" : "Quotes"}
+        </h1>
+        {!showAddForm && (
           <div className="db-quotesheader-select-wrapper">
             <select className="db-quotesheader-select">
               <option>Business Name 1</option>
@@ -94,43 +134,52 @@ export default function DashboardQuotes() {
             </select>
             <FaChevronDown className="db-quotesheader-icon" />
           </div>
-        </div>
-        <div className="db-quotes-stats">
-          <div className="db-quotes-item">
-            <div className="db-quotes-icon">
-              <img src={AcceptedIcon} alt="Accepted" />
-              <h4>Accepted</h4>
-            </div>
-            <p className="db-quotes-number">12</p>
-          </div>
-          <div className="db-quotes-item">
-            <div className="db-quotes-icon">
-              <img src={PendingIcon} alt="Pending" />
-              <h4>Pending</h4>
-            </div>
-            <p className="db-quotes-number">12</p>
-          </div>
-          <div className="db-quotes-item">
-            <div className="db-quotes-icon">
-              <img src={ConvertedIcon} alt="Converted" />
-              <h4>Converted</h4>
-            </div>
-            <p className="db-quotes-number">123</p>
-          </div>
-        </div>
+        )}
+      </div>
 
-        <div className="db-quotes-main-container">
-          {/* Search + Add Button */}
+      {!showAddForm && (
+        <div className="db-quotes-stats">
+          {["Accepted", "Pending", "Converted"].map((status) => {
+            const count = quotes.filter(
+              (q) => q.status?.trim().toLowerCase() === status.toLowerCase()
+            ).length;
+            let icon;
+            if (status === "Accepted") icon = AcceptedIcon;
+            if (status === "Pending") icon = PendingIcon;
+            if (status === "Converted") icon = ConvertedIcon;
+            return (
+              <div className="db-quotes-item" key={status}>
+                <div className="db-quotes-icon">
+                  <img src={icon} alt={status} />
+                  <h4>{status}</h4>
+                </div>
+                <p className="db-quotes-number">{count}</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      <div className="db-quotes-main-container">
+        {/* Toolbar */}
+        {!showAddForm && (
           <div className="db-quotes-toolbar">
             <input
               type="text"
               placeholder="Search"
               className="db-quotes-search"
             />
-            <button className="db-quotes-add-btn">+ Add Quote</button>
+            <button
+              className="db-quotes-add-btn"
+              onClick={() => setShowAddForm(true)}
+            >
+              + Add Quote
+            </button>
           </div>
+        )}
 
-          {/* Tabs */}
+        {/* Tabs */}
+        {!showAddForm && (
           <div className="db-quotes-tabs">
             {["Pending", "Accepted", "Converted", "Declined"].map((tab) => (
               <button
@@ -142,218 +191,104 @@ export default function DashboardQuotes() {
               </button>
             ))}
           </div>
+        )}
 
-          {/* Table */}
-          <div className="db-quotes-table-wrapper">
-            {activeTab === "Pending" && (
-              <table className="db-quotes-table">
-                <thead>
-                  <tr>
-                    <th>Quote ID</th>
-                    <th>Customer Name</th>
-                    <th>Request Type</th>
-                    <th>Date Created</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentItems.map((q) => (
-                    <tr key={q.id}>
-                      <td>{q.id}</td>
-                      <td>{q.customer}</td>
-                      <td>{q.type}</td>
-                      <td>{q.date}</td>
+        {/* Table / Form */}
+        <div className="db-quotes-table-wrapper">
+          {loading ? (
+            <p>Loading quotes...</p>
+          ) : showAddForm ? (
+            <AddQuoteForm
+              onSave={(data) => {
+                setQuotes((prev) => [
+                  { ...data, id: Date.now(), status: "Pending" },
+                  ...prev,
+                ]);
+                setShowAddForm(false);
+              }}
+              onCancel={() => setShowAddForm(false)}
+            />
+          ) : (
+            <table className="db-quotes-table">
+              <thead>
+                <tr>
+                  <th>Quote ID</th>
+                  <th>Customer Name</th>
+                  <th>Request Type</th>
+                  <th>Date Created</th>
+                  {activeTab === "Pending" && <th>Status</th>}
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentItems.map((q) => (
+                  <tr
+                    key={q.id}
+                    className="clickable-row"
+                    onClick={() => setSelectedQuote(q)} // opens drawer
+                  >
+                    <td>{q.quoteNumber}</td>
+                    <td>{q.homeOwnerName}</td>
+                    <td>
+                      {q.quoteNumber?.startsWith("Q")
+                        ? "Quote Estimate"
+                        : q.quoteNumber?.startsWith("B")
+                        ? "Quote Visit"
+                        : "Unknown"}
+                    </td>
+                    <td>
+                      {new Date(q.createdAt).toLocaleDateString("en-GB", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </td>
+                    {activeTab === "Pending" && (
                       <td>
                         <span
-                          className={`db-quotes-status ${q.status.toLowerCase()}`}
+                          className={`db-quotes-status ${q.status?.toLowerCase()}`}
                         >
                           ● {q.status}
                         </span>
                       </td>
-                      <td>...</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-
-            {activeTab === "Accepted" && (
-              <table className="db-quotes-table">
-                <thead>
-                  <tr>
-                    <th>Quote ID</th>
-                    <th>Customer Name</th>
-                    <th>Request Type</th>
-                    <th>Date Created</th>
-                    <th>Actions</th>
+                    )}
+                    <td>...</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {currentItems.map((q) => (
-                    <tr key={q.id}>
-                      <td>{q.id}</td>
-                      <td>{q.customer}</td>
-                      <td>{q.type}</td>
-                      <td>{q.date}</td>
-                      <td>...</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
+                ))}
+              </tbody>
+            </table>
+          )}
 
-            {activeTab === "Converted" && (
-              <table className="db-quotes-table">
-                <thead>
-                  <tr>
-                    <th>Quote ID</th>
-                    <th>Customer Name</th>
-                    <th>Request Type</th>
-                    <th>Date Converted</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentItems.map((q) => (
-                    <tr key={q.id}>
-                      <td>{q.id}</td>
-                      <td>{q.customer}</td>
-                      <td>{q.type}</td>
-                      <td>{q.date}</td>
-                      <td>...</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-
-            {activeTab === "Declined" && (
-              <table className="db-quotes-table">
-                <thead>
-                  <tr>
-                    <th>Quote ID</th>
-                    <th>Customer Name</th>
-                    <th>Request Type</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentItems.map((q) => (
-                    <tr key={q.id}>
-                      <td>{q.id}</td>
-                      <td>{q.customer}</td>
-                      <td>{q.type}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </div>
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="db-quotes-pagination">
-              {[...Array(totalPages)].map((_, i) => (
-                <button
-                  key={i}
-                  className={`db-quotes-page ${
-                    currentPage === i + 1 ? "active" : ""
-                  }`}
-                  onClick={() => setCurrentPage(i + 1)}
-                >
-                  {i + 1}
-                </button>
-              ))}
-            </div>
+          {/* Drawer */}
+          {!showFullDetails && selectedQuote && (
+            <QuoteDetailsDrawer
+              quote={selectedQuote}
+              onClose={() => setSelectedQuote(null)}
+              onOpenFullDetails={(quote) => {
+                setShowFullDetails(true);
+                setSelectedQuote(quote);
+              }}
+            />
           )}
         </div>
       </div>
-    );
-  }
 
-  // ✅ Homeowner view (cards layout)
-  return (
-    <div className="db-quotes-container">
-      {/* Header */}
-      <div className="db-quotes-header">
-        <h2>Quotes</h2>
-        <button className="db-quotes-request-btn">+ Request Quote</button>
-      </div>
-
-      {/* Filters */}
-      <div className="db-quotes-filters">
-        <select>
-          <option>Request Type</option>
-          <option>Quote Visit</option>
-          <option>Quote Estimate</option>
-        </select>
-        <select>
-          <option>Date Created</option>
-          <option>Newest First</option>
-          <option>Oldest First</option>
-        </select>
-        <select>
-          <option>Status</option>
-          <option>Pending</option>
-          <option>Accepted</option>
-          <option>Converted</option>
-          <option>Declined</option>
-        </select>
-      </div>
-
-      {/* Cards */}
-      <div className="db-quotes-grid">
-        <div className="db-quotes-card">
-          <span className="db-quotes-status pending">● Pending</span>
-          <h4 className="db-quotes-id">QT-GHIJ-3456</h4>
-          <p className="db-quotes-address">
-            59 Cambridge Street
-            <br />
-            Glasgow G3 6QX
-          </p>
-          <p className="db-quotes-date">05 February 2025</p>
-          <p className="db-quotes-amount">
-            Total Amount
-            <br />
-            <strong>£100.00</strong>
-          </p>
-          <button className="db-quotes-action primary">Accept Quote</button>
+      {/* Pagination Buttons */}
+      {totalPages > 1 && (
+        <div className="db-quotes-pagination">
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i}
+              className={`db-quotes-page ${
+                currentPage === i + 1 ? "active" : ""
+              }`}
+              onClick={() => setCurrentPage(i + 1)}
+            >
+              {i + 1}
+            </button>
+          ))}
         </div>
-
-        <div className="db-quotes-card">
-          <span className="db-quotes-status accepted">● Accepted</span>
-          <h4 className="db-quotes-id">QT-CDEF-3445</h4>
-          <p className="db-quotes-address">
-            59 Cambridge Street
-            <br />
-            Glasgow G3 6QX
-          </p>
-          <p className="db-quotes-date">26 January 2025</p>
-          <p className="db-quotes-amount">
-            Total Amount
-            <br />
-            <strong>£100.00</strong>
-          </p>
-          <button className="db-quotes-action outline">View Details</button>
-        </div>
-
-        <div className="db-quotes-card">
-          <span className="db-quotes-status converted">● Converted</span>
-          <h4 className="db-quotes-id">QT-JKLM-7890</h4>
-          <p className="db-quotes-address">
-            59 Cambridge Street
-            <br />
-            Glasgow G3 6QX
-          </p>
-          <p className="db-quotes-date">09 January 2025</p>
-          <p className="db-quotes-amount">
-            Total Amount
-            <br />
-            <strong>£100.00</strong>
-          </p>
-          <button className="db-quotes-action primary">View Job</button>
-        </div>
-      </div>
+      )}
     </div>
   );
 }

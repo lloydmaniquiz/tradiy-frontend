@@ -15,48 +15,69 @@ export default function DashboardInvoices() {
 
         <div className="db-invoices-home-grid">
           {/* Paid */}
-          <div className="db-invoices-home-card">
-            <span className="db-invoices-home-status paid">● Paid</span>
+          <div className="db-quotes-card">
+            <span className="db-quotes-status paid">● PAID</span>
+            <p className="db-invoices-small">Invoice ID</p>
             <h4 className="db-invoices-home-id">INV-123-456</h4>
             <p className="db-invoices-home-service">Service A</p>
             <p className="db-invoices-home-date">
               <strong>Due Date:</strong> 05 February 2025
             </p>
-            <p className="db-invoices-home-amount">Total Amount: £120.00</p>
-            <p className="db-invoices-home-balance">Balance: £0.00</p>
+            <hr className="db-quotes-divider" />
+            <p className="db-invoices-home-amount">
+              TOTAL AMOUNT:
+              <span className="amount-value">£120.00</span>
+            </p>
+            <p className="db-invoices-home-balance">
+              BALANCE:
+              <span className="balance-value">£0.00</span>
+            </p>
+
             <button className="db-invoices-home-action outline">
               Download PDF
             </button>
           </div>
 
           {/* Awaiting Payment */}
-          <div className="db-invoices-home-card">
-            <span className="db-invoices-home-status awaiting">
-              ● Awaiting Payment
+          <div className="db-quotes-card">
+            <span className="db-quotes-status awaiting">
+              ● AWAITING PAYMENT
             </span>
+            <p className="db-invoices-small">Invoice ID</p>
             <h4 className="db-invoices-home-id">INV-123-456</h4>
             <p className="db-invoices-home-service">Service A</p>
             <p className="db-invoices-home-date">
               <strong>Due Date:</strong> 03 February 2025
             </p>
-            <p className="db-invoices-home-amount">Total Amount: £120.00</p>
-            <p className="db-invoices-home-balance negative">
-              Balance: £120.00
+            <hr className="db-quotes-divider" />
+            <p className="db-invoices-home-amount">
+              TOTAL AMOUNT:
+              <span className="amount-value">£120.00</span>
+            </p>
+            <p className="db-invoices-home-balance">
+              BALANCE:
+              <span className="balance-value negative">£0.00</span>
             </p>
             <button className="db-invoices-home-action primary">Pay Now</button>
           </div>
 
           {/* Past Due */}
-          <div className="db-invoices-home-card">
-            <span className="db-invoices-home-status pastdue">● Past Due</span>
+          <div className="db-quotes-card">
+            <span className="db-quotes-status pastdue">● PAST DUE</span>
+            <p className="db-invoices-small">Invoice ID</p>
             <h4 className="db-invoices-home-id">INV-123-456</h4>
             <p className="db-invoices-home-service">Service A</p>
             <p className="db-invoices-home-date">
               <strong>Due Date:</strong> 14 January 2025
             </p>
-            <p className="db-invoices-home-amount">Total Amount: £220.00</p>
-            <p className="db-invoices-home-balance negative">
-              Balance: £220.00
+            <hr className="db-quotes-divider" />
+            <p className="db-invoices-home-amount">
+              TOTAL AMOUNT:
+              <span className="amount-value">£120.00</span>
+            </p>
+            <p className="db-invoices-home-balance">
+              BALANCE:
+              <span className="balance-value negative">£0.00</span>
             </p>
             <button className="db-invoices-home-action primary">Pay Now</button>
           </div>
