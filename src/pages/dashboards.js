@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Outlet, NavLink, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Outlet, NavLink, useLocation, useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
 import TradiyLogo from "../images/tradiy-hero-logo.png";
 import FastForward from "../images/fast-forward.png";
@@ -27,10 +27,55 @@ export default function Dashboard({ user }) {
   const [workbenchOpen, setWorkbenchOpen] = useState(false);
   const [isHelpdeskOpen, setIsHelpdeskOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [userData, setUserData] = useState(null);
   const role = localStorage.getItem("role") || "";
+  const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const location = useLocation(); // 👈 get current route
   const isChatRoute = location.pathname.includes("/chat"); // 👈 true on /dashboard/chat
+  const navigate = useNavigate(); // 👈
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const userId = localStorage.getItem("user_id");
+
+        if (!token || !userId) return;
+
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/dashboard/${userId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+
+        const data = await res.json();
+        console.log("Fetched userData:", data); // ✅ log the user data
+        setUserData(data);
+      } catch (err) {
+        console.error("Error fetching user data:", err);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  // ✅ Check authentication on mount
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("user_id");
+
+    if (!token || !userId) {
+      console.warn("No token or user_id found. Redirecting to login...");
+      navigate("/login", { replace: true });
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,6 +102,13 @@ export default function Dashboard({ user }) {
   };
   const toggleHelpdesk = () => setIsHelpdeskOpen((prev) => !prev);
 
+  // Example notifications
+  const notifications = [
+    { id: 1, message: "New booking request" },
+    { id: 2, message: "Your profile was updated" },
+    { id: 3, message: "Reminder: Meeting tomorrow" },
+  ];
+
   return (
     <div className={`dashboard ${isChatRoute ? "chat-mode" : ""}`}>
       {/* Header */}
@@ -66,10 +118,30 @@ export default function Dashboard({ user }) {
         </div>
         <div className="header-right">
           <div className="header-right">
-            <button className="icon-button">
-              <img src={BellIcon} alt="Notifications" className="icon-img" />
-              <span className="notification-dot"></span>
-            </button>
+            <div className="notification-wrapper" ref={dropdownRef}>
+              <button
+                className="icon-button"
+                onClick={() => setOpen((prev) => !prev)}
+              >
+                <img src={BellIcon} alt="Notifications" className="icon-img" />
+                <span className="notification-dot"></span>
+              </button>
+
+              {open && (
+                <div className="notification-dropdown">
+                  <h4>Notifications</h4>
+                  {notifications.length > 0 ? (
+                    <ul>
+                      {notifications.map((n) => (
+                        <li key={n.id}>{n.message}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>No notifications</p>
+                  )}
+                </div>
+              )}
+            </div>
 
             <button className="icon-button">
               <img src={SettingsIcon} alt="Settings" className="icon-img" />
@@ -77,13 +149,21 @@ export default function Dashboard({ user }) {
           </div>
           <button className="profile-button">
             <img
-              src={user?.profilePhoto || defaultPhoto}
-              alt={`Profile of ${user?.name || "User"}`}
+              src={userData?.profile?.profilePicture || defaultPhoto}
+              alt={`Profile of ${
+                userData?.profile?.businessOwner ||
+                userData?.user?.username ||
+                "User"
+              }`}
               width="32"
               height="32"
               className="profile-avatar-dropdown"
             />
-            <span>{user?.name || "Guest"}</span>
+            <span>
+              {userData?.profile?.businessOwner ||
+                userData?.user?.username ||
+                "Guest"}
+            </span>
             <i className="fas fa-chevron-down profile-chevron"></i>
           </button>
         </div>

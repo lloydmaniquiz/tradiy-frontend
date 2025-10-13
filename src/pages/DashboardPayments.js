@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/DashboardPayments.css";
 import { FaChevronDown } from "react-icons/fa";
+import InvoiceForm from "../components/InvoiceForm";
 
 export default function DashboardPayments() {
+  const [showInvoiceForm, setShowInvoiceForm] = useState(false);
+
+  const handleAddInvoiceClick = () => {
+    setShowInvoiceForm(true);
+  };
+
+  const handleBack = () => {
+    setShowInvoiceForm(false);
+  };
+
+  if (showInvoiceForm) {
+    return <InvoiceForm onBack={handleBack} />;
+  }
+
   return (
     <div className="db-payments-container">
       {/* Page Title + Business Selector */}
@@ -47,7 +62,9 @@ export default function DashboardPayments() {
             placeholder="Search"
             className="db-quotes-search"
           />
-          <button className="db-quotes-add-btn">+ Add Invoice</button>
+          <button className="db-quotes-add-btn" onClick={handleAddInvoiceClick}>
+            + Add Invoice
+          </button>
         </div>
 
         {/* Tabs */}

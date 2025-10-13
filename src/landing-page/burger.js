@@ -137,7 +137,10 @@ const BurgerDropdown = ({ showLoginButton = true, isSticky = true }) => {
                 {isLoggedIn && (
                   <>
                     <li>
-                      <Link to="/dashboard" className="dashboard-link">
+                      <Link
+                        to="/dashboard/dashboard-home"
+                        className="dashboard-link"
+                      >
                         Your Dashboard
                       </Link>
                     </li>

@@ -61,7 +61,7 @@ const ContactUs = () => {
           <div className="contact-card">
             <div className="contact-card-content">
               <div className="icon-container">
-                <img src={CallNow} alt="Call Icon" className="icon-img" />
+                <img src={CallNow} alt="Call Icon" className="cu-icon-img" />
               </div>
               <h3>CALL US</h3>
               <p>You can reach us directly at the following number:</p>
@@ -83,7 +83,7 @@ const ContactUs = () => {
           <div className="contact-card">
             <div className="contact-card-content">
               <div className="icon-container">
-                <img src={EmailNow} alt="Email Icon" className="icon-img" />
+                <img src={EmailNow} alt="Email Icon" className="cu-icon-img" />
               </div>
               <h3>EMAIL US</h3>
               <p>Reach out to us anytime via email:</p>
@@ -106,7 +106,7 @@ const ContactUs = () => {
                 <img
                   src={WhatsAppNow}
                   alt="WhatsApp Icon"
-                  className="icon-img"
+                  className="cu-icon-img"
                 />
               </div>
               <h3>MESSAGE US</h3>
@@ -131,7 +131,11 @@ const ContactUs = () => {
           <div className="contact-card">
             <div className="contact-card-content">
               <div className="icon-container">
-                <img src={LiveChat} alt="Live Chat Icon" className="icon-img" />
+                <img
+                  src={LiveChat}
+                  alt="Live Chat Icon"
+                  className="cu-icon-img"
+                />
               </div>
               <h3>LIVE CHAT</h3>
               <div className="contact-card-content-wrapper">

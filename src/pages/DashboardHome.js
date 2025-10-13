@@ -11,40 +11,104 @@ import InvoiceIcon from "../images/invoice.png";
 import CalenderIcon from "../images/calendar.png";
 
 export default function DashboardHome() {
-  const [role, setRole] = useState(null);
+  const [dashboardData, setDashboardData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Example: role is stored like { role: "tradesperson" } or just "tradesperson"
-    const storedRole = localStorage.getItem("role");
-    if (storedRole) {
-      setRole(storedRole.toLowerCase()); // normalize to lowercase
-    } else {
-      setRole("Trader"); // fallback default
+    const userId = localStorage.getItem("user_id");
+    const token = localStorage.getItem("token");
+
+    if (!userId || !token) {
+      console.error("No user_id or token found in localStorage");
+      setLoading(false);
+      return;
     }
+
+    const fetchDashboard = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/dashboard/${userId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        if (!res.ok) throw new Error("Failed to fetch dashboard data");
+
+        const data = await res.json();
+        setDashboardData(data);
+      } catch (err) {
+        console.error("Error fetching dashboard:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDashboard();
   }, []);
 
-  if (!role) {
+  if (loading) {
     return <div>Loading dashboard...</div>;
   }
 
+  if (!dashboardData) {
+    return <div>Unable to load dashboard.</div>;
+  }
+
+  const { user, profile } = dashboardData;
+
   return (
     <div className="dashboard-container">
-      {role === "homeowner" ? (
-        <HomeownerDashboard />
+      {user.role.toLowerCase() === "homeowner" ? (
+        <HomeownerDashboard user={user} profile={profile} />
       ) : (
-        <TradespersonDashboard />
+        <TradespersonDashboard user={user} profile={profile} />
       )}
     </div>
   );
 }
 
 /* ---------------- Tradesperson Dashboard ---------------- */
-function TradespersonDashboard() {
+function TradespersonDashboard({ user, profile }) {
   const [date, setDate] = useState(new Date());
+  const [enquiries, setEnquiries] = useState([]);
+  const [quotes, setQuotes] = useState([]);
 
+  // Fetch enquiries and quotes
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("user_id");
+
+    if (!token || !userId) return;
+
+    // Fetch Enquiries
+    fetch(`${process.env.REACT_APP_API_URL}/enquiries/${user.email}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((data) => setEnquiries(data))
+      .catch((err) => console.error(err));
+
+    // Fetch Quotes
+    fetch(`${process.env.REACT_APP_API_URL}/quotes/${user.email}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((data) => setQuotes(data))
+      .catch((err) => console.error(err));
+  }, [user.email]);
+
+  // Compute unique customer count safely
+  const totalEnquiriesCount = Array.isArray(enquiries) ? enquiries.length : 0;
+
+  const totalQuickQuoteEstimates = Array.isArray(enquiries)
+    ? enquiries.filter((e) => e.type === "Quote Estimate").length
+    : 0;
+
+  // Stats
   const stats = {
-    enquiries: 12,
-    quotes: 12,
+    enquiries: totalEnquiriesCount,
+    quotes: totalQuickQuoteEstimates,
     jobs: 12,
     clients: 12,
   };
@@ -151,16 +215,16 @@ function TradespersonDashboard() {
     new Date(2024, 11, 31),
   ];
 
-  const tileClassName = ({ date }) => {
-    if (bookingDates.find((d) => d.toDateString() === date.toDateString())) {
-      return "highlight-date";
-    }
-    return null;
-  };
+  const tileClassName = ({ date }) =>
+    bookingDates.find((d) => d.toDateString() === date.toDateString())
+      ? "highlight-date"
+      : null;
 
   return (
     <>
-      <h1 className="greeting">Good evening, Jacob!</h1>
+      <h1 className="greeting">
+        Good evening, {profile?.businessOwner || user.username}!
+      </h1>
 
       {/* Profile Completion */}
       <section className="profile-completion">
@@ -294,7 +358,7 @@ function TradespersonDashboard() {
 }
 
 /* ---------------- Homeowner Dashboard ---------------- */
-function HomeownerDashboard() {
+function HomeownerDashboard({ user, profile }) {
   const reviews = 12;
   const bookmarks = 12;
 
@@ -349,17 +413,19 @@ function HomeownerDashboard() {
 
   return (
     <>
-      <h1 className="greeting">Good evening, Charlotte!</h1>
+      <h1 className="greeting">
+        Good evening, {profile?.name || user.username}!
+      </h1>
 
       <div className="profile-header">
         <div className="profile-section profile-left">
           <img
-            src="/path/to/profile.jpg"
-            alt="Charlotte"
+            src={profile?.profilePicture || "/path/to/profile.jpg"}
+            alt={user.username}
             className="profile-avatar"
           />
           <div>
-            <h2>Charlotte Knight</h2>
+            <h2>{profile?.name || user.username}</h2>
             <p>Member since 2024</p>
             <ul>
               <li>Identity</li>

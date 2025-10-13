@@ -84,6 +84,7 @@
 
 .enquiry-item:hover {
   background: #f9fafb;
+  cursor: pointer;
 }
 
 .enquiry-left {
@@ -203,4 +204,119 @@
   display: flex;
   flex-direction: column; /* stack children vertically */
   gap: 10px; /* spacing between buttons */
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pagination-btn {
+  padding: 0.5rem 1rem;
+  background-color: #14b8d6; /* primary blue */
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.pagination-btn:disabled {
+  background-color: #cbd5e1; /* gray when disabled */
+  cursor: not-allowed;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #0ea5e9;
+}
+
+.pagination-info {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.pagination-current {
+  font-weight: bold;
+  color: #14b8d6;
+}
+
+.enquiries-detail-card {
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+.enquiries-detail-card h2 {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.enquiries-detail-card strong {
+  color: #423e3e;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.enquiries-detail-card p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #423e3e;
+}
+
+.enquiries-detail-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #423e3e;
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  gap: 12px; /* spacing between buttons */
+  margin-top: 20px; /* optional: add space above */
+}
+
+.reject-btn {
+  background-color: #ff7469;
+  border-radius: 30px;
+  width: 248px;
+  border: none;
+  font-family: "Hanken Grotesk", Arial;
+  color: white;
+  cursor: pointer;
+}
+
+.accept-btn {
+  background-color: #000839;
+  border-radius: 30px;
+  width: 248px;
+  font-family: "Hanken Grotesk", Arial;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.detail-header {
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.chev-back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.chev-back-btn:hover {
+  opacity: 0.7;
 }

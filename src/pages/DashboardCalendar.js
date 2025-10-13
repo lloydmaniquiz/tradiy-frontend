@@ -21,11 +21,11 @@ export default function DashboardCalendar() {
   const events = [
     {
       title: "Meeting with Michael",
-      start: "2025-01-20T13:30:00",
-      end: "2025-01-20T14:00:00",
+      start: "2025-09-30T13:30:00",
+      end: "2025-09-30T14:00:00",
     },
-    { title: "Daisy", start: "2025-01-17T14:00:00" },
-    { title: "Lorem Ipsum", start: "2025-01-16T09:00:00" },
+    { title: "Daisy", start: "2025-09-30T14:00:00" },
+    { title: "Lorem Ipsum", start: "2025-09-30T09:00:00" },
   ];
 
   const handleViewChange = (newView) => {
