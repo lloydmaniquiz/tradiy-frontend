@@ -58,7 +58,7 @@
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 20px;
-  text-align: left;
+  text-align: center;
   background: #fff;
 }
 
@@ -191,59 +191,14 @@
   color: #856404;
 }
 
-.db-quotes-status.converted {
-  background: #e8f2ff;
-  color: #568fd8;
-}
-
-.db-quotes-status.accepted {
-  background: #e2fae4;
-  color: #21a62a;
-}
-
-.db-quotes-status.declined {
-  background: #ffebf1;
-  color: #f32f6c;
-}
-
 .db-quotes-status.open {
-  background: #e8f2ff;
-  color: #568fd8;
+  background: #e0f2ff;
+  color: #0056b3;
 }
 
 .db-quotes-status.expired {
-  background: #ffebf1;
-  color: #f32f6c;
-}
-
-.db-quotes-status.new {
-  background: #e8f2ff;
-  color: #568fd8;
-}
-
-.db-quotes-status.progress {
-  background: #fff3cd;
-  color: #856404;
-}
-
-.db-quotes-status.completed {
-  background: #e2fae4;
-  color: #21a62a;
-}
-
-.db-quotes-status.paid {
-  background: #e2fae4;
-  color: #21a62a;
-}
-
-.db-quotes-status.awaiting {
-  background: #e8f2ff;
-  color: #568fd8;
-}
-
-.db-quotes-status.pastdue {
-  background: #ffebf1;
-  color: #f32f6c;
+  background: #f8d7da;
+  color: #721c24;
 }
 
 /* Pagination */
@@ -293,14 +248,13 @@
 }
 
 .db-quotes-request-btn {
-  font-family: "Hanken Grotesk", Arial, sans-serif;
-  background: #000839;
+  background: #1d2b64;
   color: #fff;
   border: none;
   padding: 10px 18px;
   border-radius: 20px;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 600;
   cursor: pointer;
   transition: background 0.3s;
 }
@@ -332,97 +286,79 @@
 }
 
 .db-quotes-status {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   margin-bottom: 8px;
 }
 
 .db-quotes-status.pending {
-  color: #d88715; /* amber */
+  color: #f59e0b; /* amber */
 }
 
 .db-quotes-status.accepted {
-  color: #21a62a; /* green */
+  color: #10b981; /* green */
 }
 
 .db-quotes-status.converted {
-  color: #568fd8; /* blue */
+  color: #3b82f6; /* blue */
 }
 
 .db-quotes-id {
-  font-size: 24px !important;
-  font-weight: 800 !important;
+  font-size: 16px;
+  font-weight: 700;
   margin: 4px 0;
-  color: #423e3e !important;
-}
-
-.db-quotes-divider {
-  border: none;
-  border-top: 1px solid #ccc; /* or any color you like */
-  margin: 10px 0; /* spacing above and below */
 }
 
 .db-quotes-address {
-  font-size: 16px;
-  color: #423e3e;
-  font-weight: 400;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
 }
 
 .db-quotes-date {
-  font-size: 16px;
-  color: #423e3e;
-  font-weight: 400;
+  font-size: 13px;
+  color: #444;
 }
 
 .db-quotes-amount {
   font-size: 14px;
-  color: #9f9f9f;
-  font-weight: 400;
+  color: #333;
 }
 
 .db-quotes-amount strong {
   font-size: 16px;
-  font-weight: 800;
-  color: #423e3e;
+  font-weight: 700;
 }
 
 /* Actions */
 .db-quotes-action {
-  font-family: "Hanken Grotesk", Arial, sans-serif;
   margin-top: auto;
   padding: 10px 16px;
-  border-radius: 30px;
+  border-radius: 12px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  margin-top: 1rem;
-  width: 100%;
-}
-
-.db-quotes-num {
-  font-size: 14px;
-  color: #9f9f9f;
 }
 
 .db-quotes-action.primary {
-  background: #000839;
+  background: #1d2b64;
   color: #fff;
   border: none;
 }
 
 .db-quotes-action.primary:hover {
-  background: #000839;
+  background: #14204a;
 }
 
 .db-quotes-action.outline {
-  border: 1px solid #000839;
-  color: #000839;
+  border: 1px solid #1d2b64;
+  color: #1d2b64;
   background: transparent;
 }
 
 .db-quotes-action.outline:hover {
-  background: #fff;
+  background: #f0f0f5;
 }
 
 .db-quotes-header {

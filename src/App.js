@@ -61,8 +61,6 @@ import LocalTrades from "./landing-page/local-trades";
 import PrivateRoute from "./components/PrivateRoute";
 import Bookmarks from "./pages/Bookmarks";
 import DashboardInvoices from "./pages/DashboardInvoices";
-import QuoteDetails from "./pages/QuoteDetails";
-import QuoteDetailsPage from "./pages/QuoteDetailsPage";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -308,7 +306,6 @@ function App() {
             <Route path="chat" element={<DashboardChat />} />
             <Route path="enquiries" element={<DashboardEnquiries />} />
             <Route path="quotes" element={<DashboardQuotes />} />
-            <Route path="quotes/:id" element={<QuoteDetailsPage />} />
             <Route path="jobs" element={<DashboardJobs />} />
             <Route path="clients" element={<DashboardClients />} />
             <Route path="payments" element={<DashboardPayments />} />
@@ -320,7 +317,6 @@ function App() {
             <Route path="helpdesk/tickets" element={<DashboardTickets />} />
             <Route path="helpdesk/resources" element={<DashboardResources />} />
             <Route path="referrals" element={<DashboardReferrals />} />
-            <Route path="/dashboard/quotes/:id" element={<QuoteDetails />} />
           </Route>
         </Routes>
 

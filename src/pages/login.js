@@ -57,18 +57,11 @@ function Login() {
 
       const data = await response.json();
 
+      // 🔹 Save token
       if (data.access_token) {
         localStorage.setItem("token", data.access_token);
         const expiry = new Date().getTime() + 60 * 60 * 1000; // 1 hour
         localStorage.setItem("token_expiry", expiry);
-
-        // ✅ Save role & user id (from backend)
-        if (data.role) {
-          localStorage.setItem("role", data.role);
-        }
-        if (data.user_id) {
-          localStorage.setItem("user_id", data.user_id);
-        }
       }
 
       // ✅ Backend decides the final role
@@ -80,6 +73,7 @@ function Login() {
           );
         }
         localStorage.setItem("role", data.role);
+        console.log("Logged in as:", data.role);
       }
 
       setErrorMessage("");

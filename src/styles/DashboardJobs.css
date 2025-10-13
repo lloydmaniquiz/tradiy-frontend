@@ -45,7 +45,7 @@
 .db-jobs-card h4 {
   font-size: 14px;
   margin-bottom: 8px;
-  color: #423e3e;
+  color: #555;
 }
 
 .db-jobs-number {
@@ -215,26 +215,23 @@
 
 /* Job Card */
 .db-jobs-home-card {
-  border: 1px solid #ddd;
-  border-radius: 20px;
+  border: 1px solid #eee;
+  border-radius: 16px;
   padding: 20px;
   background: #fff;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .db-jobs-home-status {
-  font-weight: 600;
   font-size: 13px;
-  padding: 4px 10px;
-  border-radius: 12px;
-  display: inline-block;
-  white-space: nowrap; /* Prevent text wrapping */
+  font-weight: 600;
 }
 
 .db-jobs-home-status.new {
-  color: #568fd8; /* blue */
-  background-color: #e8f2ff;
+  color: #3b82f6; /* blue */
 }
 
 .db-jobs-home-status.progress {
@@ -246,58 +243,45 @@
 }
 
 .db-jobs-home-id {
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  color: #423e3e !important;
-  margin-bottom: 1rem;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 4px 0;
 }
 
 .db-jobs-home-address {
-  font-size: 16px;
-  font-weight: 400;
-  color: #423e3e;
+  font-size: 14px;
+  color: #666;
   line-height: 1.4;
 }
 
 .db-jobs-home-date {
-  font-size: 16px;
-  font-weight: 400;
-  color: #423e3e;
-}
-
-.db-jobs-home-small {
-  font-size: 14px;
-  font-weight: 400;
-  color: #9f9f9f;
-  margin-top: 1rem;
+  font-size: 13px;
+  color: #444;
 }
 
 .db-jobs-home-action {
-  font-family: "Hanken Grotesk", Arial, sans-serif;
   margin-top: auto;
   padding: 10px 16px;
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: 500;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  margin-top: 1rem;
-  width: 100%;
 }
 
 .db-jobs-home-action.primary {
-  background: #000839;
+  background: #1d2b64;
   color: #fff;
   border: none;
 }
 
 .db-jobs-home-action.primary:hover {
-  background: #000839;
+  background: #14204a;
 }
 
 .db-jobs-home-action.outline {
-  border: 1px solid #000839;
-  color: #000839;
+  border: 1px solid #1d2b64;
+  color: #1d2b64;
   background: transparent;
 }
 

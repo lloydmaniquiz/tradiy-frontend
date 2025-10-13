@@ -45,12 +45,6 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
-.db-invoices-small {
-  font-size: 14px;
-  color: #9f9f9f;
-  margin-top: 1rem;
-}
-
 /* Status tags */
 .db-invoices-home-status {
   font-size: 0.8rem;
@@ -73,59 +67,28 @@
 
 /* Invoice details */
 .db-invoices-home-id {
-  font-weight: 800 !important;
-  font-size: 24px !important;
-  color: #423e3e !important;
-  margin: 0 !important;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .db-invoices-home-service {
-  color: #423e3e;
-  font-size: 16px;
-  margin-top: 0.8rem;
-  margin-bottom: 1rem;
-}
-
-.amount-value,
-.balance-value {
-  display: block;
-  margin-top: 4px; /* optional spacing */
-  font-weight: bold; /* optional styling */
+  color: #555;
+  font-size: 0.9rem;
 }
 
 .db-invoices-home-date {
-  font-size: 16px;
+  font-size: 0.9rem;
   margin-top: 4px;
-  color: #423e3e;
-  font-weight: 400 !important;
-}
-
-.db-invoices-home-date strong {
-  color: #423e3e;
-  font-weight: 600 !important;
 }
 
 .db-invoices-home-amount {
-  font-weight: 400;
+  font-weight: 500;
   margin-top: 6px;
-  margin-bottom: 1rem;
-  color: #9f9f9f;
-  font-size: 14px;
-}
-
-.amount-value,
-.balance-value {
-  color: #423e3e;
-  font-size: 16px;
-  font-weight: 600;
 }
 
 .db-invoices-home-balance {
-  font-weight: 400;
-  margin-top: 6px;
-  margin-bottom: 1rem;
-  color: #9f9f9f;
-  font-size: 14px;
+  font-weight: 500;
+  color: #333;
 }
 
 .db-invoices-home-balance.negative {
@@ -135,23 +98,21 @@
 /* Actions */
 .db-invoices-home-action {
   margin-top: 12px;
-  padding: 12px 16px;
-  border-radius: 30px;
+  padding: 8px 14px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
   border: none;
-  width: 100%;
-  font-family: "Hanken Grotesk", Arial, sans-serif;
 }
 
 .db-invoices-home-action.primary {
-  background: #000839;
+  background: #0f172a;
   color: #fff;
 }
 
 .db-invoices-home-action.outline {
   background: transparent;
   border: 1px solid #ddd;
-  color: #423e3e;
+  color: #333;
 }
