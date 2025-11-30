@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { io } from "socket.io-client";
 import "../styles/DashboardChat.css";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as faRegStar } from "@fortawesome/free-regular-svg-icons"; // outline star
+import { faChevronLeft, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as faRegStar } from "@fortawesome/free-regular-svg-icons";
+
+// ✅ Change to your Azure server URL later (keep localhost for testing)
+const socket = io("http://localhost:3001");
 
 export default function DashboardChat() {
   const [selectedChat, setSelectedChat] = useState("Charlotte Knight");
   const [filter, setFilter] = useState("all");
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
   const navigate = useNavigate();
 
   const [starredChats, setStarredChats] = useState(() => {
@@ -19,6 +24,34 @@ export default function DashboardChat() {
   useEffect(() => {
     localStorage.setItem("starredChats", JSON.stringify(starredChats));
   }, [starredChats]);
+
+  // ✅ Listen for incoming messages
+  useEffect(() => {
+    socket.on("receive_message", (message) => {
+      setMessages((prev) => [...prev, message]);
+    });
+
+    return () => {
+      socket.off("receive_message");
+    };
+  }, []);
+
+  // ✅ Send message to server
+  const sendMessage = () => {
+    if (newMessage.trim()) {
+      const messageData = {
+        from: "me",
+        text: newMessage,
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      };
+      setMessages((prev) => [...prev, messageData]);
+      socket.emit("send_message", messageData);
+      setNewMessage("");
+    }
+  };
 
   const toggleStar = (chatId) => {
     setStarredChats((prev) =>
@@ -53,21 +86,6 @@ export default function DashboardChat() {
       avatar: "https://i.pravatar.cc/150?img=3",
       unread: false,
     },
-  ];
-
-  const messages = [
-    {
-      from: "client",
-      text: "Hello, I need help with my project.",
-      time: "07:30",
-    },
-    { from: "me", text: "Sure! What do you need exactly?", time: "07:35" },
-    {
-      from: "client",
-      text: "I need a quote for electrical work.",
-      time: "10:46",
-    },
-    { from: "me", text: "Got it. Let me prepare an estimate.", time: "10:50" },
   ];
 
   const currentChat = chats.find((chat) => chat.name === selectedChat);
@@ -109,6 +127,7 @@ export default function DashboardChat() {
           </button>
         </div>
 
+        {/* Chat list */}
         <div className="chat-list">
           {chats
             .filter((chat) => {
@@ -133,7 +152,7 @@ export default function DashboardChat() {
                         starredChats.includes(chat.id) ? "visible" : ""
                       }`}
                       onClick={(e) => {
-                        e.stopPropagation(); // prevent selecting chat when clicking star
+                        e.stopPropagation();
                         toggleStar(chat.id);
                       }}
                     >
@@ -177,6 +196,7 @@ export default function DashboardChat() {
           )}
         </div>
 
+        {/* Chat messages */}
         <div className="chat-messages">
           {messages.map((msg, idx) => (
             <div
@@ -191,9 +211,15 @@ export default function DashboardChat() {
           ))}
         </div>
 
+        {/* Chat input */}
         <div className="chat-input">
-          <input type="text" placeholder="Type a message..." />
-          <button>Send</button>
+          <input
+            type="text"
+            placeholder="Type a message..."
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+          />
+          <button onClick={sendMessage}>Send</button>
         </div>
       </main>
 

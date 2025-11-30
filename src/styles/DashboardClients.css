@@ -180,3 +180,98 @@
   color: #fff;
   border-color: #1d2b64;
 }
+
+.add-customer-form {
+  background: #fff;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.add-customer-card {
+  border-radius: 10px;
+}
+
+.form-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.form-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.form-section-header {
+  background-color: #f3f4f6;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.form-section-header.active {
+  background-color: #5b9df9;
+  color: #fff;
+}
+
+.form-section label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.form-section input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-section-header active {
+  max-width: 200px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.btn-outline {
+  border: 1px solid #423e3e !important;
+  padding: 10px 25px;
+  border-radius: 50px !important;
+  background: #fff;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #000839;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px !important;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #000839;
+}

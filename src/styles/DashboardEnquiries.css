@@ -289,6 +289,8 @@
   font-family: "Hanken Grotesk", Arial;
   color: white;
   cursor: pointer;
+  padding: 20px !important;
+  font-size: 16px;
 }
 
 .accept-btn {
@@ -298,6 +300,7 @@
   font-family: "Hanken Grotesk", Arial;
   cursor: pointer;
   font-size: 16px;
+  color: white;
 }
 
 .detail-header {

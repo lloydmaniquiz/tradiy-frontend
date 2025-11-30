@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../styles/DashboardJobs.css";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaArrowLeft } from "react-icons/fa";
 import TotalCustomersIcon from "../images/total-customers.png";
 import NewCustomersIcon from "../images/new-customers.png";
 import LeadsIcon from "../images/leads.png";
 import AddJobForm from "../components/AddJobForm";
-import JobDetails from "../components/JobDetails"; // Import JobDetails
+import JobDetails from "../components/JobDetails";
 
 export default function DashboardJobs() {
-  const role = localStorage.getItem("role"); // Trader or Homeowner
+  const role = localStorage.getItem("role");
   const [userEmail, setUserEmail] = useState("");
   const [jobsData, setJobsData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -72,7 +72,7 @@ export default function DashboardJobs() {
               staff: q.assignedStaff || "Unassigned",
               date: q.createdAt,
               status: "New",
-              businessAddress: q.businessAddress || "", // optional
+              businessAddress: q.businessAddress || "",
             }));
 
           setJobsData(convertedJobs);
@@ -151,19 +151,28 @@ export default function DashboardJobs() {
   return (
     <div className="db-jobs-container">
       <div className="db-quotes-header">
-        <h1 className="db-quotes-header-title">Jobs</h1>
-        <div className="db-quotesheader-select-wrapper">
-          <select className="db-quotesheader-select">
-            <option>Business Name 1</option>
-            <option>Business Name 2</option>
-            <option>Business Name 3</option>
-          </select>
-          <FaChevronDown className="db-quotesheader-icon" />
-        </div>
+        <h1 className="db-quotes-header-title">
+          {showAddForm ? "Add New Job" : "Jobs"}
+        </h1>
+
+        {showAddForm ? (
+          <button className="db-back-btn" onClick={() => setShowAddForm(false)}>
+            <i className="fas fa-chevron-left"></i> Back
+          </button>
+        ) : (
+          <div className="db-quotesheader-select-wrapper">
+            <select className="db-quotesheader-select">
+              <option>Business Name 1</option>
+              <option>Business Name 2</option>
+              <option>Business Name 3</option>
+            </select>
+            <FaChevronDown className="db-quotesheader-icon" />
+          </div>
+        )}
       </div>
 
       {showAddForm ? (
-        <AddJobForm />
+        <AddJobForm onCancel={() => setShowAddForm(false)} />
       ) : (
         <>
           {/* --- STATS --- */}

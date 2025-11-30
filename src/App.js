@@ -36,7 +36,6 @@ import { Helmet } from "react-helmet-async";
 import MenuPage from "./components/MenuPage";
 import BackButton from "./images/back-button.png";
 import Dashboard from "./pages/dashboards";
-import QuickAction from "./pages/DashboardQuickActions";
 import DashboardHome from "./pages/DashboardHome";
 import DashboardCalendar from "./pages/DashboardCalendar";
 import DashboardChat from "./pages/DashboardChat";
@@ -63,6 +62,17 @@ import Bookmarks from "./pages/Bookmarks";
 import DashboardInvoices from "./pages/DashboardInvoices";
 import QuoteDetails from "./pages/QuoteDetails";
 import QuoteDetailsPage from "./pages/QuoteDetailsPage";
+import DashboardSettings from "./pages/DashboardSettings";
+import SettingsProfile from "./pages/SettingsProfile";
+import SettingsNotifications from "./pages/SettingsNotifications";
+import SettingsWallet from "./pages/SettingsWallet";
+import SettingsWorkTeam from "./pages/SettingsWorkTeam";
+import SettingsEmail from "./pages/SettingsEmail";
+import SettingsDocument from "./pages/SettingsDocument";
+import SettingsSubscription from "./pages/SettingsSubscription";
+import SettingsEmailTemplate from "./pages/SettingsEmailTemplate";
+import SettingsDocumentTemplate from "./pages/SettingsDocumentTemplate";
+import SettingsSubscriptionManage from "./pages/SettingsSubscriptionManage";
 
 function App() {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -302,8 +312,29 @@ function App() {
               </PrivateRoute>
             }
           >
-            <Route path="quick-actions" element={<QuickAction />} />
             <Route path="dashboard-home" element={<DashboardHome />} />
+            <Route path="settings" element={<DashboardSettings />}>
+              <Route index element={<SettingsProfile />} />
+              <Route path="profile" element={<SettingsProfile />} />
+              <Route path="notifications" element={<SettingsNotifications />} />
+              <Route path="wallet" element={<SettingsWallet />} />
+              <Route path="work-team" element={<SettingsWorkTeam />} />
+              <Route path="email" element={<SettingsEmail />} />
+              <Route
+                path="email/:category/:templateId"
+                element={<SettingsEmailTemplate />}
+              />
+              <Route path="document" element={<SettingsDocument />} />
+              <Route
+                path="document/create"
+                element={<SettingsDocumentTemplate />}
+              />
+              <Route path="subscription" element={<SettingsSubscription />} />
+              <Route
+                path="subscription/manage"
+                element={<SettingsSubscriptionManage />}
+              />
+            </Route>
             <Route path="calendar" element={<DashboardCalendar />} />
             <Route path="chat" element={<DashboardChat />} />
             <Route path="enquiries" element={<DashboardEnquiries />} />

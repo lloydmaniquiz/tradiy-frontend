@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import "../styles/AddQuoteForm.css";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import TradiyLogo from "../images/tradiy-hero-logo.png";
 
 function AddNewQuote() {
   const [client, setClient] = useState("");
   const [quoteTitle, setQuoteTitle] = useState("");
-  const [quoteId, setQuoteId] = useState("QT-012KL-1234"); // Sample readonly quote ID
+  const [quoteId, setQuoteId] = useState("QT-012KL-1234");
   const [quoteDate, setQuoteDate] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
-
-  const [requestType, setRequestType] = useState("estimate"); // Quote Estimate or Quote Visit
+  const [requestType, setRequestType] = useState("estimate");
   const [serviceType, setServiceType] = useState("");
   const [timeline, setTimeline] = useState("");
   const [description, setDescription] = useState("");
-
   const [location, setLocation] = useState({
     address: "",
     city: "",
@@ -20,27 +21,21 @@ function AddNewQuote() {
     region: "",
     postcode: "",
   });
-
   const [files, setFiles] = useState([]);
-
   const [serviceItems, setServiceItems] = useState([
     { service: "", description: "", qty: 1, unitPrice: 0, total: 0 },
   ]);
-
   const [discount, setDiscount] = useState(0);
   const [tax, setTax] = useState(0);
   const [requiredDeposit, setRequiredDeposit] = useState(0);
-
   const [message, setMessage] = useState("");
   const [internalNotes, setInternalNotes] = useState("");
   const [internalFiles, setInternalFiles] = useState([]);
 
-  // Helper to update location state
   const handleLocationChange = (field, value) => {
     setLocation((prev) => ({ ...prev, [field]: value }));
   };
 
-  // Handle adding new service item
   const addServiceItem = () => {
     setServiceItems([
       ...serviceItems,
@@ -48,7 +43,6 @@ function AddNewQuote() {
     ]);
   };
 
-  // Handle service item change
   const handleServiceItemChange = (index, field, value) => {
     const items = [...serviceItems];
     items[index][field] =
@@ -57,12 +51,10 @@ function AddNewQuote() {
     setServiceItems(items);
   };
 
-  // Calculate totals
   const subtotal = serviceItems.reduce((acc, item) => acc + item.total, 0);
   const totalTax = (subtotal - discount) * (tax / 100);
   const total = subtotal - discount + totalTax;
 
-  // Handle file uploads (Quote files & Internal notes files)
   const handleFilesChange = (e, isInternal = false) => {
     const uploadedFiles = Array.from(e.target.files);
     if (isInternal) {
@@ -72,486 +64,390 @@ function AddNewQuote() {
     }
   };
 
-  // Form submission (placeholder)
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would handle the submission to backend or state management
     alert("Quote Saved!");
   };
 
+  // ✅ Generate and Download PDF
+  const handlePrintPDF = async () => {
+    const element = document.getElementById("quote-preview");
+
+    if (!element) {
+      alert("Quote preview not found!");
+      return;
+    }
+
+    const canvas = await html2canvas(element, {
+      scale: 2,
+      useCORS: true,
+    });
+
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save(`${quoteId || "Quote"}.pdf`);
+  };
+
   return (
-    <div
-      style={{
-        maxWidth: 900,
-        margin: "auto",
-        padding: 20,
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
-      {/* Header */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 20,
-        }}
-      >
-        <h2>Add New Quote</h2>
-        <div>
-          <button style={{ marginRight: 10 }}>Print Quote PDF</button>
-          <button style={{ marginRight: 10 }}>Preview</button>
-          <button>Back</button>
-        </div>
+    <div className="quote-container">
+      {/* Header Buttons */}
+      <div className="quote-header-buttons">
+        <button type="button" onClick={handlePrintPDF}>
+          Print Quote PDF
+        </button>
+        <button type="button">Preview</button>
+        <button type="button">Back</button>
       </div>
 
+      {/* Quote Form */}
       <form onSubmit={handleSubmit}>
-        {/* Quote for Customer */}
-        <fieldset
-          style={{ marginBottom: 20, padding: 15, border: "1px solid #ccc" }}
-        >
-          <legend>
-            <strong>Quote for Customer</strong>
-          </legend>
-          <div
-            style={{
-              display: "flex",
-              gap: 10,
-              alignItems: "center",
-              marginBottom: 15,
-            }}
-          >
-            <select
-              required
-              value={client}
-              onChange={(e) => setClient(e.target.value)}
-              style={{ flex: 1, padding: 8 }}
-            >
-              <option value="">Select Client</option>
-              <option value="client1">Client 1</option>
-              <option value="client2">Client 2</option>
-            </select>
-            <button type="button" onClick={() => alert("Add New Client logic")}>
-              + New Client
-            </button>
-          </div>
+        <div className="form-row">
+          <fieldset className="fieldset">
+            <legend>
+              <strong>Quote for Customer</strong>
+            </legend>
+            <div className="client-select-row">
+              <select
+                required
+                value={client}
+                onChange={(e) => setClient(e.target.value)}
+              >
+                <option value="">Select Client</option>
+                <option value="Charlotte Knight">Charlotte Knight</option>
+                <option value="Client 2">Client 2</option>
+              </select>
+              <button
+                type="button"
+                onClick={() => alert("Add New Client logic")}
+              >
+                + New Client
+              </button>
+            </div>
 
-          <input
-            type="text"
-            placeholder="Quote Title"
-            value={quoteTitle}
-            onChange={(e) => setQuoteTitle(e.target.value)}
-            style={{ width: "100%", padding: 8 }}
-          />
-        </fieldset>
-
-        {/* Quote Details */}
-        <fieldset
-          style={{
-            marginBottom: 20,
-            padding: 15,
-            border: "1px solid #ccc",
-            maxWidth: 300,
-          }}
-        >
-          <legend>
-            <strong>Quote Details</strong>
-          </legend>
-          <div style={{ marginBottom: 10 }}>
-            <label>Quote ID</label>
             <input
               type="text"
-              readOnly
-              value={quoteId}
-              style={{ width: "100%", padding: 6 }}
+              placeholder="Quote Title"
+              value={quoteTitle}
+              onChange={(e) => setQuoteTitle(e.target.value)}
             />
-          </div>
-          <div style={{ marginBottom: 10 }}>
-            <label>Quote Date</label>
-            <input
-              type="date"
-              value={quoteDate}
-              onChange={(e) => setQuoteDate(e.target.value)}
-              style={{ width: "100%", padding: 6 }}
-            />
-          </div>
-          <div>
-            <label>Expiry Date</label>
-            <input
-              type="date"
-              value={expiryDate}
-              onChange={(e) => setExpiryDate(e.target.value)}
-              style={{ width: "100%", padding: 6 }}
-            />
-          </div>
-        </fieldset>
+          </fieldset>
 
-        <hr style={{ margin: "30px 0" }} />
-
-        {/* Quote Service */}
-        <fieldset style={{ padding: 15, border: "1px solid #ccc" }}>
-          <legend>
-            <strong>Quote Service</strong>
-          </legend>
-
-          {/* Request Type */}
-          <div style={{ marginBottom: 15 }}>
-            <label>
+          <fieldset className="fieldset small-fieldset">
+            <legend>
+              <strong>Quote Details</strong>
+            </legend>
+            <div className="input-block">
+              <label>Quote ID</label>
+              <input type="text" readOnly value={quoteId} />
+            </div>
+            <div className="input-block">
+              <label>Quote Date</label>
               <input
-                type="radio"
-                name="requestType"
-                value="estimate"
-                checked={requestType === "estimate"}
-                onChange={() => setRequestType("estimate")}
-              />{" "}
-              Quote Estimate
-            </label>
-            <label style={{ marginLeft: 20 }}>
+                type="date"
+                value={quoteDate}
+                onChange={(e) => setQuoteDate(e.target.value)}
+              />
+            </div>
+            <div className="input-block">
+              <label>Expiry Date</label>
               <input
-                type="radio"
-                name="requestType"
-                value="visit"
-                checked={requestType === "visit"}
-                onChange={() => setRequestType("visit")}
-              />{" "}
-              Quote Visit
-            </label>
+                type="date"
+                value={expiryDate}
+                onChange={(e) => setExpiryDate(e.target.value)}
+              />
+            </div>
+          </fieldset>
+        </div>
+
+        <hr className="divider" />
+
+        {/* Quote Service Section */}
+        <fieldset className="fieldset quote-service-fieldset">
+          <div className="quote-service">
+            <h3>Quote Service</h3>
+            <small>Request Type</small>
+            <div className="quote-options">
+              <label>
+                <input
+                  type="radio"
+                  name="quoteType"
+                  value="estimate"
+                  checked={requestType === "estimate"}
+                  onChange={(e) => setRequestType(e.target.value)}
+                />
+                Quote Estimate
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="quoteType"
+                  value="visit"
+                  checked={requestType === "visit"}
+                  onChange={(e) => setRequestType(e.target.value)}
+                />
+                Quote Visit
+              </label>
+            </div>
           </div>
 
-          {/* Service Type & Timeline */}
-          <div style={{ display: "flex", gap: 10, marginBottom: 10 }}>
-            <select
-              value={serviceType}
-              onChange={(e) => setServiceType(e.target.value)}
-              style={{ flex: 1, padding: 8 }}
-              required
-            >
-              <option value="">Select Service Type</option>
-              <option value="type1">Service Type 1</option>
-              <option value="type2">Service Type 2</option>
-            </select>
-            <select
-              value={timeline}
-              onChange={(e) => setTimeline(e.target.value)}
-              style={{ flex: 1, padding: 8 }}
-              required
-            >
-              <option value="">Select Timeline</option>
-              <option value="1 week">1 Week</option>
-              <option value="2 weeks">2 Weeks</option>
-              <option value="1 month">1 Month</option>
-            </select>
-          </div>
+          <div className="service-location-layout">
+            <div className="service-info-column">
+              <select
+                className="select-service-type"
+                value={serviceType}
+                onChange={(e) => setServiceType(e.target.value)}
+                required
+              >
+                <option value="">Select Service Type</option>
+                <option value="type1">Service Type 1</option>
+                <option value="type2">Service Type 2</option>
+              </select>
 
-          {/* Description */}
-          <textarea
-            rows="3"
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            style={{ width: "100%", padding: 8, marginBottom: 10 }}
-          />
+              <select
+                className="select-timeline"
+                value={timeline}
+                onChange={(e) => setTimeline(e.target.value)}
+                required
+              >
+                <option value="">Select Timeline</option>
+                <option value="1 week">1 Week</option>
+                <option value="2 weeks">2 Weeks</option>
+                <option value="1 month">1 Month</option>
+              </select>
 
-          {/* Location */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
-              gap: 10,
-              marginBottom: 20,
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Location"
-              value={location.address}
-              onChange={(e) => handleLocationChange("address", e.target.value)}
-              required
-            />
-            <input
-              type="text"
-              placeholder="City"
-              value={location.city}
-              onChange={(e) => handleLocationChange("city", e.target.value)}
-              required
-            />
-            <input
-              type="text"
-              placeholder="State"
-              value={location.state}
-              onChange={(e) => handleLocationChange("state", e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Region"
-              value={location.region}
-              onChange={(e) => handleLocationChange("region", e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Postcode"
-              value={location.postcode}
-              onChange={(e) => handleLocationChange("postcode", e.target.value)}
-            />
-          </div>
+              <textarea
+                rows="5"
+                placeholder="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
 
-          {/* File Upload */}
-          <div
-            style={{
-              border: "2px dashed #ccc",
-              padding: 30,
-              textAlign: "center",
-              color: "#aaa",
-              marginBottom: 20,
-            }}
-          >
-            <p>Drag and drop files here or</p>
-            <input
-              type="file"
-              multiple
-              onChange={handleFilesChange}
-              style={{ display: "block", margin: "10px auto" }}
-            />
-            {files.length > 0 && <p>{files.length} file(s) uploaded</p>}
+            <div className="location-info-column">
+              <input
+                type="text"
+                placeholder="Address"
+                value={location.address}
+                onChange={(e) =>
+                  handleLocationChange("address", e.target.value)
+                }
+              />
+              <input
+                type="text"
+                placeholder="City"
+                value={location.city}
+                onChange={(e) => handleLocationChange("city", e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="State"
+                value={location.state}
+                onChange={(e) => handleLocationChange("state", e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Region"
+                value={location.region}
+                onChange={(e) => handleLocationChange("region", e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Postcode"
+                value={location.postcode}
+                onChange={(e) =>
+                  handleLocationChange("postcode", e.target.value)
+                }
+              />
+            </div>
           </div>
         </fieldset>
 
         {/* Service Items */}
-        <fieldset
-          style={{ padding: 15, border: "1px solid #ccc", marginTop: 20 }}
-        >
+        <fieldset className="fieldset">
           <legend>
             <strong>Service Items</strong>
           </legend>
-
           {serviceItems.map((item, idx) => (
-            <div
-              key={idx}
-              style={{ display: "flex", gap: 10, marginBottom: 15 }}
-            >
+            <div key={idx} className="service-item">
               <input
                 type="text"
-                placeholder="Search or Add Service"
+                placeholder="Service"
                 value={item.service}
                 onChange={(e) =>
                   handleServiceItemChange(idx, "service", e.target.value)
                 }
-                style={{ flex: 2, padding: 8 }}
               />
               <input
                 type="number"
                 placeholder="Qty"
                 value={item.qty}
-                min="1"
                 onChange={(e) =>
                   handleServiceItemChange(idx, "qty", e.target.value)
                 }
-                style={{ width: 70, padding: 8 }}
               />
               <input
                 type="number"
                 placeholder="Unit Price"
                 value={item.unitPrice}
-                min="0"
-                step="0.01"
                 onChange={(e) =>
                   handleServiceItemChange(idx, "unitPrice", e.target.value)
                 }
-                style={{ width: 100, padding: 8 }}
               />
               <input
                 type="number"
                 placeholder="Total"
                 value={item.total.toFixed(2)}
                 readOnly
-                style={{
-                  width: 100,
-                  padding: 8,
-                  backgroundColor: "#eee",
-                  border: "1px solid #ccc",
-                }}
               />
             </div>
           ))}
-
-          <textarea
-            placeholder="Description"
-            value={serviceItems[serviceItems.length - 1].description}
-            onChange={(e) =>
-              handleServiceItemChange(
-                serviceItems.length - 1,
-                "description",
-                e.target.value
-              )
-            }
-            style={{ width: "100%", padding: 8, marginBottom: 10 }}
-          />
-
-          <div style={{ marginBottom: 15 }}>
-            <button
-              type="button"
-              onClick={addServiceItem}
-              style={{ marginRight: 10 }}
-            >
-              + Add Item
-            </button>
-            <button
-              type="button"
-              onClick={() => alert("Service Pricing logic")}
-            >
-              Service Pricing
-            </button>
-          </div>
-
-          {/* Totals */}
-          <div style={{ maxWidth: 300, marginLeft: "auto" }}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <span>Subtotal</span>
-              <span>£{subtotal.toFixed(2)}</span>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: 5,
-              }}
-            >
-              <span>Discount</span>
-              <button
-                type="button"
-                onClick={() => {
-                  const disc = prompt("Enter Discount Amount", discount);
-                  if (disc !== null) setDiscount(Number(disc));
-                }}
-              >
-                Add Discount
-              </button>
-              <span>£{discount.toFixed(2)}</span>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: 5,
-              }}
-            >
-              <span>Tax</span>
-              <button
-                type="button"
-                onClick={() => {
-                  const t = prompt("Enter Tax Percentage", tax);
-                  if (t !== null) setTax(Number(t));
-                }}
-              >
-                Add Tax
-              </button>
-              <span>£{totalTax.toFixed(2)}</span>
-            </div>
-            <div
-              style={{
-                borderTop: "1px solid #ddd",
-                marginTop: 10,
-                paddingTop: 10,
-                fontWeight: "bold",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <span>Total</span>
-              <span>£{total.toFixed(2)}</span>
-            </div>
-            <div
-              style={{
-                marginTop: 5,
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <span>Required Deposit</span>
-              <button
-                type="button"
-                onClick={() => {
-                  const rd = prompt(
-                    "Enter Required Deposit Amount",
-                    requiredDeposit
-                  );
-                  if (rd !== null) setRequiredDeposit(Number(rd));
-                }}
-              >
-                Add Required Deposit
-              </button>
-              <span>£{requiredDeposit.toFixed(2)}</span>
-            </div>
-          </div>
         </fieldset>
-
-        {/* Message */}
-        <fieldset style={{ marginTop: 20 }}>
-          <legend>
-            <strong>Message</strong>
-          </legend>
-          <textarea
-            rows="4"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            style={{ width: "100%", padding: 8 }}
-          />
-        </fieldset>
-
-        {/* Action Buttons */}
-        <div
-          style={{
-            marginTop: 20,
-            display: "flex",
-            gap: 10,
-            justifyContent: "flex-end",
-          }}
-        >
-          <button type="button" onClick={() => alert("Cancel clicked")}>
-            Cancel
-          </button>
-          <button type="submit" style={{ padding: "8px 20px" }}>
-            Save and &#x25BC;
-          </button>
-        </div>
       </form>
 
-      {/* Internal Notes Section */}
-      <fieldset
-        style={{ marginTop: 40, padding: 15, border: "1px solid #ccc" }}
+      {/* Hidden Printable PDF Layout */}
+      <div
+        id="quote-preview"
+        style={{
+          width: "800px",
+          padding: "40px",
+          background: "white",
+          color: "#333",
+          fontFamily: "Arial, sans-serif",
+        }}
       >
-        <legend>
-          <strong>Internal Notes</strong>
-        </legend>
-        <small>Your team alone can see internal notes.</small>
-        <textarea
-          placeholder="Enter internal notes here."
-          rows="5"
-          value={internalNotes}
-          onChange={(e) => setInternalNotes(e.target.value)}
-          style={{ width: "100%", padding: 8, marginTop: 10, marginBottom: 10 }}
-        />
-        <input
-          type="file"
-          multiple
-          onChange={(e) => handleFilesChange(e, true)}
-        />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <img src={TradiyLogo} alt="Tradiy Logo" width="120" />
+          <h2 style={{ color: "#00AEEF" }}>QUOTE</h2>
+        </div>
+
         <div
+          style={{ borderBottom: "3px solid #00AEEF", margin: "10px 0 20px" }}
+        />
+
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>
+            <h3>Fisher Decorating Services Ltd</h3>
+            <p>fisherdecoratingservices@hotmail.co.uk</p>
+            <p>01234 56789</p>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <h4>TOTAL AMOUNT</h4>
+            <h2>£{total.toFixed(2)}</h2>
+            <p>{quoteId}</p>
+            <p>{requestType === "visit" ? "Quote Visit" : "Quote Estimate"}</p>
+          </div>
+        </div>
+
+        <div style={{ marginTop: "30px" }}>
+          <h4>RECIPIENT</h4>
+          <p>
+            <strong>{client || "Client Name"}</strong>
+          </p>
+          <p>{location.address}</p>
+          <p>
+            {location.city} {location.postcode}
+          </p>
+        </div>
+
+        <table
           style={{
-            marginTop: 10,
-            display: "flex",
-            gap: 10,
-            justifyContent: "flex-end",
+            width: "100%",
+            borderCollapse: "collapse",
+            marginTop: "30px",
+            fontSize: "12px",
           }}
         >
-          <button type="button" onClick={() => alert("Cancel Internal Notes")}>
-            Cancel
-          </button>
-          <button type="button" onClick={() => alert("Internal notes saved")}>
-            Save
-          </button>
+          <thead>
+            <tr style={{ background: "#f5f5f5" }}>
+              <th style={{ padding: "8px" }}>Service</th>
+              <th style={{ padding: "8px" }}>Description</th>
+              <th style={{ padding: "8px" }}>Qty</th>
+              <th style={{ padding: "8px" }}>Unit Price</th>
+              <th style={{ padding: "8px" }}>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {serviceItems.map((item, idx) => (
+              <tr key={idx}>
+                <td style={{ padding: "8px", borderTop: "1px solid #ddd" }}>
+                  {item.service}
+                </td>
+                <td style={{ padding: "8px", borderTop: "1px solid #ddd" }}>
+                  {item.description}
+                </td>
+                <td style={{ padding: "8px", borderTop: "1px solid #ddd" }}>
+                  {item.qty}
+                </td>
+                <td style={{ padding: "8px", borderTop: "1px solid #ddd" }}>
+                  £{item.unitPrice.toFixed(2)}
+                </td>
+                <td style={{ padding: "8px", borderTop: "1px solid #ddd" }}>
+                  £{item.total.toFixed(2)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div style={{ textAlign: "right", marginTop: "20px" }}>
+          <p>Subtotal: £{subtotal.toFixed(2)}</p>
+          <p>Discount: £{discount.toFixed(2)}</p>
+          <p>
+            Tax: £{tax}% (£{totalTax.toFixed(2)})
+          </p>
+          <h3>Total: £{total.toFixed(2)}</h3>
         </div>
-      </fieldset>
+
+        <div style={{ marginTop: "40px", fontSize: "12px" }}>
+          <p>
+            Please note this quote is valid for 30 days. After this period,
+            pricing may be revised.
+          </p>
+          <h4>Deposit Required: £{requiredDeposit.toFixed(2)}</h4>
+        </div>
+
+        <div
+          style={{
+            marginTop: "50px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <div style={{ textAlign: "center" }}>
+            <div
+              style={{
+                borderTop: "1px solid #000",
+                width: "200px",
+                margin: "auto",
+              }}
+            ></div>
+            <small>Client Signature</small>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <div
+              style={{
+                borderTop: "1px solid #000",
+                width: "200px",
+                margin: "auto",
+              }}
+            ></div>
+            <small>Date</small>
+          </div>
+        </div>
+
+        <div style={{ marginTop: "40px", color: "#888" }}>
+          <p>
+            POWERED BY{" "}
+            <span style={{ color: "#00AEEF", fontWeight: "bold" }}>
+              Tradiy Hero
+            </span>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

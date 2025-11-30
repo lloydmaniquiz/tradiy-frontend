@@ -290,13 +290,13 @@ html {
 }
 
 .search-bar input {
-  padding: 1.5rem;
-  border-radius: 0px 50px 50px 0px;
+  padding: 1.5rem !important;
+  border-radius: 0px 50px 50px 0px !important;
   border: none;
-  border: 2px solid #bbbcc0; /* Top border */
-  border-left: 1px solid #bbbcc0;
+  border: 2px solid #bbbcc0 !important; /* Top border */
+  border-left: 1px solid #bbbcc0 !important;
   font-size: medium;
-  font-family: "Hanken Grotesk", Arial;
+  font-family: "Hanken Grotesk", Arial !important;
   font-weight: 600;
   width: 100%;
   color: #423e3e;

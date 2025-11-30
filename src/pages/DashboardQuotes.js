@@ -122,17 +122,28 @@ export default function DashboardQuotes() {
   return (
     <div className="db-quotes-container">
       <div className="db-quotes-header">
-        <h1 className="db-quotes-header-title">
-          {showAddForm ? "Create New Quote" : "Quotes"}
-        </h1>
-        {!showAddForm && (
-          <div className="db-quotesheader-select-wrapper">
-            <select className="db-quotesheader-select">
-              <option>Business Name 1</option>
-              <option>Business Name 2</option>
-              <option>Business Name 3</option>
-            </select>
-            <FaChevronDown className="db-quotesheader-icon" />
+        <div className="db-quotes-header-left">
+          <h1 className="db-quotes-header-title">
+            {showAddForm ? "Add New Quote" : "Quotes"}
+          </h1>
+          {!showAddForm && (
+            <div className="db-quotesheader-select-wrapper">
+              <select className="db-quotesheader-select">
+                <option>Business Name 1</option>
+                <option>Business Name 2</option>
+                <option>Business Name 3</option>
+              </select>
+              <FaChevronDown className="db-quotesheader-icon" />
+            </div>
+          )}
+        </div>
+
+        {/* ✅ Only show buttons when Add New Quote is active */}
+        {showAddForm && (
+          <div className="quote-header-buttons">
+            <button className="add-quote-btn">Print Quote PDF</button>
+            <button className="add-quote-btn">Preview</button>
+            <button className="add-quote-btn">Back</button>
           </div>
         )}
       </div>

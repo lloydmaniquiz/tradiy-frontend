@@ -90,6 +90,11 @@
   flex: 0.5;
 }
 
+.quote-info-h3 h3 {
+  color: #423e3e !important;
+  font-size: 36px !important;
+}
+
 .info-row {
   display: flex;
   gap: 12px;

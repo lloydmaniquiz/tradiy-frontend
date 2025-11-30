@@ -1,4 +1,3 @@
-// src/components/QuoteDetails.jsx
 import React, { useState } from "react";
 import "../styles/QuoteDetails.css";
 
@@ -13,8 +12,9 @@ export default function QuoteDetails({ quote, onBack }) {
 
     setLoading(true);
     try {
+      // FIXED: use the variable inside the template literal
       const response = await fetch(
-        `http://127.0.0.1:8000/enquiry/${currentQuote.quoteNumber}/status`,
+        `${process.env.REACT_APP_API_URL}/${currentQuote.quoteNumber}/status`,
         {
           method: "PUT",
           headers: {
@@ -39,16 +39,29 @@ export default function QuoteDetails({ quote, onBack }) {
     }
   };
 
+  // safe formatter: always returns a string like "0.00"
+  const fmt = (value) => {
+    if (value === null || value === undefined || value === "") return "0.00";
+    const num = Number(value);
+    return Number.isFinite(num) ? num.toFixed(2) : "0.00";
+  };
+
+  const createdDate = currentQuote.createdAt
+    ? new Date(currentQuote.createdAt).toLocaleDateString()
+    : "—";
+
   return (
     <div className="quote-details-wrapper">
       <div className="quote-header">
-        <span
-          className={`status-badge ${
-            currentQuote.status?.toLowerCase() || "pending"
-          }`}
-        >
-          {currentQuote.status?.toUpperCase() || "PENDING"}
-        </span>
+        <div className="quote-header-left">
+          <span
+            className={`status-badge ${(
+              currentQuote.status || "pending"
+            ).toLowerCase()}`}
+          >
+            {(currentQuote.status || "PENDING").toUpperCase()}
+          </span>
+        </div>
 
         <div className="quote-header-actions">
           <button className="outline">More Actions ⌄</button>
@@ -63,42 +76,36 @@ export default function QuoteDetails({ quote, onBack }) {
       </div>
 
       <div className="quote-info">
-        <div>
-          <h3>{currentQuote.homeOwnerName}</h3>
-          <p>
+        <div className="quote-info-h3">
+          <h3>{currentQuote.homeOwnerName || currentQuote.id || "—"}</h3>
+          <p className="address">
             <strong>Property Address</strong>
             <br />
             {currentQuote.address || "No address provided"}
           </p>
-        </div>
-
-        <div>
-          <p>
-            <strong>Trader</strong>
-            <br />
-            {currentQuote.traderName || "Unknown"}
-            <br />
-            {currentQuote.traderBusiness || ""}
+          <p className="contact">
+            <small>{currentQuote.contact || ""}</small>
           </p>
         </div>
 
-        <div>
-          <p>
-            <strong>Quote Details</strong>
-            <br />
-            Quote ID: {currentQuote.quoteNumber}
-            <br />
-            Request Type: {currentQuote.requestType}
-            <br />
-            Date Created:{" "}
-            {new Date(currentQuote.createdAt).toLocaleDateString()}
-          </p>
+        <div className="quote-info-trader">
+          <p className="trader-title">Trader</p>
+          <p className="trader-name">{currentQuote.traderName || "Unknown"}</p>
+          <p className="trader-business">{currentQuote.traderBusiness || ""}</p>
+        </div>
+
+        <div className="quote-info-details">
+          <p className="details-title">Quote Details</p>
+          <p>Quote ID: {currentQuote.quoteNumber || "—"}</p>
+          <p>Request Type: {currentQuote.requestType || "—"}</p>
+          <p>Date Created: {createdDate}</p>
         </div>
       </div>
 
       <p className="quote-note">
         To proceed with the request, an initial deposit of{" "}
-        <strong>£{currentQuote.deposit || 0}</strong> is required to be paid.
+        <strong>£{fmt(currentQuote.deposit || 0)}</strong> is required to be
+        paid.
       </p>
 
       <h4>Service Summary</h4>
@@ -112,24 +119,39 @@ export default function QuoteDetails({ quote, onBack }) {
           </tr>
         </thead>
         <tbody>
+          {(currentQuote.services || []).length === 0 && (
+            <tr>
+              <td colSpan="4" className="no-services">
+                No services added
+              </td>
+            </tr>
+          )}
           {(currentQuote.services || []).map((service, i) => (
             <tr key={i}>
               <td>{service.name}</td>
-              <td>{service.quantity}</td>
-              <td>£{service.unitPrice.toFixed(2)}</td>
-              <td>£{service.total.toFixed(2)}</td>
+              <td>{service.quantity ?? 1}</td>
+              <td>£{fmt(service.unitPrice ?? 0)}</td>
+              <td>£{fmt(service.total ?? 0)}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <div className="quote-totals">
-        <p>Subtotal: £{currentQuote.subtotal?.toFixed(2) || "0.00"}</p>
-        <p>VAT: £{currentQuote.vat?.toFixed(2) || "0.00"}</p>
-        <p className="total">
-          Total: £{currentQuote.total?.toFixed(2) || "0.00"}
-        </p>
-        <p>Deposit: £{currentQuote.deposit?.toFixed(2) || "0.00"}</p>
+      <div className="separator" />
+
+      <div className="quote-footer">
+        <div className="attachments">
+          {(currentQuote.attachments || []).map((src, i) => (
+            <img key={i} src={src} alt={`attachment-${i}`} />
+          ))}
+        </div>
+
+        <div className="quote-totals">
+          <p>Subtotal: £{fmt(currentQuote.subtotal)}</p>
+          <p>VAT: £{fmt(currentQuote.vat)}</p>
+          <p className="total">Total: £{fmt(currentQuote.total)}</p>
+          <p>Deposit: £{fmt(currentQuote.deposit)}</p>
+        </div>
       </div>
 
       <button className="back-btn" onClick={onBack}>

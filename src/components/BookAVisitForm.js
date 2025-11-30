@@ -596,10 +596,32 @@ const BookAVisitForm = ({
                   <hr className="custom-divider" />
                   <div>
                     <div className="checkbox-group">
+                      {/* Confirm Checkbox */}
+                      <label>
+                        <input
+                          type="checkbox"
+                          id="confirm"
+                          name="confirm"
+                          checked={formData.confirm || false}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              confirm: e.target.checked,
+                            })
+                          }
+                        />
+                        I confirm that I am the homeowner{" "}
+                        <span className="required">*</span>
+                      </label>
                       {error?.confirm && (
-                        <p className="error-message">{error.confirm}</p>
-                      )}{" "}
-                      {/* Error for confirm checkbox */}
+                        <p className="error-message">
+                          {typeof error.confirm === "string"
+                            ? error.confirm
+                            : ""}
+                        </p>
+                      )}
+
+                      {/* Agree Checkbox */}
                       <label>
                         <input
                           type="checkbox"
@@ -612,17 +634,18 @@ const BookAVisitForm = ({
                               agree: e.target.checked,
                             })
                           }
-                          required
                         />
                         I agree to Tradiy’s{" "}
                         <a href="#/terms-and-policies">
                           Terms and Privacy Policy.
-                        </a>
+                        </a>{" "}
+                        <span className="required">*</span>
                       </label>
                       {error?.agree && (
-                        <p className="error-message">{error.agree}</p>
-                      )}{" "}
-                      {/* Error for agree checkbox */}
+                        <p className="error-message">
+                          {typeof error.agree === "string" ? error.agree : ""}
+                        </p>
+                      )}
                     </div>
 
                     <div className="contact-preference-section">

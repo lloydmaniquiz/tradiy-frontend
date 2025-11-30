@@ -1,19 +1,26 @@
-import React, { useState } from "react";
+// src/pages/DashboardClients.jsx
+import React, { useState, useEffect } from "react";
 import "../styles/DashboardClients.css";
 import { FaChevronDown } from "react-icons/fa";
 import TotalCustomersIcon from "../images/total-customers.png";
 import NewCustomersIcon from "../images/new-customers.png";
 import LeadsIcon from "../images/leads.png";
+import CustomerDetails from "../components/CustomerDetails"; // <- new component
 
 export default function DashboardClients() {
   const [showAddForm, setShowAddForm] = useState(false);
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+
   const [newCustomer, setNewCustomer] = useState({
     name: "",
-    quotes: 0,
-    jobs: 0,
-    payments: 0,
-    status: "QUOTE SENT",
-    reviews: "⭐⭐⭐⭐⭐",
+    phone: "",
+    email: "",
+    address: "",
+    city: "",
+    state: "",
+    region: "",
+    postcode: "",
+    billingSame: false,
   });
 
   const [customers, setCustomers] = useState([
@@ -23,7 +30,9 @@ export default function DashboardClients() {
       jobs: 1,
       payments: 1,
       status: "QUOTE SENT",
-      reviews: "⭐⭐⭐⭐⭐",
+      reviews: 5,
+      email: "freya.reynolds@email.com",
+      address: "18C Burnbank Road, Ayr KA7 3QN",
     },
     {
       name: "David Walsh",
@@ -31,7 +40,9 @@ export default function DashboardClients() {
       jobs: 1,
       payments: 1,
       status: "QUOTE ACCEPTED",
-      reviews: "⭐⭐⭐⭐⭐",
+      reviews: 5,
+      email: "david.walsh@email.com",
+      address: "12 Example Street",
     },
     {
       name: "Toby Reid",
@@ -39,27 +50,65 @@ export default function DashboardClients() {
       jobs: 1,
       payments: 1,
       status: "JOB SCHEDULED",
-      reviews: "⭐⭐⭐⭐☆",
+      reviews: 4,
+      email: "toby.reid@email.com",
+      address: "34 Another Rd",
     },
   ]);
 
+  // optional: persist so details survive page reloads (same tip as DashboardJobs)
+  useEffect(() => {
+    localStorage.setItem("customers", JSON.stringify(customers));
+  }, [customers]);
+
   const handleSave = (e) => {
     e.preventDefault();
-    setCustomers((prev) => [newCustomer, ...prev]);
+    setCustomers((prev) => [
+      {
+        name: newCustomer.name,
+        quotes: 0,
+        jobs: 0,
+        payments: 0,
+        status: "QUOTE SENT",
+        reviews: 5,
+        email: newCustomer.email,
+        address: newCustomer.address,
+      },
+      ...prev,
+    ]);
     setShowAddForm(false);
     setNewCustomer({
       name: "",
-      quotes: 0,
-      jobs: 0,
-      payments: 0,
-      status: "QUOTE SENT",
-      reviews: "⭐⭐⭐⭐⭐",
+      phone: "",
+      email: "",
+      address: "",
+      city: "",
+      state: "",
+      region: "",
+      postcode: "",
+      billingSame: false,
     });
   };
 
+  // If a customer is selected, render the details view (same pattern as DashboardJobs)
+  if (selectedCustomer) {
+    return (
+      <CustomerDetails
+        customer={selectedCustomer}
+        onBack={() => setSelectedCustomer(null)}
+        // optional: pass a callback to update the customer in the list
+        onUpdate={(updated) =>
+          setCustomers((prev) =>
+            prev.map((c) => (c.name === selectedCustomer.name ? updated : c))
+          )
+        }
+      />
+    );
+  }
+
   return (
     <div className="db-clients-container">
-      {/* Page Title + Business Selector */}
+      {/* Header */}
       <div className="db-quotes-header">
         <h1 className="db-quotes-header-title">Customers</h1>
 
@@ -73,6 +122,7 @@ export default function DashboardClients() {
         </div>
       </div>
 
+      {/* Statistics */}
       {!showAddForm && (
         <div className="db-quotes-stats">
           <div className="db-quotes-item">
@@ -101,84 +151,167 @@ export default function DashboardClients() {
 
       <div className="db-quotes-main-container">
         {/* Toolbar */}
-        <div className="db-quotes-toolbar">
-          <input
-            type="text"
-            placeholder="Search"
-            className="db-quotes-search"
-          />
-          <button
-            className="db-quotes-add-btn"
-            onClick={() => setShowAddForm(true)}
-          >
-            + Add Customer
-          </button>
-        </div>
+        {!showAddForm && (
+          <div className="db-quotes-toolbar">
+            <input
+              type="text"
+              placeholder="Search"
+              className="db-quotes-search"
+            />
+            <button
+              className="db-quotes-add-btn"
+              onClick={() => setShowAddForm(true)}
+            >
+              + Add Customer
+            </button>
+          </div>
+        )}
 
+        {/* Add Customer Form */}
         {showAddForm ? (
-          // --- FORM VIEW ---
-          <div className="db-clients-add-form">
-            <h3>Create New Customer</h3>
-            <form onSubmit={handleSave}>
-              <input
-                type="text"
-                placeholder="Customer Name"
-                value={newCustomer.name}
-                onChange={(e) =>
-                  setNewCustomer({ ...newCustomer, name: e.target.value })
-                }
-                required
-              />
-              <input
-                type="number"
-                placeholder="Quotes"
-                value={newCustomer.quotes}
-                onChange={(e) =>
-                  setNewCustomer({ ...newCustomer, quotes: e.target.value })
-                }
-              />
-              <input
-                type="number"
-                placeholder="Jobs"
-                value={newCustomer.jobs}
-                onChange={(e) =>
-                  setNewCustomer({ ...newCustomer, jobs: e.target.value })
-                }
-              />
-              <input
-                type="number"
-                placeholder="Payments"
-                value={newCustomer.payments}
-                onChange={(e) =>
-                  setNewCustomer({ ...newCustomer, payments: e.target.value })
-                }
-              />
-              <select
-                value={newCustomer.status}
-                onChange={(e) =>
-                  setNewCustomer({ ...newCustomer, status: e.target.value })
-                }
-              >
-                <option>QUOTE SENT</option>
-                <option>QUOTE ACCEPTED</option>
-                <option>JOB SCHEDULED</option>
-              </select>
-              <div className="db-quotes-actions">
-                <button type="submit" className="primary">
-                  Save
-                </button>
+          <div className="add-customer-form">
+            <h2>Add New Customer</h2>
+
+            <form onSubmit={handleSave} className="add-customer-card">
+              <div className="form-columns">
+                {/* Left Column */}
+                <div className="form-section">
+                  <div className="form-section-header active">
+                    Customer Details
+                  </div>
+
+                  <label>Customer Name</label>
+                  <input
+                    type="text"
+                    placeholder="e.g., Edward Fisher"
+                    value={newCustomer.name}
+                    onChange={(e) =>
+                      setNewCustomer({ ...newCustomer, name: e.target.value })
+                    }
+                    required
+                  />
+
+                  <label>Phone Number</label>
+                  <input
+                    type="text"
+                    placeholder="01234 567890"
+                    value={newCustomer.phone}
+                    onChange={(e) =>
+                      setNewCustomer({ ...newCustomer, phone: e.target.value })
+                    }
+                  />
+
+                  <label>Email Address</label>
+                  <input
+                    type="email"
+                    placeholder="e.g., edwardfisher@email.com"
+                    value={newCustomer.email}
+                    onChange={(e) =>
+                      setNewCustomer({ ...newCustomer, email: e.target.value })
+                    }
+                  />
+                </div>
+
+                {/* Right Column */}
+                <div className="form-section">
+                  <div className="form-section-header active">
+                    Property Details
+                  </div>
+
+                  <label>Address</label>
+                  <input
+                    type="text"
+                    placeholder=""
+                    value={newCustomer.address}
+                    onChange={(e) =>
+                      setNewCustomer({
+                        ...newCustomer,
+                        address: e.target.value,
+                      })
+                    }
+                  />
+
+                  <div className="form-row">
+                    <input
+                      type="text"
+                      placeholder="City"
+                      value={newCustomer.city}
+                      onChange={(e) =>
+                        setNewCustomer({ ...newCustomer, city: e.target.value })
+                      }
+                    />
+                    <input
+                      type="text"
+                      placeholder="State"
+                      value={newCustomer.state}
+                      onChange={(e) =>
+                        setNewCustomer({
+                          ...newCustomer,
+                          state: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div className="form-row">
+                    <input
+                      type="text"
+                      placeholder="Region"
+                      value={newCustomer.region}
+                      onChange={(e) =>
+                        setNewCustomer({
+                          ...newCustomer,
+                          region: e.target.value,
+                        })
+                      }
+                    />
+                    <input
+                      type="text"
+                      placeholder="Postcode"
+                      value={newCustomer.postcode}
+                      onChange={(e) =>
+                        setNewCustomer({
+                          ...newCustomer,
+                          postcode: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div className="checkbox-row">
+                    <input
+                      type="checkbox"
+                      checked={newCustomer.billingSame}
+                      onChange={(e) =>
+                        setNewCustomer({
+                          ...newCustomer,
+                          billingSame: e.target.checked,
+                        })
+                      }
+                    />
+                    <label>
+                      Billing address is the same as property address
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div className="form-actions">
                 <button
                   type="button"
-                  className="outline"
+                  className="btn-outline"
                   onClick={() => setShowAddForm(false)}
                 >
                   Cancel
+                </button>
+                <button type="submit" className="btn-primary">
+                  Create Customer
                 </button>
               </div>
             </form>
           </div>
         ) : (
-          // --- TABLE VIEW ---
+          // Table View
           <div className="db-clients-table-wrapper">
             <table className="db-clients-table">
               <thead>
@@ -193,7 +326,11 @@ export default function DashboardClients() {
               </thead>
               <tbody>
                 {customers.map((c, i) => (
-                  <tr key={i}>
+                  <tr
+                    key={i}
+                    className="clickable-row"
+                    onClick={() => setSelectedCustomer(c)}
+                  >
                     <td>{c.name}</td>
                     <td>{c.quotes}</td>
                     <td>{c.jobs}</td>
@@ -201,17 +338,38 @@ export default function DashboardClients() {
                     <td>
                       <span
                         className={`db-clients-badge ${
-                          c.status.includes("SENT")
+                          c.status.includes("QUOTE SENT")
                             ? "orange"
-                            : c.status.includes("ACCEPTED")
+                            : c.status.includes("QUOTE ACCEPTED")
+                            ? "teal"
+                            : c.status.includes("JOB SCHEDULED")
+                            ? "blue"
+                            : c.status.includes("JOB COMPLETED")
                             ? "green"
+                            : c.status.includes("INVOICE SENT")
+                            ? "pink"
+                            : c.status.includes("PAYMENT RECEIVED")
+                            ? "teal"
+                            : c.status.includes("JOB CANCELLED")
+                            ? "red"
                             : "blue"
                         }`}
                       >
                         {c.status}
                       </span>
                     </td>
-                    <td>{c.reviews}</td>
+                    <td>
+                      <div className="stars">
+                        {Array.from({ length: 5 }).map((_, si) => (
+                          <span
+                            key={si}
+                            className={`star ${si < c.reviews ? "" : "empty"}`}
+                          >
+                            ★
+                          </span>
+                        ))}
+                      </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -219,15 +377,6 @@ export default function DashboardClients() {
           </div>
         )}
       </div>
-
-      {!showAddForm && (
-        <div className="db-clients-pagination">
-          <button className="db-clients-page active">1</button>
-          <button className="db-clients-page">2</button>
-          <button className="db-clients-page">3</button>
-          <button className="db-clients-page">...</button>
-        </div>
-      )}
     </div>
   );
 }

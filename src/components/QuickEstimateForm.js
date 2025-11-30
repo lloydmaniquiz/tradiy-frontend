@@ -12,36 +12,49 @@ const QuickEstimateForm = ({
   const [isDragging, setIsDragging] = useState(false);
   const [trader, setTrader] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+
+  // split error concerns:
+  const [fetchError, setFetchError] = useState(null); // string | null (network/trader errors)
+  const [validationErrors, setValidationErrors] = useState(null); // object | null (form validation)
+
   const [formData, setFormData] = useState({
     homeOwnerName: "",
     phoneNumber: "",
     email: "",
     serviceType: [],
+    address: "",
+    city: "",
+    state: "",
+    region: "",
     postCode: "",
     timeline: "",
     time: "",
     description: "",
     files: [],
-    confirm: false, // Ensure checkboxes exist
+    confirm: false,
     agree: false,
-    traderEmail: traderEmail,
-    businessOwner: businessOwner,
-    businessName: businessName,
+    contactMethod: "",
+    traderEmail: traderEmail || "",
+    businessOwner: businessOwner || "",
+    businessName: businessName || "",
   });
 
   useEffect(() => {
     const fetchTraderData = async () => {
+      setLoading(true);
+      setFetchError(null);
       try {
         const response = await fetch(
           `${process.env.REACT_APP_API_URL}/tradespeople/`
         );
+        if (!response.ok) {
+          throw new Error("Failed to fetch traders");
+        }
         const data = await response.json();
 
         const foundTrader = data.find((t) => t.id === traderId);
 
         if (foundTrader) {
-          // Ensure weeklySchedule is parsed correctly
           const parsedSchedule =
             typeof foundTrader.weeklySchedule === "string"
               ? JSON.parse(foundTrader.weeklySchedule)
@@ -49,10 +62,11 @@ const QuickEstimateForm = ({
 
           setTrader({ ...foundTrader, weeklySchedule: parsedSchedule });
         } else {
-          setError("Trader not found");
+          setFetchError("Trader not found");
         }
       } catch (err) {
-        setError("Failed to fetch trader data");
+        console.error(err);
+        setFetchError("Failed to fetch trader data");
       } finally {
         setLoading(false);
       }
@@ -61,44 +75,67 @@ const QuickEstimateForm = ({
     fetchTraderData();
   }, [traderId]);
 
-  const traderCategories = trader?.traderCategory
-    ? JSON.parse(trader.traderCategory)
-    : []; // Ensure it's always an array
+  const traderCategories =
+    trader && trader.traderCategory
+      ? // trader.traderCategory might be a JSON string
+        typeof trader.traderCategory === "string"
+        ? JSON.parse(trader.traderCategory)
+        : trader.traderCategory
+      : [];
 
-  const options = traderCategories.map((service) => ({
+  const options = (traderCategories || []).map((service) => ({
     value: service,
     label: service,
   }));
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: type === "checkbox" ? checked : value, // <-- Handle checkboxes correctly
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]:
+        type === "checkbox"
+          ? checked
+          : type === "number"
+          ? Number(value)
+          : value,
     }));
+
+    // clear individual validation error on change for that field
+    if (validationErrors && validationErrors[name]) {
+      setValidationErrors((prev) => {
+        const copy = { ...prev };
+        delete copy[name];
+        return Object.keys(copy).length === 0 ? null : copy;
+      });
+    }
   };
 
   const handleSelectChange = (selectedOptions) => {
-    // Here, React Select returns an array of selected options when `isMulti` is used
-    setFormData((prevState) => ({
-      ...prevState,
-      serviceType: selectedOptions.map((option) => option.value), // Store just the values (service names)
-    }));
+    const values = selectedOptions ? selectedOptions.map((o) => o.value) : [];
+    setFormData((prev) => ({ ...prev, serviceType: values }));
+    if (validationErrors?.serviceType) {
+      setValidationErrors((prev) => {
+        const copy = { ...prev };
+        delete copy.serviceType;
+        return Object.keys(copy).length === 0 ? null : copy;
+      });
+    }
   };
 
-  const handleFileChange = (e) => {
-    const files = [...e.target.files];
+  const handleFileChange = (eOrFiles) => {
+    // Accept either an input event or an array of File objects
+    const files =
+      eOrFiles && eOrFiles.target && eOrFiles.target.files
+        ? Array.from(eOrFiles.target.files)
+        : Array.isArray(eOrFiles)
+        ? eOrFiles
+        : [];
 
-    setFormData((prevState) => ({
-      ...prevState,
-      files: files,
-    }));
+    setFormData((prev) => ({ ...prev, files }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(null);
-
+  const validate = () => {
     const requiredFields = [
       "homeOwnerName",
       "phoneNumber",
@@ -109,20 +146,18 @@ const QuickEstimateForm = ({
 
     const newErrors = {};
 
-    // Validate required fields
     requiredFields.forEach((field) => {
-      // Ensure the value exists and is a string (in case it's an array or another type)
+      const value = formData[field];
       if (
-        !formData[field] ||
-        (typeof formData[field] === "string" &&
-          formData[field].trim() === "") ||
-        (Array.isArray(formData[field]) && formData[field].length === 0)
+        value === undefined ||
+        value === null ||
+        (typeof value === "string" && value.trim() === "") ||
+        (Array.isArray(value) && value.length === 0)
       ) {
         newErrors[field] = "This field is required";
       }
     });
 
-    // Ensure checkboxes are validated properly
     if (!formData.confirm) {
       newErrors.confirm = "You must confirm you are the homeowner";
     }
@@ -130,64 +165,101 @@ const QuickEstimateForm = ({
       newErrors.agree = "You must agree to the terms and privacy policy";
     }
 
-    // If there are validation errors, set the error state and stop submission
+    return newErrors;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setValidationErrors(null);
+    setFetchError(null);
+
+    const newErrors = validate();
+
     if (Object.keys(newErrors).length > 0) {
-      setError(newErrors);
+      setValidationErrors(newErrors);
       return;
     }
 
-    // Prepare FormData for sending the request
-    const formDataObj = new FormData();
+    // Prepare FormData
+    const fd = new FormData();
 
+    // Append primitive/string fields and JSON-encode arrays/objects/booleans
     Object.keys(formData).forEach((key) => {
-      // Don't append 'files' in the FormData object, it's handled separately
-      if (key !== "files") {
-        formDataObj.append(key, formData[key]);
+      if (key === "files") return; // files handled separately
+      const val = formData[key];
+
+      if (val === undefined || val === null) {
+        fd.append(key, "");
+      } else if (
+        Array.isArray(val) ||
+        typeof val === "object" ||
+        typeof val === "boolean"
+      ) {
+        // Send arrays/objects/booleans as JSON strings so backend can parse easily
+        fd.append(key, JSON.stringify(val));
+      } else {
+        fd.append(key, String(val));
       }
     });
 
+    // Append files
     formData.files.forEach((file) => {
-      formDataObj.append("files", file);
+      fd.append("files", file);
     });
 
     try {
-      // Make the API request
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/submit-quote/`,
         {
           method: "POST",
-          body: formDataObj,
+          body: fd,
         }
       );
 
       if (!response.ok) {
-        throw new Error("Failed to submit form");
+        // attempt to parse server error
+        let serverMsg = "Failed to submit form";
+        try {
+          const errBody = await response.json();
+          serverMsg = errBody?.message || JSON.stringify(errBody);
+        } catch {
+          // ignore parse error
+        }
+        throw new Error(serverMsg);
       }
 
       const result = await response.json();
       console.log("Success:", result);
       alert("Form submitted successfully!");
 
-      // Reset form after successful submission
+      // reset form (keep traderEmail/businessOwner/businessName)
       setFormData({
         homeOwnerName: "",
         phoneNumber: "",
         email: "",
         serviceType: [],
+        address: "",
+        city: "",
+        state: "",
+        region: "",
         postCode: "",
         timeline: "",
         time: "",
         description: "",
+        files: [],
         confirm: false,
         agree: false,
-        files: [],
-        traderEmail: traderEmail,
-        businessOwner: businessOwner,
-        businessName: businessName,
+        contactMethod: "",
+        traderEmail: traderEmail || "",
+        businessOwner: businessOwner || "",
+        businessName: businessName || "",
       });
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Failed to submit form");
+
+      setValidationErrors(null);
+      setFetchError(null);
+    } catch (err) {
+      console.error("Submit error:", err);
+      setFetchError(err.message || "Failed to submit form");
     }
   };
 
@@ -200,8 +272,9 @@ const QuickEstimateForm = ({
 
       {loading ? (
         <p>Loading trader schedule...</p>
-      ) : error ? (
-        <p className="error">{error}</p>
+      ) : fetchError ? (
+        // fetchError is a string; safe to render
+        <p className="error">{fetchError}</p>
       ) : (
         <>
           <form onSubmit={handleSubmit}>
@@ -221,9 +294,11 @@ const QuickEstimateForm = ({
                     placeholder="Name"
                     required
                   />
-                  {error?.homeOwnerName && (
-                    <p className="error-message">{error.homeOwnerName}</p>
-                  )}{" "}
+                  {validationErrors?.homeOwnerName && (
+                    <p className="error-message">
+                      {validationErrors.homeOwnerName}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="phoneNumber">
@@ -238,9 +313,11 @@ const QuickEstimateForm = ({
                     placeholder="01234 567890"
                     required
                   />
-                  {error?.phoneNumber && (
-                    <p className="error-message">{error.phoneNumber}</p>
-                  )}{" "}
+                  {validationErrors?.phoneNumber && (
+                    <p className="error-message">
+                      {validationErrors.phoneNumber}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="email">
@@ -255,9 +332,9 @@ const QuickEstimateForm = ({
                     placeholder="user@email.com"
                     required
                   />
-                  {error?.email && (
-                    <p className="error-message">{error.email}</p>
-                  )}{" "}
+                  {validationErrors?.email && (
+                    <p className="error-message">{validationErrors.email}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -277,7 +354,7 @@ const QuickEstimateForm = ({
                     value={options.filter((option) =>
                       formData.serviceType.includes(option.value)
                     )}
-                    onChange={handleSelectChange} // React Select calls this with the full selected options array
+                    onChange={handleSelectChange}
                     placeholder="Select services"
                     styles={{
                       control: (base, state) => ({
@@ -307,10 +384,13 @@ const QuickEstimateForm = ({
                       }),
                     }}
                   />
-                  {error?.serviceType && (
-                    <p className="error-message">{error.serviceType}</p>
-                  )}{" "}
+                  {validationErrors?.serviceType && (
+                    <p className="error-message">
+                      {validationErrors.serviceType}
+                    </p>
+                  )}
                 </div>
+
                 <div className="location-group">
                   <label htmlFor="location" className="location-label">
                     Location <span className="required">*</span>
@@ -323,7 +403,6 @@ const QuickEstimateForm = ({
                     placeholder=""
                     value={formData.address}
                     onChange={handleChange}
-                    required
                   />
                   <input
                     type="text"
@@ -355,10 +434,11 @@ const QuickEstimateForm = ({
                     required
                   />
 
-                  {error?.postCode && (
-                    <p className="error-message">{error.postCode}</p>
+                  {validationErrors?.postCode && (
+                    <p className="error-message">{validationErrors.postCode}</p>
                   )}
                 </div>
+
                 <div>
                   <label htmlFor="timeline">Timeline</label>
                   <input
@@ -390,6 +470,7 @@ const QuickEstimateForm = ({
                     rows="4"
                   ></textarea>
                 </div>
+
                 <div>
                   <label htmlFor="upload">
                     Upload Photos or Files (Optional)
@@ -405,7 +486,7 @@ const QuickEstimateForm = ({
                       e.preventDefault();
                       setIsDragging(false);
                       const files = Array.from(e.dataTransfer.files);
-                      handleFileChange({ target: { files } }); // triggers your existing logic
+                      handleFileChange(files);
                     }}
                   >
                     <p>Drag and drop files here or</p>
@@ -447,36 +528,46 @@ const QuickEstimateForm = ({
                         : "No file chosen"}
                     </div>
                   </div>
+
                   <hr className="custom-divider" />
+
                   <div>
                     <div className="checkbox-group">
-                      {error?.confirm && (
-                        <p className="error-message">{error.confirm}</p>
-                      )}{" "}
-                      {/* Error for confirm checkbox */}
+                      {/* Confirm homeowner (you were validating confirm but didn't render it) */}
+                      <label>
+                        <input
+                          type="checkbox"
+                          id="confirm"
+                          name="confirm"
+                          checked={formData.confirm || false}
+                          onChange={handleChange}
+                        />
+                        I confirm I am the homeowner.
+                      </label>
+                      {validationErrors?.confirm && (
+                        <p className="error-message">
+                          {validationErrors.confirm}
+                        </p>
+                      )}
+
                       <label>
                         <input
                           type="checkbox"
                           id="agree"
                           name="agree"
                           checked={formData.agree || false}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              agree: e.target.checked,
-                            })
-                          }
-                          required
+                          onChange={handleChange}
                         />
                         I agree to Tradiy’s{" "}
                         <a href="#/terms-and-policies">
                           Terms and Privacy Policy.
                         </a>
                       </label>
-                      {error?.agree && (
-                        <p className="error-message">{error.agree}</p>
-                      )}{" "}
-                      {/* Error for agree checkbox */}
+                      {validationErrors?.agree && (
+                        <p className="error-message">
+                          {validationErrors.agree}
+                        </p>
+                      )}
                     </div>
 
                     <div className="contact-preference-section">

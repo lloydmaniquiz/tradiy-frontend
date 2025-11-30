@@ -1,58 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/DashboardReviews.css";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaStar } from "react-icons/fa";
 
 export default function DashboardReviews() {
-  const role = localStorage.getItem("role");
+  const [showModal, setShowModal] = useState(false);
+  const [selectedReview, setSelectedReview] = useState(null);
 
-  if (role === "Homeowner") {
-    // 🔹 Homeowner view (Card Layout)
-    return (
-      <div className="db-reviews-home-container">
-        <div className="db-reviews-home-header">
-          <h2>Reviews</h2>
-        </div>
+  const reviews = [
+    {
+      name: "Jasmine Davies",
+      service: "Service A",
+      date: "20 January 2025",
+      ratings: {
+        professionalism: 5,
+        cleanliness: 5,
+        timeliness: 5,
+        workQuality: 5,
+        valueForMoney: 5,
+      },
+      review:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      name: "Frederick Roberts",
+      service: "Service B",
+      date: "10 February 2025",
+      ratings: {
+        professionalism: 4,
+        cleanliness: 5,
+        timeliness: 4,
+        workQuality: 4,
+        valueForMoney: 5,
+      },
+      review:
+        "Great experience overall. Excellent communication and quality work delivered on time.",
+    },
+  ];
 
-        {/* Tabs */}
-        <div className="db-reviews-home-tabs">
-          <button className="db-reviews-home-tab active">
-            Unreviewed <span className="db-reviews-home-badge">2</span>
-          </button>
-          <button className="db-reviews-home-tab">Reviewed</button>
-        </div>
+  const openReviewModal = (review) => {
+    setSelectedReview(review);
+    setShowModal(true);
+  };
 
-        {/* Review Cards */}
-        <div className="db-reviews-home-list">
-          <div className="db-reviews-home-card">
-            <div>
-              <h4>Service Name</h4>
-              <p>Ryan Johnson</p>
-              <p className="db-reviews-home-date">20 February 2025</p>
-              <span className="db-reviews-home-muted">No ratings yet.</span>
-            </div>
-            <button className="db-reviews-home-btn">Write a review</button>
-          </div>
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedReview(null);
+  };
 
-          <div className="db-reviews-home-card">
-            <div>
-              <h4>Service Name</h4>
-              <p>Harvey Knight</p>
-              <p className="db-reviews-home-date">21 January 2025</p>
-              <span className="db-reviews-home-muted">No ratings yet.</span>
-            </div>
-            <button className="db-reviews-home-btn">Write a review</button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // 🔹 Tradesperson view (Table Layout)
   return (
     <div className="db-reviews-container">
       {/* Header */}
       <div className="db-quotes-header">
-        <h1 className="db-quotes-header-title">Customers</h1>
+        <h1 className="db-quotes-header-title">Reviews</h1>
 
         <div className="db-quotesheader-select-wrapper">
           <select className="db-quotesheader-select">
@@ -86,19 +85,7 @@ export default function DashboardReviews() {
 
       {/* Review List */}
       <div className="db-reviews-list">
-        {[
-          {
-            name: "Frederick Roberts",
-            date: "20 January 2025",
-            service: "Service A",
-          },
-          { name: "Maya Rose", date: "20 January 2025", service: "Service A" },
-          {
-            name: "Olivia Reynolds",
-            date: "20 January 2025",
-            service: "Service A",
-          },
-        ].map((review, idx) => (
+        {reviews.map((review, idx) => (
           <div className="db-reviews-item" key={idx}>
             <div className="db-reviews-info">
               <h4>{review.name}</h4>
@@ -107,7 +94,12 @@ export default function DashboardReviews() {
               </p>
               <span className="db-reviews-muted">No ratings yet.</span>
             </div>
-            <button className="db-reviews-btn">Write a review</button>
+            <button
+              className="db-reviews-btn"
+              onClick={() => openReviewModal(review)}
+            >
+              View Details
+            </button>
           </div>
         ))}
       </div>
@@ -118,6 +110,82 @@ export default function DashboardReviews() {
         <button className="db-reviews-page active">1</button>
         <button className="db-reviews-page">&gt;</button>
       </div>
+
+      {/* === Slide-In Modal === */}
+      {showModal && selectedReview && (
+        <>
+          <div className="modal-overlay" onClick={closeModal}></div>
+          <div className="review-modal">
+            <div className="review-modal-header">
+              <button className="close-btn" onClick={closeModal}>
+                ✕
+              </button>
+              <h3>Review Details</h3>
+              <div className="stars large">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar key={i} className="star" />
+                ))}
+              </div>
+            </div>
+
+            <div className="review-modal-content">
+              <p>
+                <strong>Client Name:</strong> {selectedReview.name}
+              </p>
+              <div className="review-info-row">
+                <p>
+                  <strong>Service:</strong> {selectedReview.service}
+                </p>
+                <p>
+                  <strong>Review Date:</strong> {selectedReview.date}
+                </p>
+              </div>
+
+              <h4>Review Details</h4>
+              {Object.entries(selectedReview.ratings).map(([key, value]) => (
+                <div className="rating-row" key={key}>
+                  <span>
+                    {key
+                      .replace(/([A-Z])/g, " $1")
+                      .replace(/^./, (c) => c.toUpperCase())}
+                  </span>
+                  <div className="stars">
+                    {[...Array(value)].map((_, i) => (
+                      <FaStar key={i} className="star" />
+                    ))}
+                  </div>
+                </div>
+              ))}
+
+              <div className="client-review">
+                <strong>Client Review</strong>
+                <p>{selectedReview.review}</p>
+              </div>
+
+              <button className="btn-report">Report</button>
+
+              <div className="write-review-section">
+                <h4>Write a Review</h4>
+                <div className="stars">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar key={i} className="star" />
+                  ))}
+                </div>
+                <textarea
+                  placeholder="Leave your client review here..."
+                  className="review-textarea"
+                ></textarea>
+                <div className="review-modal-actions">
+                  <button className="btn-outline" onClick={closeModal}>
+                    Cancel
+                  </button>
+                  <button className="btn-primary">Submit Review</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

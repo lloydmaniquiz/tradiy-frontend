@@ -31,6 +31,29 @@ export default function Dashboard({ user }) {
   const role = localStorage.getItem("role") || "";
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [isQuickActionOpen, setIsQuickActionOpen] = useState(false);
+
+  // 🔔 notifications
+  const [notifOpen, setNotifOpen] = useState(false);
+  const notifRef = useRef(null);
+
+  // 👤 profile dropdown
+  const [profileOpen, setProfileOpen] = useState(false);
+  const profileRef = useRef(null);
+
+  // ---- PROFILE INFO HELPERS ----
+  const traderName =
+    userData?.profile?.businessOwner ||
+    userData?.user?.username ||
+    "Trader Name";
+
+  const traderId =
+    userData?.profile?.traderId ||
+    userData?.user?.traderId ||
+    "TRDY-2025-12345";
+
+  // Trader can also be customer → fallback to same name
+  const customerName = userData?.profile?.customerName || traderName;
 
   const location = useLocation(); // 👈 get current route
   const isChatRoute = location.pathname.includes("/chat"); // 👈 true on /dashboard/chat
@@ -84,6 +107,20 @@ export default function Dashboard({ user }) {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (notifRef.current && !notifRef.current.contains(e.target)) {
+        setNotifOpen(false);
+      }
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setProfileOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const formatDate = (date) =>
     date.toLocaleDateString("en-GB", {
       day: "numeric",
@@ -102,6 +139,13 @@ export default function Dashboard({ user }) {
   };
   const toggleHelpdesk = () => setIsHelpdeskOpen((prev) => !prev);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("role");
+    navigate("/login", { replace: true });
+  };
+
   // Example notifications
   const notifications = [
     { id: 1, message: "New booking request" },
@@ -114,20 +158,24 @@ export default function Dashboard({ user }) {
       {/* Header */}
       <header className="main-header">
         <div className="header-left">
-          <img src={TradiyLogo} alt="Tradiy Hero logo" width="56" />
+          <NavLink to="/">
+            <img src={TradiyLogo} alt="Tradiy Hero logo" width="56" />
+          </NavLink>
         </div>
+
         <div className="header-right">
+          {/* 🔔 Notifications */}
           <div className="header-right">
-            <div className="notification-wrapper" ref={dropdownRef}>
+            <div className="notification-wrapper" ref={notifRef}>
               <button
                 className="icon-button"
-                onClick={() => setOpen((prev) => !prev)}
+                onClick={() => setNotifOpen((prev) => !prev)}
               >
                 <img src={BellIcon} alt="Notifications" className="icon-img" />
                 <span className="notification-dot"></span>
               </button>
 
-              {open && (
+              {notifOpen && (
                 <div className="notification-dropdown">
                   <h4>Notifications</h4>
                   {notifications.length > 0 ? (
@@ -143,29 +191,69 @@ export default function Dashboard({ user }) {
               )}
             </div>
 
-            <button className="icon-button">
+            <button
+              className="icon-button"
+              onClick={() => navigate("settings/profile")}
+            >
               <img src={SettingsIcon} alt="Settings" className="icon-img" />
             </button>
           </div>
-          <button className="profile-button">
-            <img
-              src={userData?.profile?.profilePicture || defaultPhoto}
-              alt={`Profile of ${
-                userData?.profile?.businessOwner ||
-                userData?.user?.username ||
-                "User"
-              }`}
-              width="32"
-              height="32"
-              className="profile-avatar-dropdown"
-            />
-            <span>
-              {userData?.profile?.businessOwner ||
-                userData?.user?.username ||
-                "Guest"}
-            </span>
-            <i className="fas fa-chevron-down profile-chevron"></i>
-          </button>
+
+          {/* 👤 Profile dropdown */}
+          <div className="profile-wrapper" ref={profileRef}>
+            <button
+              className="profile-button"
+              onClick={() => setProfileOpen((prev) => !prev)}
+            >
+              <img
+                src={userData?.profile?.profilePicture || defaultPhoto}
+                alt={`Profile of ${
+                  userData?.profile?.businessOwner ||
+                  userData?.user?.username ||
+                  "User"
+                }`}
+                width="32"
+                height="32"
+                className="profile-avatar-dropdown"
+              />
+              <span>
+                {userData?.profile?.businessOwner ||
+                  userData?.user?.username ||
+                  "Guest"}
+              </span>
+              <i className="fas fa-chevron-down profile-chevron"></i>
+            </button>
+
+            {profileOpen && (
+              <div className="profile-dropdown">
+                <div className="profile-card">
+                  <div className="profile-role-block">
+                    <span className="profile-role-label">Trader</span>
+                    <h4 className="profile-name">{traderName}</h4>
+                    <p className="profile-meta">{traderId}</p>
+                  </div>
+
+                  <div className="profile-role-block">
+                    <span className="profile-role-label">Customer</span>
+                    <h4 className="profile-name">{customerName}</h4>
+                  </div>
+                </div>
+
+                <div className="profile-menu">
+                  <button className="profile-menu-item">
+                    Subscribe to Paid Plan
+                  </button>
+                  <button className="profile-menu-item">Refer a Friend</button>
+                  <button
+                    className="profile-menu-item logout-item"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </header>
 
@@ -188,15 +276,13 @@ export default function Dashboard({ user }) {
 
               <nav className="sidebar-nav">
                 {role === "Trader" && (
-                  <NavLink
-                    to="quick-actions"
-                    className={({ isActive }) =>
-                      isActive ? "db-nav-item active" : "db-nav-item"
-                    }
+                  <button
+                    className="db-nav-item"
+                    onClick={() => setIsQuickActionOpen(true)}
                   >
                     <img src={QAIcon} alt="Dashboard" className="nav-icon" />
                     <span className="label">Quick Action</span>
-                  </NavLink>
+                  </button>
                 )}
                 {/* Common links */}
                 <NavLink

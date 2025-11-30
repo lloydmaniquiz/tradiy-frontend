@@ -2,13 +2,14 @@
 
 .add-job-container {
   background: #fff;
+  font-family: "Hanken Grotesk", Arial;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  border: 1px solid #ccc;
 }
 
 /* Header */
@@ -19,7 +20,7 @@
 }
 
 .add-job-header h2 {
-  font-size: 1.4rem;
+  font-size: 36px;
   font-weight: 600;
   margin: 0;
 }
@@ -39,12 +40,13 @@
 .add-job-section {
   border: none;
   padding: 20px;
+  padding-top: 0 !important;
   background: white;
 }
 
 .add-job-section h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 36px;
+  font-weight: 800;
   margin-bottom: 1rem;
 }
 
@@ -55,16 +57,10 @@
   width: 100%;
   padding: 10px 14px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 20px !important;
   font-size: 0.95rem;
-  margin-bottom: 1rem;
   background: #fff;
 }
-
-.form-row {
-  margin-bottom: 1rem;
-}
-
 .add-job-textarea {
   min-height: 70px;
   resize: none;
@@ -101,33 +97,58 @@
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+  margin-top: 20px;
 }
 
+.add-job-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+/* Common button base */
 .add-job-btn {
-  border: none;
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 0.9rem;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 50px;
+  padding: 12px 28px;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
 
+/* Cancel button */
 .add-job-btn.cancel {
-  background: #f1f1f1;
+  background-color: #fff;
   color: #333;
+  border: 1px solid #cfcfcf;
 }
 
 .add-job-btn.cancel:hover {
-  background: #e5e5e5;
+  background-color: #f2f2f2;
 }
 
+/* Primary (Save and) button */
 .add-job-btn.primary {
-  background: #0a2540;
+  background-color: #000839; /* dark navy */
   color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 28px !important;
 }
 
 .add-job-btn.primary:hover {
-  background: #06182a;
+  background-color: #000839;
+}
+
+/* Small arrow spacing */
+.arrow-down {
+  font-size: 13px;
+  margin-top: 2px;
 }
 
 /* File Upload */
@@ -142,7 +163,7 @@
 }
 
 .add-job-file label {
-  background: #0a2540;
+  background: #000839;
   color: #fff;
   padding: 6px 12px;
   border-radius: 6px;
@@ -151,5 +172,793 @@
 }
 
 .add-job-file label:hover {
-  background: #06182a;
+  background: #000839;
+}
+
+.add-quote-btn {
+  border-radius: 50px;
+  border: 1px solid #423e3e;
+  padding: 10px 20px 10px 20px !important;
+  cursor: pointer;
+}
+
+.quote-container {
+  margin: auto;
+  padding: 20px;
+  font-family: "Hanken Grotesk", Arial;
+  border: none;
+}
+
+.quote-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.quote-header-buttons button {
+  margin-right: 10px;
+  padding: 20px;
+}
+
+.fieldset {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: none !important;
+}
+
+.client-select-row {
+  display: flex;
+  align-items: center; /* keeps everything vertically centered */
+  justify-content: flex-start; /* aligns them to the left */
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.client-select-row {
+  display: flex;
+  align-items: center; /* keeps everything vertically centered */
+  justify-content: flex-start; /* aligns them to the left */
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.client-select-row select {
+  margin: 0;
+}
+
+.client-select-row label {
+  margin: 0 !important;
+}
+
+.fieldset strong {
+  font-family: "Hanken Grotesk", Arial;
+  color: #423e3e;
+  font-weight: 600;
+}
+
+.input-block {
+  margin-bottom: 10px;
+}
+
+.input-block input {
+  width: 100%;
+  padding: 6px;
+}
+
+.divider {
+  margin: 30px 0;
+}
+
+.radio-group label {
+  margin-right: 20px;
+}
+
+.two-column {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.file-upload {
+  border: 2px dashed #ccc;
+  padding: 30px;
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.service-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.service-item input {
+  padding: 8px;
+}
+
+.readonly-input {
+  background-color: #eee;
+  border: 1px solid #ccc;
+}
+
+.item-buttons {
+  margin-bottom: 15px;
+}
+
+.item-buttons button {
+  padding: 10px 6px 10px 6px;
+  margin-right: 10px;
+  border-radius: 25px;
+  border: 1px solid #423e3e;
+}
+
+.totals {
+  max-width: 300px;
+  margin-left: auto;
+}
+
+.totals > div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.total-line {
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.db-quotes-table-wrapper {
+  border: none;
+}
+
+.action-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.internal-notes {
+  margin-top: 40px;
+}
+
+.form-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Left section: main form */
+.fieldset {
+  flex: 1;
+  border: none;
+  padding: 0;
+}
+
+/* Right section: smaller panel */
+.small-fieldset {
+  width: 320px;
+  border: none;
+  padding-left: 2rem;
+  border-left: 1px solid #ddd; /* vertical divider */
+}
+
+/* Headings */
+.fieldset legend,
+.small-fieldset legend {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2f2f2f;
+}
+
+.client-select-row select,
+.client-select-row button,
+.fieldset input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  font-size: 0.95rem;
+}
+
+.client-select-row select {
+  flex: 1;
+  appearance: none;
+}
+
+.client-select-row button {
+  background-color: #0b163f;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Right panel inputs */
+.input-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.input-block label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.input-block input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 0.9rem;
+}
+
+/* Quote Title input full width */
+.fieldset input[type="text"] {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.quote-service {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quote-service h3 {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.quote-service small {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.quote-options {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.quote-options label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #333;
+  font-size: 16px !important;
+}
+
+/* Base styles for a modern form */
+.quote-container {
+  margin: 20px auto;
+  padding: 0;
+  border-radius: 8px;
+  font-family: "Hanken Grotesk", Arial;
+}
+
+/* Fieldset and Legend for structure and grouping */
+.fieldset {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 25px;
+  background-color: #fff;
+}
+
+.fieldset legend {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* Input and Select styling for a clean look */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box; /* Crucial for padding/border not to affect width */
+  font-size: 1em;
+  color: #555;
+}
+
+select {
+  /* Hide default select arrow */
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%234A5568" d="M10 4L6 8 2 4z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 35px; /* Make space for the custom arrow */
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Top Row Layout (Client and Quote Details) */
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row .fieldset {
+  flex: 1;
+}
+
+.small-fieldset {
+  min-width: 400px;
+  margin: 0;
+}
+
+.client-select-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.client-select-row select {
+  flex-grow: 1;
+}
+
+.input-block label {
+  display: block;
+  font-size: 0.8em;
+  color: #777;
+  margin-bottom: -5px;
+}
+
+/* Divider */
+.divider {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+
+/* Quote Service Layout - KEY CHANGE FOR TWO COLUMNS */
+.service-location-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.quote-service h3 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.quote-options input[type="radio"] {
+  width: auto;
+  margin-right: 5px;
+}
+
+/* Service Info Column Styling */
+.service-info-column select {
+  margin-bottom: 20px; /* Space between the selects and textarea */
+  margin-top: 0 !important;
+}
+
+.service-info-column textarea {
+  border-radius: 10px;
+}
+
+/* Location Info Column Styling */
+.location-info-column input {
+  margin-bottom: 20px; /* Space between each location input */
+  margin-top: 0 !important;
+}
+
+/* File Upload Box (Inspired by the images) */
+.file-upload-box {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.3s;
+  margin-top: 15px;
+}
+
+.file-upload-box:hover {
+  border-color: #007bff;
+}
+
+.file-upload-box .upload-icon {
+  font-size: 2.5em; /* Styling the placeholder icon */
+  display: block;
+  color: #007bff;
+}
+
+.file-upload-box p {
+  margin: 5px 0 0;
+  color: #777;
+}
+
+.file-upload-box .hidden-file-input {
+  /* Hides the default file input but keeps it accessible for drag/drop logic */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Service Items Table Look */
+.service-item {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1.5fr 1.5fr; /* Service, Qty, Price, Total */
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.service-item input {
+  margin: 0 !important; /* Remove margin from individual item inputs */
+}
+
+.service-item textarea {
+  border-radius: 10px !important;
+}
+
+/* Totals styling */
+.totals {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  max-width: 400px; /* Keep totals aligned to the right or small */
+  margin-left: auto;
+}
+
+.totals > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.total-line {
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+  padding-top: 10px !important;
+  margin-top: 5px;
+}
+
+.totals button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 20px 0;
+}
+
+.action-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.action-buttons button[type="submit"] {
+  background-color: #000839;
+  color: white;
+  border-radius: 50px;
+}
+
+.action-buttons button[type="submit"]:hover {
+  background-color: #000839;
+}
+
+.action-buttons button[type="button"] {
+  background-color: white;
+  color: #423e3e;
+  border: 1px solid #423e3e;
+  border-radius: 50px;
+}
+
+.action-buttons button[type="button"]:hover {
+  background-color: white;
+}
+
+/* Internal Notes Fieldset */
+.internal-notes {
+  border-color: #ffc107; /* Different color for internal distinction */
+}
+
+.internal-notes legend {
+  color: #ffc107;
+}
+
+.internal-notes small {
+  display: block;
+  margin-bottom: 10px;
+  color: #999;
+}
+
+.add-job-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-job-header h3 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Layout split */
+.add-job-content {
+  display: flex;
+  align-items: stretch; /* ensures both columns are equal height */
+  gap: 40px;
+}
+
+/* Left side (form) */
+.add-job-form {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.client-select-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.add-job-select {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.add-job-btn.primary {
+  background-color: #000839;
+  color: #fff;
+  border: none;
+  padding: 14px 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-job-btn.primary:hover {
+  background-color: #003366;
+}
+
+.add-job-input,
+.add-job-textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 0 !important;
+}
+
+.add-job-textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* Right side (Job Details) */
+.add-job-details {
+  flex: 1;
+  border-left: 1px solid #e5e5e5;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.add-job-details h4 {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.add-job-details p {
+  font-size: 14px;
+  color: #555;
+}
+
+.add-job-details strong {
+  font-weight: 600;
+  color: #333;
+  margin-right: 6px;
+}
+
+.add-job-horizontal-line {
+  width: 97%;
+  height: 5px; /* slightly thicker line for visual balance */
+  background-color: #423e3e; /* dark neutral tone like in your screenshot */
+
+  grid-column: 1 / -1; /* ensures it spans both columns if inside grid */
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Inputs & select styling */
+.add-job-input,
+.add-job-select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #dcdcdc;
+  border-radius: 25px;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+}
+
+.add-job-select {
+  appearance: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='8'><path fill='%23333' d='M7 8L0 0h14z'/></svg>")
+    no-repeat right 14px center/12px auto;
+}
+
+.add-job-input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.add-job-input:focus,
+.add-job-select:focus {
+  outline: none;
+  border-color: #000839;
+}
+
+/* --- Divider lines --- */
+.add-job-divider {
+  border: none;
+  border-top: 2px solid #423e3e;
+  margin: 20px 0;
+  margin-bottom: -20px;
+}
+
+/* --- Labels row --- */
+.service-items-header {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1fr 1fr;
+  font-size: 13px;
+  font-weight: 600;
+  color: #423e3e;
+  margin-bottom: -20px;
+}
+
+/* --- Input row --- */
+.service-items-row {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1fr 1fr;
+  gap: 10px;
+  align-items: start;
+  margin-bottom: 0px !important;
+}
+
+.service-items-row input,
+.service-items-row textarea {
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+}
+
+.service-items-row textarea {
+  grid-column: 1 / -1;
+  border-radius: 12px;
+  resize: none;
+  height: 70px;
+}
+
+/* --- Buttons --- */
+.service-items-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.add-job-btn.primary {
+  background-color: #000839;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.add-job-btn.primary:hover {
+  background-color: #000839;
+}
+
+.add-job-btn.outline {
+  background: none;
+  border: 1px solid #000839;
+  color: #000839;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.add-job-btn.outline:hover {
+  background-color: #000839;
+  color: white;
+}
+
+.db-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 9999px; /* full pill shape */
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.db-back-btn:hover {
+  background-color: #f5f5f5;
+  border-color: #bfbfbf;
+}
+
+.db-back-icon {
+  font-size: 14px;
+  color: #333;
 }

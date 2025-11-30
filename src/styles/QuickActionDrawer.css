@@ -1,0 +1,47 @@
+.quickaction-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  transition: opacity 0.3s ease;
+}
+
+.quickaction-drawer {
+  background: white;
+  width: 240px;
+  height: 100%;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease forwards;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.quickaction-item {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  transition: color 0.2s ease;
+}
+
+.quickaction-item:hover {
+  color: #007bff;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

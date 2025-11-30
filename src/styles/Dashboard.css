@@ -148,6 +148,12 @@
   gap: 0.5rem;
 }
 
+/* anchor dropdowns to the buttons */
+.notification-wrapper,
+.profile-wrapper {
+  position: relative;
+}
+
 .header-left {
   margin-left: 20px;
 }
@@ -231,6 +237,74 @@
 .profile-button span {
   font-size: 14px;
   line-height: 1; /* keeps text aligned properly */
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 44px; /* distance below profile button */
+  right: 0;
+  width: 260px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+  padding: 14px 16px;
+  z-index: 1100;
+}
+
+/* top info section */
+.profile-card {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 10px;
+}
+
+.profile-role-block + .profile-role-block {
+  margin-top: 8px;
+}
+
+.profile-role-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+}
+
+.profile-name {
+  margin: 0 0 2px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.profile-meta {
+  margin: 0;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* bottom menu */
+.profile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-menu-item {
+  background: none;
+  border: none;
+  padding: 4px 0;
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.profile-menu-item:hover {
+  text-decoration: underline;
+}
+
+.logout-item {
+  color: #e11d48;
+  font-weight: 500;
 }
 
 .profile-chevron {
